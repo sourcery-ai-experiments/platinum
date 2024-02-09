@@ -16,7 +16,7 @@ interface PlatinumAppProps {
 }
 
 const PlatinumApp: React.FC<PlatinumAppProps> = (
-    {id, icon, name, open = false, hidden = false, debug, children}
+    {id, icon, name, open = false, hidden = false, debug = false, children}
 ) => {
     const {appContext, setAppContext} = React.useContext(PlatinumAppContext);
     const desktopContext = useDesktop();
