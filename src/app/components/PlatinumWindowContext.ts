@@ -57,7 +57,7 @@ export const PlatinumWindowStateEventReducer = (ws, action) => {
                 ws.dragging = action.dragging;
                 break;
             }
-            case "menu": {
+            case "contextmenu": {
                 ws.contextMenu = action.contextMenu;
                 if (action.contextMenu === true) {
                     ws.contextMenuLocation = action.position;

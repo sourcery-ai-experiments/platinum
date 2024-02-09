@@ -13,8 +13,8 @@ import {PlatinumWindowStateEventReducer} from "./PlatinumWindowContext";
 import {useDesktop, useDesktopDispatch} from './PlatinumDesktopContext';
 
 interface PlatinumWindowProps {
-    title: string;
-    id?: string;
+    title?: string;
+    id: string;
     appId?: string;
     icon?: string;
     hidden?: boolean;
@@ -35,7 +35,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                                                            id,
                                                            title = "Untitled",
                                                            icon = "/img/icons/document.png",
-                                                           appId = id,
+                                                           appId,
                                                            hidden = false,
                                                            closable = true,
                                                            zoomable = true,
@@ -128,7 +128,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
             }
         });
         desktopEventDispatch({
-            type: "PlatinumWindowMenu",
+            type: "PlatinumWindowContextMenu",
             menuBar: appMenu ? appMenu : [],
         });
     };
@@ -187,7 +187,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
 
     const setContextMenu = (toShow: boolean, atPosition: [number, number]) => {
         windowEventDispatch({
-            type: "PlatinumWindowMenu",
+            type: "PlatinumWindowContextMenu",
             contextMenu: toShow,
             position: atPosition,
         });
