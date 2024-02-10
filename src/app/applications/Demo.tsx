@@ -14,6 +14,7 @@ const Demo = () => {
     const appName = "Demo";
     const appId = "Demo.app";
     const appIcon = `${process.env.BASEPATH}/img/icons/folders/default.png`;
+
     const desktopContext = useDesktop();
     const desktopEventDispatch = useDesktopDispatch();
 
