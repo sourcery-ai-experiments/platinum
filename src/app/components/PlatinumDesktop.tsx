@@ -97,7 +97,7 @@ const PlatinumDesktop: React.FC<PlatinumDesktopProps> = ({
         {
             id: "cleanup",
             title: "New",
-            icon: "./img/mac.png",
+            icon: `${process.env.BASEPATH}/img/mac.png`,
             keyboardShortcut: "&#8984;S",
             disabled: false,
         },
