@@ -7,7 +7,7 @@ const Finder = () => {
 
     const appName: string = "Finder";
     const appId: string = "Finder.app";
-    const appIcon: string = `${process.env.BASEPATH}/img/macos.svg`;
+    const appIcon: string = `${process.env.NEXT_PUBLIC_BASE_PATH}/img/macos.svg`;
     const appOpen: boolean = true;
 
     const appMenu = [];
