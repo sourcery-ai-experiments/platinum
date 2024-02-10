@@ -88,7 +88,6 @@ const AppearanceManager = () => {
         });
     };
 
-
     const testMenuItems = [
         {
             id: "file-new",
