@@ -11,7 +11,7 @@ const TextEdit = () => {
 
     const appName = "TextEdit";
     const appId = "TextEdit.app";
-    const appIcon = `${process.env.BASEPATH || ""}/img/icons/textedit.png`;
+    const appIcon = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/textedit.png`;
 
     const defaultText = `> *Here's to the crazy ones.*\n
 > *The misfits.*\n

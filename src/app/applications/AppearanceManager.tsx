@@ -20,7 +20,7 @@ const AppearanceManager = () => {
 
     const appName = "Appearance Manager";
     const appId = "AppearanceManager.app";
-    const appIcon = `${process.env.BASEPATH || ""}/img/icons/appearance-manager/app.png`;
+    const appIcon = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/appearance-manager/app.png`;
 
     const switchTheme = (e) => {
         changeValue(e);
@@ -92,7 +92,7 @@ const AppearanceManager = () => {
         {
             id: "file-new",
             title: "New",
-            icon: `${process.env.BASEPATH}/img/mac.png`,
+            icon: `${process.env.NEXT_PUBLIC_BASE_PATH}/img/mac.png`,
             keyboardShortcut: "&#8984;S",
             disabled: false,
         },
