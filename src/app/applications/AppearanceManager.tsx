@@ -20,7 +20,7 @@ const AppearanceManager = () => {
 
     const appName = "Appearance Manager";
     const appId = "AppearanceManager.app";
-    const appIcon = `${process.env.BASEPATH}/img/icons/appearance-manager/app.png`;
+    const appIcon = `${process.env.BASEPATH || ""}/img/icons/appearance-manager/app.png`;
 
     const switchTheme = (e) => {
         changeValue(e);
