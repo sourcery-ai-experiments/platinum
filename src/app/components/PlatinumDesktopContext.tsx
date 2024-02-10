@@ -41,7 +41,7 @@ const initialDesktop = {
         {
             id: "finder.app",
             name: "Finder",
-            icon: "./img/macos.svg"
+            icon: `${process.env.BASEPATH}/img/macos.svg`
 
         }
     ],
