@@ -34,7 +34,7 @@ interface PlatinumWindowProps {
 const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                                                            id,
                                                            title = "Untitled",
-                                                           icon = "img/icons/document.png",
+                                                           icon = "./img/icons/document.png",
                                                            appId,
                                                            hidden = false,
                                                            closable = true,
