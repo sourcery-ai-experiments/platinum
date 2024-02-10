@@ -18,13 +18,13 @@
 }
 
 .platinumThemeDefault {
-  background-image: url("img/wallpapers/default.png");
+  background-image: url("./img/wallpapers/default.png");
   background-repeat: repeat;
   @include appearance.appearanceManagerTheme(appearance.$appearance-lavender, appearance.$appearance-system, appearance.$window-control-size, appearance.$window-border-size);
 }
 
 .platinumThemeFrenchBlue {
-  background-image: url("img/wallpapers/french_blue_dark.png");
+  background-image: url("./img/wallpapers/french_blue_dark.png");
   background-repeat: repeat;
   @include appearance.appearanceManagerTheme(appearance.$appearance-frenchBlue, appearance.$appearance-system, appearance.$window-control-size, appearance.$window-border-size);
 }
