@@ -2,7 +2,24 @@ import classNames from "classnames";
 import React from "react";
 import platinumInputCheckboxStyles from "./PlatinumInputCheckbox.module.scss";
 
-const PlatinumInputCheckbox = ({id, name, checked, isDefault, disabled, onClick, label}) => {
+type PlatinumInputCheckboxProps = {
+    id: string;
+    name: string;
+    checked?: boolean;
+    isDefault?: boolean;
+    disabled?: boolean;
+    onClick?: any;
+    label?: string;
+}
+const PlatinumInputCheckbox: React.FC<PlatinumInputCheckboxProps> = ({
+                                                                         id,
+                                                                         name,
+                                                                         checked,
+                                                                         isDefault,
+                                                                         disabled,
+                                                                         onClick,
+                                                                         label
+                                                                     }) => {
     return (
         <div className={platinumInputCheckboxStyles.platinumInputCheckboxGroup}>
             <input type={"checkbox"} onClick={onClick}

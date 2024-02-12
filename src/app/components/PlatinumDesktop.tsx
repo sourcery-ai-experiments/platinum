@@ -90,7 +90,7 @@ const PlatinumDesktop: React.FC<PlatinumDesktopProps> = ({children}) => {
         <>
             <Suspense>
                 <div id={"platinumDesktop"}
-                     style={currentTheme}
+                     style={currentTheme as React.CSSProperties}
                      className={classNames(platinumDesktop.platinumDesktop)}
                      onMouseMove={resizeSelectBox}
                      onContextMenu={toggleDesktopContextMenu}

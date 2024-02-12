@@ -1,8 +1,15 @@
+import classNames from "classnames";
 import React from "react";
 import platinumButtonStyles from "./PlatinumButton.module.scss";
-import classNames from "classnames";
 
-const PlatinumButton = ({isDefault, disabled, onClick, children}) => {
+type PlatinumButtonProps = {
+    isDefault?: boolean;
+    disabled?: boolean;
+    onClick?: any;
+    children?: any;
+}
+
+const PlatinumButton: React.FC<PlatinumButtonProps> = ({isDefault, disabled = false, onClick = null, children}) => {
     return (
         <button onClick={onClick}
                 disabled={disabled}
