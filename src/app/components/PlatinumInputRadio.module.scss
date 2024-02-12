@@ -53,7 +53,10 @@
   font-size: var(--ui-font-size);
   height: var(--window-control-size);
   margin-left: calc(var(--window-control-size) / 2);
+}
 
+.platinumRadioInputLabelDisabled {
+  color: var(--color-system-05);
 }
 
 .platinumRadioInputDefault {

@@ -16,6 +16,8 @@
       },
       "black": "#000",
       "white": "#FFF",
+      "alert": "#ffFF00",
+      "error": "#ff0000",
       "system": [
         "#EEE",
         "#DDD",
@@ -59,11 +61,11 @@
     "desktop": {
       "iconSize": "48px",
       "iconFontSize": "12px",
-      "backgroundImage": "/img/wallpapers/azul_dark.png",
-      "backgroundColor": "#333399",
+      "backgroundImage": "url(/img/wallpapers/default.png)",
+      "backgroundColor": "#6666CC",
       "repeat": "repeat",
       "position": "center",
-      "size": "100%"
+      "size": "auto"
     }
   },
   {
@@ -83,6 +85,8 @@
       },
       "black": "#000",
       "white": "#FFF",
+      "alert": "#ffFF00",
+      "error": "#ff0000",
       "system": [
         "#EEE",
         "#DDD",
@@ -127,7 +131,7 @@
       "iconSize": "48px",
       "iconFontSize": "12px",
       "backgroundImage": "/img/wallpapers/azul_dark.png",
-      "backgroundColor": "#333399",
+      "backgroundColor": "#4A6999",
       "repeat": "repeat",
       "position": "center",
       "size": "100%"
@@ -150,6 +154,8 @@
       },
       "black": "#000",
       "white": "#FFF",
+      "alert": "#ffFF00",
+      "error": "#ff0000",
       "system": [
         "#EEE",
         "#DDD",
@@ -193,11 +199,11 @@
     "desktop": {
       "iconSize": "48px",
       "iconFontSize": "12px",
-      "backgroundImage": "/img/wallpapers/azul_dark.png",
-      "backgroundColor": "#333399",
+      "backgroundImage": "url(/img/wallpapers/waves_bondi.png)",
+      "backgroundColor": "#00454B",
       "repeat": "repeat",
       "position": "center",
-      "size": "100%"
+      "size": "auto"
     }
   },
   {
@@ -217,6 +223,8 @@
       },
       "black": "#000",
       "white": "#FFF",
+      "alert": "#ffFF00",
+      "error": "#ff0000",
       "system": [
         "#EEE",
         "#DDD",
@@ -261,7 +269,7 @@
       "iconSize": "48px",
       "iconFontSize": "12px",
       "backgroundImage": "/img/wallpapers/azul_dark.png",
-      "backgroundColor": "#333399",
+      "backgroundColor": "#660000",
       "repeat": "repeat",
       "position": "center",
       "size": "100%"
@@ -284,6 +292,8 @@
       },
       "black": "#000",
       "white": "#FFF",
+      "alert": "#ffFF00",
+      "error": "#ff0000",
       "system": [
         "#EEE",
         "#DDD",
@@ -328,7 +338,7 @@
       "iconSize": "48px",
       "iconFontSize": "12px",
       "backgroundImage": "/img/wallpapers/azul_dark.png",
-      "backgroundColor": "#333399",
+      "backgroundColor": "#770000",
       "repeat": "repeat",
       "position": "center",
       "size": "100%"
@@ -351,6 +361,8 @@
       },
       "black": "#000",
       "white": "#FFF",
+      "alert": "#ffFF00",
+      "error": "#ff0000",
       "system": [
         "#EEE",
         "#DDD",
@@ -395,7 +407,7 @@
       "iconSize": "48px",
       "iconFontSize": "12px",
       "backgroundImage": "/img/wallpapers/azul_dark.png",
-      "backgroundColor": "#333399",
+      "backgroundColor": "#004400",
       "repeat": "repeat",
       "position": "center",
       "size": "100%"
@@ -418,6 +430,8 @@
       },
       "black": "#000",
       "white": "#FFF",
+      "alert": "#ffFF00",
+      "error": "#ff0000",
       "system": [
         "#EEE",
         "#DDD",
@@ -443,7 +457,7 @@
       "disabled": []
     },
     "typography": {
-      "ui": "\"Charcoal\", \"Chicago\", \"Geneva\", sans-serif",
+      "ui": "\"ChicagoFLF\", \"Geneva\", sans-serif",
       "uiSize": "14px",
       "header": "\"AppleGaramond\", serif",
       "headerSize": "22px",
@@ -462,7 +476,7 @@
       "iconSize": "48px",
       "iconFontSize": "12px",
       "backgroundImage": "/img/wallpapers/azul_dark.png",
-      "backgroundColor": "#333399",
+      "backgroundColor": "#51517C",
       "repeat": "repeat",
       "position": "center",
       "size": "100%"
@@ -485,6 +499,8 @@
       },
       "black": "#000",
       "white": "#FFF",
+      "alert": "#ffFF00",
+      "error": "#ff0000",
       "system": [
         "#EEE",
         "#DDD",
@@ -529,7 +545,7 @@
       "iconSize": "48px",
       "iconFontSize": "12px",
       "backgroundImage": "/img/wallpapers/azul_dark.png",
-      "backgroundColor": "#333399",
+      "backgroundColor": "#666600",
       "repeat": "repeat",
       "position": "center",
       "size": "100%"
@@ -552,6 +568,8 @@
       },
       "black": "#000",
       "white": "#FFF",
+      "alert": "#ffFF00",
+      "error": "#ff0000",
       "system": [
         "#EEE",
         "#DDD",
@@ -596,7 +614,7 @@
       "iconSize": "48px",
       "iconFontSize": "12px",
       "backgroundImage": "/img/wallpapers/azul_dark.png",
-      "backgroundColor": "#333399",
+      "backgroundColor": "#002200",
       "repeat": "repeat",
       "position": "center",
       "size": "100%"
@@ -619,6 +637,8 @@
       },
       "black": "#000",
       "white": "#FFF",
+      "alert": "#ffFF00",
+      "error": "#ff0000",
       "system": [
         "#EEE",
         "#DDD",
@@ -686,6 +706,8 @@
       },
       "black": "#000",
       "white": "#FFF",
+      "alert": "#ffFF00",
+      "error": "#ff0000",
       "system": [
         "#EEE",
         "#DDD",
@@ -730,7 +752,7 @@
       "iconSize": "48px",
       "iconFontSize": "12px",
       "backgroundImage": "/img/wallpapers/azul_dark.png",
-      "backgroundColor": "#333399",
+      "backgroundColor": "#336600",
       "repeat": "repeat",
       "position": "center",
       "size": "100%"
@@ -753,6 +775,8 @@
       },
       "black": "#000",
       "white": "#FFF",
+      "alert": "#ffFF00",
+      "error": "#ff0000",
       "system": [
         "#EEE",
         "#DDD",
@@ -797,7 +821,7 @@
       "iconSize": "48px",
       "iconFontSize": "12px",
       "backgroundImage": "/img/wallpapers/azul_dark.png",
-      "backgroundColor": "#333399",
+      "backgroundColor": "#330033",
       "repeat": "repeat",
       "position": "center",
       "size": "100%"
@@ -820,6 +844,8 @@
       },
       "black": "#000",
       "white": "#FFF",
+      "alert": "#ffFF00",
+      "error": "#ff0000",
       "system": [
         "#EEE",
         "#DDD",
@@ -864,7 +890,7 @@
       "iconSize": "48px",
       "iconFontSize": "12px",
       "backgroundImage": "/img/wallpapers/azul_dark.png",
-      "backgroundColor": "#333399",
+      "backgroundColor": "#451F18",
       "repeat": "repeat",
       "position": "center",
       "size": "100%"
@@ -887,6 +913,8 @@
       },
       "black": "#000",
       "white": "#FFF",
+      "alert": "#ffFF00",
+      "error": "#ff0000",
       "system": [
         "#EEE",
         "#DDD",
@@ -931,7 +959,7 @@
       "iconSize": "48px",
       "iconFontSize": "12px",
       "backgroundImage": "/img/wallpapers/azul_dark.png",
-      "backgroundColor": "#333399",
+      "backgroundColor": "#A43000",
       "repeat": "repeat",
       "position": "center",
       "size": "100%"
@@ -954,6 +982,8 @@
       },
       "black": "#000",
       "white": "#FFF",
+      "alert": "#ffFF00",
+      "error": "#ff0000",
       "system": [
         "#EEE",
         "#DDD",
@@ -998,7 +1028,7 @@
       "iconSize": "48px",
       "iconFontSize": "12px",
       "backgroundImage": "/img/wallpapers/azul_dark.png",
-      "backgroundColor": "#333399",
+      "backgroundColor": "#330033",
       "repeat": "repeat",
       "position": "center",
       "size": "100%"
@@ -1021,6 +1051,8 @@
       },
       "black": "#000",
       "white": "#FFF",
+      "alert": "#ffFF00",
+      "error": "#ff0000",
       "system": [
         "#EEE",
         "#DDD",
@@ -1065,7 +1097,7 @@
       "iconSize": "48px",
       "iconFontSize": "12px",
       "backgroundImage": "/img/wallpapers/azul_dark.png",
-      "backgroundColor": "#333399",
+      "backgroundColor": "#350000",
       "repeat": "repeat",
       "position": "center",
       "size": "100%"
@@ -1088,6 +1120,8 @@
       },
       "black": "#000",
       "white": "#FFF",
+      "alert": "#ffFF00",
+      "error": "#ff0000",
       "system": [
         "#EEE",
         "#DDD",
@@ -1132,7 +1166,7 @@
       "iconSize": "48px",
       "iconFontSize": "12px",
       "backgroundImage": "/img/wallpapers/azul_dark.png",
-      "backgroundColor": "#333399",
+      "backgroundColor": "#000099",
       "repeat": "repeat",
       "position": "center",
       "size": "100%"
@@ -1155,6 +1189,8 @@
       },
       "black": "#000",
       "white": "#FFF",
+      "alert": "#ffFF00",
+      "error": "#ff0000",
       "system": [
         "#EEE",
         "#DDD",
@@ -1199,7 +1235,7 @@
       "iconSize": "48px",
       "iconFontSize": "12px",
       "backgroundImage": "/img/wallpapers/azul_dark.png",
-      "backgroundColor": "#333399",
+      "backgroundColor": "#555555",
       "repeat": "repeat",
       "position": "center",
       "size": "100%"
@@ -1222,6 +1258,8 @@
       },
       "black": "#000",
       "white": "#FFF",
+      "alert": "#ffFF00",
+      "error": "#ff0000",
       "system": [
         "#EEE",
         "#DDD",
@@ -1266,7 +1304,7 @@
       "iconSize": "48px",
       "iconFontSize": "12px",
       "backgroundImage": "/img/wallpapers/azul_dark.png",
-      "backgroundColor": "#333399",
+      "backgroundColor": "#003333",
       "repeat": "repeat",
       "position": "center",
       "size": "100%"
@@ -1289,6 +1327,8 @@
       },
       "black": "#000",
       "white": "#FFF",
+      "alert": "#ffFF00",
+      "error": "#ff0000",
       "system": [
         "#EEE",
         "#DDD",
@@ -1333,7 +1373,7 @@
       "iconSize": "48px",
       "iconFontSize": "12px",
       "backgroundImage": "/img/wallpapers/azul_dark.png",
-      "backgroundColor": "#333399",
+      "backgroundColor": "#003366",
       "repeat": "repeat",
       "position": "center",
       "size": "100%"
@@ -1356,6 +1396,8 @@
       },
       "black": "#000",
       "white": "#FFF",
+      "alert": "#ffFF00",
+      "error": "#ff0000",
       "system": [
         "#EEE",
         "#DDD",
@@ -1400,7 +1442,7 @@
       "iconSize": "48px",
       "iconFontSize": "12px",
       "backgroundImage": "/img/wallpapers/azul_dark.png",
-      "backgroundColor": "#333399",
+      "backgroundColor": "#887126",
       "repeat": "repeat",
       "position": "center",
       "size": "100%"

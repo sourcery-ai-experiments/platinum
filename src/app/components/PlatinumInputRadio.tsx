@@ -13,7 +13,8 @@ const PlatinumInputRadio = ({id, name, checked, isDefault, disabled, onClick, la
                        platinumInputRadioStyles.platinumRadioInput,
                        isDefault ? platinumInputRadioStyles.platinumRadioInputDefault : ""
                    )}/>
-            <label htmlFor={id} className={platinumInputRadioStyles.platinumRadioInputLabel}>{label}</label>
+            <label htmlFor={id}
+                   className={classNames(platinumInputRadioStyles.platinumRadioInputLabel, disabled ? platinumInputRadioStyles.platinumRadioInputLabelDisabled : "")}>{label}</label>
 
         </div>
     );

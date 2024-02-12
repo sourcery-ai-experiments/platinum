@@ -1,122 +1,122 @@
-@mixin scrollbars($window-scrollbar-size) {
+@mixin scrollbars() {
   ::-webkit-scrollbar {
-    width: $window-scrollbar-size;
-    height: $window-scrollbar-size;
+    width: var(--window-scrollbar-size);
+    height: var(--window-scrollbar-size);
   }
 
   ::-webkit-scrollbar-button:start:vertical, ::-webkit-scrollbar-button:start:horizontal {
     display: block;
     top: 16px;
-    background-color: #dedede;
-    box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #bcbcbc;
-    width: $window-scrollbar-size;
-    height: $window-scrollbar-size;
+    background-color: var(--color-system-02);
+    box-shadow: inset 1px 1px 0 var(--color-white), inset -1px -1px 0 rgba(255, 255, 255, 0.5);
+    width: var(--window-scrollbar-size) v;
+    height: var(--window-scrollbar-size);
   }
 
   ::-webkit-scrollbar-button:start:vertical {
-    border-left: 1px solid #000;
-    border-right: 1px solid #000;
-    border-bottom: 1px solid #000;
+    border-left: 1px solid var(--color-black);
+    border-right: 1px solid var(--color-black);
+    border-bottom: 1px solid var(--color-black);
   }
 
   ::-webkit-scrollbar-button:start:vertical:decrement {
-    background: linear-gradient(transparent 75%, #000 0) 50%/8px 4px no-repeat,
-    linear-gradient(transparent 50%, #000 0) 50%/6px 4px no-repeat,
-    linear-gradient(transparent 25%, #000 0) 50%/4px 4px no-repeat,
-    linear-gradient(#000 50%, #000 0) 50%/2px 4px no-repeat, #dedede;
-    width: $window-scrollbar-size;
-    height: $window-scrollbar-size;
+    background: linear-gradient(transparent 75%, var(--color-black) 0) 50%/8px 4px no-repeat,
+    linear-gradient(transparent 50%, var(--color-black) 0) 50%/6px 4px no-repeat,
+    linear-gradient(transparent 25%, var(--color-black) 0) 50%/4px 4px no-repeat,
+    linear-gradient(var(--color-black) 50%, var(--color-black) 0) 50%/2px 4px no-repeat, var(--color-system-02);
+    width: var(--window-scrollbar-size);
+    height: var(--window-scrollbar-size);
   }
 
   ::-webkit-scrollbar-button:start:vertical:decrement:active {
-    background: linear-gradient(transparent 75%, #000 0) 50%/8px 4px no-repeat,
-    linear-gradient(transparent 50%, #000 0) 50%/6px 4px no-repeat,
-    linear-gradient(transparent 25%, #000 0) 50%/4px 4px no-repeat,
-    linear-gradient(#000 50%, #000 0) 50%/2px 4px no-repeat, #444;
-    box-shadow: inset 1px 1px 0 #333, inset -1px -1px 0 #111;
+    background: linear-gradient(transparent 75%, var(--color-black) 0) 50%/8px 4px no-repeat,
+    linear-gradient(transparent 50%, var(--color-black) 0) 50%/6px 4px no-repeat,
+    linear-gradient(transparent 25%, var(--color-black) 0) 50%/4px 4px no-repeat,
+    linear-gradient(var(--color-black) 50%, var(--color-black) 0) 50%/2px 4px no-repeat, var(--color-system-06);
+    box-shadow: inset 1px 1px 0 var(--color-system-07), inset -1px -1px 0 var(--color-system-07);
   }
 
   ::-webkit-scrollbar-button:start:vertical:increment {
-    background: linear-gradient(0deg, transparent 75%, #000 0) 50%/8px 4px no-repeat,
-    linear-gradient(0deg, transparent 50%, #000 0) 50%/6px 4px no-repeat,
-    linear-gradient(0deg, transparent 25%, #000 0) 50%/4px 4px no-repeat,
-    linear-gradient(0deg, #000 50%, #000 0) 50%/2px 4px no-repeat, #dedede;
+    background: linear-gradient(0deg, transparent 75%, var(--color-black) 0) 50%/8px 4px no-repeat,
+    linear-gradient(0deg, transparent 50%, var(--color-black) 0) 50%/6px 4px no-repeat,
+    linear-gradient(0deg, transparent 25%, var(--color-black) 0) 50%/4px 4px no-repeat,
+    linear-gradient(0deg, var(--color-black) 50%, var(--color-black) 0) 50%/2px 4px no-repeat, var(--color-system-02);
     border-bottom: none;
-    width: $window-scrollbar-size;
-    height: $window-scrollbar-size;
+    width: var(--window-scrollbar-size);
+    height: var(--window-scrollbar-size);
   }
 
   ::-webkit-scrollbar-button:start:vertical:increment:active {
-    background: linear-gradient(0deg, transparent 75%, #000 0) 50%/8px 4px no-repeat,
-    linear-gradient(0deg, transparent 50%, #000 0) 50%/6px 4px no-repeat,
-    linear-gradient(0deg, transparent 25%, #000 0) 50%/4px 4px no-repeat,
-    linear-gradient(#000 50%, #000 0) 50%/2px 4px no-repeat, #444;
-    box-shadow: inset 1px 1px 0 #333, inset -1px -1px 0 #111;
+    background: linear-gradient(0deg, transparent 75%, var(--color-black) 0) 50%/8px 4px no-repeat,
+    linear-gradient(0deg, transparent 50%, var(--color-black) 0) 50%/6px 4px no-repeat,
+    linear-gradient(0deg, transparent 25%, var(--color-black) 0) 50%/4px 4px no-repeat,
+    linear-gradient(var(--color-black) 50%, var(--color-black) 0) 50%/2px 4px no-repeat, var(--color-system-06);
+    box-shadow: inset 1px 1px 0 var(--color-system-06), inset -1px -1px 0 var(--color-system-07);
   }
 
 
   ::-webkit-scrollbar-button:start:horizontal {
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
-    border-right: 1px solid #000;
+    border-top: 1px solid var(--color-black);
+    border-bottom: 1px solid var(--color-black);
+    border-right: 1px solid var(--color-black);
   }
 
   ::-webkit-scrollbar-button:start:horizontal:decrement {
-    background: linear-gradient(90deg, transparent 75%, #000 0) 50%/4px 8px no-repeat,
-    linear-gradient(90deg, transparent 50%, #000 0) 50%/4px 6px no-repeat,
-    linear-gradient(90deg, transparent 25%, #000 0) 50%/4px 4px no-repeat,
-    linear-gradient(90deg, #000 50%, #000 0) 50%/4px 2px no-repeat, #dedede;
-    width: $window-scrollbar-size;
-    height: $window-scrollbar-size;
+    background: linear-gradient(90deg, transparent 75%, var(--color-black) 0) 50%/4px 8px no-repeat,
+    linear-gradient(90deg, transparent 50%, var(--color-black) 0) 50%/4px 6px no-repeat,
+    linear-gradient(90deg, transparent 25%, var(--color-black) 0) 50%/4px 4px no-repeat,
+    linear-gradient(90deg, var(--color-black) 50%, var(--color-black) 0) 50%/4px 2px no-repeat, var(--color-system-02);
+    width: var(--window-scrollbar-size);
+    height: var(--window-scrollbar-size);
   }
 
   ::-webkit-scrollbar-button:start:horizontal:decrement:active {
-    background: linear-gradient(90deg, transparent 75%, #000 0) 50%/4px 8px no-repeat,
-    linear-gradient(90deg, transparent 50%, #000 0) 50%/4px 6px no-repeat,
-    linear-gradient(90deg, transparent 25%, #000 0) 50%/4px 4px no-repeat,
-    linear-gradient(#000 50%, #000 0) 50%/2px 4px no-repeat, #444;
-    box-shadow: inset 1px 1px 0 #333, inset -1px -1px 0 #111;
+    background: linear-gradient(90deg, transparent 75%, var(--color-black) 0) 50%/4px 8px no-repeat,
+    linear-gradient(90deg, transparent 50%, var(--color-black) 0) 50%/4px 6px no-repeat,
+    linear-gradient(90deg, transparent 25%, var(--color-black) 0) 50%/4px 4px no-repeat,
+    linear-gradient(var(--color-black) 50%, var(--color-black) 0) 50%/2px 4px no-repeat, var(--color-system-06);
+    box-shadow: inset 1px 1px 0 var(--color-system-06), inset -1px -1px 0 var(--color-system-07);
   }
 
 
   ::-webkit-scrollbar-button:start:horizontal:increment {
-    background: linear-gradient(270deg, transparent 75%, #000 0) 50%/4px 8px no-repeat,
-    linear-gradient(270deg, transparent 50%, #000 0) 50%/4px 6px no-repeat,
-    linear-gradient(270deg, transparent 25%, #000 0) 50%/4px 4px no-repeat,
-    linear-gradient(270deg, #000 50%, #000 0) 50%/4px 2px no-repeat, #dedede;
+    background: linear-gradient(270deg, transparent 75%, var(--color-black) 0) 50%/4px 8px no-repeat,
+    linear-gradient(270deg, transparent 50%, var(--color-black) 0) 50%/4px 6px no-repeat,
+    linear-gradient(270deg, transparent 25%, var(--color-black) 0) 50%/4px 4px no-repeat,
+    linear-gradient(270deg, var(--color-black) 50%, var(--color-black) 0) 50%/4px 2px no-repeat, var(--color-system-02);
     border-right: none;
-    width: $window-scrollbar-size;
-    height: $window-scrollbar-size;
+    width: var(--window-scrollbar-size);
+    height: var(--window-scrollbar-size);
   }
 
   ::-webkit-scrollbar-button:start:horizontal:increment:active {
-    background: linear-gradient(270deg, transparent 75%, #000 0) 50%/4px 8px no-repeat,
-    linear-gradient(270deg, transparent 50%, #000 0) 50%/4px 6px no-repeat,
-    linear-gradient(270deg, transparent 25%, #000 0) 50%/4px 4px no-repeat,
-    linear-gradient(#000 50%, #000 0) 50%/2px 4px no-repeat, #444;
-    box-shadow: inset 1px 1px 0 #333, inset -1px -1px 0 #111;
+    background: linear-gradient(270deg, transparent 75%, var(--color-black) 0) 50%/4px 8px no-repeat,
+    linear-gradient(270deg, transparent 50%, var(--color-black) 0) 50%/4px 6px no-repeat,
+    linear-gradient(270deg, transparent 25%, var(--color-black) 0) 50%/4px 4px no-repeat,
+    linear-gradient(var(--color-black) 50%, var(--color-black) 0) 50%/2px 4px no-repeat, var(--color-system-06);
+    box-shadow: inset 1px 1px 0 var(--color-system-06), inset -1px -1px 0 var(--color-system-07);
   }
 
   ::-webkit-scrollbar-track {
-    background-color: #aaaaab;
-    border: 1px solid #000;
+    background-color: var(--color-system-04);
+    border: 1px solid var(--color-black);
   }
 
   ::-webkit-scrollbar-track:vertical {
-    box-shadow: inset 1px 1px 0 #787877, inset -1px 2px 0 #cdcccd,
-    inset 2px 0 0 #888889, inset -2px 0 0 #bcbcbc;
+    box-shadow: inset 1px 1px 0 var(--color-system-05), inset -1px 2px 0 var(--color-system-03),
+    inset 2px 0 0 rgba(0, 0, 0, .25), inset -2px 0 0 rgba(255, 255, 255, .25);
   }
 
   ::-webkit-scrollbar-track:horizontal {
-    box-shadow: inset 1px 1px 0 #787877, inset 2px -1px 0 #cdcccd,
-    inset 0 2px 0 #888889, inset 0 -2px 0 #bcbcbc;
+    box-shadow: inset 1px 1px 0 var(--color-system-05), inset 2px -1px 0 var(--color-system-03),
+    inset 2px 0 0 rgba(0, 0, 0, .25), inset -2px 0 0 rgba(255, 255, 255, .25);
   }
 
   ::-webkit-scrollbar-corner {
-    border-top: 1px solid #000;
-    border-left: 1px solid #000;
-    box-shadow: inset 1px 1px 0 #fff;
-    background: #cdcccd;
+    border-top: 1px solid var(--color-black);
+    border-left: 1px solid var(--color-black);
+    box-shadow: inset 1px 1px 0 var(--color-white);
+    background: var(--color-system-03);
   }
 
   ::-webkit-scrollbar {
@@ -126,17 +126,17 @@
 
 @mixin scrollbars-inactive() {
   ::-webkit-scrollbar-button:start:vertical, ::-webkit-scrollbar-button:start:horizontal {
-    background-color: #dedede;
-    box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #bcbcbc;
+    background-color: var(--color-system-02);
+    box-shadow: inset 1px 1px 0 var(--color-white), inset -1px -1px 0 rgba(255, 255, 255, 0.5);
   }
 
   ::-webkit-scrollbar-button:start:vertical {
-    background: #dedede !important;
+    background: var(--color-system-02) !important;
     border: none !important;
   }
 
   ::-webkit-scrollbar-button:start:vertical:decrement {
-    background: #dedede !important;
+    background: var(--color-system-02) !important;
     border: none !important;
     box-shadow: none !important;
     width: 0 !important;
@@ -144,7 +144,7 @@
   }
 
   ::-webkit-scrollbar-button:start:vertical:increment {
-    background: #dedede !important;
+    background: var(--color-system-02) !important;
     border: none !important;
     box-shadow: none !important;
     width: 0 !important;
@@ -158,7 +158,7 @@
   }
 
   ::-webkit-scrollbar-button:start:horizontal:decrement {
-    background: #dedede !important;
+    background: var(--color-system-02) !important;
     border: none !important;
     box-shadow: none !important;
     width: 0 !important;
@@ -167,7 +167,7 @@
 
 
   ::-webkit-scrollbar-button:start:horizontal:increment {
-    background: #dedede !important;
+    background: var(--color-system-02) !important;
     border: none !important;
     box-shadow: none !important;
     width: 0 !important;
@@ -175,8 +175,8 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #dedede !important;
-    border: 1px solid #787877 !important;
+    background: var(--color-system-02) !important;
+    border: 1px solid var(--color-system-05) !important;
   }
 
   ::-webkit-scrollbar-track:vertical {
@@ -198,95 +198,86 @@
 
 }
 
-@mixin scrollbars-themed(
-  $scrollbar-thumb-inset-color,
-  $scrollbar-thumb-outset-color,
-  $scrollbar-thumb-color,
-  $scrollbar-thumb-highlight-color,
-  $scrollbar-thumb-shadow-color,
-  $scrollbar-thumb-border-color,
-  $scrollbar-thumb-border-size,
-  $scrollbar-thumb-width,
-  $scrollbar-thumb-height) {
+@mixin scrollbars-themed() {
 
   ::-webkit-scrollbar-thumb {
-    width: $scrollbar-thumb-width;
-    height: $scrollbar-thumb-height;
-    border: $scrollbar-thumb-border-size solid $scrollbar-thumb-border-color;
-    box-shadow: inset $scrollbar-thumb-border-size $scrollbar-thumb-border-size 0 $scrollbar-thumb-inset-color, inset calc($scrollbar-thumb-border-size * -1) calc($scrollbar-thumb-border-size * -1) 0 $scrollbar-thumb-outset-color !important;
+    min-width: var(--window-control-size);
+    min-height: var(--window-control-size);
+    border: var(--window-border-size) solid var(--color-theme-07);
+    box-shadow: inset var(--window-border-size) var(--window-border-size) 0 var(--system-color-02), inset calc(var(--window-border-size) * -1) calc(var(--window-border-size) * -1) 0 var(--color-theme-04) !important;
   }
 
   ::-webkit-scrollbar-thumb:vertical {
     background: linear-gradient(
                     transparent 12.5%,
-                    $scrollbar-thumb-shadow-color 0,
-                    $scrollbar-thumb-shadow-color 25%,
+                    var(--color-theme-05) 0,
+                    var(--color-theme-05) 25%,
                     transparent 0,
                     transparent 37.5%,
-                    $scrollbar-thumb-shadow-color 0,
-                    $scrollbar-thumb-shadow-color 50%,
+                    var(--color-theme-05) 0,
+                    var(--color-theme-05) 50%,
                     transparent 0,
                     transparent 62.5%,
-                    $scrollbar-thumb-shadow-color 0,
-                    $scrollbar-thumb-shadow-color 75%,
+                    var(--color-theme-05) 0,
+                    var(--color-theme-05) 75%,
                     transparent 0,
                     transparent 87.5%,
-                    $scrollbar-thumb-shadow-color 0
+                    var(--color-theme-05) 0
     ) 50%/7px 8px no-repeat,
     linear-gradient(
-                    $scrollbar-thumb-highlight-color 12.5%,
+                    var(--color-theme-01) 12.5%,
                     transparent 0,
                     transparent 25%,
-                    $scrollbar-thumb-highlight-color 0,
-                    $scrollbar-thumb-highlight-color 37.5%,
+                    var(--color-theme-01) 0,
+                    var(--color-theme-01) 37.5%,
                     transparent 0,
                     transparent 50%,
-                    $scrollbar-thumb-highlight-color 0,
-                    $scrollbar-thumb-highlight-color 62.5%,
+                    var(--color-theme-01) 0,
+                    var(--color-theme-01) 62.5%,
                     transparent 0,
                     transparent 75%,
-                    $scrollbar-thumb-highlight-color 0,
-                    $scrollbar-thumb-highlight-color 87.5%,
+                    var(--color-theme-01) 0,
+                    var(--color-theme-01) 87.5%,
                     transparent 0
     ) 49%/7px 8px no-repeat,
-    $scrollbar-thumb-color;
+    var(--color-theme-03);
   }
 
   ::-webkit-scrollbar-thumb:horizontal {
     background: linear-gradient(
                     90deg,
                     transparent 12.5%,
-                    $scrollbar-thumb-shadow-color 0,
-                    $scrollbar-thumb-shadow-color 25%,
+                    var(--color-theme-05) 0,
+                    var(--color-theme-05) 25%,
                     transparent 0,
                     transparent 37.5%,
-                    $scrollbar-thumb-shadow-color 0,
-                    $scrollbar-thumb-shadow-color 50%,
+                    var(--color-theme-05) 0,
+                    var(--color-theme-05) 50%,
                     transparent 0,
                     transparent 62.5%,
-                    $scrollbar-thumb-shadow-color 0,
-                    $scrollbar-thumb-shadow-color 75%,
+                    var(--color-theme-05) 0,
+                    var(--color-theme-05) 75%,
                     transparent 0,
                     transparent 87.5%,
-                    $scrollbar-thumb-shadow-color 0
+                    var(--color-theme-05) 0
     ) 50%/8px 7px no-repeat,
     linear-gradient(
                     90deg,
-                    $scrollbar-thumb-highlight-color 12.5%,
+                    var(--color-theme-01) 12.5%,
                     transparent 0,
                     transparent 25%,
-                    $scrollbar-thumb-highlight-color 0,
-                    $scrollbar-thumb-highlight-color 37.5%,
+                    var(--color-theme-01) 0,
+                    var(--color-theme-01) 37.5%,
                     transparent 0,
                     transparent 50%,
-                    $scrollbar-thumb-highlight-color 0,
-                    $scrollbar-thumb-highlight-color 62.5%,
+                    var(--color-theme-01) 0,
+                    var(--color-theme-01) 62.5%,
                     transparent 0,
                     transparent 75%,
-                    $scrollbar-thumb-highlight-color 0,
-                    $scrollbar-thumb-highlight-color 87.5%,
+                    var(--color-theme-01) 0,
+                    var(--color-theme-01) 87.5%,
                     transparent 0
     ) center 49%/8px 7px no-repeat,
-    $scrollbar-thumb-color;
+    var(--color-theme-03);
   }
 }

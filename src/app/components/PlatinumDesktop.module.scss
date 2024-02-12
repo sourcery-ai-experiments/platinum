@@ -18,17 +18,8 @@
   background-repeat: var(--desktop-background-repeat);
 
   &, & * {
-    @include scrollbars.scrollbars-themed(
-                    var(--color-theme-02),
-                    var(--color-theme-04),
-                    var(--color-theme-03),
-                    var(--color-theme-01),
-                    var(--color-theme-05),
-                    var(--color-theme-07),
-                    var(--window-border-size),
-                    var(--window-control-size),
-                    var(--window-control-size)
-    );
+    @include scrollbars.scrollbars;
+    @include scrollbars.scrollbars-themed;
     accent-color: var(--color-theme-04);
 
 
@@ -50,9 +41,10 @@
     }
 
   }
-    *::selection {
-      background: var(--color-theme-02) !important;
-    }
+
+  *::selection {
+    background: var(--color-theme-02) !important;
+  }
 
 }
 

@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import React from "react";
 import platinumInputStyles from "./PlatinumInput.module.scss";
-import {useDesktop} from './PlatinumDesktopContext';
 
 interface PlatinumInputProps {
     id: string;
@@ -24,11 +23,6 @@ const PlatinumInput: React.FC<PlatinumInputProps> = ({
                                                          isDefault,
                                                          onChangeFunc
                                                      }) => {
-    const desktopContext = useDesktop();
-
-    const getTheme = (color: string) => {
-        return platinumInputStyles["platinumInputTheme" + color.charAt(0).toUpperCase() + color.slice(1)];
-    }
 
     return (<>
         {labelTitle &&

@@ -13,7 +13,8 @@ const PlatinumInputCheckbox = ({id, name, checked, isDefault, disabled, onClick,
                        platinumInputCheckboxStyles.platinumInputCheckbox,
                        isDefault ? platinumInputCheckboxStyles.platinumInputCheckboxDefault : ""
                    )}/>
-            <label htmlFor={id} className={platinumInputCheckboxStyles.platinumInputCheckboxLabel}>{label}</label>
+            <label htmlFor={id}
+                   className={classNames(platinumInputCheckboxStyles.platinumInputCheckboxLabel, disabled ? platinumInputCheckboxStyles.platinumInputCheckboxLabelDisabled : "")}>{label}</label>
 
         </div>
     );

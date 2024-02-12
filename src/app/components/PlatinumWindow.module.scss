@@ -127,7 +127,6 @@
 
   background-color: var(--color-window-frame);
   @include appearance.platinumWindowBorder;
-  @include scrollbars.scrollbars(var(--window-scrollbar-size));
 
   .platinumWindowTitleBar {
     display: flex;
