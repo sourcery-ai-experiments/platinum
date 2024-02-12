@@ -93,12 +93,8 @@ const PlatinumDesktopIcon: React.FC<PlatinumDesktopIconProps> = ({
             return "";
         }
     }
-    const getTheme = (color: string) => {
-        return platinumDesktopIconStyles["platinumDesktopIconMaskTheme" + color.charAt(0).toUpperCase() + color.slice(1)];
-    }
-
     return (
-        <div ref={iconRef} id={`${id} ${Math.floor(Math.random() * 100)}`}
+        <div ref={iconRef} id={`${id}`}
              onMouseDown={startDrag}
              onMouseMove={changeIcon}
              onMouseUp={stopChangeIcon}
@@ -121,7 +117,7 @@ const PlatinumDesktopIcon: React.FC<PlatinumDesktopIconProps> = ({
             <div className={platinumDesktopIconStyles.platinumDesktopIconMaskOuter}
                  style={{maskImage: `url(${icon})`}}>
                 <div
-                    className={classNames(platinumDesktopIconStyles.platinumDesktopIconMask, getTheme(desktopContext.activeTheme || "default"))}
+                    className={platinumDesktopIconStyles.platinumDesktopIconMask}
                     style={{mask: `url(${icon})`}}>
                     <img src={icon} alt={appName}/>
                 </div>

@@ -8,6 +8,9 @@ import {useDesktop, useDesktopDispatch} from '../components/PlatinumDesktopConte
 import PlatinumDesktopIcon from "../components/PlatinumDesktopIcon";
 import PlatinumDropdown from "../components/PlatinumDropDown";
 import PlatinumInput from "../components/PlatinumInput";
+import PlatinumInputCheckbox from "../components/PlatinumInputCheckbox";
+import PlatinumInputGroup from "../components/PlatinumInputGroup";
+import PlatinumInputRadio from "../components/PlatinumInputRadio";
 import PlatinumProgress from "../components/PlatinumProgress";
 import PlatinumWindow from "../components/PlatinumWindow";
 
@@ -35,32 +38,8 @@ const AppearanceManager = () => {
         dataElements[e.target.id] = e.target.value;
         setAppContext({...appContext, elements: dataElements});
     };
-
-    const themes: { value: string, label: string }[] = [
-        {value: "default", label: "Default"},
-        {value: "azul", label: "Azul"},
-        {value: "bondi", label: "Bondi"},
-        {value: "copper", label: "Copper"},
-        {value: "crimson", label: "Crimson"},
-        {value: "emerald", label: "Emerald"},
-        {value: "frenchBlue", label: "French Blue"},
-        {value: "gold", label: "Gold"},
-        {value: "ivy", label: "Ivy"},
-        {value: "lavender", label: "Lavender"},
-        {value: "magenta", label: "Magenta"},
-        {value: "nutmeg", label: "Nutmeg"},
-        {value: "pistachio", label: "Pistachio"},
-        {value: "plum", label: "Plum"},
-        {value: "poppy", label: "Poppy"},
-        {value: "rose", label: "Rose"},
-        {value: "sapphire", label: "Sapphire"},
-        {value: "silver", label: "Silver"},
-        {value: "teal", label: "Teal"},
-        {value: "turquoise", label: "Turquoise"}
-    ];
-
-    const showAbout = (e) => {
-    }
+    console.log(desktopContext.availableThemes);
+    const themes = desktopContext.availableThemes.map(a => (({id, name}) => ({value: id, label: name}))(a));
 
     const closeApp = (e) => {
         setAppOpen(false);
@@ -155,7 +134,7 @@ const AppearanceManager = () => {
                 id={appId}
                 name={appName}
                 icon={appIcon}
-                debug={false}
+                debug={true}
                 hidden={!appOpen}
                 open={true}
             >
@@ -169,7 +148,7 @@ const AppearanceManager = () => {
                         zoomable={false}
                         scrollable={false}
                         collapsable={false}
-                        initialSize={[400, 200]}
+                        initialSize={[400, 500]}
                         initialPosition={[300, 50]}
                         modalWindow={true}
                         appMenu={appMenu}
@@ -185,6 +164,25 @@ const AppearanceManager = () => {
                         <PlatinumProgress value={59}></PlatinumProgress>
                         <PlatinumInput id={"test"}></PlatinumInput>
                         <PlatinumButton isDefault={true} onClick={closeApp}>OK</PlatinumButton>
+                        <PlatinumButton isDefault={false}>Nothing</PlatinumButton>
+                        <PlatinumButton isDefault={false} disabled={true}>Disabled</PlatinumButton>
+                        <PlatinumInputGroup label={"Test Radio Inputs"}>
+                            <PlatinumInputRadio id={"test1"} name={"testradio"} isDefault={false}
+                                                label={"Radio Button 1"}/>
+                            <PlatinumInputRadio id={"test2"} name={"testradio"} isDefault={false}
+                                                label={"Radio Button 2"}/>
+                            <PlatinumInputRadio id={"test3"} checked={true} name={"testradio"} isDefault={false}
+                                                label={"Radio Button Disabled"} disabled={true}/>
+                            <PlatinumInputCheckbox id={"test4"} name={"testcheck"} isDefault={true}
+                                                   label={"Default Checkbox"}
+                                                   disabled={false}/>
+                            <PlatinumInputCheckbox id={"test5"} name={"testcheck"} isDefault={false}
+                                                   label={"Checkbox 2"}
+                                                   disabled={false}/>
+                            <PlatinumInputCheckbox id={"test6"} name={"testcheck"} isDefault={false} label={"Disabled"}
+                                                   disabled={true}/>
+                        </PlatinumInputGroup>
+
                     </PlatinumWindow>
                 }
             </PlatinumApp>

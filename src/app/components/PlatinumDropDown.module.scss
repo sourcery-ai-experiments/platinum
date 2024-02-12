@@ -1,4 +1,5 @@
 @use "./styles/assets";
+@use "./styles/appearance";
 
 .platinumDropDownSmall {
   width: 2em !important;
@@ -11,9 +12,9 @@
 
   &:not(.select--multiple)::after {
     height: 100% !important;
-    aspect-ratio: 1 / 1 !important;
-    border-left: none !important;
     box-shadow: none !important;
+    border-left: none !important;
+    aspect-ratio: 1 / 1 !important;
   }
 }
 
@@ -27,28 +28,24 @@
     box-sizing: border-box;
   }
 
-  user-select: none;
+  position: relative;
 
   display: grid;
-  grid-template-areas: "select";
   align-items: center;
-  position: relative;
-  font-family: var(--ui-font);
-  box-shadow: inset calc(var(--window-border-size) * -1) calc(var(--window-border-size) * -1) 0 0 var(--color-05),
-  inset calc(var(--window-border-size) * -2) calc(var(--window-border-size) * -2) 0 0 var(--color-04),
-  inset calc(var(--window-border-size) * 2) calc(var(--window-border-size) * 2) 0 0 var(--color-white);
+  grid-template-areas: "select";
   margin: var(--window-control-size);
-  background-color: var(--color-02);
-  border: var(--window-border-size) solid var(--color-black);
-  border-radius: var(--window-padding-size);
-  font-size: 1em;
+
+  @include appearance.platinumWindowDepressable;
   cursor: pointer;
+  user-select: none;
+  font-family: var(--ui-font);
+  font-size: 1em;
   line-height: 1.1;
 
   &.select--disabled {
+    background-color: var(--color-system-01);
+    background-image: linear-gradient(to top, var(--color-system-02), var(--color-system-01) 33%);
     cursor: not-allowed;
-    background-color: var(--color-01);
-    background-image: linear-gradient(to top, var(--color-02), var(--color-01) 33%);
   }
 
   label {
@@ -58,26 +55,26 @@
   }
 
   select {
-    appearance: none;
-    background-color: transparent;
-    margin: 0;
+    z-index: 1;
     width: 100%;
+    padding: calc(var(--window-padding-size) / 2) 0 var(--window-padding-size) calc(var(--window-padding-size) * 1);
+    margin: 0;
+    background-color: transparent;
+    outline: none;
+    cursor: inherit;
+    appearance: none;
     font-family: inherit;
     font-size: inherit;
-    cursor: inherit;
     line-height: inherit;
-    padding: calc(var(--window-padding-size) / 2) 0 var(--window-padding-size) calc(var(--window-padding-size) * 1);
-    z-index: 1;
-    outline: none;
 
     &:focus {
-      border-radius: var(--window-padding-size);
-      outline: var(--window-border-size) solid var(--color-06);
-      box-shadow: 0 0 0 var(--window-border-size) var(--color-04),
-      0 0 0 calc(var(--window-border-size) * 2) var(--color-02),
+      box-shadow: 0 0 0 var(--window-border-size) var(--color-system-04),
+      0 0 0 calc(var(--window-border-size) * 2) var(--color-system-02),
       0 0 0 calc(var(--window-border-size) * 3) var(--color-black),
-      inset calc(var(--window-border-size) * -1) calc(var(--window-border-size) * -1) 0 0 var(--color-05),
-      inset var(--window-border-size) var(--window-border-size) 0 0 var(--color-06);
+      inset calc(var(--window-border-size) * -1) calc(var(--window-border-size) * -1) 0 0 var(--color-system-05),
+      inset var(--window-border-size) var(--window-border-size) 0 0 var(--color-system-06);
+      border-radius: var(--window-padding-size);
+      outline: var(--window-border-size) solid var(--color-system-06);
     }
 
     &::-ms-expand {
@@ -92,16 +89,16 @@
   }
 
   &:not(.select--multiple)::after {
-    content: "";
-    justify-self: end;
     height: 100%;
-    aspect-ratio: 1 / 1;
-
-    border-left: var(--window-border-size) solid var(--color-05);
     box-shadow: inset calc(var(--window-border-size) * 2) var(--window-border-size) 0 0 var(--color-white);
+    background-color: var(--color-theme-07);
+
+    border-left: var(--window-border-size) solid var(--color-system-05);
     border-top-right-radius: var(--window-padding-size);
     border-bottom-right-radius: var(--window-padding-size);
-    background-color: var(--theme-color-07);
+    content: "";
+    justify-self: end;
+    aspect-ratio: 1 / 1;
     mask-image: assets.$down-arrow;
     mask-size: 50%;
     mask-repeat: no-repeat;
@@ -109,7 +106,7 @@
   }
 
   select[multiple] {
-    padding-right: 0;
     height: 6rem;
+    padding-right: 0;
   }
 }

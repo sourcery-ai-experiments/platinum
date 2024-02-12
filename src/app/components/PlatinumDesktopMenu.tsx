@@ -1,10 +1,9 @@
 'use client';
-import classNames from "classnames";
 import * as React from "react";
+import {useDesktop} from './PlatinumDesktopContext';
 import platinumDesktopMenuStyles from "./PlatinumDesktopMenu.module.scss";
 import PlatinumMenu, {PlatinumMenuItem} from "./PlatinumMenu";
 import platinumMenuStyles from "./PlatinumMenu.module.scss";
-import {useDesktop} from './PlatinumDesktopContext';
 
 interface PlatinumMenuProps {
     menuItems: PlatinumMenuItem[];
@@ -49,15 +48,8 @@ const PlatinumDesktopMenu: React.FC<PlatinumMenuProps> = ({menuItems}) => {
         timeMenuItemPlaceholder
     ) as PlatinumMenuItem[];
 
-    const getTheme = (color: string) => {
-        return platinumMenuStyles["platinumMenuTheme" + color.charAt(0).toUpperCase() + color.slice(1)];
-    }
-
     return (
-        <nav className={classNames(
-            platinumDesktopMenuStyles.platinumDesktopMenuBar,
-            getTheme(desktopContext.activeTheme
-            ))}>
+        <nav className={platinumDesktopMenuStyles.platinumDesktopMenuBar}>
             <PlatinumMenu menuItems={defaultMenuItems} navClass={platinumDesktopMenuStyles.platinumDesktopMenu}
                           subNavClass={platinumMenuStyles.platinumSubMenu}
             ></PlatinumMenu>

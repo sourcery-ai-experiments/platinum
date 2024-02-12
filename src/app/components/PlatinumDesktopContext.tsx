@@ -6,6 +6,7 @@ const PlatinumDesktopDispatchContext = createContext(null);
 
 interface PlatinumDesktopState {
     activeTheme: string;
+    availableThemes: string[];
     selectedDesktopIcons: string[];
     soundTheme: {};
     activeWindow: string;
@@ -22,6 +23,7 @@ interface PlatinumDesktopState {
 
 const initialDesktop = {
     activeTheme: "default",
+    availableThemes: [],
     selectedDesktopIcons: [],
     soundTheme: {
         file: "",
@@ -108,6 +110,9 @@ export const platinumDesktopEventHandler = (ds: PlatinumDesktopState, action) =>
         case "theme": {
             ds.activeTheme = action.activeTheme;
             break;
+        }
+        case "loadthemes": {
+            ds.availableThemes = action.availableThemes;
         }
         case "soundtheme": {
             fetch(action.soundThemeURL)
