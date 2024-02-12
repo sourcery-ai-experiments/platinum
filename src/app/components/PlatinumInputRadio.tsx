@@ -2,7 +2,25 @@ import classNames from "classnames";
 import React from "react";
 import platinumInputRadioStyles from "./PlatinumInputRadio.module.scss";
 
-const PlatinumInputRadio = ({id, name, checked, isDefault, disabled, onClick, label}) => {
+type PlatinumInputRadioProps = {
+    id: string;
+    name: string;
+    checked?: boolean;
+    isDefault?: boolean;
+    disabled?: boolean;
+    onClick?: any;
+    label?: string;
+}
+
+const PlatinumInputRadio: React.FC<PlatinumInputRadioProps> = ({
+                                                                   id,
+                                                                   name,
+                                                                   checked,
+                                                                   isDefault,
+                                                                   disabled,
+                                                                   onClick,
+                                                                   label
+                                                               }) => {
     return (
         <div className={platinumInputRadioStyles.platinumRadioInputGroup}>
             <input type={"radio"} onClick={onClick}
