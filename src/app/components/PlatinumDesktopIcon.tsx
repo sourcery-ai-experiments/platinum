@@ -98,7 +98,7 @@ const PlatinumDesktopIcon: React.FC<PlatinumDesktopIconProps> = ({
     }
 
     return (
-        <div ref={iconRef} id={`${id} ${Math.floor(Math.random() * 100)}`}
+        <div ref={iconRef} id={`${id}`}
              onMouseDown={startDrag}
              onMouseMove={changeIcon}
              onMouseUp={stopChangeIcon}

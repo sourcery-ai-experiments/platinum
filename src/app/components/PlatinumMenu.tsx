@@ -1,7 +1,6 @@
 'use client';
-import classNames from "classnames";
 import * as React from "react";
-import {useDesktop} from './PlatinumDesktopContext';
+import classNames from "classnames";
 import platinumMenuStyles from "./PlatinumMenu.module.scss";
 
 export interface PlatinumMenuItem {
@@ -73,8 +72,6 @@ const PlatinumMenu: React.FC<PlatinumMenuProps> = ({menuItems, navClass, subNavC
             );
         }
     };
-
-    const desktopContext = useDesktop();
 
     return generateMenu(menuItems, navClass, subNavClass)
 };

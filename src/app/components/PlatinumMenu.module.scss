@@ -8,7 +8,7 @@
   width: 100%;
   padding: 0;
   margin: 0;
-  box-shadow: inset var(--window-border-size) var(--window-border-size) 0 0 var(--color-05), calc(var(--window-border-size) * 2) calc(var(--window-border-size) * 2) 0 0 var(--color-black);
+  box-shadow: inset var(--window-border-size) var(--window-border-size) 0 0 var(--color-system-05), calc(var(--window-border-size) * 2) calc(var(--window-border-size) * 2) 0 0 var(--color-black);
   font-family: var(--ui-font);
   font-size: var(--ui-font-size);
   z-index: 200;
@@ -23,19 +23,19 @@
   list-style: none;
   @include appearance.platinumWindowBorder;
   min-width: calc(var(--window-control-size) * 15);
-  background-color: var(--color-02);
+  background-color: var(--color-system-02);
 
   hr {
     margin: calc(var(--window-control-size) / 2) calc(var(--window-border-size) * 2);
-    box-shadow: 1px 1px 0 0 var(--color-01);
-    border: var(--color-04) solid 1px;
+    box-shadow: 1px 1px 0 0 var(--color-system-01);
+    border: var(--color-system-04) solid 1px;
   }
 
   div {
     ul {
       li {
         &:hover {
-          background-color: var(--theme-color-04);
+          background-color: var(--color-theme-04);
           color: #fff;
 
           * {
@@ -56,15 +56,15 @@
   @include appearance.platinumWindowBorder;
   display: none;
   min-width: calc(var(--window-control-size) * 15);
-  background: var(--color-02);
+  background: var(--color-system-02);
   color: var(--color-black);
-  background-color: var(--color-02);
+  background-color: var(--color-system-02);
   margin: 0 0 0 calc(var(--window-padding-size) * -1);;
 
   hr {
     margin: calc(var(--window-control-size) / 2) calc(var(--window-border-size) * 2);
-    box-shadow: 1px 1px 0 0 var(--color-01);
-    border: var(--color-04) solid 1px;
+    box-shadow: 1px 1px 0 0 var(--color-system-01);
+    border: var(--color-system-04) solid 1px;
   }
 
 }
@@ -78,15 +78,15 @@
   @include appearance.platinumWindowBorder;
   display: none;
   min-width: calc(var(--window-control-size) * 15);
-  background: var(--color-02);
+  background: var(--color-system-02);
   color: var(--color-black);
-  background-color: var(--color-02);
+  background-color: var(--color-system-02);
   margin: calc(var(--window-padding-size) * -4) calc(var(--window-padding-size) * -2);
 
   hr {
     margin: calc(var(--window-control-size) / 2) calc(var(--window-border-size) * 2);
-    box-shadow: 1px 1px 0 0 var(--color-01);
-    border: var(--color-04) solid 1px;
+    box-shadow: 1px 1px 0 0 var(--color-system-01);
+    border: var(--color-system-04) solid 1px;
   }
 
 }
@@ -104,7 +104,7 @@
   margin: 0;
 
   &:hover {
-    background-color: var(--theme-color-04);
+    background-color: var(--color-theme-04);
     color: var(--color-white);
 
     ul {
@@ -152,7 +152,7 @@
   }
 
   p {
-    color: var(--color-05);
+    color: var(--color-system-05);
   }
 
 }

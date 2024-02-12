@@ -10,6 +10,9 @@ import PlatinumDropdown from "../components/PlatinumDropDown";
 import PlatinumInput from "../components/PlatinumInput";
 import PlatinumProgress from "../components/PlatinumProgress";
 import PlatinumWindow from "../components/PlatinumWindow";
+import PlatinumInputRadio from "../components/PlatinumInputRadio";
+import PlatinumInputGroup from "../components/PlatinumInputGroup";
+import PlatinumInputCheckbox from "../components/PlatinumInputCheckbox";
 
 const AppearanceManager = () => {
     const [appContext, setAppContext] = React.useState(defaultAppContext);
@@ -155,7 +158,7 @@ const AppearanceManager = () => {
                 id={appId}
                 name={appName}
                 icon={appIcon}
-                debug={false}
+                debug={true}
                 hidden={!appOpen}
                 open={true}
             >
@@ -169,7 +172,7 @@ const AppearanceManager = () => {
                         zoomable={false}
                         scrollable={false}
                         collapsable={false}
-                        initialSize={[400, 200]}
+                        initialSize={[400, 500]}
                         initialPosition={[300, 50]}
                         modalWindow={true}
                         appMenu={appMenu}
@@ -185,6 +188,17 @@ const AppearanceManager = () => {
                         <PlatinumProgress value={59}></PlatinumProgress>
                         <PlatinumInput id={"test"}></PlatinumInput>
                         <PlatinumButton isDefault={true} onClick={closeApp}>OK</PlatinumButton>
+                        <PlatinumButton isDefault={false}>Nothing</PlatinumButton>
+                        <PlatinumButton isDefault={false} disabled={true}>Disabled</PlatinumButton>
+                        <PlatinumInputGroup label={"Test Radio Inputs"}>
+                            <PlatinumInputRadio id={"test1"} name={"testradio"} isDefault={false} label={"Test"}/>
+                            <PlatinumInputRadio id={"test2"} name={"testradio"} isDefault={false} label={"Test"}/>
+                            <PlatinumInputRadio id={"test3"} checked={true} name={"testradio"} isDefault={false} label={"Test"} disabled={true}/>
+                            <PlatinumInputCheckbox id={"test4"} name={"testcheck"}  isDefault={true} label={"Test"} disabled={false}/>
+                            <PlatinumInputCheckbox id={"test5"} name={"testcheck"}  isDefault={false} label={"Test"} disabled={false}/>
+                            <PlatinumInputCheckbox id={"test6"} name={"testcheck"}  isDefault={false} label={"Test"} disabled={true}/>
+                        </PlatinumInputGroup>
+
                     </PlatinumWindow>
                 }
             </PlatinumApp>

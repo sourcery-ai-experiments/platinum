@@ -234,7 +234,7 @@
     background-position: center;
     user-select: none;
     cursor: grab;
-    background-color: var(--color-03);
+    background-color: var(--color-system-03);
   }
 
   .platinumWindowContents {
@@ -245,7 +245,6 @@
     overflow: scroll !important;
     display: block;
   }
-
 }
 
 .platinumWindowContentsModal {
