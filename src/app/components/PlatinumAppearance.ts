@@ -74,7 +74,7 @@ export const getTheme = (theme: string) => {
     return themesData[0];
 };
 
-export const loadSoundTheme = (soundThemeURL) => {
+export const loadSoundTheme = (soundThemeURL: string) => {
     let data = fetch(soundThemeURL).json()
     if ('sprite' in data && 'urls' in data) {
         return new Howl({

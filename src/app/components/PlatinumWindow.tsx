@@ -69,7 +69,6 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
     const windowRef = React.useRef(null);
     const desktopContext = useDesktop();
     const desktopEventDispatch = useDesktopDispatch();
-    let sound = null;
 
     const playSound = (soundName: string) => {
         if (desktopContext.soundPlayer) {
