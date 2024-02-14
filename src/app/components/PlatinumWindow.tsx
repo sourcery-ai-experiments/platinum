@@ -1,16 +1,14 @@
 "use client";
 import classNames from "classnames";
-import {Howl} from 'howler';
 import * as React from "react";
 import UrlSafeString from "url-safe-string";
-import useSound from 'use-sound';
 import PlatinumContextMenu from "./PlatinumContextMenu";
+import {useDesktop, useDesktopDispatch} from './PlatinumDesktopContext';
 
 import {PlatinumMenuItem} from "./PlatinumMenu";
 import platinumWindowStyle from "./PlatinumWindow.module.scss";
 import "./styles/fonts.scss";
 import {PlatinumWindowStateEventReducer} from "./PlatinumWindowContext";
-import {useDesktop, useDesktopDispatch} from './PlatinumDesktopContext';
 
 interface PlatinumWindowProps {
     title?: string;
@@ -71,20 +69,13 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
     const windowRef = React.useRef(null);
     const desktopContext = useDesktop();
     const desktopEventDispatch = useDesktopDispatch();
-
-    const [play, controller] = useSound(desktopContext.soundTheme.file, {
-        sprite: desktopContext.soundTheme.sprite,
-        interrupt: true
-    });
+    let sound = null;
 
     const playSound = (soundName: string) => {
-        let sound = new Howl({
-            src: [desktopContext.soundTheme.file],
-            sprite: desktopContext.soundTheme.sprite
-        });
-        sound.load();
-
-        sound.play(soundName);
+        if (desktopContext.soundPlayer) {
+            console.log("PLAYING " + soundName);
+            desktopContext.soundPlayer.play(soundName);
+        }
     }
 
     const startResizeWindow = () => {

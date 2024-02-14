@@ -38,7 +38,6 @@ const AppearanceManager = () => {
         dataElements[e.target.id] = e.target.value;
         setAppContext({...appContext, elements: dataElements});
     };
-    console.log(desktopContext.availableThemes);
     const themes = desktopContext.availableThemes.map(a => (({id, name}) => ({value: id, label: name}))(a));
 
     const closeApp = (e) => {
