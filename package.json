@@ -17,7 +17,9 @@
     "next": "14.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-json-tree": "^0.18.0",
     "sass": "^1.70.0",
+    "sync-fetch": "^0.5.2",
     "url-safe-string": "^1.1.0",
     "use-sound": "^4.0.1"
   },

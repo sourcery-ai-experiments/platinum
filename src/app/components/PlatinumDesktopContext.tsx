@@ -1,5 +1,6 @@
 import {Howl} from 'howler';
 import React, {createContext, useContext} from 'react';
+import {loadSoundTheme} from "./PlatinumAppearance"
 import {PlatinumMenuItem} from "./PlatinumMenu";
 
 const PlatinumDesktopContext = createContext(null);
@@ -181,12 +182,7 @@ export const platinumDesktopEventHandler = (ds: PlatinumDesktopState, action) =>
             ds.activeTheme = action.activeTheme;
             let theme = ds.availableThemes.find(x => x.id === ds.activeTheme);
             if (theme) {
-                let a = loadSoundTheme(theme.sound.file);
-                ds.soundPlayer = a;
-                console.group("THEME SOUND");
-                console.log(ds.soundPlayer);
-                console.log(a);
-                console.groupEnd();
+                ds.soundPlayer = loadSoundTheme(theme.sound.file);
             }
             break;
         }
@@ -197,20 +193,6 @@ export const platinumDesktopEventHandler = (ds: PlatinumDesktopState, action) =>
     return ds;
 };
 
-const loadSoundTheme = (soundThemeURL) => {
-    fetch(soundThemeURL)
-        .then((res) => res.json())
-        .then((data) => {
-                if ('sprite' in data && 'urls' in data) {
-                    let a = new Howl({
-                        src: data.urls,
-                        sprite: data.sprite,
-                    });
-                    return a;
-                }
-            }
-        )
-}
 
 export const platinumWindowEventHandler = (ds: PlatinumDesktopState, action) => {
     switch (action.type.replace("PlatinumWindow", "").toLowerCase()) {
