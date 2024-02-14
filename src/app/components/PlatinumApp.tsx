@@ -1,7 +1,9 @@
 'use client';
 import * as React from "react";
-import {useDesktop, useDesktopDispatch} from './PlatinumDesktopContext';
+import {JSONTree} from 'react-json-tree';
 import PlatinumAppContext from "./PlatinumAppContext";
+import {getTheme} from "./PlatinumAppearance";
+import {useDesktop, useDesktopDispatch} from './PlatinumDesktopContext';
 import PlatinumWindow from "./PlatinumWindow";
 
 interface PlatinumAppProps {
@@ -15,6 +17,7 @@ interface PlatinumAppProps {
     children?: any;
 }
 
+
 const PlatinumApp: React.FC<PlatinumAppProps> = (
     {id, icon, name, open = false, hidden = false, debug = false, children}
 ) => {
@@ -22,9 +25,24 @@ const PlatinumApp: React.FC<PlatinumAppProps> = (
     const desktopContext = useDesktop();
     const desktopEventDispatch = useDesktopDispatch();
 
-    const isOpen = (e) => {
-        const idx = desktopContext.openApps.findIndex(o => o.id === id);
-        return idx > -1;
+    const themeData = getTheme(desktopContext.activeTheme);
+    const debuggerJSONTheme = {
+        base00: themeData.color.white,
+        base01: themeData.color.black,
+        base02: themeData.color.system[1],
+        base03: themeData.color.system[3],
+        base04: themeData.color.system[4],
+        base05: themeData.color.system[5],
+        base06: themeData.color.system[6],
+        base07: themeData.color.black,
+        base08: themeData.color.error,
+        base09: themeData.color.theme[2],
+        base0A: themeData.color.theme[2],
+        base0B: themeData.color.theme[3],
+        base0C: themeData.color.theme[3],
+        base0D: themeData.color.theme[5],
+        base0E: themeData.color.theme[5],
+        base0F: themeData.color.theme[6],
     };
 
     return (
@@ -37,20 +55,11 @@ const PlatinumApp: React.FC<PlatinumAppProps> = (
                                 appId={id}
                                 appMenu={[{id: "Debug", title: "Debug"}]}
                 >
-                    <b>appContext</b>
-                    <pre>
-                        <code>
-                        {JSON.stringify(appContext, null, 2)}
-                        </code>
-                    </pre>
+                    <h1>appContext</h1>
+                    <JSONTree data={appContext} theme={debuggerJSONTheme}/>
                     <br/>
-                    <b>desktopContext</b>
-                    <pre>
-                        <code>
-                    <code>{JSON.stringify(desktopContext, null, 2)}</code>
-                        </code>
-                    </pre>
-
+                    <h1>desktopContext</h1>
+                    <JSONTree data={desktopContext} theme={debuggerJSONTheme}/>
                 </PlatinumWindow>
             }
             {!hidden &&

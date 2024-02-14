@@ -1,3 +1,5 @@
+import {Howl} from 'howler';
+import fetch from "sync-fetch";
 import themesData from "./styles/themes.json";
 
 const makeThemeStyle = (theme = themesData[0]) => {
@@ -50,9 +52,9 @@ const makeThemeStyle = (theme = themesData[0]) => {
     }
 }
 
-export const getThemeVars = (color: string) => {
+export const getThemeVars = (theme: string) => {
     for (let i = 0; i < themesData.length; i++) {
-        if (themesData[i].id === color) {
+        if (themesData[i].id === theme) {
             return makeThemeStyle(themesData[i]);
         }
     }
@@ -61,4 +63,23 @@ export const getThemeVars = (color: string) => {
 
 export const getAllThemes = () => {
     return themesData;
+}
+
+export const getTheme = (theme: string) => {
+    for (let i = 0; i < themesData.length; i++) {
+        if (themesData[i].id === theme) {
+            return themesData[i];
+        }
+    }
+    return themesData[0];
+};
+
+export const loadSoundTheme = (soundThemeURL: string) => {
+    let data = fetch(soundThemeURL).json()
+    if ('sprite' in data && 'urls' in data) {
+        return new Howl({
+            src: data.urls,
+            sprite: data.sprite,
+        });
+    }
 }

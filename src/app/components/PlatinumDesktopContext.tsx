@@ -1,14 +1,17 @@
+import {Howl} from 'howler';
 import React, {createContext, useContext} from 'react';
+import {loadSoundTheme} from "./PlatinumAppearance"
 import {PlatinumMenuItem} from "./PlatinumMenu";
 
 const PlatinumDesktopContext = createContext(null);
 const PlatinumDesktopDispatchContext = createContext(null);
 
+
 interface PlatinumDesktopState {
     activeTheme: string;
-    availableThemes: string[];
+    soundPlayer: Howl;
+    availableThemes: PlatinumTheme[];
     selectedDesktopIcons: string[];
-    soundTheme: {};
     activeWindow: string;
     activeApp: string;
     menuBar: PlatinumMenuItem[];
@@ -21,14 +24,82 @@ interface PlatinumDesktopState {
     selectBoxStart: number[];
 }
 
+
+type PlatinumThemeColorPalette = [number, number, number, number, number, number, number];
+
+type PlatinumThemeColorsWindow = {
+    border: string;
+    borderOutset: string;
+    borderInset: string;
+    frame: string;
+    title: string;
+    document: string;
+}
+
+type PlatinumThemeColors = {
+    outline: string;
+    select: string;
+    highlight: string;
+    black: string;
+    white: string;
+    alert: string;
+    error: string;
+    system: PlatinumThemeColorPalette;
+    theme: PlatinumThemeColorPalette;
+    window: PlatinumThemeColorsWindow;
+}
+
+type PlatinumThemeTypography = {
+    ui: string;
+    uiSize: string;
+    header: string;
+    headerSize: string;
+    body: string;
+    bodySize: string;
+}
+
+type PlatinumThemeMeasurementsWindow = {
+    borderSize: string;
+    controlSize: string;
+    paddingSize: string
+    scrollbarSize: string;
+}
+
+type PlatinumThemeMeasurements = {
+    window: PlatinumThemeMeasurementsWindow;
+}
+
+type PlatinumThemeSound = {
+    file: string;
+    disabled: string[];
+}
+
+type PlatinumThemeDesktop = {
+    iconSize: string;
+    iconFontSize: string;
+    backgroundImage: string;
+    backgroundColor: string;
+    repeat: string;
+    position: string;
+    size: string;
+}
+
+type PlatinumTheme = {
+    id: string;
+    name: string;
+    color: PlatinumThemeColors
+    typography: PlatinumThemeTypography;
+    measurements: PlatinumThemeMeasurements;
+    desktop: PlatinumThemeDesktop;
+    sound: PlatinumThemeSound;
+};
+
+
 const initialDesktop = {
     activeTheme: "default",
     availableThemes: [],
     selectedDesktopIcons: [],
-    soundTheme: {
-        file: "",
-        sprites: []
-    },
+    soundPlayer: null,
     activeWindow: "",
     menuBar: [],
     systemMenu: [{
@@ -109,27 +180,19 @@ export const platinumDesktopEventHandler = (ds: PlatinumDesktopState, action) =>
         }
         case "theme": {
             ds.activeTheme = action.activeTheme;
+            let theme = ds.availableThemes.find(x => x.id === ds.activeTheme);
+            if (theme) {
+                ds.soundPlayer = loadSoundTheme(theme.sound.file);
+            }
             break;
         }
         case "loadthemes": {
             ds.availableThemes = action.availableThemes;
         }
-        case "soundtheme": {
-            fetch(action.soundThemeURL)
-                .then((res) => res.json())
-                .then((data) => {
-                    if ('sprite' in data) {
-                        ds.soundTheme = {
-                            file: data.urls[0],
-                            sprites: data.sprite
-                        }
-                    }
-                })
-            break;
-        }
     }
     return ds;
 };
+
 
 export const platinumWindowEventHandler = (ds: PlatinumDesktopState, action) => {
     switch (action.type.replace("PlatinumWindow", "").toLowerCase()) {

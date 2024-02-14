@@ -33,15 +33,6 @@ const PlatinumDesktop: React.FC<PlatinumDesktopProps> = ({children}) => {
         });
     }
 
-    // React.useEffect(() => {
-    //     if (soundTheme !== "" && desktopState.soundTheme.sprites.length <= 0) {
-    //         desktopEventDispatch({
-    //             type: "PlatinumDesktopSoundTheme",
-    //             soundThemeURL: soundTheme,
-    //         });
-    //     }
-    // }, [desktopState, desktopEventDispatch])
-
 
     const startSelectBox = (e) => {
         if (e.target.id === "platinumDesktop") {
