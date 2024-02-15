@@ -1,9 +1,9 @@
 {
   "urls": [
-    "/sounds/platinum.ogg",
-    "/sounds/platinum.m4a",
-    "/sounds/platinum.mp3",
-    "/sounds/platinum.ac3"
+    "platinum.ogg",
+    "platinum.m4a",
+    "platinum.mp3",
+    "platinum.ac3"
   ],
   "sprite": {
     "PlatinumAlertSosumi": [
