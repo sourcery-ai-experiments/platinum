@@ -12,8 +12,6 @@ import {PlatinumDesktopProvider} from "./components/PlatinumDesktopContext";
 
 export default function Home() {
 
-    const activeTheme = "default";
-
     return (
         <PlatinumDesktopProvider>
             <PlatinumDesktop>

@@ -4,7 +4,7 @@ import * as React from "react";
 import UrlSafeString from "url-safe-string";
 import PlatinumContextMenu from "./PlatinumContextMenu";
 import {useDesktop, useDesktopDispatch} from './PlatinumDesktopContext';
-
+import {useSoundDispatch} from "./PlatinumDesktopSoundContext";
 import {PlatinumMenuItem} from "./PlatinumMenu";
 import platinumWindowStyle from "./PlatinumWindow.module.scss";
 import "./styles/fonts.scss";
@@ -70,12 +70,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
     const desktopContext = useDesktop();
     const desktopEventDispatch = useDesktopDispatch();
 
-    const playSound = (soundName: string) => {
-        if (desktopContext.soundPlayer) {
-            console.log("PLAYING " + soundName);
-            desktopContext.soundPlayer.play(soundName);
-        }
-    }
+    const player = useSoundDispatch();
 
     const startResizeWindow = () => {
         setResize(true);
@@ -95,7 +90,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
         }
 
         if (windowState.dragging) {
-            playSound("PlatinumWindowMoveMoving");
+            player({type: "PlatinumSoundPlay", sound: "PlatinumWindowMoveMoving"})
             setMoving(true, [
                 e.clientX - clickPosition[0],
                 e.clientY - clickPosition[1],
@@ -109,7 +104,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
 
     const setActive = () => {
         if (!isActive()) {
-            playSound("PlatinumWindowFocus");
+            player({type: "PlatinumSoundPlay", sound: "PlatinumWindowFocus"})
         }
         desktopEventDispatch({
             type: "PlatinumWindowFocus",
@@ -146,12 +141,12 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
 
     const setCollapse = (toCollapse: boolean) => {
         if (toCollapse) {
-            playSound("PlatinumWindowCollapse")
+            player({type: "PlatinumSoundPlay", sound: "PlatinumWindowCollapse"})
             windowEventDispatch({
                 type: "PlatinumWindowCollapse",
             });
         } else {
-            playSound("PlatinumWindowExpand")
+            player({type: "PlatinumSoundPlay", sound: "PlatinumWindowExpand"})
             windowEventDispatch({
                 type: "PlatinumWindowExpand",
             });
@@ -168,7 +163,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
         if (windowState.collapsed) {
             setCollapse(false);
         }
-        playSound("PlatinumWindowZoom");
+        player({type: "PlatinumSoundPlay", sound: "PlatinumWindowZoom"})
         windowEventDispatch({
             type: "PlatinumWindowZoom",
             zoomed: toZoom,
@@ -206,7 +201,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
     };
 
     const close = () => {
-        playSound("PlatinumWindowClose");
+        player({type: "PlatinumSoundPlay", sound: "PlatinumWindowClose"})
         windowEventDispatch({
             type: "PlatinumWindowClose",
         });
@@ -229,11 +224,6 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
             position: toPosition,
         });
     };
-
-    // const firstRender = React.useMemo(
-    //     () => setDesktopContext({...desktopContext, activeWindow: id}),
-    //     [id, setDesktopContext]
-    // );
 
     return (
         <>

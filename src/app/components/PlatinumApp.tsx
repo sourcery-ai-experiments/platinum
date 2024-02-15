@@ -4,6 +4,7 @@ import {JSONTree} from 'react-json-tree';
 import PlatinumAppContext from "./PlatinumAppContext";
 import {getTheme} from "./PlatinumAppearance";
 import {useDesktop, useDesktopDispatch} from './PlatinumDesktopContext';
+import {useSound} from "./PlatinumDesktopSoundContext";
 import PlatinumWindow from "./PlatinumWindow";
 
 interface PlatinumAppProps {
@@ -55,11 +56,16 @@ const PlatinumApp: React.FC<PlatinumAppProps> = (
                                 appId={id}
                                 appMenu={[{id: "Debug", title: "Debug"}]}
                 >
-                    <h1>appContext</h1>
+                    <h1>Providers</h1>
+                    <hr/>
+                    <h2>appContext</h2>
                     <JSONTree data={appContext} theme={debuggerJSONTheme}/>
                     <br/>
-                    <h1>desktopContext</h1>
+                    <h2>desktopContext</h2>
                     <JSONTree data={desktopContext} theme={debuggerJSONTheme}/>
+                    <br/>
+                    <h2>soundPlayer</h2>
+                    <JSONTree data={useSound()} theme={debuggerJSONTheme}/>
                 </PlatinumWindow>
             }
             {!hidden &&

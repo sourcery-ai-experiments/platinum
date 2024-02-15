@@ -1,6 +1,12 @@
 import {Howl} from 'howler';
 import React, {createContext, useContext} from 'react';
 import {loadSoundTheme} from "./PlatinumAppearance"
+import {
+    initialPlayer,
+    PlatinumDesktopSoundContext,
+    PlatinumDesktopSoundDispatchContext,
+    PlatinumDesktopSoundStateEventReducer
+} from "./PlatinumDesktopSoundContext";
 import {PlatinumMenuItem} from "./PlatinumMenu";
 
 const PlatinumDesktopContext = createContext(null);
@@ -128,11 +134,16 @@ const initialDesktop = {
 export function PlatinumDesktopProvider({children}) {
 
     const [desktop, dispatch] = React.useReducer(platinumDesktopStateEventReducer, initialDesktop);
+    const [sound, soundDispatch] = React.useReducer(PlatinumDesktopSoundStateEventReducer, initialPlayer);
 
     return (
         <PlatinumDesktopContext.Provider value={desktop}>
             <PlatinumDesktopDispatchContext.Provider value={dispatch}>
-                {children}
+                <PlatinumDesktopSoundContext.Provider value={sound}>
+                    <PlatinumDesktopSoundDispatchContext.Provider value={soundDispatch}>
+                        {children}
+                    </PlatinumDesktopSoundDispatchContext.Provider>
+                </PlatinumDesktopSoundContext.Provider>
             </PlatinumDesktopDispatchContext.Provider>
         </PlatinumDesktopContext.Provider>
     );
@@ -267,7 +278,7 @@ export const platinumAppEventHandler = (ds: PlatinumDesktopState, action) => {
 
 };
 
-export const platinumDesktopStateEventReducer = (ds: PlatinumDesktopState, action) => {
+const platinumDesktopStateEventReducer = (ds: PlatinumDesktopState, action) => {
     if ('type' in action) {
         if (action.type.startsWith("PlatinumWindow")) {
             ds = platinumWindowEventHandler(ds, action);
