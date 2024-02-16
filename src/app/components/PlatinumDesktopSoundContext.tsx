@@ -7,17 +7,21 @@ export const PlatinumDesktopSoundDispatchContext = createContext(null);
 
 
 interface PlatinumDesktopSoundState {
-    soundPlayer: Howl;
+    soundPlayer: Howl | null;
+    disabled: string[];
 }
 
 interface PlatinumDesktopSoundAction {
     type: "play" | "load" | "set";
-    file: string;
-    soundPlayer: Howl | any;
+    sound?: string;
+    file?: string;
+    disabled?: string[];
+    soundPlayer?: Howl | any;
 }
 
-export const initialPlayer = {
+export const initialPlayer: Howl = {
     soundPlayer: loadSoundTheme("/sounds/platinum.json"),
+    disabled: []
 };
 
 export function useSound() {
@@ -28,21 +32,29 @@ export function useSoundDispatch() {
     return useContext(PlatinumDesktopSoundDispatchContext);
 }
 
-export const PlatinumDesktopSoundStateEventReducer = (ss: PlatinumDesktopSoundState, action) => {
-    if ('type' in action) {
-        switch (action.type.replace("PlatinumSound", "").toLowerCase()) {
-            case "play": {
+export const PlatinumDesktopSoundStateEventReducer = (
+    ss: PlatinumDesktopSoundState,
+    action: PlatinumDesktopSoundAction
+) => {
+    switch (action.type.replace("PlatinumSound", "").toLowerCase()) {
+        case "stop": {
+            ss.soundPlayer.stop();
+            break;
+        }
+        case "play": {
+            if (!ss.soundPlayer.playing() && !(ss.disabled.includes(action.sound))) {
                 ss.soundPlayer.play(action.sound);
-                break;
             }
-            case "load": {
-                ss.soundPlayer = loadSoundTheme(action.file);
-                break;
-            }
-            case "set": {
-                ss.soundPlayer = action.soundPlayer;
-                break;
-            }
+            break;
+        }
+        case "load": {
+            ss.soundPlayer = loadSoundTheme(action.file);
+            ss.disabled = action.disabled;
+            break;
+        }
+        case "set": {
+            ss.soundPlayer = action.soundPlayer;
+            break;
         }
     }
     return ss;

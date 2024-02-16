@@ -215,7 +215,9 @@ export const platinumWindowEventHandler = (ds: PlatinumDesktopState, action) => 
             break;
         }
         case "focus": {
+            console.log("FOCUS ", action);
             ds.activeWindow = action.app.id;
+            ds.menuBar = action.app.menuBar;
             break;
         }
         case "menu": {

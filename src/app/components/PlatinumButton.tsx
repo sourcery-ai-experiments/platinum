@@ -8,18 +8,36 @@ type PlatinumButtonProps = {
     disabled?: boolean;
     onClick?: any;
     children?: any;
+    buttonType?: "button" | "submit" | "reset";
 }
 
-const PlatinumButton: React.FC<PlatinumButtonProps> = ({isDefault, disabled = false, onClick = null, children}) => {
+const PlatinumButton: React.FC<PlatinumButtonProps> = ({
+                                                           isDefault,
+                                                           buttonType = "button",
+                                                           disabled = false,
+                                                           onClick = null,
+                                                           children
+                                                       }) => {
     const player = useSoundDispatch();
 
     return (
-        <button onClick={onClick}
+        <button type={buttonType}
+                className={
+                    classNames(
+                        platinumButtonStyles.platinumButton,
+                        isDefault ? platinumButtonStyles.platinumButtonDefault : ""
+                    )
+                }
+                onClick={onClick}
                 onMouseDown={() => {
-                    player({type: "PlatinumSoundPlay", sound: "PlatinumClick"})
+                    player({type: "PlatinumSoundPlay", sound: "PlatinumButtonClickDown"})
                 }}
-                disabled={disabled}
-                className={classNames(platinumButtonStyles.platinumButton, isDefault ? platinumButtonStyles.platinumButtonDefault : "")}>{children}</button>
+                onMouseUp={() => {
+                    player({type: "PlatinumSoundPlay", sound: "PlatinumButtonClickUp"})
+                }}
+                disabled={disabled}>
+            {children}
+        </button>
     );
 };
 export default PlatinumButton;

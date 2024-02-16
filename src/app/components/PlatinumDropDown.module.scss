@@ -91,18 +91,17 @@
   &:not(.select--multiple)::after {
     height: 100%;
     box-shadow: inset calc(var(--window-border-size) * 2) var(--window-border-size) 0 0 var(--color-white);
-    background-color: var(--color-theme-07);
 
-    border-left: var(--window-border-size) solid var(--color-system-05);
+    border-left: var(--window-border-size) solid var(--color-system-05) !important;
     border-top-right-radius: var(--window-padding-size);
     border-bottom-right-radius: var(--window-padding-size);
     content: "";
     justify-self: end;
     aspect-ratio: 1 / 1;
-    mask-image: assets.$down-arrow;
-    mask-size: 50%;
-    mask-repeat: no-repeat;
-    mask-position: center;
+    background-image: assets.$down-arrow;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   select[multiple] {

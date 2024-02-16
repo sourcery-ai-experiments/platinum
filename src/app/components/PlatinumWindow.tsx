@@ -8,7 +8,7 @@ import {useSoundDispatch} from "./PlatinumDesktopSoundContext";
 import {PlatinumMenuItem} from "./PlatinumMenu";
 import platinumWindowStyle from "./PlatinumWindow.module.scss";
 import "./styles/fonts.scss";
-import {PlatinumWindowStateEventReducer} from "./PlatinumWindowContext";
+import {PlatinumWindowStateEventReducer, PlatinumWindowState} from "./PlatinumWindowContext";
 
 interface PlatinumWindowProps {
     title?: string;
@@ -53,10 +53,11 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
         0, 0,
     ]);
 
-    let initialWindowState = {
+    let initialWindowState: PlatinumWindowState = {
         size: initialSize,
         position: initialPosition,
         closed: hidden,
+        menuBar: []
     };
 
     const clickOffset = [10, 10];
@@ -75,6 +76,15 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
     const startResizeWindow = () => {
         setResize(true);
         setZoom(false);
+    };
+
+    const startMoveWindow = (e) => {
+        player({type: "PlatinumSoundPlay", sound: "PlatinumWindowMoveIdle"})
+        setDragging(true);
+        setClickPosition([
+            e.clientX - windowRef.current.getBoundingClientRect().left,
+            e.clientY - windowRef.current.getBoundingClientRect().top,
+        ]);
     };
 
     const changeWindow = (e) => {
@@ -98,6 +108,32 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
         }
     };
 
+    const stopChangeWindow = () => {
+        player({type: "PlatinumSoundPlay", sound: "PlatinumWindowMoveStop"})
+        setResize(false);
+        setDragging(false);
+        setMoving(false);
+        setClickPosition([0, 0]);
+    };
+
+        const setDragging = (toDrag: boolean) => {
+        windowEventDispatch({
+            type: "PlatinumWindowDrag",
+            dragging: toDrag,
+        });
+    };
+
+    const setMoving = (
+        toMove: boolean,
+        toPosition: [number, number] = [0, 0]
+    ) => {
+        windowEventDispatch({
+            type: "PlatinumWindowMove",
+            moving: toMove,
+            position: toPosition,
+        });
+    };
+
     const isActive = () => {
         return id === desktopContext.activeWindow;
     };
@@ -110,27 +146,14 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
             type: "PlatinumWindowFocus",
             app: {
                 id: id,
+                app: appMenu
             }
         });
+        console.log(appMenu)
         desktopEventDispatch({
             type: "PlatinumWindowContextMenu",
             menuBar: appMenu ? appMenu : [],
         });
-    };
-
-    const stopChangeWindow = () => {
-        setResize(false);
-        setDragging(false);
-        setMoving(false);
-        setClickPosition([0, 0]);
-    };
-
-    const startDrag = (e) => {
-        setDragging(true);
-        setClickPosition([
-            e.clientX - windowRef.current.getBoundingClientRect().left,
-            e.clientY - windowRef.current.getBoundingClientRect().top,
-        ]);
     };
 
     const toggleCollapse = () => {
@@ -207,29 +230,11 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
         });
     };
 
-    const setDragging = (toDrag: boolean) => {
-        windowEventDispatch({
-            type: "PlatinumWindowDrag",
-            dragging: toDrag,
-        });
-    };
-
-    const setMoving = (
-        toMove: boolean,
-        toPosition: [number, number] = [0, 0]
-    ) => {
-        windowEventDispatch({
-            type: "PlatinumWindowMove",
-            moving: toMove,
-            position: toPosition,
-        });
-    };
-
     return (
         <>
             {!hidden && (
                 <div
-                    id={!id ? UrlSafeString().generate(title) : id}
+                    id={appId + "_" + !id ? UrlSafeString().generate(title) : id}
                     ref={windowRef}
                     style={{
                         width: size[0],
@@ -290,7 +295,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                         )}
                         <div
                             className={platinumWindowStyle.platinumWindowTitle}
-                            onMouseDown={startDrag}
+                            onMouseDown={startMoveWindow}
                         >
                             <div
                                 className={platinumWindowStyle.platinumWindowTitleleft}

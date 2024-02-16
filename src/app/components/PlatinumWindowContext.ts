@@ -1,29 +1,20 @@
-//     # Events
-//     * `PlatinumWindowOpen`
-//     * `PlatinumWindowClose`
-//     * `PlatinumWindowResize`
-//     * `PlatinumWindowDrag`
-//     * `PlatinumWindowMove`
-//     * `PlatinumWindowStop`
-//     * `PlatinumWindowFocus`
-//     * `PlatinumWindowContentScroll`
-//     * `PlatinumWindowContentClick`
-//     * `PlatinumWindowMenu`
+export type PlatinumWindowState = {
+    size: [number, number],
+    position: [number, number],
+    clickPosition?: [number, number];
+    closed?: boolean,
+    menuBar?: [];
+    collapsed?: boolean;
+    zoomed?: boolean;
+    dragging?: boolean;
+    resizing?: boolean;
+    sounding?: boolean;
+    moving?: boolean;
+    contextMenu?: [];
+    contextMenuLocation?: [number, number];
+}
 
-//     # WindowState
-//     initialWindowState = {
-//         size: string;
-//         position: string;
-//         clickPosition: [number, number];
-//         zoomed: boolean,
-//         collapsed: boolean,
-//         dragging: boolean,
-//         resizing: boolean,
-//         sounding: boolean,
-//         moving: boolean,
-//     };
-
-export const PlatinumWindowStateEventReducer = (ws, action) => {
+export const PlatinumWindowStateEventReducer = (ws: PlatinumWindowState, action) => {
     if (action.type.startsWith("PlatinumWindow")) {
         switch (action.type.replace("PlatinumWindow", "").toLowerCase()) {
             case "open": {

@@ -30,6 +30,36 @@ A UI framework using native CSS/JS replications of the Mac OS 8.1 interface comp
     * `PlatinumDesktopClick`
     * `PlatinumDesktopDrag`
 
+* `PlatinumSoundPlay`
+    * `PlatinumAlertSosumi`
+    * `PlatinumAlertWildEep`
+    * `PlatinumAlertndigo`
+    * `PlatinumBeep`
+    * `PlatinumBoot`
+    * `PlatinumButtonClickDown`
+    * `PlatinumButtonClickUp`
+    * `PlatinumInputRadioClickDown`
+    * `PlatinumInputRadioClickUp`
+    * `PlatinumMenuClose`
+    * `PlatinumMenuItemClick`
+    * `PlatinumMenuItemHover`
+    * `PlatinumMenuOpen`
+    * `PlatinumWindowClose`
+    * `PlatinumWindowCollapse`
+    * `PlatinumWindowControlClickDown`
+    * `PlatinumWindowControlClickUp`
+    * `PlatinumWindowExpand`
+    * `PlatinumWindowFocus`
+    * `PlatinumWindowMoveIdle`
+    * `PlatinumWindowMoveMoving`
+    * `PlatinumWindowMoveStop`
+    * `PlatinumWindowOpen`
+    * `PlatinumWindowResizeIdle`
+    * `PlatinumWindowResizeResizing`
+    * `PlatinumWindowResizeStop`
+    * `PlatinumWindowZoomMaximize`
+    * `PlatinumWindowZoomMinimize`
+
 * `PlatinumDesktopIcon`
     * `PlatinumDesktopClick`
     * `PlatinumDesktopAltClick`

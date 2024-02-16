@@ -123,7 +123,8 @@ const PlatinumDesktopIcon: React.FC<PlatinumDesktopIconProps> = ({
                 </div>
             </div>
             <p>{appName}</p>
-        </div>);
+        </div>
+    );
 };
 
 
