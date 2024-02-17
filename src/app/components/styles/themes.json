@@ -42,7 +42,7 @@
       "disabled": []
     },
     "typography": {
-      "ui": "\"Charcoal\", \"Chicago\", \"Geneva\", sans-serif",
+      "ui": "\"Charcoal\", \"ChicagoFLF\", \"Geneva\", sans-serif",
       "uiSize": "14px",
       "header": "\"AppleGaramond\", serif",
       "headerSize": "22px",
@@ -110,7 +110,7 @@
       "disabled": []
     },
     "typography": {
-      "ui": "\"Charcoal\", \"Chicago\", \"Geneva\", sans-serif",
+      "ui": "\"Charcoal\", \"ChicagoFLF\", \"Geneva\", sans-serif",
       "uiSize": "14px",
       "header": "\"AppleGaramond\", serif",
       "headerSize": "22px",
@@ -178,7 +178,7 @@
       "disabled": []
     },
     "typography": {
-      "ui": "\"Charcoal\", \"Chicago\", \"Geneva\", sans-serif",
+      "ui": "\"Charcoal\", \"ChicagoFLF\", \"Geneva\", sans-serif",
       "uiSize": "14px",
       "header": "\"AppleGaramond\", serif",
       "headerSize": "22px",
@@ -246,7 +246,7 @@
       "disabled": []
     },
     "typography": {
-      "ui": "\"Charcoal\", \"Chicago\", \"Geneva\", sans-serif",
+      "ui": "\"Charcoal\", \"ChicagoFLF\", \"Geneva\", sans-serif",
       "uiSize": "14px",
       "header": "\"AppleGaramond\", serif",
       "headerSize": "22px",
@@ -314,7 +314,7 @@
       "disabled": []
     },
     "typography": {
-      "ui": "\"Charcoal\", \"Chicago\", \"Geneva\", sans-serif",
+      "ui": "\"Charcoal\", \"ChicagoFLF\", \"Geneva\", sans-serif",
       "uiSize": "14px",
       "header": "\"AppleGaramond\", serif",
       "headerSize": "22px",
@@ -382,7 +382,7 @@
       "disabled": []
     },
     "typography": {
-      "ui": "\"Charcoal\", \"Chicago\", \"Geneva\", sans-serif",
+      "ui": "\"Charcoal\", \"ChicagoFLF\", \"Geneva\", sans-serif",
       "uiSize": "14px",
       "header": "\"AppleGaramond\", serif",
       "headerSize": "22px",
@@ -450,7 +450,7 @@
       "disabled": []
     },
     "typography": {
-      "ui": "\"ChicagoFLF\", \"Geneva\", sans-serif",
+      "ui": "\"ChicagoFLF\", \"Charcoal\", \"Geneva\", sans-serif",
       "uiSize": "14px",
       "header": "\"AppleGaramond\", serif",
       "headerSize": "22px",
@@ -518,7 +518,7 @@
       "disabled": []
     },
     "typography": {
-      "ui": "\"Charcoal\", \"Chicago\", \"Geneva\", sans-serif",
+      "ui": "\"Charcoal\", \"ChicagoFLF\", \"Geneva\", sans-serif",
       "uiSize": "14px",
       "header": "\"AppleGaramond\", serif",
       "headerSize": "22px",
@@ -586,7 +586,7 @@
       "disabled": []
     },
     "typography": {
-      "ui": "\"Charcoal\", \"Chicago\", \"Geneva\", sans-serif",
+      "ui": "\"Charcoal\", \"ChicagoFLF\", \"Geneva\", sans-serif",
       "uiSize": "14px",
       "header": "\"AppleGaramond\", serif",
       "headerSize": "22px",
@@ -654,7 +654,7 @@
       "disabled": []
     },
     "typography": {
-      "ui": "\"Charcoal\", \"Chicago\", \"Geneva\", sans-serif",
+      "ui": "\"Charcoal\", \"ChicagoFLF\", \"Geneva\", sans-serif",
       "uiSize": "14px",
       "header": "\"AppleGaramond\", serif",
       "headerSize": "22px",
@@ -722,7 +722,7 @@
       "disabled": []
     },
     "typography": {
-      "ui": "\"Charcoal\", \"Chicago\", \"Geneva\", sans-serif",
+      "ui": "\"Charcoal\", \"ChicagoFLF\", \"Geneva\", sans-serif",
       "uiSize": "14px",
       "header": "\"AppleGaramond\", serif",
       "headerSize": "22px",
@@ -790,7 +790,7 @@
       "disabled": []
     },
     "typography": {
-      "ui": "\"Charcoal\", \"Chicago\", \"Geneva\", sans-serif",
+      "ui": "\"Charcoal\", \"ChicagoFLF\", \"Geneva\", sans-serif",
       "uiSize": "14px",
       "header": "\"AppleGaramond\", serif",
       "headerSize": "22px",
@@ -858,7 +858,7 @@
       "disabled": []
     },
     "typography": {
-      "ui": "\"Charcoal\", \"Chicago\", \"Geneva\", sans-serif",
+      "ui": "\"Charcoal\", \"ChicagoFLF\", \"Geneva\", sans-serif",
       "uiSize": "14px",
       "header": "\"AppleGaramond\", serif",
       "headerSize": "22px",
@@ -926,7 +926,7 @@
       "disabled": []
     },
     "typography": {
-      "ui": "\"Charcoal\", \"Chicago\", \"Geneva\", sans-serif",
+      "ui": "\"Charcoal\", \"ChicagoFLF\", \"Geneva\", sans-serif",
       "uiSize": "14px",
       "header": "\"AppleGaramond\", serif",
       "headerSize": "22px",
@@ -994,7 +994,7 @@
       "disabled": []
     },
     "typography": {
-      "ui": "\"Charcoal\", \"Chicago\", \"Geneva\", sans-serif",
+      "ui": "\"Charcoal\", \"ChicagoFLF\", \"Geneva\", sans-serif",
       "uiSize": "14px",
       "header": "\"AppleGaramond\", serif",
       "headerSize": "22px",
@@ -1062,7 +1062,7 @@
       "disabled": []
     },
     "typography": {
-      "ui": "\"Charcoal\", \"Chicago\", \"Geneva\", sans-serif",
+      "ui": "\"Charcoal\", \"ChicagoFLF\", \"Geneva\", sans-serif",
       "uiSize": "14px",
       "header": "\"AppleGaramond\", serif",
       "headerSize": "22px",
@@ -1130,7 +1130,7 @@
       "disabled": []
     },
     "typography": {
-      "ui": "\"Charcoal\", \"Chicago\", \"Geneva\", sans-serif",
+      "ui": "\"Charcoal\", \"ChicagoFLF\", \"Geneva\", sans-serif",
       "uiSize": "14px",
       "header": "\"AppleGaramond\", serif",
       "headerSize": "22px",
@@ -1198,7 +1198,7 @@
       "disabled": []
     },
     "typography": {
-      "ui": "\"Charcoal\", \"Chicago\", \"Geneva\", sans-serif",
+      "ui": "\"Charcoal\", \"ChicagoFLF\", \"Geneva\", sans-serif",
       "uiSize": "14px",
       "header": "\"AppleGaramond\", serif",
       "headerSize": "22px",
@@ -1266,7 +1266,7 @@
       "disabled": []
     },
     "typography": {
-      "ui": "\"Charcoal\", \"Chicago\", \"Geneva\", sans-serif",
+      "ui": "\"Charcoal\", \"ChicagoFLF\", \"Geneva\", sans-serif",
       "uiSize": "14px",
       "header": "\"AppleGaramond\", serif",
       "headerSize": "22px",
@@ -1334,7 +1334,7 @@
       "disabled": []
     },
     "typography": {
-      "ui": "\"Charcoal\", \"Chicago\", \"Geneva\", sans-serif",
+      "ui": "\"Charcoal\", \"ChicagoFLF\", \"Geneva\", sans-serif",
       "uiSize": "14px",
       "header": "\"AppleGaramond\", serif",
       "headerSize": "22px",
@@ -1402,7 +1402,7 @@
       "disabled": []
     },
     "typography": {
-      "ui": "\"Charcoal\", \"Chicago\", \"Geneva\", sans-serif",
+      "ui": "\"Charcoal\", \"ChicagoFLF\", \"Geneva\", sans-serif",
       "uiSize": "14px",
       "header": "\"AppleGaramond\", serif",
       "headerSize": "22px",

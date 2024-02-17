@@ -12,7 +12,7 @@ interface PlatinumDesktopSoundState {
 }
 
 interface PlatinumDesktopSoundAction {
-    type: "play" | "load" | "set";
+    type: "PlatinumSoundStop" | "PlatinumSoundPlay" | "PlatinumSoundLoad" | "PlatinumSoundSet";
     sound?: string;
     file?: string;
     disabled?: string[];
@@ -36,23 +36,23 @@ export const PlatinumDesktopSoundStateEventReducer = (
     ss: PlatinumDesktopSoundState,
     action: PlatinumDesktopSoundAction
 ) => {
-    switch (action.type.replace("PlatinumSound", "").toLowerCase()) {
-        case "stop": {
+    switch (action.type) {
+        case "PlatinumSoundStop": {
             ss.soundPlayer.stop();
             break;
         }
-        case "play": {
-            if (!ss.soundPlayer.playing() && !(ss.disabled.includes(action.sound))) {
+        case "PlatinumSoundPlay": {
+            if (!ss.disabled.includes("*") || !ss.disabled.includes(action.sound) || !ss.soundPlayer.playing()) {
                 ss.soundPlayer.play(action.sound);
             }
             break;
         }
-        case "load": {
+        case "PlatinumSoundLoad": {
             ss.soundPlayer = loadSoundTheme(action.file);
             ss.disabled = action.disabled;
             break;
         }
-        case "set": {
+        case "PlatinumSoundSet": {
             ss.soundPlayer = action.soundPlayer;
             break;
         }

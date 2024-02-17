@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@mdxeditor/editor": "^2.3.5",
+    "audiosprite": "^0.7.2",
     "classnames": "^2.5.1",
     "draft-js": "^0.11.7",
     "fetch-json": "^3.3.0",
@@ -20,8 +21,7 @@
     "react-json-tree": "^0.18.0",
     "sass": "^1.70.0",
     "sync-fetch": "^0.5.2",
-    "url-safe-string": "^1.1.0",
-    "use-sound": "^4.0.1"
+    "url-safe-string": "^1.1.0"
   },
   "devDependencies": {
     "@types/node": "20.11.5",

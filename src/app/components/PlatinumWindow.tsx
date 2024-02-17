@@ -1,4 +1,5 @@
 "use client";
+
 import classNames from "classnames";
 import * as React from "react";
 import UrlSafeString from "url-safe-string";
@@ -8,7 +9,7 @@ import {useSoundDispatch} from "./PlatinumDesktopSoundContext";
 import {PlatinumMenuItem} from "./PlatinumMenu";
 import platinumWindowStyle from "./PlatinumWindow.module.scss";
 import "./styles/fonts.scss";
-import {PlatinumWindowStateEventReducer, PlatinumWindowState} from "./PlatinumWindowContext";
+import {PlatinumWindowState, PlatinumWindowStateEventReducer} from "./PlatinumWindowContext";
 
 interface PlatinumWindowProps {
     title?: string;
@@ -25,7 +26,7 @@ interface PlatinumWindowProps {
     initialSize?: [number, number];
     initialPosition?: [number, number];
     appMenu?: PlatinumMenuItem[];
-    contextMenuItems?: PlatinumMenuItem[];
+    contextMenu?: PlatinumMenuItem[];
     children?: React.ReactNode;
 }
 
@@ -44,7 +45,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                                                            initialSize = [300, 400],
                                                            initialPosition = [0, 0],
                                                            appMenu,
-                                                           contextMenuItems,
+                                                           contextMenu,
                                                            children,
                                                        }) => {
 
@@ -116,7 +117,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
         setClickPosition([0, 0]);
     };
 
-        const setDragging = (toDrag: boolean) => {
+    const setDragging = (toDrag: boolean) => {
         windowEventDispatch({
             type: "PlatinumWindowDrag",
             dragging: toDrag,
@@ -142,17 +143,17 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
         if (!isActive()) {
             player({type: "PlatinumSoundPlay", sound: "PlatinumWindowFocus"})
         }
+
         desktopEventDispatch({
             type: "PlatinumWindowFocus",
             app: {
                 id: id,
-                app: appMenu
+                appMenu: appMenu
             }
         });
-        console.log(appMenu)
         desktopEventDispatch({
             type: "PlatinumWindowContextMenu",
-            menuBar: appMenu ? appMenu : [],
+            contextMenu: contextMenu ? contextMenu : [],
         });
     };
 
@@ -270,9 +271,9 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                     onContextMenu={showContextMenu}
                     onMouseOut={hideContextMenu}
                 >
-                    {contextMenuItems && windowState.contextMenu && (
+                    {contextMenu && windowState.contextMenu && (
                         <PlatinumContextMenu
-                            menuItems={contextMenuItems}
+                            menuItems={contextMenu}
                             position={windowState.contextMenuLocation}
                         ></PlatinumContextMenu>
                     )}

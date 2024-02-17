@@ -38,4 +38,3 @@ const PlatinumDropdown: React.FC<PlatinumDropdownProps> = ({
     );
 };
 export default PlatinumDropdown;
-

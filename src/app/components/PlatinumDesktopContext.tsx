@@ -158,8 +158,8 @@ export function useDesktopDispatch() {
 }
 
 export const platinumDesktopEventHandler = (ds: PlatinumDesktopState, action) => {
-    switch (action.type.replace("PlatinumDesktop", "").toLowerCase()) {
-        case "focus": {
+    switch (action.type) {
+        case "PlatinumDesktopFocus": {
             if (action.e.target.id === "platinumDesktop") {
                 ds.activeWindow = "";
                 ds.selectedDesktopIcons = [];
@@ -169,27 +169,27 @@ export const platinumDesktopEventHandler = (ds: PlatinumDesktopState, action) =>
             }
             break;
         }
-        case "doubleclick": {
+        case "PlatinumDesktopDoubleClick": {
             break;
         }
-        case "drag": {
+        case "PlatinumDesktopDrag": {
             ds.selectBoxSize = [action.e.clientX - ds.selectBoxStart[0], action.e.clientY - ds.selectBoxStart[1]];
             break;
         }
-        case "stop": {
+        case "PlatinumDesktopStop": {
             ds.selectBox = false;
             ds.selectBoxStart = [0, 0];
             ds.selectBoxSize = [0, 0];
             break;
         }
-        case "contextmenu": {
+        case "PlatinumDesktopContextMenu": {
             ds.showContextMenu = action.showContextMenu;
             if (action.contextMenu) {
                 ds.contextMenu = action.contextMenu;
             }
             break;
         }
-        case "theme": {
+        case "PlatinumDesktopTheme": {
             ds.activeTheme = action.activeTheme;
             let theme = ds.availableThemes.find(x => x.id === ds.activeTheme);
             if (theme) {
@@ -197,7 +197,7 @@ export const platinumDesktopEventHandler = (ds: PlatinumDesktopState, action) =>
             }
             break;
         }
-        case "loadthemes": {
+        case "PlatinumDesktopLoadThemes": {
             ds.availableThemes = action.availableThemes;
         }
     }
@@ -206,21 +206,20 @@ export const platinumDesktopEventHandler = (ds: PlatinumDesktopState, action) =>
 
 
 export const platinumWindowEventHandler = (ds: PlatinumDesktopState, action) => {
-    switch (action.type.replace("PlatinumWindow", "").toLowerCase()) {
-        case "open": {
+    switch (action.type) {
+        case "PlatinumWindowOpen": {
             ds.activeWindow = action.app.id;
             break;
         }
-        case "close": {
+        case "PlatinumWindowClose": {
             break;
         }
-        case "focus": {
-            console.log("FOCUS ", action);
+        case "PlatinumWindowFocus": {
             ds.activeWindow = action.app.id;
-            ds.menuBar = action.app.menuBar;
+            ds.menuBar = action.app.appMenu;
             break;
         }
-        case "menu": {
+        case "PlatinumWindowMenu": {
             ds.menuBar = action.menuBar;
         }
     }
@@ -228,12 +227,12 @@ export const platinumWindowEventHandler = (ds: PlatinumDesktopState, action) => 
 };
 
 export const platinumDesktopIconEventHandler = (ds: PlatinumDesktopState, action) => {
-    switch (action.type.replace("PlatinumDesktopIcon", "").toLowerCase()) {
-        case "focus": {
+    switch (action.type) {
+        case "PlatinumDesktopIconFocus": {
             ds.selectedDesktopIcons = [action.iconId];
             break;
         }
-        case "open": {
+        case "PlatinumDesktopIconOpen": {
             ds.selectedDesktopIcons = [action.iconId];
             ds = platinumAppEventHandler(ds, {
                 type: "PlatinumAppOpen",
@@ -246,8 +245,8 @@ export const platinumDesktopIconEventHandler = (ds: PlatinumDesktopState, action
 };
 
 export const platinumAppEventHandler = (ds: PlatinumDesktopState, action) => {
-    switch (action.type.replace("PlatinumApp", "").toLowerCase()) {
-        case "open": {
+    switch (action.type) {
+        case "PlatinumAppOpen": {
             if (ds.openApps.length > 0) {
                 const idx = ds.openApps.findIndex(o => o.id === action.appId);
                 if (idx > -1) {
@@ -261,7 +260,7 @@ export const platinumAppEventHandler = (ds: PlatinumDesktopState, action) => {
             }
             break;
         }
-        case "close": {
+        case "PlatinumAppClose": {
             if (ds.openApps.length > 0) {
                 const idx = ds.openApps.findIndex(o => o.id === action.appId);
                 if (idx > -1) {
@@ -271,7 +270,7 @@ export const platinumAppEventHandler = (ds: PlatinumDesktopState, action) => {
             }
             break;
         }
-        case "focus": {
+        case "PlatinumAppFocus": {
             break;
         }
     }

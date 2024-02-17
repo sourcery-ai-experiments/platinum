@@ -40,10 +40,9 @@ const PlatinumDesktopMenu: React.FC<PlatinumMenuProps> = ({menuItems}) => {
         ))
     }
 
-
     const defaultMenuItems = [].concat(
         systemMenuItem,
-        menuItems,
+        desktopContext.menuBar,
         openAppsMenuItem,
         timeMenuItemPlaceholder
     ) as PlatinumMenuItem[];

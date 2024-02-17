@@ -11,6 +11,7 @@ export type PlatinumWindowState = {
     sounding?: boolean;
     moving?: boolean;
     contextMenu?: [];
+    contextMenuShown: boolean;
     contextMenuLocation?: [number, number];
 }
 
@@ -50,7 +51,7 @@ export const PlatinumWindowStateEventReducer = (ws: PlatinumWindowState, action)
             }
             case "contextmenu": {
                 ws.contextMenu = action.contextMenu;
-                if (action.contextMenu === true) {
+                if (action.contextMenuShown === true) {
                     ws.contextMenuLocation = action.position;
                 }
                 break;
