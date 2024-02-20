@@ -1,0 +1,130 @@
+{
+  "src": [
+    "/sounds/platinum/platinum.ogg",
+    "/sounds/platinum/platinum.m4a",
+    "/sounds/platinum/platinum.mp3",
+    "/sounds/platinum/platinum.ac3"
+  ],
+  "sprite": {
+    "PlatinumAlertIndigo": [
+      0,
+      352.312925170068
+    ],
+    "PlatinumAlertQuack": [
+      2000,
+      183.37868480725606
+    ],
+    "PlatinumAlertSosumi": [
+      4000,
+      179.63718820861718
+    ],
+    "PlatinumAlertWildEep": [
+      6000,
+      137.00680272108823
+    ],
+    "PlatinumBeep": [
+      8000,
+      254.94331065759644
+    ],
+    "PlatinumBoot": [
+      10000,
+      1376.4852607709752
+    ],
+    "PlatinumButtonClickDown": [
+      13000,
+      1.678004535147437
+    ],
+    "PlatinumButtonClickUp": [
+      15000,
+      1.678004535147437
+    ],
+    "PlatinumClick": [
+      17000,
+      19.20634920634967
+    ],
+    "PlatinumInputRadioClickDown": [
+      19000,
+      46.666666666666856
+    ],
+    "PlatinumInputRadioClickUp": [
+      21000,
+      6.666666666667709
+    ],
+    "PlatinumMenuClose": [
+      23000,
+      131.67800453514644
+    ],
+    "PlatinumMenuItemClick": [
+      25000,
+      140.00000000000057
+    ],
+    "PlatinumMenuItemHover": [
+      27000,
+      36.66666666666529
+    ],
+    "PlatinumMenuOpen": [
+      29000,
+      135.0113378684803
+    ],
+    "PlatinumWindowClose": [
+      31000,
+      135.0113378684803
+    ],
+    "PlatinumWindowCollapse": [
+      33000,
+      119.99999999999744
+    ],
+    "PlatinumWindowControlClickDown": [
+      35000,
+      11.678004535149
+    ],
+    "PlatinumWindowControlClickUp": [
+      37000,
+      56.66666666666487
+    ],
+    "PlatinumWindowExpand": [
+      39000,
+      235.01133786847817
+    ],
+    "PlatinumWindowFocus": [
+      41000,
+      30.000000000001137
+    ],
+    "PlatinumWindowMoveIdle": [
+      43000,
+      381.67800453514644
+    ],
+    "PlatinumWindowMoveMoving": [
+      45000,
+      853.3333333333317
+    ],
+    "PlatinumWindowMoveStop": [
+      47000,
+      200.00000000000284
+    ],
+    "PlatinumWindowOpen": [
+      49000,
+      306.66666666666487
+    ],
+    "PlatinumWindowResizeIdle": [
+      51000,
+      381.67800453514644
+    ],
+    "PlatinumWindowResizeResizing": [
+      53000,
+      873.3333333333348
+    ],
+    "PlatinumWindowResizeStop": [
+      55000,
+      306.66666666666487
+    ],
+    "PlatinumWindowZoomMaximize": [
+      57000,
+      71.67800453514417
+    ],
+    "PlatinumWindowZoomMinimize": [
+      59000,
+      66.66666666666998
+    ]
+  }
+}
