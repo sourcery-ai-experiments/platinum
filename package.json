@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@browserfs/core": "^0.0.12",
     "@mdxeditor/editor": "^2.3.5",
     "audiosprite": "^0.7.2",
     "classnames": "^2.5.1",
