@@ -8,4 +8,3 @@ const PlatinumAppContext = createContext({
 });
 
 export default PlatinumAppContext;
-

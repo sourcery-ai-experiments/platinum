@@ -4,16 +4,10 @@ import * as React from "react";
 import PlatinumApp from "../components/PlatinumApp";
 import PlatinumAppContext, {defaultAppContext} from "../components/PlatinumAppContext";
 import {getTheme} from "../components/PlatinumAppearance";
-import PlatinumButton from "../components/PlatinumButton";
 import {useDesktop, useDesktopDispatch} from '../components/PlatinumDesktopContext';
 import PlatinumDesktopIcon from "../components/PlatinumDesktopIcon";
 import {useSoundDispatch} from "../components/PlatinumDesktopSoundContext";
 import PlatinumDropdown from "../components/PlatinumDropDown";
-import PlatinumInput from "../components/PlatinumInput";
-import PlatinumInputCheckbox from "../components/PlatinumInputCheckbox";
-import PlatinumInputGroup from "../components/PlatinumInputGroup";
-import PlatinumInputRadio from "../components/PlatinumInputRadio";
-import PlatinumProgress from "../components/PlatinumProgress";
 import PlatinumWindow from "../components/PlatinumWindow";
 
 const AppearanceManager = () => {
@@ -25,9 +19,9 @@ const AppearanceManager = () => {
 
     const player = useSoundDispatch();
 
-    const appName = "Appearance Manager";
-    const appId = "AppearanceManager.app";
-    const appIcon = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/appearance-manager/app.png`;
+    const appName: string = "Appearance Manager";
+    const appId: string = "AppearanceManager.app";
+    const appIcon: string = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/appearance-manager/app.png`;
 
     const themes = desktopContext.availableThemes.map(a => (({id, name}) => ({value: id, label: name}))(a));
 
@@ -39,7 +33,7 @@ const AppearanceManager = () => {
         });
 
         let soundTheme = getTheme(e.target.value).sound;
-        player({type: "PlatinumSoundLoad", file: soundTheme.file, disabled: soundTheme.disabled})
+        player({type: "PlatinumSoundLoad", file: soundTheme.file, disabled: soundTheme.disabled});
     };
 
     const changeValue = (e) => {
@@ -48,7 +42,7 @@ const AppearanceManager = () => {
         setAppContext({...appContext, elements: dataElements});
     };
 
-    const closeApp = (e) => {
+    const closeApp = () => {
         setAppOpen(false);
         desktopEventDispatch({
             type: "PlatinumAppClose",
@@ -61,7 +55,7 @@ const AppearanceManager = () => {
         });
     };
 
-    const openApp = (e) => {
+    const openApp = () => {
         setAppOpen(true);
         desktopEventDispatch({
             type: "PlatinumAppOpen",

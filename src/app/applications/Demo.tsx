@@ -1,10 +1,9 @@
 'use client';
 
 import * as React from "react";
-import PlatinumApp from "../components/PlatinumApp";
-import PlatinumAppContext, {defaultAppContext} from "../components/PlatinumAppContext";
-import PlatinumButton from "../components/PlatinumButton";
 import {useDesktop, useDesktopDispatch} from "../components/PlatinumDesktopContext";
+import PlatinumApp from "../components/PlatinumApp";
+import PlatinumButton from "../components/PlatinumButton";
 import PlatinumDesktopIcon from "../components/PlatinumDesktopIcon";
 import PlatinumDropdown from "../components/PlatinumDropDown";
 import PlatinumInput from "../components/PlatinumInput";
@@ -15,7 +14,6 @@ import PlatinumProgress from "../components/PlatinumProgress";
 import PlatinumWindow from "../components/PlatinumWindow";
 
 const Demo = () => {
-    const [appContext, setAppContext] = React.useState(defaultAppContext);
     const [appOpen, setAppOpen] = React.useState(false);
 
     const appName = "Demo";
@@ -52,7 +50,7 @@ const Demo = () => {
     };
 
     return (
-        <PlatinumAppContext.Provider value={{appContext, setAppContext}}>
+        <>
             <PlatinumDesktopIcon
                 appId={appId}
                 appName={appName}
@@ -107,25 +105,25 @@ const Demo = () => {
                     <PlatinumButton isDefault={false}>Nothing</PlatinumButton>
                     <PlatinumButton isDefault={false} disabled={true}>Disabled</PlatinumButton>
                     <PlatinumInputGroup label={"Test Radio Inputs"}>
-                        <PlatinumInputRadio id={"test1"} name={"testradio"} isDefault={false}
+                        <PlatinumInputRadio id={"test1"} name={"test_radio"} isDefault={false}
                                             label={"Radio Button 1"}/>
-                        <PlatinumInputRadio id={"test2"} name={"testradio"} isDefault={false}
+                        <PlatinumInputRadio id={"test2"} name={"test_radio"} isDefault={false}
                                             label={"Radio Button 2"}/>
-                        <PlatinumInputRadio id={"test3"} checked={true} name={"testradio"} isDefault={false}
+                        <PlatinumInputRadio id={"test3"} checked={true} name={"test_radio"} isDefault={false}
                                             label={"Radio Button Disabled"} disabled={true}/>
-                        <PlatinumInputCheckbox id={"test4"} name={"testcheck"} isDefault={true}
+                        <PlatinumInputCheckbox id={"test4"} name={"test_check"} isDefault={true}
                                                label={"Default Checkbox"}
                                                disabled={false}/>
-                        <PlatinumInputCheckbox id={"test5"} name={"testcheck"} isDefault={false}
+                        <PlatinumInputCheckbox id={"test5"} name={"test_check"} isDefault={false}
                                                label={"Checkbox 2"}
                                                disabled={false}/>
-                        <PlatinumInputCheckbox id={"test6"} name={"testcheck"} isDefault={false} label={"Disabled"}
+                        <PlatinumInputCheckbox id={"test6"} name={"test_check"} isDefault={false} label={"Disabled"}
                                                disabled={true}/>
                     </PlatinumInputGroup>
 
                 </PlatinumWindow>
             </PlatinumApp>
-        </PlatinumAppContext.Provider>
+        </>
     );
 }
 

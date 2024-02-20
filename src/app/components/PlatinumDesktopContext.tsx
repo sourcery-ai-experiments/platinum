@@ -191,8 +191,8 @@ export const platinumDesktopEventHandler = (ds: PlatinumDesktopState, action) =>
         }
         case "PlatinumDesktopTheme": {
             ds.activeTheme = action.activeTheme;
-            let theme = ds.availableThemes.find(x => x.id === ds.activeTheme);
-            if (theme) {
+            let theme: PlatinumTheme = ds.availableThemes.find(x => x.id === ds.activeTheme);
+            if ('sound' in theme && 'file' in theme.sound) {
                 ds.soundPlayer = loadSoundTheme(theme.sound.file);
             }
             break;
@@ -262,7 +262,7 @@ export const platinumAppEventHandler = (ds: PlatinumDesktopState, action) => {
         }
         case "PlatinumAppClose": {
             if (ds.openApps.length > 0) {
-                const idx = ds.openApps.findIndex(o => o.id === action.appId);
+                const idx: number = ds.openApps.findIndex(o => o.id === action.appId);
                 if (idx > -1) {
                     ds.openApps.splice(idx, 1);
                     ds.activeWindow = "";

@@ -3,8 +3,6 @@
 import * as React from "react";
 import AppearanceManager from "./applications/AppearanceManager";
 import Demo from "./applications/Demo";
-
-import Finder from "./applications/Finder";
 import TextEdit from "./applications/TextEdit";
 
 import PlatinumDesktop from "./components/PlatinumDesktop";
@@ -18,7 +16,6 @@ export default function Home() {
                 <AppearanceManager/>
                 <Demo/>
                 <TextEdit/>
-                <Finder/>
             </PlatinumDesktop>
         </PlatinumDesktopProvider>
     );

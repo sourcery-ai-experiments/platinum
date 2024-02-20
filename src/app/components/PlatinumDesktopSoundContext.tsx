@@ -20,7 +20,7 @@ interface PlatinumDesktopSoundAction {
 }
 
 export const initialPlayer: Howl = {
-    soundPlayer: loadSoundTheme("/sounds/platinum.json"),
+    soundPlayer: loadSoundTheme("/sounds/platinum/platinum.json"),
     disabled: []
 };
 
@@ -42,7 +42,7 @@ export const PlatinumDesktopSoundStateEventReducer = (
             break;
         }
         case "PlatinumSoundPlay": {
-            if (!ss.disabled.includes("*") || !ss.disabled.includes(action.sound) || !ss.soundPlayer.playing()) {
+            if (!ss.disabled.includes("*") && !ss.disabled.includes(action.sound) && ss.soundPlayer && !ss.soundPlayer.playing()) {
                 ss.soundPlayer.play(action.sound);
             }
             break;
