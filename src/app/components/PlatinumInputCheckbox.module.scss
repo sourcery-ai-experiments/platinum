@@ -1,31 +1,29 @@
 @use "../components/styles/appearance";
-@use "../components/styles/assets";
-@import "./styles/fonts.scss";
 
 .platinumInputCheckboxGroup {
   display: flex;
+  align-items: stretch;
   flex-direction: row;
   justify-content: stretch;
-  align-items: stretch;
   padding: calc(var(--window-border-size) * 2) 0;
 }
 
 .platinumInputCheckbox {
-  appearance: none;
   width: calc(var(--window-control-size));
   height: var(--window-control-size);
+  margin: var(--window-border-size);
   border-radius: 0;
   @include appearance.platinumWindowBorder;
-  margin: var(--window-border-size);
+  appearance: none;
 
   &:checked {
     &:after {
-      display: block;
-      content: "\00D7";
       font-family: var(--ui-font);
+      font-size: calc(var(--ui-font-size) * 1.5);
+      display: block;
       margin-top: calc(var(--window-control-size) * -.75);
       margin-left: calc(var(--window-border-size) * -1);
-      font-size: calc(var(--ui-font-size) * 1.5);
+      content: "\00D7";
       text-shadow: var(--color-system-05) 1px 1px 2px;
     }
   }
@@ -37,8 +35,8 @@
 
   &:disabled, &:disabled:active {
     border: var(--window-border-size) solid var(--color-system-06) !important;
-    box-shadow: none;
     background: transparent;
+    box-shadow: none;
   }
 
 
@@ -58,12 +56,12 @@
 .platinumInputCheckboxDefault {
   &:checked, &:active {
     &:after {
-      display: block;
-      content: "\2713";
       font-family: var(--ui-font);
+      font-size: var(--ui-font-size);
+      display: block;
       margin-top: calc(var(--ui-font-size) * -.25);
       margin-left: calc(var(--window-border-size) * -1);
-      font-size: var(--ui-font-size);
+      content: "\2713";
       text-shadow: var(--color-system-05) 1px 1px 2px;
     }
   }

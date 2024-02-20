@@ -12,13 +12,27 @@
 
   &:not(.select--multiple)::after {
     height: 100% !important;
-    box-shadow: none !important;
     border-left: none !important;
+    box-shadow: none !important;
     aspect-ratio: 1 / 1 !important;
   }
 }
 
 .platinumDropDown {
+  font-family: var(--ui-font);
+
+  font-size: 1em;
+
+  line-height: 1.1;
+  position: relative;
+  display: grid;
+  align-items: center;
+
+  @include appearance.platinumWindowDepressable;
+  margin: var(--window-control-size);
+  cursor: pointer;
+  user-select: none;
+
   &,
   &::before,
   &::after,
@@ -28,53 +42,41 @@
     box-sizing: border-box;
   }
 
-  position: relative;
-
-  display: grid;
-  align-items: center;
   grid-template-areas: "select";
-  margin: var(--window-control-size);
-
-  @include appearance.platinumWindowDepressable;
-  cursor: pointer;
-  user-select: none;
-  font-family: var(--ui-font);
-  font-size: 1em;
-  line-height: 1.1;
 
   &.select--disabled {
+    cursor: not-allowed;
     background-color: var(--color-system-01);
     background-image: linear-gradient(to top, var(--color-system-02), var(--color-system-01) 33%);
-    cursor: not-allowed;
   }
 
   label {
-    margin-top: 2rem;
     font-size: 1.125rem;
     font-weight: 500;
+    margin-top: 2rem;
   }
 
   select {
-    z-index: 1;
-    width: 100%;
-    padding: calc(var(--window-padding-size) / 2) 0 var(--window-padding-size) calc(var(--window-padding-size) * 1);
-    margin: 0;
-    background-color: transparent;
-    outline: none;
-    cursor: inherit;
-    appearance: none;
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
+    z-index: 1;
+    width: 100%;
+    margin: 0;
+    padding: calc(var(--window-padding-size) / 2) 0 var(--window-padding-size) calc(var(--window-padding-size) * 1);
+    cursor: inherit;
+    outline: none;
+    background-color: transparent;
+    appearance: none;
 
     &:focus {
+      border-radius: var(--window-padding-size);
+      outline: var(--window-border-size) solid var(--color-system-06);
       box-shadow: 0 0 0 var(--window-border-size) var(--color-system-04),
       0 0 0 calc(var(--window-border-size) * 2) var(--color-system-02),
       0 0 0 calc(var(--window-border-size) * 3) var(--color-black),
       inset calc(var(--window-border-size) * -1) calc(var(--window-border-size) * -1) 0 0 var(--color-system-05),
       inset var(--window-border-size) var(--window-border-size) 0 0 var(--color-system-06);
-      border-radius: var(--window-padding-size);
-      outline: var(--window-border-size) solid var(--color-system-06);
     }
 
     &::-ms-expand {
@@ -90,18 +92,18 @@
 
   &:not(.select--multiple)::after {
     height: 100%;
-    box-shadow: inset calc(var(--window-border-size) * 2) var(--window-border-size) 0 0 var(--color-white);
+    content: "";
 
     border-left: var(--window-border-size) solid var(--color-system-05) !important;
     border-top-right-radius: var(--window-padding-size);
     border-bottom-right-radius: var(--window-padding-size);
-    content: "";
-    justify-self: end;
-    aspect-ratio: 1 / 1;
     background-image: assets.$down-arrow;
-    background-size: 50%;
     background-repeat: no-repeat;
     background-position: center;
+    background-size: 50%;
+    box-shadow: inset calc(var(--window-border-size) * 2) var(--window-border-size) 0 0 var(--color-white);
+    justify-self: end;
+    aspect-ratio: 1 / 1;
   }
 
   select[multiple] {

@@ -1,7 +1,6 @@
 'use client';
 import classNames from "classnames";
 import * as React from "react";
-import "./styles/fonts.scss";
 import {useDesktop, useDesktopDispatch} from './PlatinumDesktopContext';
 
 import platinumDesktopIconStyles from "./PlatinumDesktopIcon.module.scss";
@@ -40,6 +39,9 @@ const PlatinumDesktopIcon: React.FC<PlatinumDesktopIconProps> = ({
             type: "PlatinumDesktopIconFocus",
             iconId: id,
         })
+        if (typeof onClickFunc === 'function') {
+            onClickFunc();
+        }
     }
 
     const changeIcon = e => {
@@ -127,5 +129,7 @@ const PlatinumDesktopIcon: React.FC<PlatinumDesktopIconProps> = ({
     );
 };
 
-
+PlatinumDesktopIcon.defaultProps = {
+    __TYPE: "PlatinumDesktopIcon"
+}
 export default PlatinumDesktopIcon;

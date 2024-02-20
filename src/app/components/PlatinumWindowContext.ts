@@ -1,9 +1,11 @@
+import {PlatinumMenuItem} from "./PlatinumMenu";
+
 export type PlatinumWindowState = {
     size: [number, number],
     position: [number, number],
     clickPosition?: [number, number];
     closed?: boolean,
-    menuBar?: [];
+    menuBar?: PlatinumMenuItem[];
     collapsed?: boolean;
     zoomed?: boolean;
     dragging?: boolean;

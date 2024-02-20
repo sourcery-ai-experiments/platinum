@@ -1,21 +1,21 @@
+@use 'sass:list';
 @use "./styles/appearance";
 @use "./styles/scrollbars";
-@use 'sass:list';
 
 .platinumDesktop {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
   margin: 0;
   padding: 0;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  user-select: none;
-  user-drag: none;
   cursor: default;
+  user-select: none;
   background-color: var(--desktop-background-color);
   background-image: var(--desktop-background-image);
+  background-repeat: var(--desktop-background-repeat);
   background-position: var(--desktop-background-position);
   background-size: var(--desktop-background-size);
-  background-repeat: var(--desktop-background-repeat);
+  user-drag: none;
 
   &, & * {
     @include scrollbars.scrollbars;

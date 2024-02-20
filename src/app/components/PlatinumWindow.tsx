@@ -58,7 +58,8 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
         size: initialSize,
         position: initialPosition,
         closed: hidden,
-        menuBar: []
+        menuBar: appMenu ? appMenu : [],
+        contextMenuShown: false
     };
 
     const clickOffset = [10, 10];

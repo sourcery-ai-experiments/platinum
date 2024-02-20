@@ -1,7 +1,9 @@
 import classNames from "classnames";
 import * as React from "react";
 import {Suspense} from "react";
+import {getChildrenByTypeDeep} from 'react-nanny';
 import Finder from "./Finder";
+import PlatinumApp from "./PlatinumApp";
 import {getAllThemes, getThemeVars} from "./PlatinumAppearance"
 import PlatinumContextMenu from "./PlatinumContextMenu";
 import platinumDesktop from "./PlatinumDesktop.module.scss";
@@ -20,7 +22,6 @@ const PlatinumDesktop: React.FC<PlatinumDesktopProps> = ({children}) => {
     const [selectBoxStart, setSelectBoxStart] = React.useState([0, 0]);
     const [selectBoxSize, setSelectBoxSize] = React.useState([0, 0]);
     const [selectBox, setSelectBox] = React.useState(false);
-
 
     const clickOffset = [10, 10];
 
@@ -74,9 +75,16 @@ const PlatinumDesktop: React.FC<PlatinumDesktopProps> = ({children}) => {
         }
     }
 
-    const testMenuItems = [];
-
+    const defaultMenuItems = [];
     const currentTheme = getThemeVars(desktopState.activeTheme);
+
+    React.Children.map(children, (a, i) => {
+        console.log(a.type.name);
+    })
+
+
+    const items = getChildrenByTypeDeep(children, [PlatinumApp]);
+    console.log(items)
 
     return (
         <>
@@ -99,7 +107,7 @@ const PlatinumDesktop: React.FC<PlatinumDesktopProps> = ({children}) => {
                     }
                     <PlatinumDesktopMenu menuItems={desktopState.menuBar}/>
                     {contextMenu && (
-                        <PlatinumContextMenu menuItems={testMenuItems}
+                        <PlatinumContextMenu menuItems={defaultMenuItems}
                                              position={contextMenuLocation}/>
                     )}
                     <Finder/>
