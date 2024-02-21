@@ -123,7 +123,6 @@ export const platinumDesktopIconEventHandler = (
                 (icon) => icon.appId === action.app.id,
             );
             if (iconIdx > -1) {
-                console.log("MOVING");
                 ds.desktopIcons[iconIdx].location = action.location;
             }
             break;

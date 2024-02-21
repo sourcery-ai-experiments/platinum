@@ -62,29 +62,36 @@ const PlatinumApp: React.FC<PlatinumAppProps> = (
             });
         }
     }, [desktopEventDispatch, id, name, icon]);
+    if (debug) {
+        let debugWindow = (
+            <PlatinumWindow initialSize={[400, 300]}
+                            initialPosition={[100, 200]}
+                            title={"DEBUG " + name}
+                            id={id + "_debugger"}
+                            appId={id}
+                            appMenu={[{id: "Debug", title: "Debug"}]}>
+                <h1>Providers</h1>
+                <hr/>
+                <h2>appContext</h2>
+                <JSONTree data={appContext} theme={debuggerJSONTheme}/>
+                <br/>
+                <h2>desktopContext</h2>
+                <JSONTree data={desktopContext} theme={debuggerJSONTheme}/>
+                <br/>
+                <h2>soundPlayer</h2>
+                <JSONTree data={useSound()} theme={debuggerJSONTheme}/>
+            </PlatinumWindow>
+        );
+
+        if (Array.isArray[children]) {
+            children = [...children, debugWindow];
+        } else {
+            children = [children, debugWindow];
+        }
+    }
 
     return (
         <>
-            {debug &&
-                <PlatinumWindow initialSize={[400, 300]}
-                                initialPosition={[100, 200]}
-                                title={"DEBUG " + name}
-                                id={id + "_debugger"}
-                                appId={id}
-                                appMenu={[{id: "Debug", title: "Debug"}]}
-                >
-                    <h1>Providers</h1>
-                    <hr/>
-                    <h2>appContext</h2>
-                    <JSONTree data={appContext} theme={debuggerJSONTheme}/>
-                    <br/>
-                    <h2>desktopContext</h2>
-                    <JSONTree data={desktopContext} theme={debuggerJSONTheme}/>
-                    <br/>
-                    <h2>soundPlayer</h2>
-                    <JSONTree data={useSound()} theme={debuggerJSONTheme}/>
-                </PlatinumWindow>
-            }
             {isAppOpen() &&
                 <>
                     {children}
