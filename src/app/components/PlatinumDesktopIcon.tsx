@@ -10,20 +10,15 @@ interface PlatinumDesktopIconProps {
     appName: string;
     icon: string;
     onClickFunc?: any;
-    onDoubleClickFunc?: any;
-    initialPosition: [number, number];
 }
 
 const PlatinumDesktopIcon: React.FC<PlatinumDesktopIconProps> = ({
                                                                      appId,
                                                                      appName,
                                                                      icon,
-                                                                     initialPosition,
                                                                      onClickFunc,
-                                                                     onDoubleClickFunc
                                                                  }) => {
 
-    const [position, setPosition] = React.useState<[number, number]>(initialPosition || [0, 0]);
     const [clickPosition, setClickPosition] = React.useState<[number, number]>([0, 0]);
     const [dragging, setDragging] = React.useState<boolean>(false);
 
@@ -47,7 +42,14 @@ const PlatinumDesktopIcon: React.FC<PlatinumDesktopIconProps> = ({
     const changeIcon = e => {
         if (dragging) {
             clickFocus(e);
-            setPosition([e.clientX - clickPosition[0], e.clientY - clickPosition[1]]);
+
+            desktopEventDispatch({
+                type: "PlatinumDesktopIconMove",
+                app: {
+                    id: appId
+                },
+                location: [e.clientX - clickPosition[0], e.clientY - clickPosition[1]]
+            });
         }
     };
 
@@ -68,8 +70,24 @@ const PlatinumDesktopIcon: React.FC<PlatinumDesktopIconProps> = ({
         })
     };
 
+    const getIconLocation = () => {
+        let iconIdx = desktopContext.desktopIcons.findIndex(
+            (i) => i.appId === appId,
+        );
+
+        let leftValue: number = 0;
+        let topValue: number = 0;
+        if (iconIdx > -1) {
+            leftValue = desktopContext.desktopIcons[iconIdx].location[0]
+            topValue = desktopContext.desktopIcons[iconIdx].location[1]
+        }
+        return [topValue, leftValue]
+    }
+
+    let thisLocation = getIconLocation();
+
     const isLaunched = () => {
-        const idx = desktopContext.openApps.findIndex(o => o.id === appId);
+        const idx = desktopContext.appSwitcherMenu.findIndex(o => o.appId === appId);
         return idx > -1;
     };
 
@@ -95,15 +113,13 @@ const PlatinumDesktopIcon: React.FC<PlatinumDesktopIconProps> = ({
             return "";
         }
     }
+
     return (
         <div ref={iconRef} id={`${id}`}
              onMouseDown={startDrag}
              onMouseMove={changeIcon}
              onMouseUp={stopChangeIcon}
-             onDoubleClick={(e) => {
-                 launchIcon(e);
-                 onDoubleClickFunc();
-             }}
+             onDoubleClick={launchIcon}
              draggable={false}
              onClick={clickFocus}
              className={classNames(
@@ -111,10 +127,7 @@ const PlatinumDesktopIcon: React.FC<PlatinumDesktopIconProps> = ({
                  dragging ? platinumDesktopIconStyles.platinumDesktopIconDragging : "",
                  getClass(id)
              )}
-             style={{
-                 left: position[0],
-                 top: position[1],
-             }}
+             style={{top: thisLocation[0], left: thisLocation[1]}}
         >
             <div className={platinumDesktopIconStyles.platinumDesktopIconMaskOuter}
                  style={{maskImage: `url(${icon})`}}>
@@ -129,7 +142,4 @@ const PlatinumDesktopIcon: React.FC<PlatinumDesktopIconProps> = ({
     );
 };
 
-PlatinumDesktopIcon.defaultProps = {
-    __TYPE: "PlatinumDesktopIcon"
-}
 export default PlatinumDesktopIcon;

@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import React from "react";
 import platinumButtonStyles from "./PlatinumButton.module.scss";
-import {useSoundDispatch} from "./PlatinumDesktopSoundContext";
+import {useSoundDispatch} from "./PlatinumDesktopSoundManagerContext";
 
 type PlatinumButtonProps = {
     isDefault?: boolean;

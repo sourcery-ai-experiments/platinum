@@ -18,53 +18,51 @@ export type PlatinumWindowState = {
 }
 
 export const PlatinumWindowStateEventReducer = (ws: PlatinumWindowState, action) => {
-    if (action.type.startsWith("PlatinumWindow")) {
-        switch (action.type.replace("PlatinumWindow", "").toLowerCase()) {
-            case "open": {
-                ws.closed = false;
-                break;
+    switch (action.type) {
+        case "PlatinumWindowOpen": {
+            ws.closed = false;
+            break;
+        }
+        case "PlatinumWindowClose": {
+            ws.closed = true;
+            break;
+        }
+        case "PlatinumWindowResize": {
+            ws.resizing = action.resizing;
+            break;
+        }
+        case "PlatinumWindowZoom": {
+            ws.zoomed = action.zoomed;
+            break;
+        }
+        case "PlatinumWindowFocus": {
+            break;
+        }
+        case "PlatinumWindowExpand": {
+            ws.collapsed = false;
+            break;
+        }
+        case "PlatinumWindowCollapse": {
+            ws.collapsed = true;
+            break;
+        }
+        case "PlatinumWindowDrag": {
+            ws.dragging = action.dragging;
+            break;
+        }
+        case "PlatinumWindowContextMenu": {
+            ws.contextMenu = action.contextMenu;
+            if (action.contextMenuShown === true) {
+                ws.contextMenuLocation = action.position;
             }
-            case "close": {
-                ws.closed = true;
-                break;
+            break;
+        }
+        case "PlatinumWindowMove": {
+            ws.moving = action.moving;
+            if (action.moving === true) {
+                ws.position = action.position;
             }
-            case "resize": {
-                ws.resizing = action.resizing;
-                break;
-            }
-            case "zoom": {
-                ws.zoomed = action.zoomed;
-                break;
-            }
-            case "focus": {
-                break;
-            }
-            case "expand": {
-                ws.collapsed = false;
-                break;
-            }
-            case "collapse": {
-                ws.collapsed = true;
-                break;
-            }
-            case "drag": {
-                ws.dragging = action.dragging;
-                break;
-            }
-            case "contextmenu": {
-                ws.contextMenu = action.contextMenu;
-                if (action.contextMenuShown === true) {
-                    ws.contextMenuLocation = action.position;
-                }
-                break;
-            }
-            case "move": {
-                ws.moving = action.moving;
-                if (action.moving === true) {
-                    ws.position = action.position;
-                }
-                break;
-            }
+            break;
         }
     }
     return {...ws};

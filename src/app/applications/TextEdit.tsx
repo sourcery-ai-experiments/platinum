@@ -2,12 +2,14 @@
 
 import * as React from "react";
 import PlatinumApp from "../components/PlatinumApp";
-import PlatinumDesktopIcon from "../components/PlatinumDesktopIcon";
+import {useDesktop, useDesktopDispatch} from "../components/PlatinumDesktopContext";
 import PlatinumRichTextEditor from "../components/PlatinumRichTextEditor";
 import PlatinumWindow from "../components/PlatinumWindow";
 
 const TextEdit = () => {
-    const [appOpen, setAppOpen] = React.useState(false);
+
+    const desktopContext = useDesktop();
+    const desktopEventDispatch = useDesktopDispatch();
 
     const appName = "TextEdit";
     const appId = "TextEdit.app";
@@ -36,28 +38,46 @@ const TextEdit = () => {
 > *Because the people who are crazy enough to think they can change the world, are the ones who do."*`
 
     const closeApp = (e) => {
-        setAppOpen(false);
+        desktopEventDispatch({
+            type: "PlatinumDesktopIconAdd",
+            app: {
+                id: appId,
+                name: appName,
+                icon: appIcon
+            }
+        });
     };
+    //
+    // const toggleApp = (e) => {
+    //     setAppOpen(!appOpen);
+    // };
+    //
+    // const isOpen = (e) => {
+    //     const openIdx = desktopContext.openApps.findIndex((oa) => {
+    //         oa.id === appId
+    //     });
+    //
+    //
+    // }
 
-    const toggleApp = (e) => {
-        setAppOpen(!appOpen);
-    };
+    React.useEffect(() => {
+        desktopEventDispatch({
+            type: "PlatinumDesktopIconAdd",
+            app: {
+                id: appId,
+                name: appName,
+                icon: appIcon
+            }
+        });
+    }, [desktopEventDispatch, appId, appName, appIcon]);
 
     return (
         <>
-            <PlatinumDesktopIcon
-                appId={appId}
-                appName={appName}
-                icon={appIcon}
-                onDoubleClickFunc={toggleApp}
-                initialPosition={[30, 300]}
-            />
             <PlatinumApp
                 id={appId}
                 name={appName}
                 icon={appIcon}
                 debug={false}
-                hidden={!appOpen}
             >
                 <PlatinumWindow
                     id={"textedit-demo"}

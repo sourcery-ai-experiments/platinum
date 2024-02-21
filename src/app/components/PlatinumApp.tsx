@@ -4,23 +4,22 @@ import {JSONTree} from 'react-json-tree';
 import PlatinumAppContext from "./PlatinumAppContext";
 import {getTheme} from "./PlatinumAppearance";
 import {useDesktop, useDesktopDispatch} from './PlatinumDesktopContext';
-import {useSound} from "./PlatinumDesktopSoundContext";
+import {useSound} from "./PlatinumDesktopSoundManagerContext";
 import PlatinumWindow from "./PlatinumWindow";
 
 interface PlatinumAppProps {
     id: string;
     name: string;
     icon: string;
-    hidden: boolean;
     desktop?: boolean;
     debug?: boolean;
-    open?: boolean;
+    openOnBoot?: boolean;
     children?: any;
 }
 
 
 const PlatinumApp: React.FC<PlatinumAppProps> = (
-    {id, icon, name, open = false, hidden = false, debug = false, children}
+    {id, icon, name, openOnBoot = true, debug = false, children}
 ) => {
     const {appContext, setAppContext} = React.useContext(PlatinumAppContext);
     const desktopContext = useDesktop();
@@ -30,21 +29,26 @@ const PlatinumApp: React.FC<PlatinumAppProps> = (
     const debuggerJSONTheme = {
         base00: themeData.color.white,
         base01: themeData.color.black,
-        base02: themeData.color.system[1],
+        base02: themeData.color.system[3],
         base03: themeData.color.system[3],
-        base04: themeData.color.system[4],
-        base05: themeData.color.system[5],
-        base06: themeData.color.system[6],
-        base07: themeData.color.black,
+        base04: themeData.color.system[3],
+        base05: themeData.color.system[4],
+        base06: themeData.color.system[5],
+        base07: themeData.color.system[6],
         base08: themeData.color.error,
         base09: themeData.color.theme[2],
-        base0A: themeData.color.theme[2],
-        base0B: themeData.color.theme[3],
+        base0A: themeData.color.theme[1],
+        base0B: themeData.color.theme[2],
         base0C: themeData.color.theme[3],
-        base0D: themeData.color.theme[5],
+        base0D: themeData.color.theme[4],
         base0E: themeData.color.theme[5],
         base0F: themeData.color.theme[6],
     };
+
+    const isAppOpen = () => {
+        const appOpen = desktopContext.openApps.find((i) => i.id === id);
+        return !!appOpen;
+    }
 
     return (
         <>
@@ -68,7 +72,7 @@ const PlatinumApp: React.FC<PlatinumAppProps> = (
                     <JSONTree data={useSound()} theme={debuggerJSONTheme}/>
                 </PlatinumWindow>
             }
-            {!hidden &&
+            {isAppOpen() &&
                 <>
                     {children}
                 </>

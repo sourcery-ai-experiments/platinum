@@ -5,7 +5,7 @@ import * as React from "react";
 import UrlSafeString from "url-safe-string";
 import PlatinumContextMenu from "./PlatinumContextMenu";
 import {useDesktop, useDesktopDispatch} from './PlatinumDesktopContext';
-import {useSoundDispatch} from "./PlatinumDesktopSoundContext";
+import {useSoundDispatch} from "./PlatinumDesktopSoundManagerContext";
 import {PlatinumMenuItem} from "./PlatinumMenu";
 import platinumWindowStyle from "./PlatinumWindow.module.scss";
 import "./styles/fonts.scss";

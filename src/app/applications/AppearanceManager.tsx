@@ -4,15 +4,14 @@ import * as React from "react";
 import PlatinumApp from "../components/PlatinumApp";
 import PlatinumAppContext, {defaultAppContext} from "../components/PlatinumAppContext";
 import {getTheme} from "../components/PlatinumAppearance";
+import PlatinumButton from "../components/PlatinumButton";
 import {useDesktop, useDesktopDispatch} from '../components/PlatinumDesktopContext';
-import PlatinumDesktopIcon from "../components/PlatinumDesktopIcon";
-import {useSoundDispatch} from "../components/PlatinumDesktopSoundContext";
+import {useSoundDispatch} from "../components/PlatinumDesktopSoundManagerContext";
 import PlatinumDropdown from "../components/PlatinumDropDown";
 import PlatinumWindow from "../components/PlatinumWindow";
 
 const AppearanceManager = () => {
     const [appContext, setAppContext] = React.useState(defaultAppContext);
-    const [appOpen, setAppOpen] = React.useState(false);
 
     const desktopContext = useDesktop();
     const desktopEventDispatch = useDesktopDispatch();
@@ -43,7 +42,6 @@ const AppearanceManager = () => {
     };
 
     const closeApp = () => {
-        setAppOpen(false);
         desktopEventDispatch({
             type: "PlatinumAppClose",
             app: {
@@ -56,7 +54,6 @@ const AppearanceManager = () => {
     };
 
     const openApp = () => {
-        setAppOpen(true);
         desktopEventDispatch({
             type: "PlatinumAppOpen",
             app: {
@@ -82,47 +79,54 @@ const AppearanceManager = () => {
         },
     ];
 
+    const cleanupIcons = () => {
+        desktopEventDispatch({
+            type: "PlatinumDesktopIconCleanup"
+        });
+    }
+
+    React.useEffect(() => {
+        desktopEventDispatch({
+            type: "PlatinumDesktopIconAdd",
+            app: {
+                id: appId,
+                name: appName,
+                icon: appIcon
+            }
+        });
+    }, [desktopEventDispatch, appId, appName, appIcon]);
+
     return (
         <PlatinumAppContext.Provider value={{appContext, setAppContext}}>
-            <PlatinumDesktopIcon
-                appId={appId}
-                appName={appName}
-                icon={appIcon}
-                onDoubleClickFunc={openApp}
-                initialPosition={[10, 60]}
-            />
             <PlatinumApp
                 id={appId}
                 name={appName}
                 icon={appIcon}
                 debug={true}
-                hidden={!appOpen}
-                open={true}
             >
-                {appOpen &&
-                    <PlatinumWindow
-                        id={"AppearanceManager_1"}
-                        title={appName}
-                        appId={appId}
-                        closable={false}
-                        resizable={false}
-                        zoomable={false}
-                        scrollable={false}
-                        collapsable={false}
-                        initialSize={[300, 100]}
-                        initialPosition={[300, 50]}
-                        modalWindow={true}
-                        appMenu={appMenu}
-                    >
-                        <PlatinumDropdown
-                            id={"select_theme"}
-                            small={false}
-                            options={themes}
-                            onChangeFunc={switchTheme}
-                            selected={desktopContext.activeTheme || "default"}
-                        />
-                    </PlatinumWindow>
-                }
+                <PlatinumWindow
+                    id={"AppearanceManager_1"}
+                    title={appName}
+                    appId={appId}
+                    closable={false}
+                    resizable={false}
+                    zoomable={false}
+                    scrollable={false}
+                    collapsable={false}
+                    initialSize={[300, 100]}
+                    initialPosition={[300, 50]}
+                    modalWindow={true}
+                    appMenu={appMenu}
+                >
+                    <PlatinumDropdown
+                        id={"select_theme"}
+                        small={false}
+                        options={themes}
+                        onChangeFunc={switchTheme}
+                        selected={desktopContext.activeTheme || "default"}
+                    />
+                    <PlatinumButton onClick={cleanupIcons}>Cleanup Icons</PlatinumButton>
+                </PlatinumWindow>
             </PlatinumApp>
         </PlatinumAppContext.Provider>
     );

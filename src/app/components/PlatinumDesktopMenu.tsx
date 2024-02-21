@@ -25,12 +25,12 @@ const PlatinumDesktopMenu: React.FC<PlatinumMenuProps> = ({menuItems}) => {
         className: platinumDesktopMenuStyles.platinumDesktopMenuTime,
     }
 
-    const a = desktopContext.openApps[0];
+    const a = desktopContext.appSwitcherMenu[0];
 
-    const openAppsMenuItem: PlatinumMenuItem = {
+    const appSwitcherMenuMenuItem: PlatinumMenuItem = {
         id: "app-switcher",
-        image: desktopContext.openApps[0].icon,
-        title: desktopContext.openApps[0].name,
+        image: desktopContext.appSwitcherMenu[0].icon,
+        title: desktopContext.appSwitcherMenu[0].name,
         className: platinumDesktopMenuStyles.platinumDesktopMenuAppSwitcher,
         menuChildren: desktopContext.openApps.map((app) => ({
                 id: app.id,
@@ -43,7 +43,7 @@ const PlatinumDesktopMenu: React.FC<PlatinumMenuProps> = ({menuItems}) => {
     const defaultMenuItems = [].concat(
         systemMenuItem,
         desktopContext.menuBar,
-        openAppsMenuItem,
+        appSwitcherMenuMenuItem,
         timeMenuItemPlaceholder
     ) as PlatinumMenuItem[];
 

@@ -2,7 +2,7 @@ import {Howl} from 'howler';
 import {createContext, useContext} from 'react';
 import {loadSoundTheme} from "./PlatinumAppearance";
 
-export const PlatinumDesktopSoundContext = createContext(null);
+export const PlatinumDesktopSoundManagerContext = createContext(null);
 export const PlatinumDesktopSoundDispatchContext = createContext(null);
 
 
@@ -25,7 +25,7 @@ export const initialPlayer: Howl = {
 };
 
 export function useSound() {
-    return useContext(PlatinumDesktopSoundContext);
+    return useContext(PlatinumDesktopSoundManagerContext);
 }
 
 export function useSoundDispatch() {

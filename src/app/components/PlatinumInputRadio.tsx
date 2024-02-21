@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import React from "react";
-import {useSoundDispatch} from "./PlatinumDesktopSoundContext";
+import {useSoundDispatch} from "./PlatinumDesktopSoundManagerContext";
 import platinumInputRadioStyles from "./PlatinumInputRadio.module.scss";
 
 type PlatinumInputRadioProps = {

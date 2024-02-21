@@ -4,7 +4,6 @@ import * as React from "react";
 import PlatinumApp from "../components/PlatinumApp";
 import PlatinumButton from "../components/PlatinumButton";
 import {useDesktop, useDesktopDispatch} from "../components/PlatinumDesktopContext";
-import PlatinumDesktopIcon from "../components/PlatinumDesktopIcon";
 import PlatinumDropdown from "../components/PlatinumDropDown";
 import PlatinumInput from "../components/PlatinumInput";
 import PlatinumInputCheckbox from "../components/PlatinumInputCheckbox";
@@ -36,34 +35,24 @@ const Demo = () => {
         });
     };
 
-    const openApp = (e) => {
-        setAppOpen(true);
+    React.useEffect(() => {
         desktopEventDispatch({
-            type: "PlatinumAppOpen",
+            type: "PlatinumDesktopIconAdd",
             app: {
                 id: appId,
-                title: appName,
+                name: appName,
                 icon: appIcon
             }
-
         });
-    };
+    }, [desktopEventDispatch, appId, appName, appIcon]);
 
     return (
         <>
-            <PlatinumDesktopIcon
-                appId={appId}
-                appName={appName}
-                icon={appIcon}
-                onDoubleClickFunc={openApp}
-                initialPosition={[30, 200]}
-            />
             <PlatinumApp
                 id={appId}
                 name={appName}
                 icon={appIcon}
                 debug={false}
-                hidden={!appOpen}
             >
                 <PlatinumWindow
                     id={"demo"}

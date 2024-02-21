@@ -1,13 +1,12 @@
 import classNames from "classnames";
 import * as React from "react";
 import {Suspense} from "react";
-import {getChildrenByTypeDeep} from 'react-nanny';
 import Finder from "./Finder";
-import PlatinumApp from "./PlatinumApp";
 import {getAllThemes, getThemeVars} from "./PlatinumAppearance"
 import PlatinumContextMenu from "./PlatinumContextMenu";
 import platinumDesktop from "./PlatinumDesktop.module.scss";
 import {useDesktop, useDesktopDispatch} from "./PlatinumDesktopContext";
+import PlatinumDesktopIcon from "./PlatinumDesktopIcon";
 import PlatinumDesktopMenu from "./PlatinumDesktopMenu";
 
 interface PlatinumDesktopProps {
@@ -78,14 +77,6 @@ const PlatinumDesktop: React.FC<PlatinumDesktopProps> = ({children}) => {
     const defaultMenuItems = [];
     const currentTheme = getThemeVars(desktopState.activeTheme);
 
-    React.Children.map(children, (a, i) => {
-        console.log(a.type.name);
-    })
-
-
-    const items = getChildrenByTypeDeep(children, [PlatinumApp]);
-    console.log(items)
-
     return (
         <>
             <Suspense>
@@ -111,6 +102,14 @@ const PlatinumDesktop: React.FC<PlatinumDesktopProps> = ({children}) => {
                                              position={contextMenuLocation}/>
                     )}
                     <Finder/>
+                    {desktopState.desktopIcons.map(i => (
+                        <PlatinumDesktopIcon
+                            appId={i.appId}
+                            appName={i.appName}
+                            icon={i.icon}
+                            initialPosition={[0, 0]}
+                        />
+                    ))}
                     {children}
                 </div>
             </Suspense>
