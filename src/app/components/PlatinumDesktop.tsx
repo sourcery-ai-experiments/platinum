@@ -67,15 +67,31 @@ const PlatinumDesktop: React.FC<PlatinumDesktopProps> = ({children}) => {
     }
 
     const toggleDesktopContextMenu = (e) => {
+        e.preventDefault();
         if (e.target.id === "platinumDesktop") {
-            e.preventDefault();
             setContextMenuLocation([e.clientX - clickOffset[0], e.clientY - clickOffset[1]]);
             setContextMenu(!contextMenu);
         }
     }
 
-    const defaultMenuItems = [];
+    const defaultMenuItems = [
+        {
+            id: "finder.app_CleanupDesktopIcons",
+            title: "Clean up...",
+            onClickFunc: () => {
+                desktopEventDispatch({
+                    type: "PlatinumDesktopIconCleanup"
+                });
+            }
+        }
+    ];
     const currentTheme = getThemeVars(desktopState.activeTheme);
+
+    React.useEffect(() => {
+        desktopEventDispatch({
+            type: "PlatinumDesktopIconCleanup"
+        });
+    }, [desktopEventDispatch]);
 
     return (
         <>
@@ -107,7 +123,6 @@ const PlatinumDesktop: React.FC<PlatinumDesktopProps> = ({children}) => {
                             appId={i.appId}
                             appName={i.appName}
                             icon={i.icon}
-                            initialPosition={[0, 0]}
                         />
                     ))}
                     {children}

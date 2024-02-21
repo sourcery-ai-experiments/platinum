@@ -11,7 +11,7 @@ interface PlatinumAppProps {
     id: string;
     name: string;
     icon: string;
-    desktop?: boolean;
+    noDesktopIcon?: boolean;
     debug?: boolean;
     openOnBoot?: boolean;
     children?: any;
@@ -19,7 +19,7 @@ interface PlatinumAppProps {
 
 
 const PlatinumApp: React.FC<PlatinumAppProps> = (
-    {id, icon, name, openOnBoot = true, debug = false, children}
+    {id, icon, name, openOnBoot = true, noDesktopIcon = false, debug = false, children}
 ) => {
     const {appContext, setAppContext} = React.useContext(PlatinumAppContext);
     const desktopContext = useDesktop();
@@ -49,6 +49,19 @@ const PlatinumApp: React.FC<PlatinumAppProps> = (
         const appOpen = desktopContext.openApps.find((i) => i.id === id);
         return !!appOpen;
     }
+
+    React.useEffect(() => {
+        if (!noDesktopIcon) {
+            desktopEventDispatch({
+                type: "PlatinumDesktopIconAdd",
+                app: {
+                    id: id,
+                    name: name,
+                    icon: icon
+                }
+            });
+        }
+    }, [desktopEventDispatch, id, name, icon]);
 
     return (
         <>

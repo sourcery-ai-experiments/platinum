@@ -18,7 +18,7 @@ const Finder = () => {
             name={appName}
             icon={appIcon}
             debug={false}
-            hidden={!appOpen}
+            noDesktopIcon={true}
         >
         </PlatinumApp>
     );

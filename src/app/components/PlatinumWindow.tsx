@@ -236,7 +236,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
         <>
             {!hidden && (
                 <div
-                    id={appId + "_" + !id ? UrlSafeString().generate(title) : id}
+                    id={appId + "_" + (!id ? UrlSafeString().generate(title) : id)}
                     ref={windowRef}
                     style={{
                         width: size[0],

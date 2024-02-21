@@ -36,41 +36,7 @@ const TextEdit = () => {
 > *We make tools for these kinds of people.*\n
 > *While some see them as the crazy ones, we see genius.*\n
 > *Because the people who are crazy enough to think they can change the world, are the ones who do."*`
-
-    const closeApp = (e) => {
-        desktopEventDispatch({
-            type: "PlatinumDesktopIconAdd",
-            app: {
-                id: appId,
-                name: appName,
-                icon: appIcon
-            }
-        });
-    };
-    //
-    // const toggleApp = (e) => {
-    //     setAppOpen(!appOpen);
-    // };
-    //
-    // const isOpen = (e) => {
-    //     const openIdx = desktopContext.openApps.findIndex((oa) => {
-    //         oa.id === appId
-    //     });
-    //
-    //
-    // }
-
-    React.useEffect(() => {
-        desktopEventDispatch({
-            type: "PlatinumDesktopIconAdd",
-            app: {
-                id: appId,
-                name: appName,
-                icon: appIcon
-            }
-        });
-    }, [desktopEventDispatch, appId, appName, appIcon]);
-
+    
     return (
         <>
             <PlatinumApp
@@ -92,7 +58,6 @@ const TextEdit = () => {
                     initialPosition={[350, 100]}
                     modalWindow={false}>
                     <PlatinumRichTextEditor markdown={defaultText}></PlatinumRichTextEditor>
-
                 </PlatinumWindow>
             </PlatinumApp>
         </>

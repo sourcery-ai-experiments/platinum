@@ -13,25 +13,29 @@ export type PlatinumDesktopIconState = {
 const createGrid = (iconSize: number, iconPadding: number) => {
     return [
         Math.floor(window.innerWidth / (iconSize + iconPadding)),
-        Math.floor(window.innerHeight / (iconSize + iconPadding)),
+        Math.floor(window.innerHeight / (iconSize * 2 + iconPadding)),
     ];
 };
 
 const getGridPosition = (iconSize: number, iconPadding: number, x: number, y: number) => {
+    let defaultPadding = iconPadding * 4;
     return [
-        Math.floor(window.innerHeight - ((iconSize + iconPadding) * y)),
-        Math.floor(window.innerWidth - ((iconSize + iconPadding) * x))
+        Math.floor((window.innerWidth - (iconSize * 2 + iconPadding) * x)),
+        Math.floor(((iconSize * 2 + iconPadding) * y)) + defaultPadding,
     ];
 };
 
 
 const cleanupDesktopIcons = (theme: string, icons: PlatinumDesktopIconState[]) => {
     let newDesktopIcons = [];
+    let startX: number = 1;
+    let startY: number = 0;
 
     let themeData = getTheme(theme);
     let iconSize = parseInt(themeData.desktop.iconSize, 10);
-    let iconPadding = parseInt(themeData.desktop.iconSize, 10) / 4;
+    let iconPadding = iconSize / 4;
     let grid = createGrid(iconSize, iconPadding);
+
 
     let sortedIcons = icons.sort(function (a, b) {
         if (a.appName.toLowerCase() > b.appName.toLowerCase()) {
@@ -43,28 +47,25 @@ const cleanupDesktopIcons = (theme: string, icons: PlatinumDesktopIconState[]) =
         return 0;
     });
 
-    let newIcons: PlatinumDesktopIconState[] = [];
-    let startX: number = 1;
-    let startY: number = 1;
-
     sortedIcons.forEach((icon) => {
+        if (startY >= grid[1]) {
+            startY = 0;
+            startX = startX + 1;
+        }
+
         if (startX >= grid[0]) {
             startX = 1;
-            startY = startY + 1;
         }
-
-        if (startY > grid[1]) {
-            startY = 1;
-        }
-
-        startX = startX + 1;
 
         newDesktopIcons.push({
             appId: icon.appId,
             appName: icon.appName,
             icon: icon.icon,
-            location: [getGridPosition(iconSize, iconPadding, startX, startY)]
+            location: getGridPosition(iconSize, iconPadding, startX, startY)
         })
+
+        startY = startY + 1;
+
     });
 
     return newDesktopIcons;
@@ -76,8 +77,7 @@ export const platinumDesktopIconEventHandler = (
 ) => {
     switch (action.type) {
         case "PlatinumDesktopIconCleanup": {
-            let newIcons = cleanupDesktopIcons(ds.activeTheme, ds.desktopIcons);
-            ds.desktopIcons = newIcons;
+            ds.desktopIcons = cleanupDesktopIcons(ds.activeTheme, ds.desktopIcons);
             break;
         }
         case "PlatinumDesktopIconFocus": {

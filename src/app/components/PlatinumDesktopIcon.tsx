@@ -29,7 +29,7 @@ const PlatinumDesktopIcon: React.FC<PlatinumDesktopIconProps> = ({
 
     const id = appId + ".shortcut";
 
-    const clickFocus = (e) => {
+    const clickFocus = () => {
         desktopEventDispatch({
             type: "PlatinumDesktopIconFocus",
             iconId: id,
@@ -39,9 +39,9 @@ const PlatinumDesktopIcon: React.FC<PlatinumDesktopIconProps> = ({
         }
     }
 
-    const changeIcon = e => {
+    const changeIcon = (e) => {
         if (dragging) {
-            clickFocus(e);
+            clickFocus();
 
             desktopEventDispatch({
                 type: "PlatinumDesktopIconMove",
@@ -58,7 +58,7 @@ const PlatinumDesktopIcon: React.FC<PlatinumDesktopIconProps> = ({
         return idx > -1;
     }
 
-    const launchIcon = (e) => {
+    const launchIcon = () => {
         desktopEventDispatch({
             type: "PlatinumDesktopIconOpen",
             iconId: id,
@@ -91,13 +91,16 @@ const PlatinumDesktopIcon: React.FC<PlatinumDesktopIconProps> = ({
         return idx > -1;
     };
 
-    const stopChangeIcon = e => {
+    const stopChangeIcon = () => {
         setDragging(false);
         setClickPosition([0, 0]);
     };
 
     const startDrag = (e) => {
-        setClickPosition([e.clientX - iconRef.current.getBoundingClientRect().left, e.clientY - iconRef.current.getBoundingClientRect().top])
+        setClickPosition([
+            e.clientX - iconRef.current.getBoundingClientRect().left,
+            e.clientY - iconRef.current.getBoundingClientRect().top
+        ]);
         setDragging(true);
     };
 
