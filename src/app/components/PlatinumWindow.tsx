@@ -3,9 +3,9 @@
 import classNames from "classnames";
 import * as React from "react";
 import UrlSafeString from "url-safe-string";
+import {useDesktop, useDesktopDispatch} from './desktop/PlatinumDesktopAppManagerContext';
+import {useSoundDispatch} from "./desktop/PlatinumDesktopSoundManagerContext";
 import PlatinumContextMenu from "./PlatinumContextMenu";
-import {useDesktop, useDesktopDispatch} from './PlatinumDesktopContext';
-import {useSoundDispatch} from "./PlatinumDesktopSoundManagerContext";
 import {PlatinumMenuItem} from "./PlatinumMenu";
 import platinumWindowStyle from "./PlatinumWindow.module.scss";
 import "./styles/fonts.scss";

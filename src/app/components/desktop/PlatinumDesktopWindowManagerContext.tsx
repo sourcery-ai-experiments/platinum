@@ -1,4 +1,4 @@
-import {PlatinumDesktopState} from "./PlatinumDesktopContext";
+import {PlatinumDesktopState} from "./PlatinumDesktopState";
 
 export const platinumWindowEventHandler = (ds: PlatinumDesktopState, action) => {
     switch (action.type) {

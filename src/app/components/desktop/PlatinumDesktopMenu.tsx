@@ -1,23 +1,15 @@
 'use client';
 import * as React from "react";
-import {useDesktop} from './PlatinumDesktopContext';
-import PlatinumMenu, {PlatinumMenuItem} from "./PlatinumMenu";
+import PlatinumMenu, {PlatinumMenuItem} from "../PlatinumMenu";
+import platinumMenuStyles from "../PlatinumMenu.module.scss";
+import {useDesktop} from './PlatinumDesktopAppManagerContext';
+import platinumDesktopMenuStyles from "./PlatinumDesktopMenu.module.scss";
 
-interface PlatinumTimeProps {
-    showing?: "date" | "time";
-    showSeconds?: boolean;
-    showPeriod?: boolean;
-    showDayOfWeek?: boolean;
-    flashSeparators?: boolean;
+interface PlatinumMenuProps {
+    menuItems: PlatinumMenuItem[];
 }
 
-const PlatinumDesktopMenu: React.FC<PlatinumTimeProps> = ({
-                                                              showing = "time",
-                                                              showSeconds = false,
-                                                              showPeriod = false,
-                                                              showDayOfWeek = false,
-                                                              flashSeparators = false,
-                                                          }) => {
+const PlatinumDesktopMenu: React.FC<PlatinumMenuProps> = ({menuItems}) => {
     const desktopContext = useDesktop();
 
     const systemMenuItem: PlatinumMenuItem = {

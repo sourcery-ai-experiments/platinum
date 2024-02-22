@@ -1,6 +1,7 @@
-import {getTheme} from "./PlatinumAppearance";
-import {PlatinumDesktopState, platinumDesktopStateEventReducer,} from "./PlatinumDesktopContext";
-import {PlatinumMenuItem} from "./PlatinumMenu";
+import {getTheme} from "../PlatinumAppearance";
+import {PlatinumMenuItem} from "../PlatinumMenu";
+import {platinumDesktopStateEventReducer} from "./PlatinumDesktopAppManagerContext";
+import {PlatinumDesktopState} from "./PlatinumDesktopState"
 
 export type PlatinumDesktopIconState = {
     appId: string;

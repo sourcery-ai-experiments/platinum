@@ -1,11 +1,11 @@
 import classNames from "classnames";
 import * as React from "react";
 import {Suspense} from "react";
-import Finder from "./Finder";
-import {getAllThemes, getThemeVars} from "./PlatinumAppearance"
-import PlatinumContextMenu from "./PlatinumContextMenu";
-import platinumDesktop from "./PlatinumDesktop.module.scss";
-import {useDesktop, useDesktopDispatch} from "./PlatinumDesktopContext";
+import Finder from "../Finder";
+import {getAllThemes, getThemeVars} from "../PlatinumAppearance"
+import PlatinumContextMenu from "../PlatinumContextMenu";
+import platinumDesktop from "../PlatinumDesktop.module.scss";
+import {useDesktop, useDesktopDispatch} from "./PlatinumDesktopAppManagerContext";
 import PlatinumDesktopIcon from "./PlatinumDesktopIcon";
 import PlatinumDesktopMenu from "./PlatinumDesktopMenu";
 

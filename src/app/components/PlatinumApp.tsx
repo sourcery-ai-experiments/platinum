@@ -1,10 +1,10 @@
 'use client';
 import * as React from "react";
 import {JSONTree} from 'react-json-tree';
+import {useDesktop, useDesktopDispatch} from './desktop/PlatinumDesktopAppManagerContext';
+import {useSound} from "./desktop/PlatinumDesktopSoundManagerContext";
 import PlatinumAppContext from "./PlatinumAppContext";
 import {getTheme} from "./PlatinumAppearance";
-import {useDesktop, useDesktopDispatch} from './PlatinumDesktopContext';
-import {useSound} from "./PlatinumDesktopSoundManagerContext";
 import PlatinumWindow from "./PlatinumWindow";
 
 interface PlatinumAppProps {

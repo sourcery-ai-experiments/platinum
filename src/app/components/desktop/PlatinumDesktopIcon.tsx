@@ -1,7 +1,7 @@
 'use client';
 import classNames from "classnames";
 import * as React from "react";
-import {useDesktop, useDesktopDispatch} from './PlatinumDesktopContext';
+import {useDesktop, useDesktopDispatch} from './PlatinumDesktopAppManagerContext';
 
 import platinumDesktopIconStyles from "./PlatinumDesktopIcon.module.scss";
 

@@ -1,8 +1,8 @@
 'use client';
 
 import * as React from "react";
+import {useDesktop, useDesktopDispatch} from "../components/desktop/PlatinumDesktopAppManagerContext";
 import PlatinumApp from "../components/PlatinumApp";
-import {useDesktop, useDesktopDispatch} from "../components/PlatinumDesktopContext";
 import PlatinumRichTextEditor from "../components/PlatinumRichTextEditor";
 import PlatinumWindow from "../components/PlatinumWindow";
 
@@ -36,7 +36,7 @@ const TextEdit = () => {
 > *We make tools for these kinds of people.*\n
 > *While some see them as the crazy ones, we see genius.*\n
 > *Because the people who are crazy enough to think they can change the world, are the ones who do."*`
-    
+
     return (
         <>
             <PlatinumApp

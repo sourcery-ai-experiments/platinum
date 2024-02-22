@@ -1,12 +1,12 @@
 'use client';
 
 import * as React from "react";
+import {useDesktop, useDesktopDispatch} from '../components/desktop/PlatinumDesktopAppManagerContext';
+import {useSoundDispatch} from "../components/desktop/PlatinumDesktopSoundManagerContext";
 import PlatinumApp from "../components/PlatinumApp";
 import PlatinumAppContext, {defaultAppContext} from "../components/PlatinumAppContext";
 import {getTheme} from "../components/PlatinumAppearance";
 import PlatinumButton from "../components/PlatinumButton";
-import {useDesktop, useDesktopDispatch} from '../components/PlatinumDesktopContext';
-import {useSoundDispatch} from "../components/PlatinumDesktopSoundManagerContext";
 import PlatinumDropdown from "../components/PlatinumDropDown";
 import PlatinumWindow from "../components/PlatinumWindow";
 

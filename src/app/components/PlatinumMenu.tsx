@@ -1,7 +1,7 @@
 'use client';
 import classNames from "classnames";
 import * as React from "react";
-import {useSoundDispatch} from "./PlatinumDesktopSoundManagerContext";
+import {useSoundDispatch} from "./desktop/PlatinumDesktopSoundManagerContext";
 import platinumMenuStyles from "./PlatinumMenu.module.scss";
 
 export interface PlatinumMenuItem {
@@ -15,6 +15,7 @@ export interface PlatinumMenuItem {
     onClickFunc?: any;
     menuChildren?: PlatinumMenuItem[];
     className?: string;
+    widgets?: React.FC;
 }
 
 interface PlatinumMenuProps {

@@ -1,6 +1,6 @@
 import {Howl} from 'howler';
 import {createContext, useContext} from 'react';
-import {loadSoundTheme} from "./PlatinumAppearance";
+import {loadSoundTheme} from "../PlatinumAppearance";
 
 export const PlatinumDesktopSoundManagerContext = createContext(null);
 export const PlatinumDesktopSoundDispatchContext = createContext(null);

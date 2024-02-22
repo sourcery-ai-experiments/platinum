@@ -1,154 +1,17 @@
-import {Howl} from 'howler';
 import React, {createContext, useContext} from 'react';
-import {loadSoundTheme} from "./PlatinumAppearance"
-import {platinumDesktopIconEventHandler, PlatinumDesktopIconState} from "./PlatinumDesktopIconContext";
+import {loadSoundTheme} from "../PlatinumAppearance"
+import {platinumDesktopIconEventHandler} from "./PlatinumDesktopIconContext";
 import {
     initialPlayer,
     PlatinumDesktopSoundDispatchContext,
     PlatinumDesktopSoundManagerContext,
     PlatinumDesktopSoundStateEventReducer
 } from "./PlatinumDesktopSoundManagerContext";
+import {initialDesktopState, PlatinumDesktopState, PlatinumTheme} from "./PlatinumDesktopState";
 import {platinumWindowEventHandler} from "./PlatinumDesktopWindowManagerContext"
-import {PlatinumMenuItem} from "./PlatinumMenu";
 
 const PlatinumDesktopContext = createContext(null);
 const PlatinumDesktopDispatchContext = createContext(null);
-
-
-export interface PlatinumDesktopState {
-    activeTheme: string;
-    soundPlayer: Howl;
-    availableThemes: PlatinumTheme[];
-    selectedDesktopIcons: string[];
-    activeWindow: string;
-    activeApp: string;
-    menuBar: PlatinumMenuItem[];
-    systemMenu: PlatinumMenuItem[];
-    appSwitcherMenu: PlatinumMenuItem[];
-    contextMenu: PlatinumMenuItem[];
-    showContextMenu: boolean;
-    selectBox: boolean;
-    selectBoxSize: number[];
-    selectBoxStart: number[];
-    desktopIcons: PlatinumDesktopIconState[];
-    openApps: PlatinumApp[];
-}
-
-type PlatinumApp = {
-    id: string;
-    name: string;
-    icon: string;
-    hidden: boolean;
-};
-
-type PlatinumThemeColorPalette = [number, number, number, number, number, number, number];
-
-type PlatinumThemeColorsWindow = {
-    border: string;
-    borderOutset: string;
-    borderInset: string;
-    frame: string;
-    title: string;
-    document: string;
-}
-
-type PlatinumThemeColors = {
-    outline: string;
-    select: string;
-    highlight: string;
-    black: string;
-    white: string;
-    alert: string;
-    error: string;
-    system: PlatinumThemeColorPalette;
-    theme: PlatinumThemeColorPalette;
-    window: PlatinumThemeColorsWindow;
-}
-
-type PlatinumThemeTypography = {
-    ui: string;
-    uiSize: string;
-    header: string;
-    headerSize: string;
-    body: string;
-    bodySize: string;
-}
-
-type PlatinumThemeMeasurementsWindow = {
-    borderSize: string;
-    controlSize: string;
-    paddingSize: string
-    scrollbarSize: string;
-}
-
-type PlatinumThemeMeasurements = {
-    window: PlatinumThemeMeasurementsWindow;
-}
-
-type PlatinumThemeSound = {
-    file: string;
-    disabled: string[];
-}
-
-type PlatinumThemeDesktop = {
-    iconSize: string;
-    iconFontSize: string;
-    backgroundImage: string;
-    backgroundColor: string;
-    repeat: string;
-    position: string;
-    size: string;
-}
-
-type PlatinumTheme = {
-    id: string;
-    name: string;
-    color: PlatinumThemeColors
-    typography: PlatinumThemeTypography;
-    measurements: PlatinumThemeMeasurements;
-    desktop: PlatinumThemeDesktop;
-    sound: PlatinumThemeSound;
-};
-
-
-const initialDesktopState: PlatinumDesktopState = {
-    activeTheme: "default",
-    availableThemes: [],
-    selectedDesktopIcons: [],
-    soundPlayer: null,
-    activeWindow: "",
-    menuBar: [],
-    systemMenu: [{
-        id: "about",
-        title: "About This Computer",
-        keyboardShortcut: "&#8984;S"
-    },
-        {id: "spacer"},
-    ],
-    activeApp: "finder.app",
-    appSwitcherMenu: [
-        {
-            id: "finder.app",
-            title: "Finder",
-            icon: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/macos.svg`
-
-        }
-    ],
-    openApps: [
-        {
-            id: "finder.app",
-            name: "Finder",
-            icon: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/macos.svg`,
-            hidden: false
-        }
-    ],
-    desktopIcons: [],
-    contextMenu: [],
-    showContextMenu: false,
-    selectBox: false,
-    selectBoxSize: [0, 0],
-    selectBoxStart: [0, 0]
-};
 
 export function PlatinumDesktopProvider({children}) {
 
@@ -260,7 +123,7 @@ export const platinumAppEventHandler = (ds: PlatinumDesktopState, action) => {
 };
 
 export const platinumDesktopStateEventReducer = (ds: PlatinumDesktopState, action) => {
-    // console.group("Desktop Event");
+    // console.group("desktop Event");
     // console.log("Action: ", action);
     // console.log("State: ", ds)
     // console.groupEnd();
