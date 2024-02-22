@@ -98,7 +98,7 @@ const PlatinumDesktop: React.FC<PlatinumDesktopProps> = ({children}) => {
                         }
                     },
                     {
-                        id: "finder.app_CleanupDesktopIcons",
+                        id: "finder.app_ArrangeDesktopIcons",
                         title: "Arrange...",
                         menuChildren: [
                             {
@@ -110,7 +110,7 @@ const PlatinumDesktop: React.FC<PlatinumDesktopProps> = ({children}) => {
                                 title: "by Kind"
                             },
                             {
-                                id: "finder.app_arrange_by_kind",
+                                id: "finder.app_arrange_by_label",
                                 title: "by Label"
                             },
                         ]

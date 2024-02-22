@@ -16,7 +16,7 @@ const PlatinumDesktopMenu: React.FC<PlatinumMenuProps> = ({menuItems}) => {
         id: "apple-menu",
         image: `${process.env.NEXT_PUBLIC_BASE_PATH}/img/apple.png`,
         menuChildren: desktopContext.systemMenu,
-        className: platinumMenuStyles.platinumDesktopMenuAppleMenu
+        className: platinumDesktopMenuStyles.platinumDesktopMenuAppleMenu
     };
 
     const timeMenuItemPlaceholder: PlatinumMenuItem = {

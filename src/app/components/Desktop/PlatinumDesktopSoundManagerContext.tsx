@@ -1,6 +1,7 @@
 import {Howl} from 'howler';
 import React from 'react';
-import {loadSoundTheme} from "../PlatinumAppearance";
+import soundData from "../../../../public/sounds/platinum/platinum.json"
+import {createSoundPlayer, loadSoundTheme} from "../PlatinumAppearance";
 
 export const PlatinumDesktopSoundManagerContext = React.createContext(null);
 export const PlatinumDesktopSoundDispatchContext = React.createContext(null);
@@ -16,11 +17,11 @@ interface PlatinumDesktopSoundAction {
     sound?: string;
     file?: string;
     disabled?: string[];
-    soundPlayer?: Howl | any;
+    soundPlayer?: any;
 }
 
-export const initialPlayer: Howl = {
-    soundPlayer: loadSoundTheme("/sounds/platinum/platinum.json"),
+export const initialPlayer = {
+    soundPlayer: createSoundPlayer(soundData),
     disabled: []
 };
 
@@ -48,7 +49,7 @@ export const PlatinumDesktopSoundStateEventReducer = (
             break;
         }
         case "PlatinumSoundLoad": {
-            ss.soundPlayer = loadSoundTheme(action.file);
+            ss.soundPlayer = loadSoundTheme(process.env.NEXT_PUBLIC_BASE_PATH + action.file);
             ss.disabled = action.disabled;
             break;
         }
