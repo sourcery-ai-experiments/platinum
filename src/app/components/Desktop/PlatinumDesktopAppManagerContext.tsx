@@ -1,12 +1,7 @@
 import React, {createContext, useContext} from 'react';
 import {loadSoundTheme} from "../PlatinumAppearance"
 import {platinumDesktopIconEventHandler} from "./PlatinumDesktopIconContext";
-import {
-    initialPlayer,
-    PlatinumDesktopSoundDispatchContext,
-    PlatinumDesktopSoundManagerContext,
-    PlatinumDesktopSoundStateEventReducer
-} from "./PlatinumDesktopSoundManagerContext";
+import {PlatinumDesktopSoundManagerProvider} from "./PlatinumDesktopSoundManagerContext";
 import {initialDesktopState, PlatinumDesktopState, PlatinumTheme} from "./PlatinumDesktopState";
 import {platinumWindowEventHandler} from "./PlatinumDesktopWindowManagerContext"
 
@@ -16,16 +11,13 @@ const PlatinumDesktopDispatchContext = createContext(null);
 export function PlatinumDesktopProvider({children}) {
 
     const [desktop, dispatch] = React.useReducer(platinumDesktopStateEventReducer, initialDesktopState);
-    const [sound, soundDispatch] = React.useReducer(PlatinumDesktopSoundStateEventReducer, initialPlayer);
 
     return (
         <PlatinumDesktopContext.Provider value={desktop}>
             <PlatinumDesktopDispatchContext.Provider value={dispatch}>
-                <PlatinumDesktopSoundManagerContext.Provider value={sound}>
-                    <PlatinumDesktopSoundDispatchContext.Provider value={soundDispatch}>
-                        {children}
-                    </PlatinumDesktopSoundDispatchContext.Provider>
-                </PlatinumDesktopSoundManagerContext.Provider>
+                <PlatinumDesktopSoundManagerProvider>
+                    {children}
+                </PlatinumDesktopSoundManagerProvider>
             </PlatinumDesktopDispatchContext.Provider>
         </PlatinumDesktopContext.Provider>
     );
@@ -42,13 +34,18 @@ export function useDesktopDispatch() {
 export const platinumDesktopEventHandler = (ds: PlatinumDesktopState, action) => {
     switch (action.type) {
         case "PlatinumDesktopFocus": {
-            if (action.e.target.id === "platinumDesktop") {
+            if ('e' in action && action.e.target.id === "platinumDesktop") {
                 ds.activeWindow = "";
                 ds.selectedDesktopIcons = [];
                 ds.showContextMenu = false;
                 ds.selectBox = true;
-                ds.selectBoxStart = [action.e.clientX, action.e.clientY]
+                ds.selectBoxStart = [action.e.clientX, action.e.clientY];
             }
+
+            if ('menuBar' in action) {
+                ds.menuBar = action.menuBar;
+            }
+
             break;
         }
         case "PlatinumDesktopDoubleClick": {
@@ -104,13 +101,8 @@ export const platinumAppEventHandler = (ds: PlatinumDesktopState, action) => {
             break;
         }
         case "PlatinumAppClose": {
-            if (ds.appSwitcherMenu.length > 0) {
-                const idx: number = ds.appSwitcherMenu.findIndex(o => o.id === action.appId);
-                if (idx > -1) {
-                    ds.appSwitcherMenu.splice(idx, 1);
-                    ds.activeWindow = "";
-                }
-            }
+            ds.openApps = ds.openApps.filter((oa) => oa.id !== action.app.id);
+            ds.activeWindow = "";
             break;
         }
         case "PlatinumAppFocus": {
@@ -123,10 +115,7 @@ export const platinumAppEventHandler = (ds: PlatinumDesktopState, action) => {
 };
 
 export const platinumDesktopStateEventReducer = (ds: PlatinumDesktopState, action) => {
-    // console.group("desktop Event");
-    // console.log("Action: ", action);
-    // console.log("State: ", ds)
-    // console.groupEnd();
+    // const startDs = ds;
     if ('type' in action) {
         if (action.type.startsWith("PlatinumWindow")) {
             ds = platinumWindowEventHandler(ds, action);
@@ -138,6 +127,11 @@ export const platinumDesktopStateEventReducer = (ds: PlatinumDesktopState, actio
             ds = platinumDesktopEventHandler(ds, action);
         }
     }
+    // console.group("Desktop Event");
+    // console.log("Action: ", action);
+    // console.log("Start State: ", startDs)
+    // console.log("End State: ", ds)
+    // console.groupEnd();
     return {...ds};
 };
 

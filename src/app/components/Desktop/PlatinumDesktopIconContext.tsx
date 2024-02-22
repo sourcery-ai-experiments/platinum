@@ -7,6 +7,8 @@ export type PlatinumDesktopIconState = {
     appId: string;
     appName: string;
     icon: string;
+    label?: string;
+    kind?: string;
     contextMenu?: PlatinumMenuItem[];
     location?: [number, number];
 };
@@ -105,7 +107,9 @@ export const platinumDesktopIconEventHandler = (
                     icon: action.app.icon,
                     appName: action.app.name,
                     appId: action.app.id,
-                    location: action.location
+                    location: action.location,
+                    label: action.label,
+                    kind: action.kind
                 });
             }
             break;

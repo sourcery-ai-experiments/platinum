@@ -1,9 +1,9 @@
 import {Howl} from 'howler';
-import {createContext, useContext} from 'react';
+import React from 'react';
 import {loadSoundTheme} from "../PlatinumAppearance";
 
-export const PlatinumDesktopSoundManagerContext = createContext(null);
-export const PlatinumDesktopSoundDispatchContext = createContext(null);
+export const PlatinumDesktopSoundManagerContext = React.createContext(null);
+export const PlatinumDesktopSoundDispatchContext = React.createContext(null);
 
 
 interface PlatinumDesktopSoundState {
@@ -25,11 +25,11 @@ export const initialPlayer: Howl = {
 };
 
 export function useSound() {
-    return useContext(PlatinumDesktopSoundManagerContext);
+    return React.useContext(PlatinumDesktopSoundManagerContext);
 }
 
 export function useSoundDispatch() {
-    return useContext(PlatinumDesktopSoundDispatchContext);
+    return React.useContext(PlatinumDesktopSoundDispatchContext);
 }
 
 export const PlatinumDesktopSoundStateEventReducer = (
@@ -59,3 +59,16 @@ export const PlatinumDesktopSoundStateEventReducer = (
     }
     return ss;
 };
+
+
+export function PlatinumDesktopSoundManagerProvider({children}) {
+    const [sound, soundDispatch] = React.useReducer(PlatinumDesktopSoundStateEventReducer, initialPlayer);
+
+    return (
+        <PlatinumDesktopSoundManagerContext.Provider value={sound}>
+            <PlatinumDesktopSoundDispatchContext.Provider value={soundDispatch}>
+                {children}
+            </PlatinumDesktopSoundDispatchContext.Provider>
+        </PlatinumDesktopSoundManagerContext.Provider>
+    );
+}

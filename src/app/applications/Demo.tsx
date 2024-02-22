@@ -1,7 +1,7 @@
 'use client';
 
-import * as React from "react";
-import {useDesktop, useDesktopDispatch} from "../components/desktop/PlatinumDesktopAppManagerContext";
+import React from "react";
+import {useDesktop, useDesktopDispatch} from "../components/Desktop/PlatinumDesktopAppManagerContext";
 import PlatinumApp from "../components/PlatinumApp";
 import PlatinumButton from "../components/PlatinumButton";
 import PlatinumDropdown from "../components/PlatinumDropDown";
@@ -35,16 +35,6 @@ const Demo = () => {
         });
     };
 
-    React.useEffect(() => {
-        desktopEventDispatch({
-            type: "PlatinumDesktopIconAdd",
-            app: {
-                id: appId,
-                name: appName,
-                icon: appIcon
-            }
-        });
-    }, [desktopEventDispatch, appId, appName, appIcon]);
 
     return (
         <>
@@ -67,7 +57,7 @@ const Demo = () => {
                     initialPosition={[100, 100]}
                     modalWindow={false}>
                     <iframe src={"https://theoldnet.com/"}
-                            style={{width: "100%", height: "100%", padding: "0", margin: "0"}}/>
+                            style={{width: "99%", height: "99%", padding: "0", margin: "0"}}/>
                 </PlatinumWindow>
                 <PlatinumWindow
                     id={"demo2"}

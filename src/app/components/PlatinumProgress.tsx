@@ -1,5 +1,5 @@
 'use client';
-import * as React from "react";
+import React from "react";
 import platinumProgressStyles from "./PlatinumProgress.module.scss";
 
 interface PlatinumProgressProps {

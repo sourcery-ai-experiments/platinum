@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from "react";
+import React from "react";
 import PlatinumApp from "./PlatinumApp";
 
 const Finder = () => {

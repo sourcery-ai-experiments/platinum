@@ -64,6 +64,10 @@ export const PlatinumWindowStateEventReducer = (ws: PlatinumWindowState, action)
             }
             break;
         }
+        case "PlatinumWindowPosition": {
+            ws.position = action.position;
+            break;
+        }
     }
     return {...ws};
 };

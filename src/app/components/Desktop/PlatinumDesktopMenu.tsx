@@ -1,5 +1,5 @@
 'use client';
-import * as React from "react";
+import React from "react";
 import PlatinumMenu, {PlatinumMenuItem} from "../PlatinumMenu";
 import platinumMenuStyles from "../PlatinumMenu.module.scss";
 import {useDesktop} from './PlatinumDesktopAppManagerContext';

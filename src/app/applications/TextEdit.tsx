@@ -1,7 +1,7 @@
 'use client';
 
-import * as React from "react";
-import {useDesktop, useDesktopDispatch} from "../components/desktop/PlatinumDesktopAppManagerContext";
+import React from "react";
+import {useDesktop, useDesktopDispatch} from "../components/Desktop/PlatinumDesktopAppManagerContext";
 import PlatinumApp from "../components/PlatinumApp";
 import PlatinumRichTextEditor from "../components/PlatinumRichTextEditor";
 import PlatinumWindow from "../components/PlatinumWindow";

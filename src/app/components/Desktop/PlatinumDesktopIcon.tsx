@@ -1,6 +1,6 @@
 'use client';
 import classNames from "classnames";
-import * as React from "react";
+import React from "react";
 import {useDesktop, useDesktopDispatch} from './PlatinumDesktopAppManagerContext';
 
 import platinumDesktopIconStyles from "./PlatinumDesktopIcon.module.scss";
@@ -9,6 +9,8 @@ interface PlatinumDesktopIconProps {
     appId: string;
     appName: string;
     icon: string;
+    label?: string;
+    kind?: string;
     onClickFunc?: any;
 }
 
@@ -16,6 +18,8 @@ const PlatinumDesktopIcon: React.FC<PlatinumDesktopIconProps> = ({
                                                                      appId,
                                                                      appName,
                                                                      icon,
+                                                                     label,
+                                                                     kind,
                                                                      onClickFunc,
                                                                  }) => {
 

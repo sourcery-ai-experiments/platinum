@@ -1,14 +1,14 @@
 'use client';
 
-import * as React from "react";
-import {useDesktop, useDesktopDispatch} from '../components/desktop/PlatinumDesktopAppManagerContext';
-import {useSoundDispatch} from "../components/desktop/PlatinumDesktopSoundManagerContext";
-import PlatinumApp from "../components/PlatinumApp";
-import PlatinumAppContext, {defaultAppContext} from "../components/PlatinumAppContext";
-import {getTheme} from "../components/PlatinumAppearance";
-import PlatinumButton from "../components/PlatinumButton";
-import PlatinumDropdown from "../components/PlatinumDropDown";
-import PlatinumWindow from "../components/PlatinumWindow";
+import React from "react";
+import {useDesktop, useDesktopDispatch} from '../Desktop/PlatinumDesktopAppManagerContext';
+import {useSoundDispatch} from "../Desktop/PlatinumDesktopSoundManagerContext";
+import PlatinumApp from "../PlatinumApp";
+import PlatinumAppContext, {defaultAppContext} from "../PlatinumAppContext";
+import {getTheme} from "../PlatinumAppearance";
+import PlatinumButton from "../PlatinumButton";
+import PlatinumDropdown from "../PlatinumDropDown";
+import PlatinumWindow from "../PlatinumWindow";
 
 const AppearanceManager = () => {
     const [appContext, setAppContext] = React.useState(defaultAppContext);
@@ -85,24 +85,12 @@ const AppearanceManager = () => {
         });
     }
 
-    React.useEffect(() => {
-        desktopEventDispatch({
-            type: "PlatinumDesktopIconAdd",
-            app: {
-                id: appId,
-                name: appName,
-                icon: appIcon
-            }
-        });
-    }, [desktopEventDispatch, appId, appName, appIcon]);
-
     return (
         <PlatinumAppContext.Provider value={{appContext, setAppContext}}>
             <PlatinumApp
                 id={appId}
                 name={appName}
                 icon={appIcon}
-                debug={true}
             >
                 <PlatinumWindow
                     id={"AppearanceManager_1"}

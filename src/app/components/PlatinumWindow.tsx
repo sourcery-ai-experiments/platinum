@@ -1,10 +1,10 @@
 "use client";
 
 import classNames from "classnames";
-import * as React from "react";
+import React from "react";
 import UrlSafeString from "url-safe-string";
-import {useDesktop, useDesktopDispatch} from './desktop/PlatinumDesktopAppManagerContext';
-import {useSoundDispatch} from "./desktop/PlatinumDesktopSoundManagerContext";
+import {useDesktop, useDesktopDispatch} from './Desktop/PlatinumDesktopAppManagerContext';
+import {useSoundDispatch} from "./Desktop/PlatinumDesktopSoundManagerContext";
 import PlatinumContextMenu from "./PlatinumContextMenu";
 import {PlatinumMenuItem} from "./PlatinumMenu";
 import platinumWindowStyle from "./PlatinumWindow.module.scss";
@@ -76,8 +76,13 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
     const player = useSoundDispatch();
 
     const startResizeWindow = () => {
+        windowEventDispatch({
+            type: "PlatinumWindowPosition",
+            position: [windowRef.current.getBoundingClientRect().left, windowRef.current.getBoundingClientRect().top]
+        })
         setResize(true);
         setZoom(false);
+        setSize([windowRef.current.clientWidth, windowRef.current.clientHeight]);
     };
 
     const startMoveWindow = (e) => {
@@ -264,7 +269,10 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                         windowState.resizing === true
                             ? platinumWindowStyle.platinumWindowResizing
                             : "",
-                        modalWindow === true ? platinumWindowStyle.platinumWindowModal : ""
+                        modalWindow === true ? platinumWindowStyle.platinumWindowModal : "",
+                        scrollable === true
+                            ? ""
+                            : platinumWindowStyle.platinumWindowNoScroll,
                     )}
                     onMouseMove={changeWindow}
                     onMouseUp={stopChangeWindow}
@@ -334,12 +342,12 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                             isActive()
                                 ? ""
                                 : platinumWindowStyle.platinumWindowContentsDimmed,
+                            scrollable === true
+                                ? ""
+                                : platinumWindowStyle.platinumWindowNoScroll,
                             modalWindow === true
                                 ? platinumWindowStyle.platinumWindowContentsModal
                                 : platinumWindowStyle.platinumWindowContents,
-                            scrollable === true
-                                ? ""
-                                : platinumWindowStyle.platinumWindowNoScroll
                         )}
                         style={{
                             display: windowState.collapsed == true ? "none" : "block",

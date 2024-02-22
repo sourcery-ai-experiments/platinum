@@ -1,12 +1,12 @@
 'use client';
 
-import * as React from "react";
-
-import AppearanceManager from "./applications/AppearanceManager";
+import React from "react";
 import Demo from "./applications/Demo";
 import TextEdit from "./applications/TextEdit";
-import PlatinumDesktop from "./components/desktop/PlatinumDesktop";
-import {PlatinumDesktopProvider} from "./components/desktop/PlatinumDesktopAppManagerContext";
+
+import AppearanceManager from "./components/ControlPanels/AppearanceManager";
+import PlatinumDesktop from "./components/Desktop/PlatinumDesktop";
+import {PlatinumDesktopProvider} from "./components/Desktop/PlatinumDesktopAppManagerContext";
 
 export default function Home() {
     return (
