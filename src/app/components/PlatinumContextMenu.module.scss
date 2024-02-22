@@ -2,10 +2,10 @@
 
 .platinumContextMenuWrapper {
   position: fixed;
+  z-index: 900;
   display: inline-block;
-  padding: 0;
   margin: 0;
 
   @include appearance.platinumWindowBoxShadow;
-  z-index: 900;
+  padding: 0;
 }

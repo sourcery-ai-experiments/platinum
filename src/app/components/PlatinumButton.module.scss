@@ -1,11 +1,11 @@
 @use "../components/styles/appearance";
 
 .platinumButton {
+  font-family: var(--ui-font);
+  font-size: var(--ui-font-size);
+
   margin: calc(var(--window-padding-size));
   padding: calc(var(--window-padding-size) / 2) var(--window-padding-size);
-
-  font-size: var(--ui-font-size);
-  font-family: var(--ui-font);
 
   user-select: none;
 

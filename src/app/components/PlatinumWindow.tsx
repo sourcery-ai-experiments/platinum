@@ -1,14 +1,15 @@
 "use client";
-import classNames from "classnames";
-import * as React from "react";
-import UrlSafeString from "url-safe-string";
-import PlatinumContextMenu from "./PlatinumContextMenu";
-import {useDesktop, useDesktopDispatch} from './PlatinumDesktopContext';
 
+import classNames from "classnames";
+import React from "react";
+import UrlSafeString from "url-safe-string";
+import {useDesktop, useDesktopDispatch} from './Desktop/PlatinumDesktopAppManagerContext';
+import {useSoundDispatch} from "./Desktop/PlatinumDesktopSoundManagerContext";
+import PlatinumContextMenu from "./PlatinumContextMenu";
 import {PlatinumMenuItem} from "./PlatinumMenu";
 import platinumWindowStyle from "./PlatinumWindow.module.scss";
 import "./styles/fonts.scss";
-import {PlatinumWindowStateEventReducer} from "./PlatinumWindowContext";
+import {PlatinumWindowState, PlatinumWindowStateEventReducer} from "./PlatinumWindowContext";
 
 interface PlatinumWindowProps {
     title?: string;
@@ -25,7 +26,7 @@ interface PlatinumWindowProps {
     initialSize?: [number, number];
     initialPosition?: [number, number];
     appMenu?: PlatinumMenuItem[];
-    contextMenuItems?: PlatinumMenuItem[];
+    contextMenu?: PlatinumMenuItem[];
     children?: React.ReactNode;
 }
 
@@ -44,7 +45,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                                                            initialSize = [300, 400],
                                                            initialPosition = [0, 0],
                                                            appMenu,
-                                                           contextMenuItems,
+                                                           contextMenu,
                                                            children,
                                                        }) => {
 
@@ -53,10 +54,12 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
         0, 0,
     ]);
 
-    let initialWindowState = {
+    let initialWindowState: PlatinumWindowState = {
         size: initialSize,
         position: initialPosition,
         closed: hidden,
+        menuBar: appMenu ? appMenu : [],
+        contextMenuShown: false
     };
 
     const clickOffset = [10, 10];
@@ -70,16 +73,25 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
     const desktopContext = useDesktop();
     const desktopEventDispatch = useDesktopDispatch();
 
-    const playSound = (soundName: string) => {
-        if (desktopContext.soundPlayer) {
-            console.log("PLAYING " + soundName);
-            desktopContext.soundPlayer.play(soundName);
-        }
-    }
+    const player = useSoundDispatch();
 
     const startResizeWindow = () => {
+        windowEventDispatch({
+            type: "PlatinumWindowPosition",
+            position: [windowRef.current.getBoundingClientRect().left, windowRef.current.getBoundingClientRect().top]
+        })
         setResize(true);
         setZoom(false);
+        setSize([windowRef.current.clientWidth, windowRef.current.clientHeight]);
+    };
+
+    const startMoveWindow = (e) => {
+        player({type: "PlatinumSoundPlay", sound: "PlatinumWindowMoveIdle"})
+        setDragging(true);
+        setClickPosition([
+            e.clientX - windowRef.current.getBoundingClientRect().left,
+            e.clientY - windowRef.current.getBoundingClientRect().top,
+        ]);
     };
 
     const changeWindow = (e) => {
@@ -95,12 +107,38 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
         }
 
         if (windowState.dragging) {
-            playSound("PlatinumWindowMoveMoving");
+            player({type: "PlatinumSoundPlay", sound: "PlatinumWindowMoveMoving"})
             setMoving(true, [
                 e.clientX - clickPosition[0],
                 e.clientY - clickPosition[1],
             ]);
         }
+    };
+
+    const stopChangeWindow = () => {
+        player({type: "PlatinumSoundPlay", sound: "PlatinumWindowMoveStop"})
+        setResize(false);
+        setDragging(false);
+        setMoving(false);
+        setClickPosition([0, 0]);
+    };
+
+    const setDragging = (toDrag: boolean) => {
+        windowEventDispatch({
+            type: "PlatinumWindowDrag",
+            dragging: toDrag,
+        });
+    };
+
+    const setMoving = (
+        toMove: boolean,
+        toPosition: [number, number] = [0, 0]
+    ) => {
+        windowEventDispatch({
+            type: "PlatinumWindowMove",
+            moving: toMove,
+            position: toPosition,
+        });
     };
 
     const isActive = () => {
@@ -109,33 +147,20 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
 
     const setActive = () => {
         if (!isActive()) {
-            playSound("PlatinumWindowFocus");
+            player({type: "PlatinumSoundPlay", sound: "PlatinumWindowFocus"})
         }
+
         desktopEventDispatch({
             type: "PlatinumWindowFocus",
             app: {
                 id: id,
+                appMenu: appMenu
             }
         });
         desktopEventDispatch({
             type: "PlatinumWindowContextMenu",
-            menuBar: appMenu ? appMenu : [],
+            contextMenu: contextMenu ? contextMenu : [],
         });
-    };
-
-    const stopChangeWindow = () => {
-        setResize(false);
-        setDragging(false);
-        setMoving(false);
-        setClickPosition([0, 0]);
-    };
-
-    const startDrag = (e) => {
-        setDragging(true);
-        setClickPosition([
-            e.clientX - windowRef.current.getBoundingClientRect().left,
-            e.clientY - windowRef.current.getBoundingClientRect().top,
-        ]);
     };
 
     const toggleCollapse = () => {
@@ -146,12 +171,12 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
 
     const setCollapse = (toCollapse: boolean) => {
         if (toCollapse) {
-            playSound("PlatinumWindowCollapse")
+            player({type: "PlatinumSoundPlay", sound: "PlatinumWindowCollapse"})
             windowEventDispatch({
                 type: "PlatinumWindowCollapse",
             });
         } else {
-            playSound("PlatinumWindowExpand")
+            player({type: "PlatinumSoundPlay", sound: "PlatinumWindowExpand"})
             windowEventDispatch({
                 type: "PlatinumWindowExpand",
             });
@@ -168,7 +193,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
         if (windowState.collapsed) {
             setCollapse(false);
         }
-        playSound("PlatinumWindowZoom");
+        player({type: "PlatinumSoundPlay", sound: "PlatinumWindowZoom"})
         windowEventDispatch({
             type: "PlatinumWindowZoom",
             zoomed: toZoom,
@@ -206,40 +231,17 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
     };
 
     const close = () => {
-        playSound("PlatinumWindowClose");
+        player({type: "PlatinumSoundPlay", sound: "PlatinumWindowClose"})
         windowEventDispatch({
             type: "PlatinumWindowClose",
         });
     };
 
-    const setDragging = (toDrag: boolean) => {
-        windowEventDispatch({
-            type: "PlatinumWindowDrag",
-            dragging: toDrag,
-        });
-    };
-
-    const setMoving = (
-        toMove: boolean,
-        toPosition: [number, number] = [0, 0]
-    ) => {
-        windowEventDispatch({
-            type: "PlatinumWindowMove",
-            moving: toMove,
-            position: toPosition,
-        });
-    };
-
-    // const firstRender = React.useMemo(
-    //     () => setDesktopContext({...desktopContext, activeWindow: id}),
-    //     [id, setDesktopContext]
-    // );
-
     return (
         <>
             {!hidden && (
                 <div
-                    id={!id ? UrlSafeString().generate(title) : id}
+                    id={appId + "_" + (!id ? UrlSafeString().generate(title) : id)}
                     ref={windowRef}
                     style={{
                         width: size[0],
@@ -267,7 +269,10 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                         windowState.resizing === true
                             ? platinumWindowStyle.platinumWindowResizing
                             : "",
-                        modalWindow === true ? platinumWindowStyle.platinumWindowModal : ""
+                        modalWindow === true ? platinumWindowStyle.platinumWindowModal : "",
+                        scrollable === true
+                            ? ""
+                            : platinumWindowStyle.platinumWindowNoScroll,
                     )}
                     onMouseMove={changeWindow}
                     onMouseUp={stopChangeWindow}
@@ -275,9 +280,9 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                     onContextMenu={showContextMenu}
                     onMouseOut={hideContextMenu}
                 >
-                    {contextMenuItems && windowState.contextMenu && (
+                    {contextMenu && windowState.contextMenu && (
                         <PlatinumContextMenu
-                            menuItems={contextMenuItems}
+                            menuItems={contextMenu}
                             position={windowState.contextMenuLocation}
                         ></PlatinumContextMenu>
                     )}
@@ -300,7 +305,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                         )}
                         <div
                             className={platinumWindowStyle.platinumWindowTitle}
-                            onMouseDown={startDrag}
+                            onMouseDown={startMoveWindow}
                         >
                             <div
                                 className={platinumWindowStyle.platinumWindowTitleleft}
@@ -337,12 +342,12 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                             isActive()
                                 ? ""
                                 : platinumWindowStyle.platinumWindowContentsDimmed,
+                            scrollable === true
+                                ? ""
+                                : platinumWindowStyle.platinumWindowNoScroll,
                             modalWindow === true
                                 ? platinumWindowStyle.platinumWindowContentsModal
                                 : platinumWindowStyle.platinumWindowContents,
-                            scrollable === true
-                                ? ""
-                                : platinumWindowStyle.platinumWindowNoScroll
                         )}
                         style={{
                             display: windowState.collapsed == true ? "none" : "block",

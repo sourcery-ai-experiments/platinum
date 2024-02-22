@@ -74,11 +74,11 @@ export const getTheme = (theme: string) => {
     return themesData[0];
 };
 
-export const loadSoundTheme = (soundThemeURL: string) => {
+export const loadSoundTheme = (soundThemeURL: string): Howl => {
     let data = fetch(soundThemeURL).json()
-    if ('sprite' in data && 'urls' in data) {
+    if ('src' in data && 'sprite' in data) {
         return new Howl({
-            src: data.urls,
+            src: data.src,
             sprite: data.sprite,
         });
     }

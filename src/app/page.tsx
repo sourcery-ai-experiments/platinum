@@ -1,26 +1,20 @@
 'use client';
 
-import * as React from "react";
-import AppearanceManager from "./applications/AppearanceManager";
+import React from "react";
 import Demo from "./applications/Demo";
-
-import Finder from "./applications/Finder";
 import TextEdit from "./applications/TextEdit";
 
-import PlatinumDesktop from "./components/PlatinumDesktop";
-import {PlatinumDesktopProvider} from "./components/PlatinumDesktopContext";
+import AppearanceManager from "./components/ControlPanels/AppearanceManager";
+import PlatinumDesktop from "./components/Desktop/PlatinumDesktop";
+import {PlatinumDesktopProvider} from "./components/Desktop/PlatinumDesktopAppManagerContext";
 
 export default function Home() {
-
-    const activeTheme = "default";
-
     return (
         <PlatinumDesktopProvider>
             <PlatinumDesktop>
                 <AppearanceManager/>
                 <Demo/>
                 <TextEdit/>
-                <Finder/>
             </PlatinumDesktop>
         </PlatinumDesktopProvider>
     );

@@ -4,39 +4,39 @@
 @use "./styles/assets";
 
 .platinumMenuWrapper {
-  display: flex;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  box-shadow: inset var(--window-border-size) var(--window-border-size) 0 0 var(--color-system-05), calc(var(--window-border-size) * 2) calc(var(--window-border-size) * 2) 0 0 var(--color-black);
   font-family: var(--ui-font);
   font-size: var(--ui-font-size);
   z-index: 200;
+  display: flex;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-shadow: inset var(--window-border-size) var(--window-border-size) 0 0 var(--color-system-05), calc(var(--window-border-size) * 2) calc(var(--window-border-size) * 2) 0 0 var(--color-black);
 }
 
 .platinumMenu {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: var(--window-border-size);
-  margin: 0;
-  list-style: none;
-  @include appearance.platinumWindowBorder;
   min-width: calc(var(--window-control-size) * 15);
+  margin: 0;
+  padding: var(--window-border-size);
+  @include appearance.platinumWindowBorder;
+  list-style: none;
   background-color: var(--color-system-02);
 
   hr {
     margin: calc(var(--window-control-size) / 2) calc(var(--window-border-size) * 2);
-    box-shadow: 1px 1px 0 0 var(--color-system-01);
     border: var(--color-system-04) solid 1px;
+    box-shadow: 1px 1px 0 0 var(--color-system-01);
   }
 
   div {
     ul {
       li {
         &:hover {
-          background-color: var(--color-theme-04);
           color: #fff;
+          background-color: var(--color-theme-04);
 
           * {
             display: flex !important;
@@ -50,21 +50,21 @@
 
 .platinumSubMenu {
   position: absolute;
+  display: none;
   flex-direction: column;
+  min-width: calc(var(--window-control-size) * 15);
+  @include appearance.platinumWindowBorder;
+  margin: 0 0 0 calc(var(--window-padding-size) * -1);;
   padding: var(--window-border-size);
   list-style: none;
-  @include appearance.platinumWindowBorder;
-  display: none;
-  min-width: calc(var(--window-control-size) * 15);
-  background: var(--color-system-02);
   color: var(--color-black);
+  background: var(--color-system-02);
   background-color: var(--color-system-02);
-  margin: 0 0 0 calc(var(--window-padding-size) * -1);;
 
   hr {
     margin: calc(var(--window-control-size) / 2) calc(var(--window-border-size) * 2);
-    box-shadow: 1px 1px 0 0 var(--color-system-01);
     border: var(--color-system-04) solid 1px;
+    box-shadow: 1px 1px 0 0 var(--color-system-01);
   }
 
 }
@@ -72,21 +72,21 @@
 .platinumContextSubMenu {
   position: absolute;
   left: 100%;
+  display: none;
   flex-direction: column;
+  min-width: calc(var(--window-control-size) * 15);
+  @include appearance.platinumWindowBorder;
+  margin: calc(var(--window-padding-size) * -4) calc(var(--window-padding-size) * -2);
   padding: var(--window-border-size);
   list-style: none;
-  @include appearance.platinumWindowBorder;
-  display: none;
-  min-width: calc(var(--window-control-size) * 15);
-  background: var(--color-system-02);
   color: var(--color-black);
+  background: var(--color-system-02);
   background-color: var(--color-system-02);
-  margin: calc(var(--window-padding-size) * -4) calc(var(--window-padding-size) * -2);
 
   hr {
     margin: calc(var(--window-control-size) / 2) calc(var(--window-border-size) * 2);
-    box-shadow: 1px 1px 0 0 var(--color-system-01);
     border: var(--color-system-04) solid 1px;
+    box-shadow: 1px 1px 0 0 var(--color-system-01);
   }
 
 }
@@ -94,18 +94,18 @@
 
 .platinumMenuItem {
   display: flex;
+  float: left;
+  align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
-  float: left;
   height: calc(100% - var(--window-padding-size)) !important;
-  padding: calc(var(--window-padding-size) / 2) var(--window-padding-size);
   margin: 0;
+  padding: calc(var(--window-padding-size) / 2) var(--window-padding-size);
 
   &:hover {
-    background-color: var(--color-theme-04);
     color: var(--color-white);
+    background-color: var(--color-theme-04);
 
     ul {
       display: flex !important;
@@ -123,16 +123,16 @@
 
   p {
     display: flex;
-    align-items: center;
-    align-content: flex-start;
     float: left;
-    padding: 0;
+    align-content: flex-start;
+    align-items: center;
     margin: 0;
+    padding: 0;
 
     a {
       cursor: default !important;
-      color: var(--color-black) !important;
       text-decoration: none;
+      color: var(--color-black) !important;
     }
   }
 
@@ -147,8 +147,8 @@
 
 .platinumMenuItemDisabled {
   &:hover {
-    background-color: transparent !important;
     color: var(--color-white);
+    background-color: transparent !important;
   }
 
   p {
@@ -159,19 +159,19 @@
 
 .platinumMenuItemChildMenuIndicator {
   &:after {
-    content: " ";
     position: absolute;
     right: var(--window-control-size);
-    background-image: assets.$triangle;
     width: 1em;
     height: 1em;
+    content: " ";
+    background-image: assets.$triangle;
     background-repeat: no-repeat;
     background-position: right center;
   }
 }
 
 .platinumMenuItemKeyboardShortcut {
-  padding-right: calc(var(--window-padding-size) / 2) !important;
-  line-height: 1.75;
   font-size: calc(var(--ui-font-size) * .75) !important;
+  line-height: 1.75;
+  padding-right: calc(var(--window-padding-size) / 2) !important;
 }

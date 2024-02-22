@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import React from "react";
+import {useSoundDispatch} from "./Desktop/PlatinumDesktopSoundManagerContext";
 import platinumInputRadioStyles from "./PlatinumInputRadio.module.scss";
 
 type PlatinumInputRadioProps = {
@@ -21,9 +22,18 @@ const PlatinumInputRadio: React.FC<PlatinumInputRadioProps> = ({
                                                                    onClick,
                                                                    label
                                                                }) => {
+
+    const player = useSoundDispatch();
+
     return (
         <div className={platinumInputRadioStyles.platinumRadioInputGroup}>
             <input type={"radio"} onClick={onClick}
+                   onMouseDown={() => {
+                       player({type: "PlatinumSoundPlay", sound: "PlatinumInputRadioClickDown"})
+                   }}
+                   onMouseUp={() => {
+                       player({type: "PlatinumSoundPlay", sound: "PlatinumInputRadioClickUp"})
+                   }}
                    id={id}
                    name={name}
                    disabled={disabled}
