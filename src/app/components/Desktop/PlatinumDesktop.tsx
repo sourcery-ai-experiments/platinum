@@ -52,7 +52,7 @@ const PlatinumDesktop: React.FC<PlatinumDesktopProps> = ({children}) => {
             setSelectBoxSize([e.clientX - selectBoxStart[0], e.clientY - selectBoxStart[1]]);
         }
 
-        const clearSelectBox = (e) => {
+        const clearSelectBox = () => {
             setSelectBoxSize([0, 0]);
             setSelectBoxStart([0, 0]);
             setSelectBox(false);
@@ -131,9 +131,6 @@ const PlatinumDesktop: React.FC<PlatinumDesktopProps> = ({children}) => {
         const currentTheme = getThemeVars(desktopState.activeTheme);
 
         React.useEffect(() => {
-            desktopEventDispatch({
-                type: "PlatinumDesktopIconCleanup"
-            });
             desktopEventDispatch({
                 type: "PlatinumDesktopFocus",
                 menuBar: defaultMenuItems,

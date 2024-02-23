@@ -20,8 +20,6 @@ const PlatinumDesktopMenu: React.FC<PlatinumMenuProps> = ({menuItems}) => {
         className: platinumDesktopMenuStyles.platinumDesktopMenuAppleMenu
     };
 
-    const a = desktopContext.appSwitcherMenu[0];
-
     const appSwitcherMenuMenuItem: PlatinumMenuItem = {
         id: "app-switcher",
         image: desktopContext.appSwitcherMenu[0].icon,
@@ -44,8 +42,7 @@ const PlatinumDesktopMenu: React.FC<PlatinumMenuProps> = ({menuItems}) => {
     return (
         <nav className={platinumDesktopMenuStyles.platinumDesktopMenuBar}>
             <PlatinumMenu menuItems={defaultMenuItems} navClass={platinumDesktopMenuStyles.platinumDesktopMenu}
-                          subNavClass={platinumMenuStyles.platinumSubMenu}
-            >
+                          subNavClass={platinumMenuStyles.platinumSubMenu}>
                 <PlatinumDesktopMenuWidgetTime></PlatinumDesktopMenuWidgetTime>
             </PlatinumMenu>
         </nav>

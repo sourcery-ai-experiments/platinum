@@ -85,24 +85,23 @@ const PlatinumMenu: React.FC<PlatinumMenuProps> = (
         items: PlatinumMenuItem[],
         navClass: string = platinumMenuStyles.platinumMenu,
         subNavClass: string = platinumMenuStyles.platinumSubMenu,
-        widgets = []
+        children
     ) => {
-        return <ul className={classNames(navClass)}>
-            {items.map((item: PlatinumMenuItem) => (
-                generateMenuItem(item, subNavClass)
-            ))}
-            {widgets}
-        </ul>
+        if (items && items.length > 0) {
+            return (
+                <div className={platinumMenuStyles.platinumMenuWrapper}>
+                    <ul className={classNames(navClass)}>
+                        {items.map((item: PlatinumMenuItem) => (
+                            generateMenuItem(item, subNavClass)
+                        ))}
+                        {children}
+                    </ul>
+                </div>
+            );
+        }
     };
 
-    if (menuItems && menuItems.length > 0) {
-        return (
-            <div className={platinumMenuStyles.platinumMenuWrapper}>
-                {generateMenu(menuItems, navClass, subNavClass, children)}
-            </div>
-        );
-    }
-
+    return generateMenu(menuItems, navClass, subNavClass, children)
 };
 
 export default PlatinumMenu;

@@ -101,7 +101,7 @@ export const platinumDesktopIconEventHandler = (
 
                 let newLocation = action.location;
                 if (!newLocation) {
-                    action.location = [0, 0]
+                    action.location = getGridPosition()
                 }
                 ds.desktopIcons.push({
                     icon: action.app.icon,
