@@ -55,6 +55,7 @@ const Demo = () => {
                 name={appName}
                 icon={appIcon}
                 debug={false}
+                defaultWindow={"demo"}
             >
                 <PlatinumWindow
                     id={"demo"}

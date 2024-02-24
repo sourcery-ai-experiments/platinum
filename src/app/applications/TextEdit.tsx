@@ -70,6 +70,7 @@ const TextEdit = () => {
                 name={appName}
                 icon={appIcon}
                 debug={false}
+                defaultWindow={"textedit-demo"}
             >
                 <PlatinumWindow
                     id={"textedit-demo"}
