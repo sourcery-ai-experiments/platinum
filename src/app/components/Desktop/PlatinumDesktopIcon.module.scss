@@ -47,6 +47,7 @@
   mask-mode: alpha !important;
   mask-size: calc(100% - var(--window-border-size)) !important;
   mask-repeat: no-repeat !important;
+  @include appearance.theme-halftone(#000000, 5%);
 }
 
 .platinumDesktopIconMaskOuter {

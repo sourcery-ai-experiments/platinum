@@ -37,6 +37,32 @@ const TextEdit = () => {
 > *While some see them as the crazy ones, we see genius.*\n
 > *Because the people who are crazy enough to think they can change the world, are the ones who do."*`
 
+    const quitApp = () => {
+        desktopEventDispatch({
+            type: "PlatinumAppClose",
+            app: {
+                id: appId,
+                title: appName,
+                icon: appIcon
+            }
+
+        });
+    };
+
+    const appMenu = [
+        {
+            id: "file",
+            title: "File",
+            menuChildren: [
+                {
+                    id: appId + "_quit",
+                    title: "Quit",
+                    onClickFunc: quitApp
+                }
+            ]
+        },
+    ];
+
     return (
         <>
             <PlatinumApp
@@ -52,10 +78,11 @@ const TextEdit = () => {
                     closable={true}
                     resizable={true}
                     zoomable={true}
-                    scrollable={false}
+                    scrollable={true}
                     collapsable={true}
                     initialSize={[100, 500]}
                     initialPosition={[350, 100]}
+                    appMenu={appMenu}
                     modalWindow={false}>
                     <PlatinumRichTextEditor markdown={defaultText}></PlatinumRichTextEditor>
                 </PlatinumWindow>

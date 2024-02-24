@@ -135,7 +135,7 @@ const PlatinumDesktop: React.FC<PlatinumDesktopProps> = ({children}) => {
                 type: "PlatinumDesktopFocus",
                 menuBar: defaultMenuItems,
             });
-        }, [desktopEventDispatch]);
+        }, []);
 
         return (
             <>

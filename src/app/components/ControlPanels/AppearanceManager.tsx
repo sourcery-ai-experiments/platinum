@@ -53,18 +53,6 @@ const AppearanceManager = () => {
         });
     };
 
-    const openApp = () => {
-        desktopEventDispatch({
-            type: "PlatinumAppOpen",
-            app: {
-                id: appId,
-                title: appName,
-                icon: appIcon
-            }
-
-        });
-    };
-
     const appMenu = [
         {
             id: "file",
@@ -91,6 +79,8 @@ const AppearanceManager = () => {
                 id={appId}
                 name={appName}
                 icon={appIcon}
+                debug={true}
+                defaultWindow={"AppearanceManager_1"}
             >
                 <PlatinumWindow
                     id={"AppearanceManager_1"}

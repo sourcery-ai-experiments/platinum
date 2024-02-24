@@ -91,7 +91,7 @@ const PlatinumDesktopIcon: React.FC<PlatinumDesktopIconProps> = ({
     let thisLocation = getIconLocation();
 
     const isLaunched = () => {
-        const idx = desktopContext.appSwitcherMenu.findIndex(o => o.appId === appId);
+        const idx = desktopContext.openApps.findIndex(o => o.id === appId);
         return idx > -1;
     };
 
