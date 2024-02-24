@@ -74,7 +74,7 @@ const PlatinumMenu: React.FC<PlatinumMenuProps> = (
                             menuItem.menuChildren && menuItem.menuChildren.length > 0 ? platinumMenuStyles.platinumMenuItemChildMenuIndicator : "")}>
                         {newMenuItem}
                         {(menuItem.menuChildren && menuItem.menuChildren.length > 0) && (
-                            generateMenu(menuItem.menuChildren, navClass, subNavClass)
+                            generateMenu(menuItem.menuChildren, subNavClass, subNavClass)
                         )}
                     </li>)
             }
