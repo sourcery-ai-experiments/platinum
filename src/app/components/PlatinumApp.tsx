@@ -11,6 +11,7 @@ interface PlatinumAppProps {
     id: string;
     name: string;
     icon: string;
+    defaultWindow: string;
     noDesktopIcon?: boolean;
     debug?: boolean;
     openOnBoot?: boolean;
@@ -18,9 +19,16 @@ interface PlatinumAppProps {
 }
 
 
-const PlatinumApp: React.FC<PlatinumAppProps> = (
-    {id, icon, name, openOnBoot = true, noDesktopIcon = false, debug = false, children}
-) => {
+const PlatinumApp: React.FC<PlatinumAppProps> = ({
+                                                     id,
+                                                     icon,
+                                                     name,
+                                                     openOnBoot = true,
+                                                     noDesktopIcon = false,
+                                                     defaultWindow,
+                                                     debug = false,
+                                                     children
+                                                 }) => {
     const {appContext, setAppContext} = React.useContext(PlatinumAppContext);
     const desktopContext = useDesktop();
     const desktopEventDispatch = useDesktopDispatch();
@@ -50,6 +58,13 @@ const PlatinumApp: React.FC<PlatinumAppProps> = (
         return !!appOpen;
     }
 
+    const onFocus = () => {
+        desktopEventDispatch({
+            type: "PlatinumAppFocus",
+            window: defaultWindow
+        });
+    }
+
     React.useEffect(() => {
         if (!noDesktopIcon) {
             desktopEventDispatch({
@@ -61,7 +76,8 @@ const PlatinumApp: React.FC<PlatinumAppProps> = (
                 }
             });
         }
-    }, [desktopEventDispatch, id, name, icon]);
+    }, []);
+
     if (debug) {
         let debugWindow = (
             <PlatinumWindow initialSize={[400, 300]}
@@ -91,13 +107,13 @@ const PlatinumApp: React.FC<PlatinumAppProps> = (
     }
 
     return (
-        <>
+        <div onMouseDown={onFocus}>
             {isAppOpen() &&
                 <>
                     {children}
                 </>
             }
-        </>
+        </div>
     );
 };
 

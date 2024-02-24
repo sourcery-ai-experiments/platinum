@@ -52,7 +52,7 @@ const PlatinumDesktop: React.FC<PlatinumDesktopProps> = ({children}) => {
             setSelectBoxSize([e.clientX - selectBoxStart[0], e.clientY - selectBoxStart[1]]);
         }
 
-        const clearSelectBox = (e) => {
+        const clearSelectBox = () => {
             setSelectBoxSize([0, 0]);
             setSelectBoxStart([0, 0]);
             setSelectBox(false);
@@ -98,7 +98,7 @@ const PlatinumDesktop: React.FC<PlatinumDesktopProps> = ({children}) => {
                         }
                     },
                     {
-                        id: "finder.app_CleanupDesktopIcons",
+                        id: "finder.app_ArrangeDesktopIcons",
                         title: "Arrange...",
                         menuChildren: [
                             {
@@ -110,7 +110,7 @@ const PlatinumDesktop: React.FC<PlatinumDesktopProps> = ({children}) => {
                                 title: "by Kind"
                             },
                             {
-                                id: "finder.app_arrange_by_kind",
+                                id: "finder.app_arrange_by_label",
                                 title: "by Label"
                             },
                         ]
@@ -132,13 +132,10 @@ const PlatinumDesktop: React.FC<PlatinumDesktopProps> = ({children}) => {
 
         React.useEffect(() => {
             desktopEventDispatch({
-                type: "PlatinumDesktopIconCleanup"
-            });
-            desktopEventDispatch({
                 type: "PlatinumDesktopFocus",
                 menuBar: defaultMenuItems,
             });
-        }, [desktopEventDispatch]);
+        }, []);
 
         return (
             <>

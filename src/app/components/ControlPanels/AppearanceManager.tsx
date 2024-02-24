@@ -41,21 +41,9 @@ const AppearanceManager = () => {
         setAppContext({...appContext, elements: dataElements});
     };
 
-    const closeApp = () => {
+    const quitApp = () => {
         desktopEventDispatch({
             type: "PlatinumAppClose",
-            app: {
-                id: appId,
-                title: appName,
-                icon: appIcon
-            }
-
-        });
-    };
-
-    const openApp = () => {
-        desktopEventDispatch({
-            type: "PlatinumAppOpen",
             app: {
                 id: appId,
                 title: appName,
@@ -71,9 +59,9 @@ const AppearanceManager = () => {
             title: "File",
             menuChildren: [
                 {
-                    id: "close",
-                    title: "Close",
-                    onClickFunc: closeApp
+                    id: appId + "_quit",
+                    title: "Quit",
+                    onClickFunc: quitApp
                 }
             ]
         },
@@ -91,6 +79,8 @@ const AppearanceManager = () => {
                 id={appId}
                 name={appName}
                 icon={appIcon}
+                debug={true}
+                defaultWindow={"AppearanceManager_1"}
             >
                 <PlatinumWindow
                     id={"AppearanceManager_1"}

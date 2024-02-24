@@ -74,12 +74,20 @@ export const getTheme = (theme: string) => {
     return themesData[0];
 };
 
-export const loadSoundTheme = (soundThemeURL: string): Howl => {
-    let data = fetch(soundThemeURL).json()
-    if ('src' in data && 'sprite' in data) {
+export const getSoundTheme = (soundThemeURL: string) => {
+    return fetch(soundThemeURL).json();
+};
+
+export const createSoundPlayer = (soundData): Howl => {
+    if ('src' in soundData && 'sprite' in soundData) {
         return new Howl({
-            src: data.src,
-            sprite: data.sprite,
+            src: soundData.src,
+            sprite: soundData.sprite,
         });
     }
+}
+
+export const loadSoundTheme = (soundThemeURL: string): Howl => {
+    const data = getSoundTheme(soundThemeURL);
+    return createSoundPlayer(data);
 }

@@ -1,4 +1,4 @@
-import React, {createContext, useContext} from 'react';
+import {createContext, Suspense, useContext, useReducer} from 'react';
 import {loadSoundTheme} from "../PlatinumAppearance"
 import {platinumDesktopIconEventHandler} from "./PlatinumDesktopIconContext";
 import {PlatinumDesktopSoundManagerProvider} from "./PlatinumDesktopSoundManagerContext";
@@ -10,16 +10,18 @@ const PlatinumDesktopDispatchContext = createContext(null);
 
 export function PlatinumDesktopProvider({children}) {
 
-    const [desktop, dispatch] = React.useReducer(platinumDesktopStateEventReducer, initialDesktopState);
+    const [desktop, dispatch] = useReducer(platinumDesktopStateEventReducer, initialDesktopState);
 
     return (
-        <PlatinumDesktopContext.Provider value={desktop}>
-            <PlatinumDesktopDispatchContext.Provider value={dispatch}>
-                <PlatinumDesktopSoundManagerProvider>
-                    {children}
-                </PlatinumDesktopSoundManagerProvider>
-            </PlatinumDesktopDispatchContext.Provider>
-        </PlatinumDesktopContext.Provider>
+        <Suspense>
+            <PlatinumDesktopContext.Provider value={desktop}>
+                <PlatinumDesktopDispatchContext.Provider value={dispatch}>
+                    <PlatinumDesktopSoundManagerProvider>
+                        {children}
+                    </PlatinumDesktopSoundManagerProvider>
+                </PlatinumDesktopDispatchContext.Provider>
+            </PlatinumDesktopContext.Provider>
+        </Suspense>
     );
 }
 
@@ -72,7 +74,7 @@ export const platinumDesktopEventHandler = (ds: PlatinumDesktopState, action) =>
             ds.activeTheme = action.activeTheme;
             let theme: PlatinumTheme = ds.availableThemes.find(x => x.id === ds.activeTheme);
             if ('sound' in theme && 'file' in theme.sound) {
-                ds.soundPlayer = loadSoundTheme(theme.sound.file);
+                ds.soundPlayer = loadSoundTheme(process.env.NEXT_PUBLIC_BASE_PATH + theme.sound.file);
             }
             break;
         }
@@ -106,7 +108,7 @@ export const platinumAppEventHandler = (ds: PlatinumDesktopState, action) => {
             break;
         }
         case "PlatinumAppFocus": {
-            break;
+            ds.activeWindow = action.window;
         }
     }
 

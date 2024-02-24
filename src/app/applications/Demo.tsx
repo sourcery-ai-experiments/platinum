@@ -22,8 +22,7 @@ const Demo = () => {
     const desktopContext = useDesktop();
     const desktopEventDispatch = useDesktopDispatch();
 
-    const closeApp = (e) => {
-        setAppOpen(false);
+    const quitApp = () => {
         desktopEventDispatch({
             type: "PlatinumAppClose",
             app: {
@@ -35,6 +34,19 @@ const Demo = () => {
         });
     };
 
+    const appMenu = [
+        {
+            id: "file",
+            title: "File",
+            menuChildren: [
+                {
+                    id: appId + "_quit",
+                    title: "Quit",
+                    onClickFunc: quitApp
+                }
+            ]
+        },
+    ];
 
     return (
         <>
@@ -43,6 +55,7 @@ const Demo = () => {
                 name={appName}
                 icon={appIcon}
                 debug={false}
+                defaultWindow={"demo"}
             >
                 <PlatinumWindow
                     id={"demo"}
@@ -55,9 +68,10 @@ const Demo = () => {
                     collapsable={true}
                     initialSize={[100, 500]}
                     initialPosition={[100, 100]}
+                    appMenu={appMenu}
                     modalWindow={false}>
                     <iframe src={"https://theoldnet.com/"}
-                            style={{width: "99%", height: "99%", padding: "0", margin: "0"}}/>
+                            style={{width: "100%", height: "100%", padding: "0", margin: "0"}}/>
                 </PlatinumWindow>
                 <PlatinumWindow
                     id={"demo2"}
@@ -80,7 +94,7 @@ const Demo = () => {
                     />
                     <PlatinumProgress value={59}></PlatinumProgress>
                     <PlatinumInput id={"test"}></PlatinumInput>
-                    <PlatinumButton isDefault={true} onClick={closeApp}>OK</PlatinumButton>
+                    <PlatinumButton isDefault={true} onClick={quitApp}>Quit</PlatinumButton>
                     <PlatinumButton isDefault={false}>Nothing</PlatinumButton>
                     <PlatinumButton isDefault={false} disabled={true}>Disabled</PlatinumButton>
                     <PlatinumInputGroup label={"Test Radio Inputs"}>

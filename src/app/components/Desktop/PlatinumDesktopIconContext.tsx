@@ -28,15 +28,37 @@ const getGridPosition = (iconSize: number, iconPadding: number, x: number, y: nu
     ];
 };
 
+const getGridPositionByCount = (count: number, theme: string) => {
+    const [iconSize, iconPadding] = getIconSize(theme);
+    const grid = createGrid(iconSize, iconPadding);
+
+    if (count < grid[0]) {
+        return getGridPosition(iconSize, iconPadding, 1, count)
+    }
+
+    if (count > grid[0] * grid[1]) {
+        return getGridPosition(iconSize, iconPadding, 1, 1);
+    }
+
+    // TODO: We return the first column if the total count is less, and we reutrn 1,1 if more than we can hold
+    // We need to do an offset on the max number of icons, but use the same positions.
+    // For the middle part, we need to figure out how to convert a column count (e.g. the 35th box)
+    // to our matrix with an x/y coordiante.
+}
+
+const getIconSize = (theme: string) => {
+    const themeData = getTheme(theme);
+    const iconSize = parseInt(themeData.desktop.iconSize, 10);
+    return [iconSize, iconSize / 4];
+}
+
 
 const cleanupDesktopIcons = (theme: string, icons: PlatinumDesktopIconState[]) => {
     let newDesktopIcons = [];
     let startX: number = 1;
     let startY: number = 0;
+    const [iconSize, iconPadding] = getIconSize(theme);
 
-    let themeData = getTheme(theme);
-    let iconSize = parseInt(themeData.desktop.iconSize, 10);
-    let iconPadding = iconSize / 4;
     let grid = createGrid(iconSize, iconPadding);
 
 
@@ -101,7 +123,7 @@ export const platinumDesktopIconEventHandler = (
 
                 let newLocation = action.location;
                 if (!newLocation) {
-                    action.location = [0, 0]
+                    action.location = getGridPositionByCount(ds.desktopIcons.length, ds.activeTheme);
                 }
                 ds.desktopIcons.push({
                     icon: action.app.icon,
@@ -114,6 +136,7 @@ export const platinumDesktopIconEventHandler = (
             }
             break;
         }
+
         case "PlatinumDesktopIconRemove": {
             let iconIdx = ds.desktopIcons.findIndex(
                 (icon) => icon.appId === action.app.id,

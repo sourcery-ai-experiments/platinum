@@ -6,6 +6,7 @@
 .platinumMenuWrapper {
   font-family: var(--ui-font);
   font-size: var(--ui-font-size);
+  position: relative;
   z-index: 200;
   display: flex;
   width: 100%;
@@ -15,7 +16,7 @@
 }
 
 .platinumMenu {
-  position: relative;
+  position: absolute;
   display: flex;
   flex-direction: column;
   min-width: calc(var(--window-control-size) * 15);

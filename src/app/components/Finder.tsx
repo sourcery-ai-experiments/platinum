@@ -19,6 +19,7 @@ const Finder = () => {
             icon={appIcon}
             debug={false}
             noDesktopIcon={true}
+            defaultWindow={""}
         >
         </PlatinumApp>
     );

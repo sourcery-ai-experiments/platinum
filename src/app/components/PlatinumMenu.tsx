@@ -15,20 +15,21 @@ export interface PlatinumMenuItem {
     onClickFunc?: any;
     menuChildren?: PlatinumMenuItem[];
     className?: string;
-    widgets?: React.FC;
 }
 
 interface PlatinumMenuProps {
     menuItems: PlatinumMenuItem[];
     navClass?: string;
     subNavClass?: string;
+    children?: any;
 }
 
 const PlatinumMenu: React.FC<PlatinumMenuProps> = (
     {
         menuItems,
         navClass,
-        subNavClass
+        subNavClass,
+        children
     }
 ) => {
 
@@ -73,7 +74,7 @@ const PlatinumMenu: React.FC<PlatinumMenuProps> = (
                             menuItem.menuChildren && menuItem.menuChildren.length > 0 ? platinumMenuStyles.platinumMenuItemChildMenuIndicator : "")}>
                         {newMenuItem}
                         {(menuItem.menuChildren && menuItem.menuChildren.length > 0) && (
-                            generateMenu(menuItem.menuChildren, subNavClass)
+                            generateMenu(menuItem.menuChildren, navClass, subNavClass)
                         )}
                     </li>)
             }
@@ -83,7 +84,8 @@ const PlatinumMenu: React.FC<PlatinumMenuProps> = (
     const generateMenu = (
         items: PlatinumMenuItem[],
         navClass: string = platinumMenuStyles.platinumMenu,
-        subNavClass: string = platinumMenuStyles.platinumSubMenu
+        subNavClass: string = platinumMenuStyles.platinumSubMenu,
+        children?
     ) => {
         if (items && items.length > 0) {
             return (
@@ -92,13 +94,14 @@ const PlatinumMenu: React.FC<PlatinumMenuProps> = (
                         {items.map((item: PlatinumMenuItem) => (
                             generateMenuItem(item, subNavClass)
                         ))}
+                        {children}
                     </ul>
                 </div>
             );
         }
     };
 
-    return generateMenu(menuItems, navClass, subNavClass)
+    return generateMenu(menuItems, navClass, subNavClass, children)
 };
 
 export default PlatinumMenu;
