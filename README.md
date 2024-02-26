@@ -16,17 +16,103 @@ interface theme that came with MacOS 8 and 9, Platinum.
 - Robin Casady, for releasing ChicagoFLF into the public domain
 - Apple, who maintains the copyright on the background patterns, icons and interface components
 
-## Organization
+## Features
 
-* `<PlatinumDesktop>`
-    * `<PlatinumMenu>`
-    * `<YourPlatinumApp>`
-        * `<PlatinumAppContext>`
-            * `<PlatinumDesktopIcon?>`
-            * `<PlatinumApp>`
-                * `<PlatinumWindow?>`
-                    * `<PlatinumUIControls?>`
-                    * `<OtherReactNodes?>`
+*Legend*
+
+|          |                     |                     |
+|:--------:|:-------------------:|:-------------------:|
+|    ✅     |         ℹ️          |         ⚠️          |
+| Complete | Partially complete. |    Experimental     |
+|          |                     | *Subject to change* |
+
+- Desktop
+    - Menubar
+        - ✅ System Menu
+        - ℹ️App Switcher
+            - Does not currently switch apps on click
+        - ✅ Widgets
+            - ℹ️Date/Time
+                - Need to create Control Panel widget to adjust settings
+    - Icons
+        - ✅ App Shortcuts
+        - ✅ Cleanup
+        - Arrange By…
+- Sounds
+    - ✅ Sound Provider
+    - ⚠️ Sound Event Handler
+        - NOTE: This is under development and subject to change.
+        - ✅ Event dispatcher/player
+        - Automatic event intercept and play for known events (map audio sprites to events)
+- Appearance Manager (Theme)
+    - ✅ Manager
+        - ✅ Load theme from JSON
+        - ✅ System events for modifying theme
+    - System
+        - ✅ Typography settings
+        - ✅ Measurement settings
+        - ✅ Desktop settings
+        - ✅ System colors
+        - ✅ Configurable color variables
+    - ✅ Color Theme-able components
+    - Sound
+        - ✅ Load sound theme from JSON
+        - ✅ Audio Sprites support
+- App Template
+    - ⚠️ App Context/Event Handler
+    - App Switcher
+- Window
+    - Controls
+        - ✅ Zoom
+        - ✅ Resize
+        - ✅ Collapse
+        - ✅ Close
+        - Placard
+        - Header
+    - Dialog
+        - Modal
+            - Dialog
+                - ✅ Movable
+                - Non-movable
+            - Alert
+                - Movable
+                - Non-movable
+        - ✅ Modeless
+    - ✅ Standard
+- UI Components
+    - ✅ Text Input
+    - Text Area
+    - ✅ Button
+    - Tabs
+    - ✅ Radio Button
+    - ✅ Drop-down menu
+    - Multi-select menu
+    - ✅ Checkbox
+    - Bevel Button
+    - Slider
+    - Spinner
+    - Date/Time Picker
+    - Expandable
+    - ✅ Fieldset
+    - ✅ Separator
+    - ✅ Progress
+    - Menu
+        - ✅ Contextual Menu
+        - Submenu
+    - Gallery Picker
+
+## Component Organization
+
+* `<PlatinumDesktopProvider>`
+    * `<PlatinumDesktop>`
+        * `<PlatinumDesktopMenu>`
+        * `<PlatinumDesktopIcon?>`
+        * `<YourPlatinumApp>`
+            * `<PlatinumAppContext>`
+                * `<PlatinumApp>`
+                    * `<PlatinumWindow?>`
+                        * `<PlatinumUIControls?>`
+                        * `<OtherReactNodes?>`
 
 ## Events
 
@@ -92,7 +178,9 @@ interface theme that came with MacOS 8 and 9, Platinum.
     * `PlatinumMenuClick`
     * `PlatinumMenuChange`
 
-# Platinum (React)
+## The Development Story
+
+### Beginnings
 
 My first real job was working in the pre-production department of my local newspaper. During the afternoons, I would
 typeset press releases and public notices. But, in the evenings, up until the legally-allowed time for a 15-year-old to
@@ -105,7 +193,7 @@ the humungous web-fed printing presses.
 It still seems crazy that anyone would allow a teenager to handle dangerous chemicals, stick their hands in giant metal
 stamping presses, and once I turned 16, drive across seven counties, unsupervised, in a gigantic panel van. I hardly
 ever betrayed that trust; in fact, I tried to treat my job like it was a privilege. Except for the one time I slipped in
-a fake obituary so I could show my professor and get out of an 8:15 a.m. exam the next day, I was an exemplary employee.
+a fake obituary (so I could show my professor and get out of a 8:15 a.m. exam the next day) I was an exemplary employee.
 
 I loved it all: the photography labs, the huge presses 20 feet tall, the massive ImageSetter that printed, not onto
 paper, but onto photographic film. Still, my favorite part of that job were the Macs. My school had once been loaned a
@@ -123,7 +211,7 @@ and Preferences file I could find. Sometimes, on Saturdays, with little to do be
 me invite my friends over. The four of us, spread between the four blazing-fast PowerMac G3s in the office, would play
 Doom or Quake until the final newspaper of the day would submit its morning edition at 2 am.
 
-# The history of MacOS
+### The history of MacOS
 
 I grew to love my MacOS machines, and as I transitioned my love of newspapers from high school job to early career, I
 was delighted to find I got to use my Mac every single day. I would even drag an iMac from work to home every evening,
@@ -170,7 +258,7 @@ I’ve used versions of Windows from 2 to 2022, OS/2 from 2 to Warp, BeOS, Netwa
 Linux I can find. And, of course I stare every day at the latest incarnation of macOS. But, still, I love the visual
 feel of Platinum, the name Apple gave to the UI in MacOS 8 and 9.
 
-# MacOS 8
+### MacOS 8
 
 MacOS 8 was released in July of 1997, nearly four years after it was first announced as "Copland" in 1994. In reality,
 Copland had been in the works since 1988 as Project Pink, and involved a drama of epic proportions with all the major
@@ -198,7 +286,7 @@ pallettes, and tons of other metadata. It's sometimes quite amazing the raw reso
 
 I went about extracting these Resource forks to see what I could find.
 
-# Booting it up
+### Booting it up
 
 First, I downloaded the MacOS 8.6 install cd from the Internet Archive. I was sure I had done something wrong, though,
 when I double-clicked on the ISO file I downloaded: nothing happened. In fact, you have to use
@@ -235,7 +323,7 @@ boot.
 
 ![Screen Shot 2024-02-08 at 12.49.10 PM 1.png](https://res.craft.do/user/full/f6bf69d9-c199-b5e2-2561-223aac7866f6/doc/21B84071-5847-4B88-BE10-7257963581FF/26325A87-8FA6-4302-9DB6-AF51589B6471_2/nbcqegm8wOnDKXtaBa5ckzqxabcNxZqgIrLtem2C1ewz/Screen%20Shot%202024-02-08%20at%2012.49.10PM%201.png)
 
-# Getting to the good stuff
+### Getting to the good stuff
 
 I downloaded [ResForge](https://github.com/andrews05/ResForge), a Resource Fork editor, onto my Host Mac to get at the
 meat of the files. Resource forks contain a list of Resources, grouped by type. I started looking through the common
@@ -410,7 +498,7 @@ I focused a lot of my research on AppleWorks 6; while it seemed like an outlier 
 follow Apple's own HIG, most of the system components were left unmodified. I used this app as a reference sketch for
 plotting out how I would componentize this entire UI later on.
 
-# Creating the React components
+### Creating the React components
 
 It had all the components that I thought I would need. I made a list, checked against the HIG to see if I'd missed
 anything, and came up with the following:
@@ -487,13 +575,87 @@ I also decided ultimately to wire up any PlatinumUIComponent that accepted some 
 AppContext. This way, the app itself could keep an eye on the values of each component within each window, allowing one
 window to change the contents of another.
 
-Finally, I decided to insert a PlatinumDesktopContext to hold all of the system settings; specifically, I needed a place
+Finally, I decided to insert a PlatinumDesktopContext to hold all the system settings; specifically, I needed a place
 to store the theme settings. While I eventually decided to use CSS variables to set theme colors throughout the entire
 app, I still needed a place to stash Sound file resources, desktop background settings and font selections for the
 theme. This allows me to change the theme from inside an App, and have that change copied over to all over Platinum
 Apps, Windows and UI Components. In fact, the app Appearance Manager that is included in the Platinum React project is
 simply a regular app that reports an Event when the theme is selected from a dropdown. I'll talk more about events
 later.
+
+```json
+  {
+  "id": "bondi",
+  "name": "Bondi",
+  "color": {
+    "outline": "#393939",
+    "select": "#DDD",
+    "highlight": "#AAA",
+    "window": {
+      "border": "#000",
+      "borderOutset": "#FFF",
+      "borderInset": "#CCC",
+      "frame": "#CCC",
+      "title": "#000",
+      "document": "#FFF"
+    },
+    "black": "#000",
+    "white": "#FFF",
+    "alert": "#ffFF00",
+    "error": "#ff0000",
+    "system": [
+      "#EEE",
+      "#DDD",
+      "#CCC",
+      "#AAA",
+      "#808080",
+      "#393939",
+      "#202020"
+    ],
+    "theme": [
+      "#C8F8E9",
+      "#67DACD",
+      "#5AB9AD",
+      "#308F91",
+      "#0D716A",
+      "#00454B",
+      "#003333"
+    ]
+  },
+  "sound": {
+    "file": "/sounds/platinum/platinum.json",
+    "disabled": []
+  },
+  "typography": {
+    "ui": "\"Charcoal\", \"ChicagoFLF\", \"Geneva\", sans-serif",
+    "uiSize": "14px",
+    "header": "\"AppleGaramond\", serif",
+    "headerSize": "22px",
+    "body": "\"Geneva\", serif",
+    "bodySize": "14px"
+  },
+  "measurements": {
+    "window": {
+      "borderSize": "1px",
+      "controlSize": "12px",
+      "paddingSize": "6px",
+      "scrollbarSize": "20px"
+    }
+  },
+  "desktop": {
+    "iconSize": "48px",
+    "iconFontSize": "12px",
+    "backgroundImage": "url(/img/wallpapers/waves_bondi.png)",
+    "backgroundColor": "#00454B",
+    "repeat": "repeat",
+    "position": "center",
+    "size": "auto"
+  }
+},
+
+```
+
+*The JSON contents of the `Bondi` theme.*
 
 Now that I had my components defined, I sketched them out quickly, just for structure. There really wasn't much to them,
 but I needed a canvas to start working. I created a blank PlatinumDesktop, PlatinumDesktopIcon, PlatinumWindow and
@@ -532,7 +694,7 @@ I implemented a simple state for the Platinum Window component, and added it in.
 then realized while what I had was functional, it was really ugly. It was time to get to the difficult work of CSS
 theming.
 
-# Applying the Theme
+### Applying the Theme
 
 As I started zooming into the PDF version of the Apple HIG, I noticed patterns start to emerge: all the window borders,
 both out and inset, were consistent throughout. The width of borders were consistent, as were the padding between
@@ -585,7 +747,7 @@ in each color theme, I was able to nearly replicate one of the few beautiful par
 Compared to the progress indicators in System 7, this splash of color was a generational leap. It feels silly to type
 today, but it was true at the time.
 
-# Wiring it together
+### Wiring it together
 
 Now that I was able to make individual windows and components, I needed a way for the entire system to interact. A
 multi-window environment is not very user-friendly if the Windows are fighting for control and focus. In fact, it took
@@ -650,7 +812,7 @@ been focused, so it can be set as the active window and raised to the top-most z
 PlatinumWindow, I first dispatch a local `PlatinumWindowFocus` to the Window's event dispatcher. Then, using the same
 payload, I dispatch the same `PlatinumWindowFocus` event to the Desktop event dispatcher.
 
-# Demo Time
+### Demo Time
 
 Finally, I felt like I had enough of staring at invidiual components, and it was time to put something together. I
 thought it would be fun to build a tiny little web browser using one of my favorite
@@ -695,7 +857,7 @@ a full Markdown editor using [MDXEditor.](https://mdxeditor.dev)
 
 A TextEdit app, using the awesome MDXEditor, and the Demo PlatinumApp app, showing a few basic controls.
 
-# What's next
+### What's next
 
 The current version of Platinum is 0.3.0, a pre-release demo showing the new outline for how the project will work going
 forward. My plan is to continue releasing point releases until the system is in a full state for a 1.0 release.
