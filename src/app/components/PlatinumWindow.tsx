@@ -32,7 +32,7 @@ interface PlatinumWindowProps {
 
 const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                                                            id,
-                                                           title = "Untitled",
+                                                           title = "",
                                                            icon = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/document.png`,
                                                            appId,
                                                            hidden = false,
@@ -237,6 +237,26 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
         });
     };
 
+    const titleBar = () => {
+        if (title !== "") {
+            return (
+                <>
+                    <div className={platinumWindowStyle.platinumWindowTitleLeft}></div>
+                    <div className={platinumWindowStyle.platinumWindowIcon}>
+                        <img src={icon} alt={title}/>
+                    </div>
+                    <div className={platinumWindowStyle.platinumWindowTitleText}>
+                        {title}
+                    </div>
+                    <div className={platinumWindowStyle.platinumWindowTitleRight}></div>
+                </>
+            )
+        }
+        return (
+            <div className={platinumWindowStyle.platinumWindowTitleCenter}></div>
+        )
+    }
+
     return (
         <>
             {!hidden && (
@@ -307,18 +327,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                             className={platinumWindowStyle.platinumWindowTitle}
                             onMouseDown={startMoveWindow}
                         >
-                            <div
-                                className={platinumWindowStyle.platinumWindowTitleleft}
-                            ></div>
-                            <div className={platinumWindowStyle.platinumWindowIcon}>
-                                <img src={icon}/>
-                            </div>
-                            <div className={platinumWindowStyle.platinumWindowTitleText}>
-                                {title}
-                            </div>
-                            <div
-                                className={platinumWindowStyle.platinumWindowTitleright}
-                            ></div>
+                            {titleBar()}
                         </div>
                         {collapsable && (
                             <div className={platinumWindowStyle.platinumWindowControlBox}>
