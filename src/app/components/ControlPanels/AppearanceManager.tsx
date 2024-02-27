@@ -105,6 +105,32 @@ const AppearanceManager = () => {
                     />
                     <PlatinumButton onClick={cleanupIcons}>Cleanup Icons</PlatinumButton>
                 </PlatinumWindow>
+                <PlatinumWindow
+                    id="AppearanceManager_about"
+                    appId={appId}
+                    closable={false}
+                    resizable={false}
+                    zoomable={false}
+                    scrollable={false}
+                    collapsable={false}
+                    initialSize={[300, 300]}
+                    initialPosition={[50, 50]}
+                    modalWindow={true}
+                    appMenu={appMenu}
+                >
+                    <div style={{alignContent: "center",
+                        justifyContent: "center",
+                        justifyItems: "center",
+                        alignItems: "center",
+                        display: "flex",
+                        flexDirection: "column",
+                        textAlign: "center",
+                    fontFamily: "var(--header-font"}}>
+                    <img src={appIcon} alt="About" />
+                    <h1>Appearance Manager</h1>
+                    <h5>Not Copyright 1998 Apple Computer, Inc.</h5>
+                    </div>
+                </PlatinumWindow>
             </PlatinumApp>
         </PlatinumAppContext.Provider>
     );

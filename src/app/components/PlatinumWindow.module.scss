@@ -41,7 +41,11 @@
         color: black !important;
       }
 
-      .platinumWindowTitleleft, .platinumWindowTitleright {
+      .platinumWindowTitleCenter {
+        background: assets.$title-bar-center;
+      }
+
+      .platinumWindowTitleLeft, .platinumWindowTitleRight {
         background: assets.$title-bar-center;
 
         &:after {
@@ -170,7 +174,15 @@
         user-drag: none;
       }
 
-      .platinumWindowTitleleft, .platinumWindowTitleright {
+      .platinumWindowTitleCenter {
+        flex-grow: 1;
+        width: auto;
+        height: var(--window-control-size);
+        margin: calc(var(--window-padding-size) / 2) var(--window-padding-size);
+        padding: 0;
+      }
+
+      .platinumWindowTitleLeft, .platinumWindowTitleRight {
         flex-grow: 1;
         width: auto;
         height: var(--window-control-size);
@@ -255,6 +267,7 @@
   @include appearance.platinumWindowBorder;
   border-top: calc(var(--window-padding-size) / 4) solid var(--color-black) !important;
   background-color: var(--color-window-frame) !important;
+  @include appearance.platinumBoxShadow;
 }
 
 .platinumWindowContentsModalInner {
