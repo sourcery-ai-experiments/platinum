@@ -60,7 +60,7 @@
     "desktop": {
       "iconSize": "48px",
       "iconFontSize": "12px",
-      "backgroundImage": "url(/img/wallpapers/default.png)",
+      "backgroundImage": "/img/wallpapers/default.png",
       "backgroundColor": "#6666CC",
       "repeat": "repeat",
       "position": "center",
@@ -196,7 +196,7 @@
     "desktop": {
       "iconSize": "48px",
       "iconFontSize": "12px",
-      "backgroundImage": "url(/img/wallpapers/waves_bondi.png)",
+      "backgroundImage": "/img/wallpapers/waves_bondi.png",
       "backgroundColor": "#00454B",
       "repeat": "repeat",
       "position": "center",

@@ -44,7 +44,7 @@ const makeThemeStyle = (theme = themesData[0]) => {
         "--color-outline": theme.color.outline,
         "--color-select": theme.color.select,
         "--color-highlight": theme.color.highlight,
-        "--desktop-background-image": `${process.env.NEXT_PUBLIC_BASE_PATH || ""}${theme.desktop.backgroundImage}`,
+        "--desktop-background-image": `url(${process.env.NEXT_PUBLIC_BASE_PATH || ""}${theme.desktop.backgroundImage})`,
         "--desktop-background-color": theme.desktop.backgroundColor,
         "--desktop-background-repeat": theme.desktop.repeat,
         "--desktop-background-position": theme.desktop.position,

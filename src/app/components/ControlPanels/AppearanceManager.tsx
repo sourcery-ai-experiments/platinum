@@ -4,13 +4,19 @@ import React from "react";
 import {useDesktop, useDesktopDispatch} from '../Desktop/PlatinumDesktopAppManagerContext';
 import {useSoundDispatch} from "../Desktop/PlatinumDesktopSoundManagerContext";
 import PlatinumApp from "../PlatinumApp";
-import PlatinumAppContext, {defaultAppContext} from "../PlatinumAppContext";
 import {getTheme} from "../PlatinumAppearance";
 import PlatinumButton from "../PlatinumButton";
 import PlatinumDropdown from "../PlatinumDropDown";
 import PlatinumWindow from "../PlatinumWindow";
 
 const AppearanceManager = () => {
+    const defaultAppContext = {elements: {}, windows: {}};
+    const PlatinumAppContext = React.createContext({
+        appContext: defaultAppContext,
+        setAppContext: (ctx) => {
+        }
+    });
+
     const [appContext, setAppContext] = React.useState(defaultAppContext);
 
     const desktopContext = useDesktop();
@@ -79,7 +85,7 @@ const AppearanceManager = () => {
                 id={appId}
                 name={appName}
                 icon={appIcon}
-                debug={true}
+                debug={false}
                 defaultWindow={"AppearanceManager_1"}
             >
                 <PlatinumWindow
