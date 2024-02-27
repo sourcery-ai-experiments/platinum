@@ -10,14 +10,6 @@ import PlatinumDropdown from "../PlatinumDropDown";
 import PlatinumWindow from "../PlatinumWindow";
 
 const AppearanceManager = () => {
-    const defaultAppContext = {elements: {}, windows: {}};
-    const PlatinumAppContext = React.createContext({
-        appContext: defaultAppContext,
-        setAppContext: (ctx) => {
-        }
-    });
-
-    const [appContext, setAppContext] = React.useState(defaultAppContext);
 
     const desktopContext = useDesktop();
     const desktopEventDispatch = useDesktopDispatch();
@@ -80,7 +72,6 @@ const AppearanceManager = () => {
     }
 
     return (
-        <PlatinumAppContext.Provider value={{appContext, setAppContext}}>
             <PlatinumApp
                 id={appId}
                 name={appName}
@@ -138,7 +129,6 @@ const AppearanceManager = () => {
                     </div>
                 </PlatinumWindow>
             </PlatinumApp>
-        </PlatinumAppContext.Provider>
     );
 }
 
