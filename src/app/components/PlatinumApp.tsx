@@ -76,7 +76,7 @@ const PlatinumApp: React.FC<PlatinumAppProps> = ({
                 }
             });
         }
-    }, []);
+    }, [desktopEventDispatch]);
 
     if (debug) {
         let debugWindow = (
