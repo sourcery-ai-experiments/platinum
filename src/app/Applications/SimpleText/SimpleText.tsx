@@ -1,9 +1,6 @@
 'use client';
 
-import {
-    useDesktop,
-    useDesktopDispatch
-} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext";
+import {useDesktopDispatch} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext";
 import PlatinumApp from "@/app/SystemFolder/SystemResources/MacApp/PlatinumApp";
 import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow";
 import React from "react";
@@ -11,7 +8,6 @@ import PlatinumRichTextEditor from "../../SystemFolder/SystemResources/RichTextE
 
 const SimpleText = () => {
 
-    const desktopContext = useDesktop();
     const desktopEventDispatch = useDesktopDispatch();
 
     const appName = "SimpleText";
@@ -71,7 +67,7 @@ const SimpleText = () => {
             id={appId}
             name={appName}
             icon={appIcon}
-            debug={true}
+            debug={false}
             defaultWindow={"textedit-demo"}
         >
             <PlatinumWindow

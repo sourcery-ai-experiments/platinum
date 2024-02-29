@@ -85,7 +85,7 @@ const AppearanceManager = () => {
                 name={appName}
                 icon={appIcon}
                 defaultWindow={"AppearanceManager_1"}
-                debug={true}
+                debug={false}
                 appContext={appContext}
             >
                 <PlatinumWindow
@@ -135,7 +135,7 @@ const AppearanceManager = () => {
                         fontFamily: "var(--header-font"
                     }}>
                         <img src={appIcon} alt="About"/>
-                        <h1>Appearance Manager</h1>
+                        <h1>{appName}</h1>
                         <h5>Not Copyright 1998 Apple Computer, Inc.</h5>
                     </div>
                 </PlatinumWindow>

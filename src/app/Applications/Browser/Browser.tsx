@@ -10,7 +10,6 @@ import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWi
 import React from "react";
 
 const Browser = () => {
-    const [appOpen, setAppOpen] = React.useState(false);
 
     const appName = "Browser";
     const appId = "Browser.app";
@@ -52,7 +51,7 @@ const Browser = () => {
                 id={appId}
                 name={appName}
                 icon={appIcon}
-                debug={true}
+                debug={false}
                 defaultWindow={"demo"}
                 appContext={appContext}
             >

@@ -59,7 +59,7 @@ const Demo = () => {
                 id={appId}
                 name={appName}
                 icon={appIcon}
-                debug={true}
+                debug={false}
                 defaultWindow={"demo"}
                 appContext={appContext}
             >
@@ -72,7 +72,7 @@ const Demo = () => {
                     zoomable={false}
                     scrollable={false}
                     collapsable={false}
-                    initialSize={[400, 500]}
+                    initialSize={[400, 350]}
                     initialPosition={[300, 50]}
                     modalWindow={true}
                 >
@@ -83,10 +83,7 @@ const Demo = () => {
                         selected={"hello"}
                     />
                     <PlatinumProgressBar value={59}></PlatinumProgressBar>
-                    <PlatinumInput id={"test"}></PlatinumInput>
-                    <PlatinumButton isDefault={true} onClick={quitApp}>Quit</PlatinumButton>
-                    <PlatinumButton isDefault={false}>Nothing</PlatinumButton>
-                    <PlatinumButton isDefault={false} disabled={true}>Disabled</PlatinumButton>
+                    <PlatinumInput id={"test"} labelTitle={"Text Input"}></PlatinumInput>
                     <PlatinumInputGroup label={"Test Radio Inputs"}>
                         <PlatinumInputRadio id={"test1"} name={"test_radio"} isDefault={false}
                                             label={"Radio Button 1"}/>
@@ -98,7 +95,6 @@ const Demo = () => {
                     <PlatinumInputGroup label={"Test Checkboxes"}>
                         <PlatinumInputCheckbox id={"test4"} name={"test_check"} isDefault={true}
                                                label={"Default Checkbox"}
-                                               checked={true}
                                                disabled={false}/>
                         <PlatinumInputCheckbox id={"test5"} name={"test_check"} isDefault={false}
                                                label={"Checkbox 2"}
@@ -106,6 +102,9 @@ const Demo = () => {
                         <PlatinumInputCheckbox id={"test6"} name={"test_check"} isDefault={false} label={"Disabled"}
                                                disabled={true}/>
                     </PlatinumInputGroup>
+                    <PlatinumButton isDefault={true} onClick={quitApp}>Quit</PlatinumButton>
+                    <PlatinumButton isDefault={false}>Nothing</PlatinumButton>
+                    <PlatinumButton isDefault={false} disabled={true}>Disabled</PlatinumButton>
 
                 </PlatinumWindow>
             </PlatinumApp>

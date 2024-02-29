@@ -155,7 +155,6 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
     };
 
     const setActive = (e) => {
-        e.preventDefault();
         if (!isActive()) {
             player({type: "PlatinumSoundPlay", sound: "PlatinumWindowFocus"})
         }

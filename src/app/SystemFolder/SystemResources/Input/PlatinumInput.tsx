@@ -24,7 +24,7 @@ const PlatinumInput: React.FC<PlatinumInputProps> = ({
                                                          onChangeFunc
                                                      }) => {
 
-    return (<>
+    return (<div className={platinumInputStyles.platinumInputHolder}>
         {labelTitle &&
             <label htmlFor={id} className={platinumInputStyles.platinumInputLabel}>{labelTitle}</label>
         }
@@ -38,7 +38,7 @@ const PlatinumInput: React.FC<PlatinumInputProps> = ({
                className={classNames(
                    platinumInputStyles.platinumInput, isDefault ? platinumInputStyles.platinumInputDefault : "")}
         ></input>
-    </>);
+    </div>);
 };
 
 export default PlatinumInput;

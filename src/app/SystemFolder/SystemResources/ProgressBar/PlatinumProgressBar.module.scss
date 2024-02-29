@@ -2,7 +2,9 @@
 @use 'sass:list';
 
 .platinumProgress {
+
   progress[value] {
+    width: calc(100% - var(--window-padding-size));
     background: var(--color-theme-03) !important;
 
     &::-webkit-progress-bar {
