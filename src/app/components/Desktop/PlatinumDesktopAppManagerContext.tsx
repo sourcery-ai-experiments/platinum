@@ -1,8 +1,7 @@
 import {createContext, Suspense, useContext, useReducer} from 'react';
-import {loadSoundTheme} from "../PlatinumAppearance"
 import {platinumDesktopIconEventHandler} from "./PlatinumDesktopIconContext";
 import {PlatinumDesktopSoundManagerProvider} from "./PlatinumDesktopSoundManagerContext";
-import {initialDesktopState, PlatinumDesktopState, PlatinumTheme} from "./PlatinumDesktopState";
+import {initialDesktopState, PlatinumDesktopState} from "./PlatinumDesktopState";
 import {platinumWindowEventHandler} from "./PlatinumDesktopWindowManagerContext"
 
 const PlatinumDesktopContext = createContext(null);
@@ -72,10 +71,6 @@ export const platinumDesktopEventHandler = (ds: PlatinumDesktopState, action) =>
         }
         case "PlatinumDesktopTheme": {
             ds.activeTheme = action.activeTheme;
-            let theme: PlatinumTheme = ds.availableThemes.find(x => x.id === ds.activeTheme);
-            if ('sound' in theme && 'file' in theme.sound) {
-                ds.soundPlayer = loadSoundTheme(process.env.NEXT_PUBLIC_BASE_PATH + theme.sound.file);
-            }
             break;
         }
         case "PlatinumDesktopLoadThemes": {
@@ -108,7 +103,10 @@ export const platinumAppEventHandler = (ds: PlatinumDesktopState, action) => {
             break;
         }
         case "PlatinumAppFocus": {
-            ds.activeWindow = action.window;
+            if (ds.activeApp !== action.app.id) {
+                ds.activeWindow = action.window;
+            }
+            ds.activeApp = action.app.id;
         }
     }
 

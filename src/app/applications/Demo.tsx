@@ -54,7 +54,7 @@ const Demo = () => {
                 id={appId}
                 name={appName}
                 icon={appIcon}
-                debug={false}
+                debug={true}
                 defaultWindow={"demo"}
             >
                 <PlatinumWindow

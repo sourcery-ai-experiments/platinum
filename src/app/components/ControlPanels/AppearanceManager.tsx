@@ -8,6 +8,7 @@ import {getTheme} from "../PlatinumAppearance";
 import PlatinumButton from "../PlatinumButton";
 import PlatinumDropdown from "../PlatinumDropDown";
 import PlatinumWindow from "../PlatinumWindow";
+import AppearanceManagerContext, {defaultAppearanceManagerContext} from "./AppearanceManagerContext";
 
 const AppearanceManager = () => {
 
@@ -23,17 +24,20 @@ const AppearanceManager = () => {
     const themes = desktopContext.availableThemes.map(a => (({id, name}) => ({value: id, label: name}))(a));
 
     const switchTheme = (e) => {
-        changeValue(e);
+        changeElementValue(e);
         desktopEventDispatch({
             type: "PlatinumDesktopTheme",
             activeTheme: e.target.value,
         });
-
-        let soundTheme = getTheme(e.target.value).sound;
-        player({type: "PlatinumSoundLoad", file: soundTheme.file, disabled: soundTheme.disabled});
+        loadSoundTheme(e.target.value);
     };
 
-    const changeValue = (e) => {
+    const loadSoundTheme = (themeName: string) => {
+        const soundTheme = getTheme(themeName).sound;
+        player({type: "PlatinumSoundLoad", file: soundTheme.file, disabled: soundTheme.disabled});
+    }
+
+    const changeElementValue = (e) => {
         const dataElements = appContext["elements"];
         dataElements[e.target.id] = e.target.value;
         setAppContext({...appContext, elements: dataElements});
@@ -72,12 +76,14 @@ const AppearanceManager = () => {
     }
 
     return (
+        <AppearanceManagerContext.Provider value={{appContext, setAppContext}}>
             <PlatinumApp
                 id={appId}
                 name={appName}
                 icon={appIcon}
-                debug={false}
                 defaultWindow={"AppearanceManager_1"}
+                debug={true}
+                appContext={appContext}
             >
                 <PlatinumWindow
                     id={"AppearanceManager_1"}
@@ -129,6 +135,7 @@ const AppearanceManager = () => {
                     </div>
                 </PlatinumWindow>
             </PlatinumApp>
+        </AppearanceManagerContext.Provider>
     );
 }
 

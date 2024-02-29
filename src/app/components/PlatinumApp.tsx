@@ -3,7 +3,6 @@ import React from "react";
 import {JSONTree} from 'react-json-tree';
 import {useDesktop, useDesktopDispatch} from './Desktop/PlatinumDesktopAppManagerContext';
 import {useSound} from "./Desktop/PlatinumDesktopSoundManagerContext";
-import PlatinumAppContext from "./PlatinumAppContext";
 import {getTheme} from "./PlatinumAppearance";
 import PlatinumWindow from "./PlatinumWindow";
 
@@ -16,6 +15,7 @@ interface PlatinumAppProps {
     debug?: boolean;
     openOnBoot?: boolean;
     children?: any;
+    appContext?: any;
 }
 
 
@@ -25,11 +25,11 @@ const PlatinumApp: React.FC<PlatinumAppProps> = ({
                                                      name,
                                                      openOnBoot = true,
                                                      noDesktopIcon = false,
+                                                     appContext,
                                                      defaultWindow,
                                                      debug = false,
                                                      children
                                                  }) => {
-    const {appContext, setAppContext} = React.useContext(PlatinumAppContext);
     const desktopContext = useDesktop();
     const desktopEventDispatch = useDesktopDispatch();
 
@@ -61,6 +61,7 @@ const PlatinumApp: React.FC<PlatinumAppProps> = ({
     const onFocus = () => {
         desktopEventDispatch({
             type: "PlatinumAppFocus",
+            app: {id: id},
             window: defaultWindow
         });
     }

@@ -17,7 +17,6 @@ const Finder = () => {
             id={appId}
             name={appName}
             icon={appIcon}
-            debug={false}
             noDesktopIcon={true}
             defaultWindow={""}
         >

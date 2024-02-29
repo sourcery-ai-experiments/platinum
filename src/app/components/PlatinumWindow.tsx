@@ -86,6 +86,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
     };
 
     const startMoveWindow = (e) => {
+        e.preventDefault();
         player({type: "PlatinumSoundPlay", sound: "PlatinumWindowMoveIdle"})
         setDragging(true);
         setClickPosition([
@@ -95,8 +96,9 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
     };
 
     const changeWindow = (e) => {
+        e.preventDefault();
         if (windowState.resizing || windowState.dragging) {
-            setActive();
+            setActive(e);
         }
 
         if (windowState.resizing) {
@@ -115,7 +117,8 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
         }
     };
 
-    const stopChangeWindow = () => {
+    const stopChangeWindow = (e) => {
+        e.preventDefault();
         player({type: "PlatinumSoundPlay", sound: "PlatinumWindowMoveStop"})
         setResize(false);
         setDragging(false);
@@ -145,7 +148,8 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
         return id === desktopContext.activeWindow;
     };
 
-    const setActive = () => {
+    const setActive = (e) => {
+        e.preventDefault();
         if (!isActive()) {
             player({type: "PlatinumSoundPlay", sound: "PlatinumWindowFocus"})
         }
@@ -209,7 +213,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
     };
 
     const hideContextMenu = (e) => {
-
+        e.preventDefault();
         setContextMenu(false, [0, 0]);
     };
 
