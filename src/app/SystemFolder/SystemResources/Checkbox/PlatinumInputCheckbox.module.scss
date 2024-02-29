@@ -1,0 +1,68 @@
+@use "../../Appearance/styles/appearance";
+
+.platinumInputCheckboxGroup {
+  display: flex;
+  align-items: stretch;
+  flex-direction: row;
+  justify-content: stretch;
+  padding: calc(var(--window-border-size) * 2) 0;
+}
+
+.platinumInputCheckbox {
+  width: calc(var(--window-control-size));
+  height: var(--window-control-size);
+  margin: var(--window-border-size);
+  border-radius: 0;
+  @include appearance.platinumWindowBorder;
+  appearance: none;
+
+  &:checked {
+    &:after {
+      font-family: var(--ui-font);
+      font-size: calc(var(--ui-font-size) * 1.5);
+      display: block;
+      margin-top: calc(var(--window-control-size) * -.75);
+      margin-left: calc(var(--window-border-size) * -1);
+      content: "\00D7";
+      text-shadow: var(--color-system-05) 1px 1px 2px;
+    }
+  }
+
+  &:active {
+    background: black;
+    @include appearance.platinumDepressableBoxShadowActive;
+  }
+
+  &:disabled, &:disabled:active {
+    border: var(--window-border-size) solid var(--color-system-06) !important;
+    background: transparent;
+    box-shadow: none;
+  }
+
+
+}
+
+.platinumInputCheckboxLabel {
+  font-family: var(--ui-font);
+  font-size: var(--ui-font-size);
+  height: var(--window-control-size);
+  margin-left: calc(var(--window-control-size) / 2);
+}
+
+.platinumInputCheckboxLabelDisabled {
+  color: var(--color-system-05);
+}
+
+.platinumInputCheckboxDefault {
+  &:checked, &:active {
+    &:after {
+      font-family: var(--ui-font);
+      font-size: var(--ui-font-size);
+      display: block;
+      margin-top: calc(var(--ui-font-size) * -.25);
+      margin-left: calc(var(--window-border-size) * -1);
+      content: "\2713";
+      text-shadow: var(--color-system-05) 1px 1px 2px;
+    }
+  }
+}

@@ -855,7 +855,7 @@ a full Markdown editor using [MDXEditor.](https://mdxeditor.dev)
 
 ![Screenshot 2024-02-09 at 11.44.40 AM.png](https://res.craft.do/user/full/f6bf69d9-c199-b5e2-2561-223aac7866f6/doc/21B84071-5847-4B88-BE10-7257963581FF/E588419A-40CE-44BF-8A04-BB73DC2FCEC9_2/yBPOMacZ2617YsibEHNZx0u072g8yt2eO8HnGdZEM3Mz/Screenshot%202024-02-09%20at%2011.44.40AM.png)
 
-A TextEdit app, using the awesome MDXEditor, and the Demo PlatinumApp app, showing a few basic controls.
+A SimpleText app, using the awesome MDXEditor, and the Demo PlatinumApp app, showing a few basic controls.
 
 ### What's next
 
