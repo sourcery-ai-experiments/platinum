@@ -1,12 +1,13 @@
 'use client';
 
+import Browser from "@/app/Applications/Browser/Browser";
+import Demo from "@/app/Applications/Demo/Demo";
+import SimpleText from "@/app/Applications/SimpleText/SimpleText";
+import PlatinumDesktop from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktop";
+import {PlatinumDesktopProvider} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext";
 import React from "react";
-import Demo from "./applications/Demo";
-import TextEdit from "./applications/TextEdit";
 
-import AppearanceManager from "./components/ControlPanels/AppearanceManager";
-import PlatinumDesktop from "./components/Desktop/PlatinumDesktop";
-import {PlatinumDesktopProvider} from "./components/Desktop/PlatinumDesktopAppManagerContext";
+import AppearanceManager from "./SystemFolder/ControlPanels/AppearanceManager/AppearanceManager";
 
 export default function Home() {
     return (
@@ -14,8 +15,9 @@ export default function Home() {
             <PlatinumDesktop>
                 <AppearanceManager/>
                 <Demo/>
-                <TextEdit/>
+                <Browser/>
+                <SimpleText/>
             </PlatinumDesktop>
         </PlatinumDesktopProvider>
     );
-}
+};

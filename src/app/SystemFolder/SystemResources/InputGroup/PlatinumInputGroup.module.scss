@@ -1,0 +1,11 @@
+@use "../../Appearance/styles/appearance";
+@use "../../Appearance/styles/assets";
+
+.platinumInputGroup {
+}
+
+.platinumInputGroupLegend {
+  font-family: var(--ui-font);
+  font-size: calc(var(--ui-font-size) * .75);
+  margin-top: calc(var(--ui-font-size) * -1);
+}
