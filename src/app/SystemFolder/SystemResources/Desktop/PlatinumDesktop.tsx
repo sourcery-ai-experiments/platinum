@@ -159,7 +159,7 @@ const PlatinumDesktop: React.FC<PlatinumDesktopProps> = ({children}) => {
                                      height: selectBoxSize[1]
                                  }}/>
                         }
-                        <PlatinumDesktopMenu menuItems={desktopState.menuBar}/>
+                        <PlatinumDesktopMenu/>
                         {contextMenu && (
                             <PlatinumContextualMenu menuItems={defaultMenuItems}
                                                     position={contextMenuLocation}/>

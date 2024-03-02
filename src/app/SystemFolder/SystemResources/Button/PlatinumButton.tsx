@@ -40,5 +40,5 @@ const PlatinumButton: React.FC<PlatinumButtonProps> = ({
         </button>
     );
 };
-export default PlatinumButton;
 
+export default PlatinumButton;

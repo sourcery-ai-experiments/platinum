@@ -1,17 +1,18 @@
 'use client';
-import {useDesktop} from '@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext';
+import {
+    useDesktop,
+    useDesktopDispatch
+} from '@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext';
 import platinumDesktopMenuStyles from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopMenu.module.scss";
 import PlatinumDesktopMenuWidgetTime from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopMenuWidgetTime";
 import PlatinumMenu, {PlatinumMenuItem} from "@/app/SystemFolder/SystemResources/Menu/PlatinumMenu";
 import platinumMenuStyles from "@/app/SystemFolder/SystemResources/Menu/PlatinumMenu.module.scss";
 import React from "react";
 
-interface PlatinumMenuProps {
-    menuItems: PlatinumMenuItem[];
-}
 
-const PlatinumDesktopMenu: React.FC<PlatinumMenuProps> = ({menuItems}) => {
+const PlatinumDesktopMenu: React.FC = () => {
     const desktopContext = useDesktop();
+    const desktopEventDispatch = useDesktopDispatch();
 
     const systemMenuItem: PlatinumMenuItem = {
         id: "apple-menu",
@@ -20,15 +21,31 @@ const PlatinumDesktopMenu: React.FC<PlatinumMenuProps> = ({menuItems}) => {
         className: platinumDesktopMenuStyles.platinumDesktopMenuAppleMenu
     };
 
+    const setActiveApp = (appId: string) => {
+        desktopEventDispatch({
+            type: "PlatinumAppFocus",
+            app: {id: appId},
+        })
+    };
+
+    let activeAppObject = desktopContext.openApps.filter((app) => app.id == desktopContext.activeApp);
+    if (!activeAppObject.length) {
+        activeAppObject = [{icon: `${process.env.NEXT_PUBLIC_BASE_PATH}/img/macos.svg`, name: "Finder"}];
+        console.log(activeAppObject);
+    }
+
     const appSwitcherMenuMenuItem: PlatinumMenuItem = {
         id: "app-switcher",
-        image: desktopContext.appSwitcherMenu[0].icon,
-        title: desktopContext.appSwitcherMenu[0].name,
+        image: activeAppObject[0].icon,
+        title: activeAppObject[0].name,
         className: platinumDesktopMenuStyles.platinumDesktopMenuAppSwitcher,
         menuChildren: desktopContext.openApps.map((app) => ({
                 id: app.id,
                 icon: app.icon,
-                title: app.name
+                title: app.name,
+                onClickFunc: () => {
+                    setActiveApp(app.id)
+                }
             }
         ))
     }

@@ -27,6 +27,7 @@ export type PlatinumApp = {
     name: string;
     icon: string;
     hidden: boolean;
+    defaultWindow?: string;
 };
 
 export type PlatinumThemeColorPalette = [number, number, number, number, number, number, number];

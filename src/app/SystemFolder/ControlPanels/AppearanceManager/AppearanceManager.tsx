@@ -24,7 +24,7 @@ const AppearanceManager = () => {
     const appId: string = "AppearanceManager.app";
     const appIcon: string = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/appearance-manager/app.png`;
     const {appContext, setAppContext} = React.useContext(AppearanceManagerContext);
-    const themes = desktopContext.availableThemes.map((a: any) => (({id, name}) => ({value: id, label: name}))(a));
+    const themesList = desktopContext.availableThemes.map((a: any) => (({id, name}) => ({value: id, label: name}))(a));
 
     const switchTheme = (e) => {
         changeElementValue(e);
@@ -85,7 +85,6 @@ const AppearanceManager = () => {
                 name={appName}
                 icon={appIcon}
                 defaultWindow={"AppearanceManager_1"}
-                debug={false}
                 appContext={appContext}
             >
                 <PlatinumWindow
@@ -104,8 +103,7 @@ const AppearanceManager = () => {
                 >
                     <PlatinumDropdown
                         id={"select_theme"}
-                        small={false}
-                        options={themes}
+                        options={themesList}
                         onChangeFunc={switchTheme}
                         selected={desktopContext.activeTheme || "default"}
                     />

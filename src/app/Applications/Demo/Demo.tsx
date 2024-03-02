@@ -1,31 +1,25 @@
 'use client';
 
 import AppearanceManagerContext from "@/app/SystemFolder/ControlPanels/AppearanceManager/AppearanceManagerContext";
+import PlatinumButton from "@/app/SystemFolder/SystemResources/Button/PlatinumButton";
 import PlatinumInputCheckbox from "@/app/SystemFolder/SystemResources/Checkbox/PlatinumInputCheckbox";
-import {
-    useDesktop,
-    useDesktopDispatch
-} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext";
+import {useDesktopDispatch} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext";
+import PlatinumDropdown from "@/app/SystemFolder/SystemResources/DropDown/PlatinumDropDown";
+import PlatinumInput from "@/app/SystemFolder/SystemResources/Input/PlatinumInput";
+import PlatinumInputGroup from "@/app/SystemFolder/SystemResources/InputGroup/PlatinumInputGroup";
 import PlatinumApp from "@/app/SystemFolder/SystemResources/MacApp/PlatinumApp";
+import PlatinumProgressBar from "@/app/SystemFolder/SystemResources/ProgressBar/PlatinumProgressBar";
+import PlatinumInputRadio from "@/app/SystemFolder/SystemResources/RadioInput/PlatinumInputRadio";
 import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow";
 import React from "react";
-import PlatinumButton from "../../SystemFolder/SystemResources/Button/PlatinumButton";
-import PlatinumDropdown from "../../SystemFolder/SystemResources/DropDown/PlatinumDropDown";
-import PlatinumInput from "../../SystemFolder/SystemResources/Input/PlatinumInput";
-import PlatinumInputGroup from "../../SystemFolder/SystemResources/InputGroup/PlatinumInputGroup";
-import PlatinumProgressBar from "../../SystemFolder/SystemResources/ProgressBar/PlatinumProgressBar";
-import PlatinumInputRadio from "../../SystemFolder/SystemResources/RadioInput/PlatinumInputRadio";
 
 const Demo = () => {
-    const [appOpen, setAppOpen] = React.useState(false);
-
     const appName = "Demo";
     const appId = "Demo.app";
     const appIcon = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/folders/default.png`;
 
-    const desktopContext = useDesktop();
     const desktopEventDispatch = useDesktopDispatch();
-    const {appContext, setAppContext} = React.useContext(AppearanceManagerContext);
+    const {appContext} = React.useContext(AppearanceManagerContext);
 
     const quitApp = () => {
         desktopEventDispatch({
@@ -59,7 +53,6 @@ const Demo = () => {
                 id={appId}
                 name={appName}
                 icon={appIcon}
-                debug={false}
                 defaultWindow={"demo"}
                 appContext={appContext}
             >
@@ -75,6 +68,7 @@ const Demo = () => {
                     initialSize={[400, 350]}
                     initialPosition={[300, 50]}
                     modalWindow={true}
+                    appMenu={appMenu}
                 >
                     <PlatinumDropdown
                         id={"select_theme"}

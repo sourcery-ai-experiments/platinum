@@ -1,10 +1,7 @@
 'use client';
 
 import AppearanceManagerContext from "@/app/SystemFolder/ControlPanels/AppearanceManager/AppearanceManagerContext";
-import {
-    useDesktop,
-    useDesktopDispatch
-} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext";
+import {useDesktopDispatch} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext";
 import PlatinumApp from "@/app/SystemFolder/SystemResources/MacApp/PlatinumApp";
 import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow";
 import React from "react";
@@ -15,9 +12,8 @@ const Browser = () => {
     const appId = "Browser.app";
     const appIcon = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/internet-services.png`;
 
-    const desktopContext = useDesktop();
     const desktopEventDispatch = useDesktopDispatch();
-    const {appContext, setAppContext} = React.useContext(AppearanceManagerContext);
+    const {appContext} = React.useContext(AppearanceManagerContext);
 
     const quitApp = () => {
         desktopEventDispatch({
@@ -51,7 +47,6 @@ const Browser = () => {
                 id={appId}
                 name={appName}
                 icon={appIcon}
-                debug={false}
                 defaultWindow={"demo"}
                 appContext={appContext}
             >
@@ -59,15 +54,10 @@ const Browser = () => {
                     id={"demo"}
                     title={appName}
                     appId={appId}
-                    closable={true}
-                    resizable={true}
-                    zoomable={true}
                     scrollable={false}
-                    collapsable={true}
                     initialSize={[100, 500]}
                     initialPosition={[100, 100]}
-                    appMenu={appMenu}
-                    modalWindow={false}>
+                    appMenu={appMenu}>
                     <iframe src={"https://theoldnet.com/"}
                             style={{width: "100%", height: "100%", padding: "0", margin: "0"}}/>
                 </PlatinumWindow>

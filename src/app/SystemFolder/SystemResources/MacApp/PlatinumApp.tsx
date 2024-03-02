@@ -65,7 +65,6 @@ const PlatinumApp: React.FC<PlatinumAppProps> = ({
         desktopEventDispatch({
             type: "PlatinumAppFocus",
             app: {id: id},
-            window: defaultWindow
         });
     }
 

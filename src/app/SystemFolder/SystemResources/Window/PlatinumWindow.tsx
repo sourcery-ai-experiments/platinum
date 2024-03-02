@@ -15,7 +15,6 @@ import {
 } from "@/app/SystemFolder/SystemResources/Window/PlatinumWindowContext";
 import classNames from "classnames";
 import React from "react";
-import UrlSafeString from "url-safe-string";
 
 interface PlatinumWindowProps {
     title?: string;
@@ -270,7 +269,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
         <>
             {!hidden && (
                 <div
-                    id={appId + "_" + (!id ? UrlSafeString().generate(title) : id)}
+                    id={[appId, id].join("_")}
                     ref={windowRef}
                     style={{
                         width: size[0],
