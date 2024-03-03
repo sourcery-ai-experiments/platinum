@@ -4,6 +4,7 @@ import AppearanceManagerContext from "@/app/SystemFolder/ControlPanels/Appearanc
 import PlatinumButton from "@/app/SystemFolder/SystemResources/Button/PlatinumButton";
 import PlatinumInputCheckbox from "@/app/SystemFolder/SystemResources/Checkbox/PlatinumInputCheckbox";
 import {useDesktopDispatch} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext";
+import PlatinumDisclosure from "@/app/SystemFolder/SystemResources/Disclosure/PlatinumDisclosure";
 import PlatinumDropdown from "@/app/SystemFolder/SystemResources/DropDown/PlatinumDropDown";
 import PlatinumInput from "@/app/SystemFolder/SystemResources/Input/PlatinumInput";
 import PlatinumInputGroup from "@/app/SystemFolder/SystemResources/InputGroup/PlatinumInputGroup";
@@ -65,7 +66,7 @@ const Demo = () => {
                     zoomable={false}
                     scrollable={false}
                     collapsable={false}
-                    initialSize={[400, 350]}
+                    initialSize={[400, 500]}
                     initialPosition={[300, 50]}
                     modalWindow={true}
                     appMenu={appMenu}
@@ -96,6 +97,9 @@ const Demo = () => {
                         <PlatinumInputCheckbox id={"test6"} name={"test_check"} isDefault={false} label={"Disabled"}
                                                disabled={true}/>
                     </PlatinumInputGroup>
+                    <PlatinumDisclosure direction={"right"}>
+                        <p>HELLO!</p>
+                    </PlatinumDisclosure>
                     <PlatinumButton isDefault={true} onClick={quitApp}>Quit</PlatinumButton>
                     <PlatinumButton isDefault={false}>Nothing</PlatinumButton>
                     <PlatinumButton isDefault={false} disabled={true}>Disabled</PlatinumButton>

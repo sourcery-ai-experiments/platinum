@@ -4,8 +4,9 @@
 .platinumProgress {
 
   progress[value] {
-    width: calc(100% - var(--window-padding-size));
-    background: var(--color-theme-03) !important;
+    width: calc(100%);
+    padding: 0 var(--window-padding-size);
+    background: var(--color-system-03) !important;
 
     &::-webkit-progress-bar {
       background: var(--color-system-04);

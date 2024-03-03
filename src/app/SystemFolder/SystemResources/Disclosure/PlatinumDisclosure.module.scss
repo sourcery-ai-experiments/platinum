@@ -1,0 +1,62 @@
+@use "../../Appearance/styles/appearance";
+
+.platinumDisclosure {
+  padding: var(--window-padding-size);
+}
+
+.platinumDisclosureHeader {
+  display: flex;
+  flex-direction: row;
+}
+
+.platinumDisclosureOpen {
+  height: 100%;
+}
+
+.platinumDisclosureClose {
+  height: 0;
+  opacity: 0;
+}
+
+.platinumDisclosureTriangle {
+  width: calc(var(--window-control-size) + var(--window-padding-size));
+  height: calc(var(--window-control-size) + var(--window-padding-size));
+}
+
+.platinumDisclosureTriangleHighlight {
+  fill: var(--color-theme-02);
+}
+
+.platinumDisclosureTriangleShadow {
+  fill: var(--color-theme-04);
+}
+
+.platinumDisclosureTriangleInner {
+  fill: var(--color-theme-03);
+}
+
+.platinumDisclosureTriangleDropShadow {
+  opacity: .33;
+  color: var(--color-black);
+}
+
+.platinumDisclosureTriangleOutline {
+  color: var(--color-black);
+}
+
+.platinumDisclosureTriangleRightOpen {
+  transform: rotate(90deg);
+}
+
+.platinumDisclosureTriangleRightClosed {
+  transform: rotate(0);
+}
+
+
+.platinumDisclosureTriangleLeftOpen {
+  transform: scaleX(100%);
+}
+
+.platinumDisclosureTriangleLeftClosed {
+  transform: scaleX(100%) rotate(0);
+}

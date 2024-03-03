@@ -1,4 +1,5 @@
 import platinumInputCheckboxStyles from "@/app/SystemFolder/SystemResources/Checkbox/PlatinumInputCheckbox.module.scss";
+import PlatinumControlLabel from "@/app/SystemFolder/SystemResources/ControlLabel/PlatinumControlLabel";
 import classNames from "classnames";
 import React from "react";
 
@@ -31,9 +32,7 @@ const PlatinumInputCheckbox: React.FC<PlatinumInputCheckboxProps> = ({
                        platinumInputCheckboxStyles.platinumInputCheckbox,
                        isDefault ? platinumInputCheckboxStyles.platinumInputCheckboxDefault : ""
                    )}/>
-            <label htmlFor={id}
-                   className={classNames(platinumInputCheckboxStyles.platinumInputCheckboxLabel, disabled ? platinumInputCheckboxStyles.platinumInputCheckboxLabelDisabled : "")}>{label}</label>
-
+            <PlatinumControlLabel label={label} labelFor={id} disabled={disabled}></PlatinumControlLabel>
         </div>
     );
 };
