@@ -124,7 +124,9 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
 
     const stopChangeWindow = (e) => {
         e.preventDefault();
-        player({type: "PlatinumSoundPlay", sound: "PlatinumWindowMoveStop"})
+        if (windowState.resizing || windowState.dragging || windowState.moving) {
+            player({type: "PlatinumSoundPlayInterrupt", sound: "PlatinumWindowMoveStop"});
+        }
         setResize(false);
         setDragging(false);
         setMoving(false);
