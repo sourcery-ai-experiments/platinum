@@ -3,18 +3,21 @@ import platinumDisclosureStyles from "@/app/SystemFolder/SystemResources/Disclos
 import classNames from "classnames";
 import React from "react";
 
+type PlatinumDisclosureTriangleDirections = "up" | "right" | "down" | "left";
 
 type PlatinumDisclosureProps = {
-    direction?: "up" | "right" | "down" | "left";
+    direction?: PlatinumDisclosureTriangleDirections;
     label?: string;
     children?: any;
 }
-const PlatinumDisclosure: React.FC<PlatinumDisclosureProps> = ({
-                                                                   direction = "right",
-                                                                   label = "",
-                                                                   children
-                                                               }) => {
 
+const PlatinumDisclosure: React.FC<PlatinumDisclosureProps> = (
+    {
+        direction = "right",
+        label = "",
+        children
+    }
+) => {
     const [open, setOpen] = React.useState(false);
     const triangleClassOpenName = "platinumDisclosureTriangle" +
         direction.charAt(0).toUpperCase()
@@ -50,7 +53,8 @@ const PlatinumDisclosure: React.FC<PlatinumDisclosureProps> = ({
                 <PlatinumControlLabel label={label}/>
             </div>
             <div
-                className={open === true ? platinumDisclosureStyles.platinumDisclosureOpen : platinumDisclosureStyles.platinumDisclosureClose}>
+                className={classNames(platinumDisclosureStyles.platinumDisclosureInner,
+                    open === true ? platinumDisclosureStyles.platinumDisclosureInnerOpen : platinumDisclosureStyles.platinumDisclosureInnerClose)}>
                 {children}
             </div>
         </div>

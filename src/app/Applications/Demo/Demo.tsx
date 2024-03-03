@@ -98,10 +98,10 @@ const Demo = () => {
                                                disabled={true}/>
                     </PlatinumInputGroup>
                     <PlatinumDisclosure label={"Expandable Section"}>
-                        <p>HELLO!</p>
+                        <p style={{fontFamily: "var(--header-font)"}}>HELLO!</p>
                     </PlatinumDisclosure>
-                    <PlatinumButton isDefault={true} onClick={quitApp}>Quit</PlatinumButton>
-                    <PlatinumButton isDefault={false}>Nothing</PlatinumButton>
+                    <PlatinumButton isDefault={true}>Do Nothing</PlatinumButton>
+                    <PlatinumButton isDefault={false} onClick={quitApp}>Quit</PlatinumButton>
                     <PlatinumButton isDefault={false} disabled={true}>Disabled</PlatinumButton>
 
                 </PlatinumWindow>
