@@ -60,7 +60,8 @@
   @include platinumWindowControlBox;
   @include platinumWindowControlBoxBorder;
   &:active {
-    box-shadow: inset var(--window-border-size) var(--window-border-size) 0 0 var(--color-system-07), inset calc(var(--window-border-size) * -1) calc(var(--window-border-size) * -1) 0 0 var(--color-system-05);
+    box-shadow: inset var(--window-border-size) var(--window-border-size) 0 0 var(--color-system-07),
+    inset calc(var(--window-border-size) * -1) calc(var(--window-border-size) * -1) 0 0 var(--color-system-05);
     background: linear-gradient(
                     135deg,
                     var(--color-system-06),
