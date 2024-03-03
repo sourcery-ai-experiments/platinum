@@ -5,11 +5,13 @@ import React from "react";
 
 
 type PlatinumDisclosureProps = {
-    direction: "up" | "right" | "down" | "left";
+    direction?: "up" | "right" | "down" | "left";
+    label?: string;
     children?: any;
 }
 const PlatinumDisclosure: React.FC<PlatinumDisclosureProps> = ({
                                                                    direction = "right",
+                                                                   label = "",
                                                                    children
                                                                }) => {
 
@@ -31,7 +33,7 @@ const PlatinumDisclosure: React.FC<PlatinumDisclosureProps> = ({
             >
                 <svg id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6.44 11.12"
                      className={classNames(platinumDisclosureStyles.platinumDisclosureTriangle,
-                         open ? platinumDisclosureStyles[triangleClassOpenName] : ""
+                         platinumDisclosureStyles[triangleClassOpenName]
                      )}
                 >
                     <polygon className={platinumDisclosureStyles.platinumDisclosureTriangleDropShadow}
@@ -45,7 +47,7 @@ const PlatinumDisclosure: React.FC<PlatinumDisclosureProps> = ({
                     <polygon className={platinumDisclosureStyles.platinumDisclosureTriangleShadow}
                              points=".76 8.29 .76 8.86 4.79 5.34 4.47 5.05 .76 8.29"/>
                 </svg>
-                <PlatinumControlLabel label={"Disclosure"}></PlatinumControlLabel>
+                <PlatinumControlLabel label={label}/>
             </div>
             <div
                 className={open === true ? platinumDisclosureStyles.platinumDisclosureOpen : platinumDisclosureStyles.platinumDisclosureClose}>
