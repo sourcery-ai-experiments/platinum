@@ -12,7 +12,7 @@ type PlatinumButtonProps = {
 }
 
 const PlatinumButton: React.FC<PlatinumButtonProps> = ({
-                                                           isDefault,
+                                                           isDefault = false,
                                                            buttonType = "button",
                                                            disabled = false,
                                                            onClick = null,
