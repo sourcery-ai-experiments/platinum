@@ -4,8 +4,9 @@ import PlatinumRichTextEditorStyles
     from "@/app/SystemFolder/SystemResources/RichTextEditor/PlatinumRichTextEditor.module.scss";
 import {
     BoldItalicUnderlineToggles,
+    CodeToggle,
     headingsPlugin,
-    listsPlugin,
+    InsertThematicBreak,
     markdownShortcutPlugin,
     MDXEditor,
     MDXEditorMethods,
@@ -29,15 +30,17 @@ const Editor: FC<EditorProps> = ({markdown, editorRef}) => {
     return <div className={PlatinumRichTextEditorStyles.platinumRichTextEditor}>
         <MDXEditor ref={editorRef} markdown={markdown} contentEditableClassName="prose"
                    plugins={[headingsPlugin(), headingsPlugin(),
-                       listsPlugin(),
                        quotePlugin(),
                        thematicBreakPlugin(),
-                       markdownShortcutPlugin(), toolbarPlugin({
+                       markdownShortcutPlugin(),
+                       toolbarPlugin({
                            toolbarContents: () => (
                                <>
                                    {' '}
                                    <UndoRedo/>
                                    <BoldItalicUnderlineToggles/>
+                                   <CodeToggle></CodeToggle>
+                                   <InsertThematicBreak></InsertThematicBreak>
                                </>
                            )
                        })

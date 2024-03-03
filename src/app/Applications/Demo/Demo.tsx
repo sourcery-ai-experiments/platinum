@@ -1,31 +1,26 @@
 'use client';
 
 import AppearanceManagerContext from "@/app/SystemFolder/ControlPanels/AppearanceManager/AppearanceManagerContext";
+import PlatinumButton from "@/app/SystemFolder/SystemResources/Button/PlatinumButton";
 import PlatinumInputCheckbox from "@/app/SystemFolder/SystemResources/Checkbox/PlatinumInputCheckbox";
-import {
-    useDesktop,
-    useDesktopDispatch
-} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext";
+import {useDesktopDispatch} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext";
+import PlatinumDisclosure from "@/app/SystemFolder/SystemResources/Disclosure/PlatinumDisclosure";
+import PlatinumDropdown from "@/app/SystemFolder/SystemResources/DropDown/PlatinumDropDown";
+import PlatinumInput from "@/app/SystemFolder/SystemResources/Input/PlatinumInput";
+import PlatinumInputGroup from "@/app/SystemFolder/SystemResources/InputGroup/PlatinumInputGroup";
 import PlatinumApp from "@/app/SystemFolder/SystemResources/MacApp/PlatinumApp";
+import PlatinumProgressBar from "@/app/SystemFolder/SystemResources/ProgressBar/PlatinumProgressBar";
+import PlatinumInputRadio from "@/app/SystemFolder/SystemResources/RadioInput/PlatinumInputRadio";
 import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow";
 import React from "react";
-import PlatinumButton from "../../SystemFolder/SystemResources/Button/PlatinumButton";
-import PlatinumDropdown from "../../SystemFolder/SystemResources/DropDown/PlatinumDropDown";
-import PlatinumInput from "../../SystemFolder/SystemResources/Input/PlatinumInput";
-import PlatinumInputGroup from "../../SystemFolder/SystemResources/InputGroup/PlatinumInputGroup";
-import PlatinumProgressBar from "../../SystemFolder/SystemResources/ProgressBar/PlatinumProgressBar";
-import PlatinumInputRadio from "../../SystemFolder/SystemResources/RadioInput/PlatinumInputRadio";
 
 const Demo = () => {
-    const [appOpen, setAppOpen] = React.useState(false);
-
     const appName = "Demo";
     const appId = "Demo.app";
     const appIcon = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/folders/default.png`;
 
-    const desktopContext = useDesktop();
     const desktopEventDispatch = useDesktopDispatch();
-    const {appContext, setAppContext} = React.useContext(AppearanceManagerContext);
+    const {appContext} = React.useContext(AppearanceManagerContext);
 
     const quitApp = () => {
         desktopEventDispatch({
@@ -59,7 +54,6 @@ const Demo = () => {
                 id={appId}
                 name={appName}
                 icon={appIcon}
-                debug={true}
                 defaultWindow={"demo"}
                 appContext={appContext}
             >
@@ -75,6 +69,7 @@ const Demo = () => {
                     initialSize={[400, 500]}
                     initialPosition={[300, 50]}
                     modalWindow={true}
+                    appMenu={appMenu}
                 >
                     <PlatinumDropdown
                         id={"select_theme"}
@@ -83,10 +78,7 @@ const Demo = () => {
                         selected={"hello"}
                     />
                     <PlatinumProgressBar value={59}></PlatinumProgressBar>
-                    <PlatinumInput id={"test"}></PlatinumInput>
-                    <PlatinumButton isDefault={true} onClick={quitApp}>Quit</PlatinumButton>
-                    <PlatinumButton isDefault={false}>Nothing</PlatinumButton>
-                    <PlatinumButton isDefault={false} disabled={true}>Disabled</PlatinumButton>
+                    <PlatinumInput id={"test"} labelTitle={"Text Input"}></PlatinumInput>
                     <PlatinumInputGroup label={"Test Radio Inputs"}>
                         <PlatinumInputRadio id={"test1"} name={"test_radio"} isDefault={false}
                                             label={"Radio Button 1"}/>
@@ -98,7 +90,6 @@ const Demo = () => {
                     <PlatinumInputGroup label={"Test Checkboxes"}>
                         <PlatinumInputCheckbox id={"test4"} name={"test_check"} isDefault={true}
                                                label={"Default Checkbox"}
-                                               checked={true}
                                                disabled={false}/>
                         <PlatinumInputCheckbox id={"test5"} name={"test_check"} isDefault={false}
                                                label={"Checkbox 2"}
@@ -106,6 +97,12 @@ const Demo = () => {
                         <PlatinumInputCheckbox id={"test6"} name={"test_check"} isDefault={false} label={"Disabled"}
                                                disabled={true}/>
                     </PlatinumInputGroup>
+                    <PlatinumDisclosure label={"Expandable Section"}>
+                        <p style={{fontFamily: "var(--header-font)"}}>HELLO!</p>
+                    </PlatinumDisclosure>
+                    <PlatinumButton isDefault={true}>Do Nothing</PlatinumButton>
+                    <PlatinumButton isDefault={false} onClick={quitApp}>Quit</PlatinumButton>
+                    <PlatinumButton isDefault={false} disabled={true}>Disabled</PlatinumButton>
 
                 </PlatinumWindow>
             </PlatinumApp>

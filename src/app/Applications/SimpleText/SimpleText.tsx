@@ -1,17 +1,13 @@
 'use client';
 
-import {
-    useDesktop,
-    useDesktopDispatch
-} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext";
+import {useDesktopDispatch} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext";
 import PlatinumApp from "@/app/SystemFolder/SystemResources/MacApp/PlatinumApp";
+import PlatinumRichTextEditor from "@/app/SystemFolder/SystemResources/RichTextEditor/PlatinumRichTextEditor";
 import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow";
 import React from "react";
-import PlatinumRichTextEditor from "../../SystemFolder/SystemResources/RichTextEditor/PlatinumRichTextEditor";
 
 const SimpleText = () => {
 
-    const desktopContext = useDesktop();
     const desktopEventDispatch = useDesktopDispatch();
 
     const appName = "SimpleText";
@@ -71,22 +67,15 @@ const SimpleText = () => {
             id={appId}
             name={appName}
             icon={appIcon}
-            debug={true}
             defaultWindow={"textedit-demo"}
         >
             <PlatinumWindow
                 id={"textedit-demo"}
                 title={"Here's to..."}
                 appId={appId}
-                closable={true}
-                resizable={true}
-                zoomable={true}
-                scrollable={true}
-                collapsable={true}
                 initialSize={[100, 500]}
                 initialPosition={[350, 100]}
-                appMenu={appMenu}
-                modalWindow={false}>
+                appMenu={appMenu}>
                 <PlatinumRichTextEditor markdown={defaultText}></PlatinumRichTextEditor>
             </PlatinumWindow>
         </PlatinumApp>

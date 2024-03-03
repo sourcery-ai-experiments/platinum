@@ -12,7 +12,7 @@ type PlatinumButtonProps = {
 }
 
 const PlatinumButton: React.FC<PlatinumButtonProps> = ({
-                                                           isDefault,
+                                                           isDefault = false,
                                                            buttonType = "button",
                                                            disabled = false,
                                                            onClick = null,
@@ -40,5 +40,5 @@ const PlatinumButton: React.FC<PlatinumButtonProps> = ({
         </button>
     );
 };
-export default PlatinumButton;
 
+export default PlatinumButton;

@@ -12,6 +12,7 @@ import PlatinumDropdown from "@/app/SystemFolder/SystemResources/DropDown/Platin
 import PlatinumApp from "@/app/SystemFolder/SystemResources/MacApp/PlatinumApp";
 import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow";
 import React from "react";
+import appearanceManagerStyles from "./AppearanceManager.module.scss";
 
 const AppearanceManager = () => {
 
@@ -24,8 +25,10 @@ const AppearanceManager = () => {
     const appId: string = "AppearanceManager.app";
     const appIcon: string = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/appearance-manager/app.png`;
     const {appContext, setAppContext} = React.useContext(AppearanceManagerContext);
-    const themes = desktopContext.availableThemes.map((a: any) => (({id, name}) => ({value: id, label: name}))(a));
+    const themesList = desktopContext.availableThemes.map((a: any) => (({id, name}) => ({value: id, label: name}))(a));
 
+
+    const [showAbout, setShowAbout] = React.useState(false);
     const switchTheme = (e) => {
         changeElementValue(e);
         desktopEventDispatch({
@@ -60,13 +63,24 @@ const AppearanceManager = () => {
 
     const appMenu = [
         {
-            id: "file",
+            id: appId + "_file",
             title: "File",
             menuChildren: [
                 {
                     id: appId + "_quit",
                     title: "Quit",
                     onClickFunc: quitApp
+                }
+            ]
+        },
+        {
+            id: appId + "_help",
+            title: "Help",
+            menuChildren: [
+                {
+                    id: appId + "_about",
+                    title: "About",
+                    onClickFunc: () => {setShowAbout(true)}
                 }
             ]
         },
@@ -85,7 +99,6 @@ const AppearanceManager = () => {
                 name={appName}
                 icon={appIcon}
                 defaultWindow={"AppearanceManager_1"}
-                debug={true}
                 appContext={appContext}
             >
                 <PlatinumWindow
@@ -104,41 +117,34 @@ const AppearanceManager = () => {
                 >
                     <PlatinumDropdown
                         id={"select_theme"}
-                        small={false}
-                        options={themes}
+                        options={themesList}
                         onChangeFunc={switchTheme}
                         selected={desktopContext.activeTheme || "default"}
                     />
                     <PlatinumButton onClick={cleanupIcons}>Cleanup Icons</PlatinumButton>
                 </PlatinumWindow>
-                <PlatinumWindow
-                    id="AppearanceManager_about"
-                    appId={appId}
-                    closable={false}
-                    resizable={false}
-                    zoomable={false}
-                    scrollable={false}
-                    collapsable={false}
-                    initialSize={[300, 300]}
-                    initialPosition={[50, 50]}
-                    modalWindow={true}
-                    appMenu={appMenu}
-                >
-                    <div style={{
-                        alignContent: "center",
-                        justifyContent: "center",
-                        justifyItems: "center",
-                        alignItems: "center",
-                        display: "flex",
-                        flexDirection: "column",
-                        textAlign: "center",
-                        fontFamily: "var(--header-font"
-                    }}>
-                        <img src={appIcon} alt="About"/>
-                        <h1>Appearance Manager</h1>
-                        <h5>Not Copyright 1998 Apple Computer, Inc.</h5>
-                    </div>
-                </PlatinumWindow>
+                {showAbout && (
+                    <PlatinumWindow
+                        id="AppearanceManager_about"
+                        appId={appId}
+                        closable={false}
+                        resizable={false}
+                        zoomable={false}
+                        scrollable={false}
+                        collapsable={false}
+                        initialSize={[300, 300]}
+                        initialPosition={[50, 50]}
+                        modalWindow={true}
+                        appMenu={appMenu}
+                    >
+                        <div className={appearanceManagerStyles.appearanceManagerAbout}>
+                            <img src={appIcon} alt="About"/>
+                            <h1>{appName}</h1>
+                            <h5>Not Copyright 1998 Apple Computer, Inc.</h5>
+                            <PlatinumButton onClick={() => {setShowAbout(false)}}>OK</PlatinumButton>
+                        </div>
+                    </PlatinumWindow>
+                )}
             </PlatinumApp>
         </AppearanceManagerContext.Provider>
     );

@@ -1,3 +1,4 @@
+import PlatinumControlLabel from "@/app/SystemFolder/SystemResources/ControlLabel/PlatinumControlLabel";
 import platinumInputStyles from "@/app/SystemFolder/SystemResources/Input/PlatinumInput.module.scss";
 import classNames from "classnames";
 import React from "react";
@@ -9,7 +10,7 @@ interface PlatinumInputProps {
     labelTitle?: string;
     placeholder?: string;
     prefillValue?: string;
-    isDisabled?: boolean;
+    disabled?: boolean;
     isDefault?: boolean;
 }
 
@@ -19,26 +20,27 @@ const PlatinumInput: React.FC<PlatinumInputProps> = ({
                                                          labelTitle,
                                                          placeholder,
                                                          prefillValue,
-                                                         isDisabled,
+                                                         disabled = false,
                                                          isDefault,
                                                          onChangeFunc
                                                      }) => {
 
-    return (<>
+    return (<div className={platinumInputStyles.platinumInputHolder}>
         {labelTitle &&
-            <label htmlFor={id} className={platinumInputStyles.platinumInputLabel}>{labelTitle}</label>
+            <PlatinumControlLabel label={labelTitle} labelFor={id} direction={"left"}
+                                  disabled={disabled}></PlatinumControlLabel>
         }
         <input id={id}
                onChange={onChangeFunc}
                name={id}
                type={inputType}
-               disabled={isDisabled}
+               disabled={disabled}
                value={prefillValue}
                placeholder={placeholder}
                className={classNames(
                    platinumInputStyles.platinumInput, isDefault ? platinumInputStyles.platinumInputDefault : "")}
         ></input>
-    </>);
+    </div>);
 };
 
 export default PlatinumInput;

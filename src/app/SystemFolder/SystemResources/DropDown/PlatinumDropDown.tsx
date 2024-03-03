@@ -14,13 +14,15 @@ type PlatinumDropdownProps = {
     small?: boolean;
     onChangeFunc?: any;
 }
-const PlatinumDropdown: React.FC<PlatinumDropdownProps> = ({
-                                                               id,
-                                                               options,
-                                                               selected,
-                                                               small,
-                                                               onChangeFunc
-                                                           }) => {
+const PlatinumDropdown: React.FC<PlatinumDropdownProps> = (
+    {
+        id,
+        options,
+        selected,
+        small = false,
+        onChangeFunc
+    }
+) => {
     return (
         <div className={classNames(
             platinumDropDownStyle.platinumDropDown,

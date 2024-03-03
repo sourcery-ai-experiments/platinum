@@ -15,8 +15,12 @@ const PlatinumDesktopContext = createContext(null);
 const PlatinumDesktopDispatchContext = createContext(null);
 
 export function PlatinumDesktopProvider({children}) {
+    if (!localStorage.getItem('platinumDesktopState')) {
+        localStorage.setItem('platinumDesktopState', JSON.stringify(initialDesktopState));
+    }
+    const desktopState = JSON.parse(localStorage.getItem('platinumDesktopState'));
 
-    const [desktop, dispatch] = useReducer(platinumDesktopStateEventReducer, initialDesktopState);
+    const [desktop, dispatch] = useReducer(platinumDesktopStateEventReducer, desktopState);
 
     return (
         <Suspense>
@@ -44,6 +48,7 @@ export const platinumDesktopEventHandler = (ds: PlatinumDesktopState, action) =>
         case "PlatinumDesktopFocus": {
             if ('e' in action && action.e.target.id === "platinumDesktop") {
                 ds.activeWindow = "";
+                ds.activeApp = "finder.app";
                 ds.selectedDesktopIcons = [];
                 ds.showContextMenu = false;
                 ds.selectBox = true;
@@ -99,7 +104,8 @@ export const platinumAppEventHandler = (ds: PlatinumDesktopState, action) => {
                     id: action.app.id,
                     name: action.app.name,
                     icon: action.app.icon,
-                    hidden: false
+                    hidden: false,
+                    defaultWindow: action.app.defaultWindow
                 })
             }
             break;
@@ -114,6 +120,7 @@ export const platinumAppEventHandler = (ds: PlatinumDesktopState, action) => {
                 ds.activeWindow = action.window;
             }
             ds.activeApp = action.app.id;
+            break;
         }
     }
 
@@ -122,7 +129,7 @@ export const platinumAppEventHandler = (ds: PlatinumDesktopState, action) => {
 };
 
 export const platinumDesktopStateEventReducer = (ds: PlatinumDesktopState, action) => {
-    // const startDs = ds;
+    const startDs = ds;
     if ('type' in action) {
         if (action.type.startsWith("PlatinumWindow")) {
             ds = platinumWindowEventHandler(ds, action);
@@ -134,11 +141,13 @@ export const platinumDesktopStateEventReducer = (ds: PlatinumDesktopState, actio
             ds = platinumDesktopEventHandler(ds, action);
         }
     }
-    // console.group("Desktop Event");
-    // console.log("Action: ", action);
-    // console.log("Start State: ", startDs)
-    // console.log("End State: ", ds)
-    // console.groupEnd();
+    if ('debug' in action) {
+        console.group("Desktop Event");
+        console.log("Action: ", action);
+        console.log("Start State: ", startDs)
+        console.log("End State: ", ds)
+        console.groupEnd();
+    }
+    localStorage.setItem('platinumDesktopState', JSON.stringify(ds));
     return {...ds};
 };
-

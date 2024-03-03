@@ -651,7 +651,7 @@ later.
     "position": "center",
     "size": "auto"
   }
-},
+}
 
 ```
 

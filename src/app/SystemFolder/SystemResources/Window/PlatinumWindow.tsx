@@ -15,7 +15,6 @@ import {
 } from "@/app/SystemFolder/SystemResources/Window/PlatinumWindowContext";
 import classNames from "classnames";
 import React from "react";
-import UrlSafeString from "url-safe-string";
 
 interface PlatinumWindowProps {
     title?: string;
@@ -125,7 +124,9 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
 
     const stopChangeWindow = (e) => {
         e.preventDefault();
-        player({type: "PlatinumSoundPlay", sound: "PlatinumWindowMoveStop"})
+        if (windowState.resizing || windowState.dragging || windowState.moving) {
+            player({type: "PlatinumSoundPlayInterrupt", sound: "PlatinumWindowMoveStop"});
+        }
         setResize(false);
         setDragging(false);
         setMoving(false);
@@ -155,22 +156,21 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
     };
 
     const setActive = (e) => {
-        e.preventDefault();
         if (!isActive()) {
             player({type: "PlatinumSoundPlay", sound: "PlatinumWindowFocus"})
-        }
 
-        desktopEventDispatch({
-            type: "PlatinumWindowFocus",
-            app: {
-                id: id,
-                appMenu: appMenu
-            }
-        });
-        desktopEventDispatch({
-            type: "PlatinumWindowContextMenu",
-            contextMenu: contextMenu ? contextMenu : [],
-        });
+            desktopEventDispatch({
+                type: "PlatinumWindowFocus",
+                app: {
+                    id: id,
+                    appMenu: appMenu
+                }
+            });
+            desktopEventDispatch({
+                type: "PlatinumWindowContextMenu",
+                contextMenu: contextMenu ? contextMenu : [],
+            });
+        }
     };
 
     const toggleCollapse = () => {
@@ -271,7 +271,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
         <>
             {!hidden && (
                 <div
-                    id={appId + "_" + (!id ? UrlSafeString().generate(title) : id)}
+                    id={[appId, id].join("_")}
                     ref={windowRef}
                     style={{
                         width: size[0],

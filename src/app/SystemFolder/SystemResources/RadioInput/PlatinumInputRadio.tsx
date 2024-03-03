@@ -1,3 +1,4 @@
+import PlatinumControlLabel from "@/app/SystemFolder/SystemResources/ControlLabel/PlatinumControlLabel";
 import {useSoundDispatch} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopSoundManagerContext";
 import platinumInputRadioStyles from "@/app/SystemFolder/SystemResources/RadioInput/PlatinumInputRadio.module.scss";
 import classNames from "classnames";
@@ -41,8 +42,7 @@ const PlatinumInputRadio: React.FC<PlatinumInputRadioProps> = ({
                        platinumInputRadioStyles.platinumRadioInput,
                        isDefault ? platinumInputRadioStyles.platinumRadioInputDefault : ""
                    )}/>
-            <label htmlFor={id}
-                   className={classNames(platinumInputRadioStyles.platinumRadioInputLabel, disabled ? platinumInputRadioStyles.platinumRadioInputLabelDisabled : "")}>{label}</label>
+            <PlatinumControlLabel labelFor={id} disabled={disabled} label={label}></PlatinumControlLabel>
 
         </div>
     );
