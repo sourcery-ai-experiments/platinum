@@ -156,19 +156,19 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
     const setActive = (e) => {
         if (!isActive()) {
             player({type: "PlatinumSoundPlay", sound: "PlatinumWindowFocus"})
-        }
 
-        desktopEventDispatch({
-            type: "PlatinumWindowFocus",
-            app: {
-                id: id,
-                appMenu: appMenu
-            }
-        });
-        desktopEventDispatch({
-            type: "PlatinumWindowContextMenu",
-            contextMenu: contextMenu ? contextMenu : [],
-        });
+            desktopEventDispatch({
+                type: "PlatinumWindowFocus",
+                app: {
+                    id: id,
+                    appMenu: appMenu
+                }
+            });
+            desktopEventDispatch({
+                type: "PlatinumWindowContextMenu",
+                contextMenu: contextMenu ? contextMenu : [],
+            });
+        }
     };
 
     const toggleCollapse = () => {
