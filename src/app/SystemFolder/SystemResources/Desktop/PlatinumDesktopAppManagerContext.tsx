@@ -15,8 +15,12 @@ const PlatinumDesktopContext = createContext(null);
 const PlatinumDesktopDispatchContext = createContext(null);
 
 export function PlatinumDesktopProvider({children}) {
+    if (!localStorage.getItem('platinumDesktopState')) {
+        localStorage.setItem('platinumDesktopState', JSON.stringify(initialDesktopState));
+    }
+    const desktopState = JSON.parse(localStorage.getItem('platinumDesktopState'));
 
-    const [desktop, dispatch] = useReducer(platinumDesktopStateEventReducer, initialDesktopState);
+    const [desktop, dispatch] = useReducer(platinumDesktopStateEventReducer, desktopState);
 
     return (
         <Suspense>
@@ -144,5 +148,6 @@ export const platinumDesktopStateEventReducer = (ds: PlatinumDesktopState, actio
         console.log("End State: ", ds)
         console.groupEnd();
     }
+    localStorage.setItem('platinumDesktopState', JSON.stringify(ds));
     return {...ds};
 };
