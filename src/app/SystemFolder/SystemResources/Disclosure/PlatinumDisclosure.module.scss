@@ -52,11 +52,26 @@
   transform: rotate(0);
 }
 
-
 .platinumDisclosureTriangleLeftOpen {
-  transform: scaleX(100%);
+  transform: rotate(90deg);
 }
 
 .platinumDisclosureTriangleLeftClosed {
-  transform: scaleX(100%) rotate(0);
+  transform:  rotate(180deg);
+}
+
+.platinumDisclosureTriangleUpOpen {
+  transform: rotate(90deg);
+}
+
+.platinumDisclosureTriangleUpClosed {
+  transform:  rotate(270deg);
+}
+
+.platinumDisclosureTriangleDownClosed {
+  transform: rotate(90deg);
+}
+
+.platinumDisclosureTriangleDownOpen {
+  transform:  rotate(270deg);
 }
