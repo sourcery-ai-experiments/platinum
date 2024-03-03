@@ -97,7 +97,7 @@ const Demo = () => {
                         <PlatinumInputCheckbox id={"test6"} name={"test_check"} isDefault={false} label={"Disabled"}
                                                disabled={true}/>
                     </PlatinumInputGroup>
-                    <PlatinumDisclosure direction={"right"}>
+                    <PlatinumDisclosure label={"Expandable Section"}>
                         <p>HELLO!</p>
                     </PlatinumDisclosure>
                     <PlatinumButton isDefault={true} onClick={quitApp}>Quit</PlatinumButton>
