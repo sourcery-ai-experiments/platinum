@@ -2,7 +2,7 @@
 
 import AppearanceManagerContext from "@/app/SystemFolder/ControlPanels/AppearanceManager/AppearanceManagerContext";
 import {useDesktopDispatch} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext";
-import PlatinumApp from "@/app/SystemFolder/SystemResources/MacApp/PlatinumApp";
+import PlatinumApp from "@/app/SystemFolder/SystemResources/App/PlatinumApp";
 import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow";
 import React from "react";
 

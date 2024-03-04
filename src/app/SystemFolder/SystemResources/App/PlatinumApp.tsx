@@ -21,11 +21,12 @@ interface PlatinumAppProps {
     appContext?: any;
 }
 
+
 const PlatinumApp: React.FC<PlatinumAppProps> = ({
                                                      id,
                                                      icon,
                                                      name,
-                                                     openOnBoot = false,
+                                                     openOnBoot = true,
                                                      noDesktopIcon = false,
                                                      appContext,
                                                      defaultWindow,
@@ -64,35 +65,8 @@ const PlatinumApp: React.FC<PlatinumAppProps> = ({
         desktopEventDispatch({
             type: "PlatinumAppFocus",
             app: {id: id},
-            window: defaultWindow
         });
     }
-
-    // React.useEffect(() => {
-    //     if (openOnBoot) {
-    //         desktopEventDispatch({
-    //             type: "PlatinumAppOpen",
-    //             app: {
-    //                 id: id,
-    //                 name: name,
-    //                 icon: icon
-    //             }
-    //         });
-    //     }
-    // });
-
-    React.useEffect(() => {
-        if (openOnBoot) {
-            desktopEventDispatch({
-                type: "PlatinumAppOpen",
-                app: {
-                    id: id,
-                    name: name,
-                    icon: icon
-                }
-            });
-        }
-    }, [openOnBoot]);
 
     React.useEffect(() => {
         if (!noDesktopIcon) {
@@ -114,8 +88,7 @@ const PlatinumApp: React.FC<PlatinumAppProps> = ({
                             title={"DEBUG " + name}
                             id={id + "_debugger"}
                             appId={id}
-                            appMenu={[{id: "Debug", title: "Debug"}]}
-            >
+                            appMenu={[{id: "Debug", title: "Debug"}]}>
                 <h1>Providers</h1>
                 <hr/>
                 <h2>appContext</h2>

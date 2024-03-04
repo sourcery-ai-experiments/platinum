@@ -1,7 +1,7 @@
 'use client';
 
 import {useDesktopDispatch} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext";
-import PlatinumApp from "@/app/SystemFolder/SystemResources/MacApp/PlatinumApp";
+import PlatinumApp from "@/app/SystemFolder/SystemResources/App/PlatinumApp";
 import PlatinumRichTextEditor from "@/app/SystemFolder/SystemResources/RichTextEditor/PlatinumRichTextEditor";
 import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow";
 import React from "react";

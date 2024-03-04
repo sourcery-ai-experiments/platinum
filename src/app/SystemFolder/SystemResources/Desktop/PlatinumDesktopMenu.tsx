@@ -31,7 +31,6 @@ const PlatinumDesktopMenu: React.FC = () => {
     let activeAppObject = desktopContext.openApps.filter((app) => app.id == desktopContext.activeApp);
     if (!activeAppObject.length) {
         activeAppObject = [{icon: `${process.env.NEXT_PUBLIC_BASE_PATH}/img/macos.svg`, name: "Finder"}];
-        console.log(activeAppObject);
     }
 
     const appSwitcherMenuMenuItem: PlatinumMenuItem = {

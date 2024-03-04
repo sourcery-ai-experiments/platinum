@@ -1,6 +1,6 @@
 'use client';
 
-import PlatinumApp from "@/app/SystemFolder/SystemResources/MacApp/PlatinumApp";
+import PlatinumApp from "@/app/SystemFolder/SystemResources/App/PlatinumApp";
 import React from "react";
 
 const Finder = () => {
