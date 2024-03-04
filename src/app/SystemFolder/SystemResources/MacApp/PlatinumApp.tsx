@@ -82,6 +82,19 @@ const PlatinumApp: React.FC<PlatinumAppProps> = ({
     // });
 
     React.useEffect(() => {
+        if (openOnBoot) {
+            desktopEventDispatch({
+                type: "PlatinumAppOpen",
+                app: {
+                    id: id,
+                    name: name,
+                    icon: icon
+                }
+            });
+        }
+    }, [openOnBoot]);
+
+    React.useEffect(() => {
         if (!noDesktopIcon) {
             desktopEventDispatch({
                 type: "PlatinumDesktopIconAdd",

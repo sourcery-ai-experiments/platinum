@@ -114,7 +114,6 @@ const AppearanceManager = () => {
                 defaultWindow={"AppearanceManager_1"}
                 appContext={appContext}
                 openOnBoot={true}
-                debug={true}
             >
                 <PlatinumWindow
                     id={"AppearanceManager_1"}
