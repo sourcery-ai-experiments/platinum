@@ -8,7 +8,10 @@ import {
     useDesktop,
     useDesktopDispatch
 } from '@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext';
-import {useSoundDispatch} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopSoundManagerContext";
+import {
+    useSound,
+    useSoundDispatch
+} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopSoundManagerContext";
 import PlatinumDropdown from "@/app/SystemFolder/SystemResources/DropDown/PlatinumDropDown";
 import PlatinumInputGroup from "@/app/SystemFolder/SystemResources/InputGroup/PlatinumInputGroup";
 import PlatinumApp from "@/app/SystemFolder/SystemResources/MacApp/PlatinumApp";
@@ -21,6 +24,7 @@ const AppearanceManager = () => {
     const desktopContext = useDesktop();
     const desktopEventDispatch = useDesktopDispatch();
 
+    const playerState = useSound();
     const player = useSoundDispatch();
 
     const appName: string = "Appearance Manager";
@@ -41,8 +45,9 @@ const AppearanceManager = () => {
     };
 
     const changeSounds = (e) => {
+        console.log(e.target.id, e.target.value);
         changeElementValue(e);
-        player({type: "PlatinumSoundDisable", disabled: e.target.checked ? "" : "*"})
+        player({type: "PlatinumSoundDisable", disabled: e.target.checked ? [] : ["*"]})
     };
 
     const loadSoundTheme = (themeName: string) => {
@@ -99,6 +104,7 @@ const AppearanceManager = () => {
         });
     }
 
+    console.log(playerState.disabled);
     return (
         <AppearanceManagerContext.Provider value={{appContext, setAppContext}}>
             <PlatinumApp
@@ -107,6 +113,8 @@ const AppearanceManager = () => {
                 icon={appIcon}
                 defaultWindow={"AppearanceManager_1"}
                 appContext={appContext}
+                openOnBoot={true}
+                debug={true}
             >
                 <PlatinumWindow
                     id={"AppearanceManager_1"}
@@ -136,6 +144,7 @@ const AppearanceManager = () => {
                             isDefault={true}
                             label={"Enable Interface Sounds"}
                             onClick={changeSounds}
+                            checked={"*" in playerState.disabled}
                         />
                     </PlatinumInputGroup>
                 </PlatinumWindow>

@@ -14,7 +14,7 @@ import PlatinumInputRadio from "@/app/SystemFolder/SystemResources/RadioInput/Pl
 import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow";
 import React from "react";
 
-const Demo = () => {
+const Demo: React.FC = () => {
     const appName = "Demo";
     const appId = "Demo.app";
     const appIcon = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/folders/default.png`;

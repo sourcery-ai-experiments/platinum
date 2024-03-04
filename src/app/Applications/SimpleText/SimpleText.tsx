@@ -67,8 +67,7 @@ const SimpleText = () => {
             id={appId}
             name={appName}
             icon={appIcon}
-            defaultWindow={"textedit-demo"}
-        >
+            defaultWindow={"textedit-demo"}>
             <PlatinumWindow
                 id={"textedit-demo"}
                 title={"Here's to..."}
@@ -76,7 +75,7 @@ const SimpleText = () => {
                 initialSize={[100, 500]}
                 initialPosition={[350, 100]}
                 appMenu={appMenu}>
-                <PlatinumRichTextEditor markdown={defaultText}></PlatinumRichTextEditor>
+                <PlatinumRichTextEditor content={defaultText}></PlatinumRichTextEditor>
             </PlatinumWindow>
         </PlatinumApp>
     );
