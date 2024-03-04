@@ -3,12 +3,14 @@
 import {getTheme} from "@/app/SystemFolder/Appearance/PlatinumAppearance";
 import AppearanceManagerContext from "@/app/SystemFolder/ControlPanels/AppearanceManager/AppearanceManagerContext";
 import PlatinumButton from "@/app/SystemFolder/SystemResources/Button/PlatinumButton";
+import PlatinumInputCheckbox from "@/app/SystemFolder/SystemResources/Checkbox/PlatinumInputCheckbox";
 import {
     useDesktop,
     useDesktopDispatch
 } from '@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext';
 import {useSoundDispatch} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopSoundManagerContext";
 import PlatinumDropdown from "@/app/SystemFolder/SystemResources/DropDown/PlatinumDropDown";
+import PlatinumInputGroup from "@/app/SystemFolder/SystemResources/InputGroup/PlatinumInputGroup";
 import PlatinumApp from "@/app/SystemFolder/SystemResources/MacApp/PlatinumApp";
 import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow";
 import React from "react";
@@ -36,6 +38,11 @@ const AppearanceManager = () => {
             activeTheme: e.target.value,
         });
         loadSoundTheme(e.target.value);
+    };
+
+    const changeSounds = (e) => {
+        changeElementValue(e);
+        player({type: "PlatinumSoundDisable", disabled: e.target.checked ? "" : "*"})
     };
 
     const loadSoundTheme = (themeName: string) => {
@@ -100,6 +107,7 @@ const AppearanceManager = () => {
                 icon={appIcon}
                 defaultWindow={"AppearanceManager_1"}
                 appContext={appContext}
+                debug={true}
             >
                 <PlatinumWindow
                     id={"AppearanceManager_1"}
@@ -122,6 +130,15 @@ const AppearanceManager = () => {
                         selected={desktopContext.activeTheme || "default"}
                     />
                     <PlatinumButton onClick={cleanupIcons}>Cleanup Icons</PlatinumButton>
+                    <PlatinumInputGroup label={"Sounds"}>
+                        <PlatinumInputCheckbox
+                            id={"disable_sounds"}
+                            name={"disable_sounds"}
+                            isDefault={true}
+                            label={"Enable Interface Sounds"}
+                            onClick={changeSounds}
+                        />
+                    </PlatinumInputGroup>
                 </PlatinumWindow>
                 {showAbout && (
                     <PlatinumWindow

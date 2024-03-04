@@ -1,29 +1,36 @@
+import PlatinumBoot from "@/app/SystemFolder/SystemResources/Boot/PlatinumBoot";
 import {platinumDesktopIconEventHandler} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopIconContext";
 import {
     PlatinumDesktopSoundManagerProvider
 } from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopSoundManagerContext";
 import {
-    initialDesktopState,
+    DefaultDesktopState,
     PlatinumDesktopState
 } from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopState";
 import {
     platinumWindowEventHandler
 } from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopWindowManagerContext"
-import {createContext, Suspense, useContext, useReducer} from 'react';
+import React, {createContext, Suspense, useContext, useReducer} from 'react';
 
 const PlatinumDesktopContext = createContext(null);
 const PlatinumDesktopDispatchContext = createContext(null);
 
-export function PlatinumDesktopProvider({children}) {
-    if (!localStorage.getItem('platinumDesktopState')) {
-        localStorage.setItem('platinumDesktopState', JSON.stringify(initialDesktopState));
-    }
-    const desktopState = JSON.parse(localStorage.getItem('platinumDesktopState'));
+type PlatinumDesktopProviderProps = {
+    children?: any
+}
+export const PlatinumDesktopProvider: React.FC<PlatinumDesktopProviderProps> = ({children}) => {
+    let desktopState = typeof window !== 'undefined'
+        ? JSON.parse(localStorage.getItem('platinumDesktopState')) || DefaultDesktopState
+        : DefaultDesktopState;
 
     const [desktop, dispatch] = useReducer(platinumDesktopStateEventReducer, desktopState);
 
+    React.useEffect(() => {
+        localStorage.setItem('platinumDesktopState', JSON.stringify(desktop));
+    }, [desktop])
+
     return (
-        <Suspense>
+        <Suspense fallback={<PlatinumBoot/>}>
             <PlatinumDesktopContext.Provider value={desktop}>
                 <PlatinumDesktopDispatchContext.Provider value={dispatch}>
                     <PlatinumDesktopSoundManagerProvider>
@@ -148,6 +155,5 @@ export const platinumDesktopStateEventReducer = (ds: PlatinumDesktopState, actio
         console.log("End State: ", ds)
         console.groupEnd();
     }
-    localStorage.setItem('platinumDesktopState', JSON.stringify(ds));
     return {...ds};
 };
