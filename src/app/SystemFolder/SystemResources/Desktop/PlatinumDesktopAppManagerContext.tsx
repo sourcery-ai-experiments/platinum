@@ -9,18 +9,26 @@ import {
 import {
     platinumWindowEventHandler
 } from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopWindowManagerContext"
-import {createContext, Suspense, useContext, useReducer} from 'react';
+import React, {createContext, Suspense, useContext, useReducer} from 'react';
 
 const PlatinumDesktopContext = createContext(null);
 const PlatinumDesktopDispatchContext = createContext(null);
 
-export function PlatinumDesktopProvider({children}) {
-    if (!localStorage.getItem('platinumDesktopState')) {
-        localStorage.setItem('platinumDesktopState', JSON.stringify(initialDesktopState));
-    }
+type PlatinumDesktopProviderProps = {
+    children?: any
+}
+export const PlatinumDesktopProvider: React.FC<PlatinumDesktopProviderProps> = ({children}) => {
     const desktopState = JSON.parse(localStorage.getItem('platinumDesktopState'));
 
     const [desktop, dispatch] = useReducer(platinumDesktopStateEventReducer, desktopState);
+
+    React.useEffect(() => {
+        if (!localStorage.getItem('platinumDesktopState')) {
+            localStorage.setItem('platinumDesktopState', JSON.stringify(initialDesktopState));
+        }
+        localStorage.setItem('platinumDesktopState', JSON.stringify(desktop));
+    }, [])
+
 
     return (
         <Suspense>
@@ -148,6 +156,5 @@ export const platinumDesktopStateEventReducer = (ds: PlatinumDesktopState, actio
         console.log("End State: ", ds)
         console.groupEnd();
     }
-    localStorage.setItem('platinumDesktopState', JSON.stringify(ds));
     return {...ds};
 };
