@@ -19,10 +19,10 @@ export interface PlatinumDesktopState {
     selectBoxSize: number[];
     selectBoxStart: number[];
     desktopIcons: PlatinumDesktopIconState[];
-    openApps: PlatinumApp[];
+    openApps: PlatinumAppItem[];
 }
 
-export type PlatinumApp = {
+export type PlatinumAppItem = {
     id: string;
     name: string;
     icon: string;
@@ -100,7 +100,7 @@ export type PlatinumTheme = {
 };
 
 
-export const initialDesktopState: PlatinumDesktopState = {
+export const DefaultDesktopState: PlatinumDesktopState = {
     activeTheme: "default",
     availableThemes: [],
     selectedDesktopIcons: [],

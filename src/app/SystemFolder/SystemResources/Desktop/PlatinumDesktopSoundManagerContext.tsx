@@ -14,7 +14,7 @@ interface PlatinumDesktopSoundState {
 }
 
 interface PlatinumDesktopSoundAction {
-    type: "PlatinumSoundStop" | "PlatinumSoundPlay" | "PlatinumSoundPlayInterrupt" | "PlatinumSoundLoad" | "PlatinumSoundSet";
+    type: "PlatinumSoundStop" | "PlatinumSoundPlay" | "PlatinumSoundPlayInterrupt" | "PlatinumSoundLoad" | "PlatinumSoundSet" | "PlatinumSoundDisable";
     sound?: string;
     file?: string;
     disabled?: string[];
@@ -58,6 +58,10 @@ export const PlatinumDesktopSoundStateEventReducer = (
         }
         case "PlatinumSoundLoad": {
             ss.soundPlayer = loadSoundTheme(process.env.NEXT_PUBLIC_BASE_PATH + action.file);
+            ss.disabled = action.disabled;
+            break;
+        }
+        case "PlatinumSoundDisable": {
             ss.disabled = action.disabled;
             break;
         }

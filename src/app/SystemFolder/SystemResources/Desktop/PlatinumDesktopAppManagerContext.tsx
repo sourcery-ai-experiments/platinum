@@ -1,9 +1,10 @@
+import PlatinumBoot from "@/app/SystemFolder/SystemResources/Boot/PlatinumBoot";
 import {platinumDesktopIconEventHandler} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopIconContext";
 import {
     PlatinumDesktopSoundManagerProvider
 } from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopSoundManagerContext";
 import {
-    initialDesktopState,
+    DefaultDesktopState,
     PlatinumDesktopState
 } from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopState";
 import {
@@ -18,20 +19,18 @@ type PlatinumDesktopProviderProps = {
     children?: any
 }
 export const PlatinumDesktopProvider: React.FC<PlatinumDesktopProviderProps> = ({children}) => {
-    const desktopState = JSON.parse(localStorage.getItem('platinumDesktopState'));
+    let desktopState = typeof window !== 'undefined'
+        ? JSON.parse(localStorage.getItem('platinumDesktopState')) || DefaultDesktopState
+        : DefaultDesktopState;
 
     const [desktop, dispatch] = useReducer(platinumDesktopStateEventReducer, desktopState);
 
     React.useEffect(() => {
-        if (!localStorage.getItem('platinumDesktopState')) {
-            localStorage.setItem('platinumDesktopState', JSON.stringify(initialDesktopState));
-        }
         localStorage.setItem('platinumDesktopState', JSON.stringify(desktop));
-    }, [])
-
+    }, [desktop])
 
     return (
-        <Suspense>
+        <Suspense fallback={<PlatinumBoot/>}>
             <PlatinumDesktopContext.Provider value={desktop}>
                 <PlatinumDesktopDispatchContext.Provider value={dispatch}>
                     <PlatinumDesktopSoundManagerProvider>
