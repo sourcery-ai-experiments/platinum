@@ -23,7 +23,7 @@ interface PlatinumDesktopSoundAction {
 
 export const initialPlayer = {
     soundPlayer: createSoundPlayer(soundData),
-    disabled: []
+    disabled: ["*"]
 };
 
 export function useSound() {

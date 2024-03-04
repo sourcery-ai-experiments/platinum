@@ -23,8 +23,6 @@ const PlatinumDisclosure: React.FC<PlatinumDisclosureProps> = (
         direction.charAt(0).toUpperCase()
         + direction.slice(1) + (open ? "Open" : "Closed");
 
-    console.log(triangleClassOpenName);
-
     return (
         <div
             className={classNames(platinumDisclosureStyles.platinumDisclosure)}

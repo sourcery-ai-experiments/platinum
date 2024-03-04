@@ -129,6 +129,10 @@ export const platinumAppEventHandler = (ds: PlatinumDesktopState, action) => {
             ds.activeApp = action.app.id;
             break;
         }
+        case "PlatinumAppActivate": {
+            ds.activeApp = action.app.id;
+            break;
+        }
     }
 
     return ds;

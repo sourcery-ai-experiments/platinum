@@ -17,18 +17,14 @@ import {
 } from "@mdxeditor/editor"
 import {FC} from 'react'
 
-interface EditorProps {
-    markdown: string
-    editorRef?: React.MutableRefObject<MDXEditorMethods | null>
+interface PlatinumRichTextEditorProps {
+    content: string;
+    editorRef?: React.MutableRefObject<MDXEditorMethods | null>;
 }
 
-/**
- * Extend this Component further with the necessary plugins or props you need.
- * proxying the ref is necessary. Next.js dynamically imported SystemFolder don't support refs.
- */
-const Editor: FC<EditorProps> = ({markdown, editorRef}) => {
+const PlatinumRichTextEditor: FC<PlatinumRichTextEditorProps> = ({content, editorRef}) => {
     return <div className={PlatinumRichTextEditorStyles.platinumRichTextEditor}>
-        <MDXEditor ref={editorRef} markdown={markdown} contentEditableClassName="prose"
+        <MDXEditor ref={editorRef} markdown={content} contentEditableClassName="prose"
                    plugins={[headingsPlugin(), headingsPlugin(),
                        quotePlugin(),
                        thematicBreakPlugin(),
@@ -47,4 +43,4 @@ const Editor: FC<EditorProps> = ({markdown, editorRef}) => {
                    ]}/></div>
 }
 
-export default Editor
+export default PlatinumRichTextEditor

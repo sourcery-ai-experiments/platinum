@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "audio": "./bin/make_audio_sprites.sh"
+
   },
   "dependencies": {
     "@mdxeditor/editor": "^2.3.5",

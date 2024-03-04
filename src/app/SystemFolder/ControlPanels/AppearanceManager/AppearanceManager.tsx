@@ -8,19 +8,23 @@ import {
     useDesktop,
     useDesktopDispatch
 } from '@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext';
-import {useSoundDispatch} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopSoundManagerContext";
+import {
+    useSound,
+    useSoundDispatch
+} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopSoundManagerContext";
 import PlatinumDropdown from "@/app/SystemFolder/SystemResources/DropDown/PlatinumDropDown";
 import PlatinumInputGroup from "@/app/SystemFolder/SystemResources/InputGroup/PlatinumInputGroup";
-import PlatinumApp from "@/app/SystemFolder/SystemResources/MacApp/PlatinumApp";
+import PlatinumApp from "@/app/SystemFolder/SystemResources/App/PlatinumApp";
 import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow";
 import React from "react";
-import appearanceManagerStyles from "./AppearanceManager.module.scss";
+import appearanceManagerStyles from "@/app/SystemFolder/ControlPanels/AppearanceManager/AppearanceManager.module.scss";
 
 const AppearanceManager = () => {
 
     const desktopContext = useDesktop();
     const desktopEventDispatch = useDesktopDispatch();
 
+    const playerState = useSound();
     const player = useSoundDispatch();
 
     const appName: string = "Appearance Manager";
@@ -29,8 +33,8 @@ const AppearanceManager = () => {
     const {appContext, setAppContext} = React.useContext(AppearanceManagerContext);
     const themesList = desktopContext.availableThemes.map((a: any) => (({id, name}) => ({value: id, label: name}))(a));
 
-
     const [showAbout, setShowAbout] = React.useState(false);
+
     const switchTheme = (e) => {
         changeElementValue(e);
         desktopEventDispatch({
@@ -41,8 +45,8 @@ const AppearanceManager = () => {
     };
 
     const changeSounds = (e) => {
-        changeElementValue(e);
-        player({type: "PlatinumSoundDisable", disabled: e.target.checked ? "" : "*"})
+        changeCheckboxValue(e);
+        player({type: "PlatinumSoundDisable", disabled: e.target.checked ? [""] : ["*"]})
     };
 
     const loadSoundTheme = (themeName: string) => {
@@ -53,6 +57,11 @@ const AppearanceManager = () => {
     const changeElementValue = (e) => {
         const dataElements = appContext["elements"];
         dataElements[e.target.id] = e.target.value;
+        setAppContext({...appContext, elements: dataElements});
+    };
+    const changeCheckboxValue = (e) => {
+        const dataElements = appContext["elements"];
+        dataElements[e.target.id] = e.target.checked;
         setAppContext({...appContext, elements: dataElements});
     };
 
@@ -107,12 +116,13 @@ const AppearanceManager = () => {
                 icon={appIcon}
                 defaultWindow={"AppearanceManager_1"}
                 appContext={appContext}
+                openOnBoot={true}
             >
                 <PlatinumWindow
                     id={"AppearanceManager_1"}
                     title={appName}
                     appId={appId}
-                    closable={false}
+                    closable={true}
                     resizable={false}
                     zoomable={false}
                     scrollable={false}
@@ -136,6 +146,7 @@ const AppearanceManager = () => {
                             isDefault={true}
                             label={"Enable Interface Sounds"}
                             onClick={changeSounds}
+                            checked={!playerState.disabled.includes("*")}
                         />
                     </PlatinumInputGroup>
                 </PlatinumWindow>
