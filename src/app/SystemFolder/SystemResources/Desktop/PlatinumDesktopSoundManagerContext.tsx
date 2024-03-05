@@ -34,6 +34,21 @@ export function useSoundDispatch() {
     return React.useContext(PlatinumDesktopSoundDispatchContext);
 }
 
+const playerCanPlayInterrupt = ({disabled, soundPlayer}: PlatinumDesktopSoundState, sound: string) => {
+    return (
+        !disabled.includes("*") &&
+        !disabled.includes(sound) &&
+        soundPlayer
+    );
+}
+
+const playerCanPlay = (ss: PlatinumDesktopSoundState, sound: string) => {
+    return (
+        playerCanPlayInterrupt(ss, sound) &&
+        !ss.soundPlayer.playing()
+    )
+}
+
 export const PlatinumDesktopSoundStateEventReducer = (
     ss: PlatinumDesktopSoundState,
     action: PlatinumDesktopSoundAction
@@ -44,13 +59,13 @@ export const PlatinumDesktopSoundStateEventReducer = (
             break;
         }
         case "PlatinumSoundPlay": {
-            if (!ss.disabled.includes("*") && !ss.disabled.includes(action.sound) && ss.soundPlayer && !ss.soundPlayer.playing()) {
+            if (playerCanPlay(ss, action.sound)) {
                 ss.soundPlayer.play(action.sound);
             }
             break;
         }
         case "PlatinumSoundPlayInterrupt": {
-            if (!ss.disabled.includes("*") && !ss.disabled.includes(action.sound) && ss.soundPlayer) {
+            if (playerCanPlayInterrupt(ss, action.sound)) {
                 ss.soundPlayer.stop();
                 ss.soundPlayer.play(action.sound);
             }
