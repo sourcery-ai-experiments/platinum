@@ -47,7 +47,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                                                            resizable = true,
                                                            scrollable = true,
                                                            modalWindow = false,
-                                                           initialSize = [300, 400],
+                                                           initialSize = [300, 0],
                                                            initialPosition = [0, 0],
                                                            appMenu,
                                                            contextMenu,
@@ -276,7 +276,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                     ref={windowRef}
                     style={{
                         width: size[0],
-                        height: size[1],
+                        height: size[1] === 0 ? "auto" : size[1],
                         left: windowState.position[0],
                         top: windowState.position[1],
                     }}

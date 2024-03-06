@@ -1,4 +1,3 @@
-'use client';
 import {getTheme} from "@/app/SystemFolder/Appearance/PlatinumAppearance";
 import {
     useDesktop,

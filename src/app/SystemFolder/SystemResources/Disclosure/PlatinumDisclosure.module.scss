@@ -1,22 +1,24 @@
 @use "../../Appearance/styles/appearance";
 
 .platinumDisclosure {
-  padding: var(--window-padding-size);
 }
 
 .platinumDisclosureHeader {
   display: flex;
   flex-direction: row;
+  padding: calc(var(--window-padding-size) * 2) 0;
 }
 
 .platinumDisclosureInner {
 }
 
 .platinumDisclosureInnerOpen {
+  display: block;
   height: 100%;
 }
 
 .platinumDisclosureInnerClose {
+  display: none;
   height: 0;
   opacity: 0;
 }

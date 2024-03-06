@@ -7,30 +7,36 @@ type PlatinumInputCheckboxProps = {
     id: string;
     name: string;
     checked?: boolean;
+    mixed?: boolean;
     isDefault?: boolean;
     disabled?: boolean;
     onClick?: any;
     label?: string;
 }
-const PlatinumInputCheckbox: React.FC<PlatinumInputCheckboxProps> = ({
-                                                                         id,
-                                                                         name,
-                                                                         checked,
-                                                                         isDefault,
-                                                                         disabled,
-                                                                         onClick,
-                                                                         label
-                                                                     }) => {
+const PlatinumInputCheckbox: React.FC<PlatinumInputCheckboxProps> = (
+    {
+        id,
+        name,
+        checked,
+        mixed,
+        isDefault,
+        disabled,
+        onClick,
+        label
+    }
+) => {
+
     return (
         <div className={platinumInputCheckboxStyles.platinumInputCheckboxGroup}>
             <input type={"checkbox"} onClick={onClick}
-                   id={id}
                    checked={checked}
+                   id={id}
                    name={name}
                    disabled={disabled}
                    className={classNames(
                        platinumInputCheckboxStyles.platinumInputCheckbox,
-                       isDefault ? platinumInputCheckboxStyles.platinumInputCheckboxDefault : ""
+                       isDefault ? platinumInputCheckboxStyles.platinumInputCheckboxDefault : "",
+                       mixed ? platinumInputCheckboxStyles.platinumInputCheckboxMixed : ""
                    )}/>
             <PlatinumControlLabel label={label} labelFor={id} disabled={disabled}></PlatinumControlLabel>
         </div>

@@ -1,4 +1,3 @@
-'use client';
 import {useSoundDispatch} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopSoundManagerContext";
 import platinumMenuStyles from "@/app/SystemFolder/SystemResources/Menu/PlatinumMenu.module.scss";
 import classNames from "classnames";
@@ -71,7 +70,11 @@ const PlatinumMenu: React.FC<PlatinumMenuProps> = (
                         className={classNames(platinumMenuStyles.platinumMenuItem,
                             !!menuItem.icon ? "" : platinumMenuStyles.platinumMenuItemNoImage, menuItem.className,
                             menuItem.disabled ? platinumMenuStyles.platinumMenuItemDisabled : "",
-                            menuItem.menuChildren && menuItem.menuChildren.length > 0 ? platinumMenuStyles.platinumMenuItemChildMenuIndicator : "")}>
+                            menuItem.menuChildren && menuItem.menuChildren.length > 0 ?
+                                platinumMenuStyles.platinumMenuItemChildMenuIndicator
+                                : "")
+                        }
+                    >
                         {newMenuItem}
                         {(menuItem.menuChildren && menuItem.menuChildren.length > 0) && (
                             generateMenu(menuItem.menuChildren, subNavClass, subNavClass)
@@ -85,7 +88,7 @@ const PlatinumMenu: React.FC<PlatinumMenuProps> = (
         items: PlatinumMenuItem[],
         navClass: string = platinumMenuStyles.platinumMenu,
         subNavClass: string = platinumMenuStyles.platinumSubMenu,
-        children?
+        children?: any
     ) => {
         if (items && items.length > 0) {
             return (

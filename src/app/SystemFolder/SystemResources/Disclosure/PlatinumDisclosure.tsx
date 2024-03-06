@@ -50,9 +50,12 @@ const PlatinumDisclosure: React.FC<PlatinumDisclosureProps> = (
                 </svg>
                 <PlatinumControlLabel label={label}/>
             </div>
-            <div
-                className={classNames(platinumDisclosureStyles.platinumDisclosureInner,
-                    open === true ? platinumDisclosureStyles.platinumDisclosureInnerOpen : platinumDisclosureStyles.platinumDisclosureInnerClose)}>
+            <div className={classNames(
+                platinumDisclosureStyles.platinumDisclosureInner,
+                open === true ?
+                    platinumDisclosureStyles.platinumDisclosureInnerOpen :
+                    platinumDisclosureStyles.platinumDisclosureInnerClose
+            )}>
                 {children}
             </div>
         </div>

@@ -1,5 +1,3 @@
-'use client'
-
 import PlatinumRichTextEditorStyles
     from "@/app/SystemFolder/SystemResources/RichTextEditor/PlatinumRichTextEditor.module.scss";
 import {

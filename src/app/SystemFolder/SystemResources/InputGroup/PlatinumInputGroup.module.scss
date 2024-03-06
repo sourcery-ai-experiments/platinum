@@ -4,6 +4,12 @@
 .platinumInputGroup {
 }
 
+.platinumInputGroupColumns {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .platinumInputGroupLegend {
   font-family: var(--ui-font);
   font-size: calc(var(--ui-font-size) * .75);

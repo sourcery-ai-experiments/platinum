@@ -1,5 +1,3 @@
-'use client'
-
 import platinumTextEditorStyles from "@/app/SystemFolder/SystemResources/TextEditor/PlatinumTextEditor.module.scss";
 import {FC} from 'react'
 
