@@ -81,7 +81,7 @@ export const getSoundTheme = (soundThemeURL: string) => {
 export const createSoundPlayer = (soundData): Howl => {
     if ('src' in soundData && 'sprite' in soundData) {
         return new Howl({
-            src: soundData.src,
+            src: soundData.src.map.map(i => process.env.NEXT_PUBLIC_BASE_PATH + i),
             sprite: soundData.sprite,
         });
     }
