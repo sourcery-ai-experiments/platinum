@@ -1,4 +1,3 @@
-'use client';
 import platinumProgressStyles from "@/app/SystemFolder/SystemResources/ProgressBar/PlatinumProgressBar.module.scss";
 import React from "react";
 

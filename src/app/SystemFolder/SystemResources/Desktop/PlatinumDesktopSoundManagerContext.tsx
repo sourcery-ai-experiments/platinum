@@ -2,19 +2,35 @@ import {createSoundPlayer, loadSoundTheme} from "@/app/SystemFolder/Appearance/P
 import {Howl} from 'howler';
 import React from 'react';
 import soundData from "../../../../../public/sounds/platinum/platinum.json"
-
+import soundLabels from "./PlatinumDesktopSoundManagerLabels.json";
 
 export const PlatinumDesktopSoundManagerContext = React.createContext(null);
 export const PlatinumDesktopSoundDispatchContext = React.createContext(null);
 
+export type PlatinumDesktopSoundInfo = {
+    id: string;
+    group: string;
+    label: string;
+    description: string;
+}
 
 interface PlatinumDesktopSoundState {
     soundPlayer: Howl | null;
     disabled: string[];
+    labels: PlatinumDesktopSoundInfo[];
+}
+
+enum PlatinumDesktopSoundActionTypes {
+    PlatinumSoundStop,
+    PlatinumSoundPlay,
+    PlatinumSoundPlayInterrupt,
+    PlatinumSoundLoad,
+    PlatinumSoundSet,
+    PlatinumSoundDisable
 }
 
 interface PlatinumDesktopSoundAction {
-    type: "PlatinumSoundStop" | "PlatinumSoundPlay" | "PlatinumSoundPlayInterrupt" | "PlatinumSoundLoad" | "PlatinumSoundSet" | "PlatinumSoundDisable";
+    type: PlatinumDesktopSoundActionTypes;
     sound?: string;
     file?: string;
     disabled?: string[];
@@ -23,7 +39,8 @@ interface PlatinumDesktopSoundAction {
 
 export const initialPlayer = {
     soundPlayer: createSoundPlayer(soundData),
-    disabled: ["*"]
+    disabled: [],
+    labels: soundLabels
 };
 
 export function useSound() {
@@ -34,39 +51,55 @@ export function useSoundDispatch() {
     return React.useContext(PlatinumDesktopSoundDispatchContext);
 }
 
+const playerCanPlayInterrupt = ({disabled, soundPlayer}: PlatinumDesktopSoundState, sound: string) => {
+    return (
+        !disabled.includes("*") &&
+        !disabled.includes(sound) &&
+        soundPlayer
+    );
+}
+
+const playerCanPlay = (ss: PlatinumDesktopSoundState, sound: string) => {
+    return (
+        playerCanPlayInterrupt(ss, sound) &&
+        !ss.soundPlayer.playing()
+    )
+}
+
 export const PlatinumDesktopSoundStateEventReducer = (
     ss: PlatinumDesktopSoundState,
     action: PlatinumDesktopSoundAction
 ) => {
-    switch (action.type) {
-        case "PlatinumSoundStop": {
+    const validatedAction = PlatinumDesktopSoundActionTypes[action.type as unknown as keyof typeof PlatinumDesktopSoundActionTypes];
+    switch (validatedAction) {
+        case PlatinumDesktopSoundActionTypes.PlatinumSoundStop: {
             ss.soundPlayer.stop();
             break;
         }
-        case "PlatinumSoundPlay": {
-            if (!ss.disabled.includes("*") && !ss.disabled.includes(action.sound) && ss.soundPlayer && !ss.soundPlayer.playing()) {
+        case PlatinumDesktopSoundActionTypes.PlatinumSoundPlay: {
+            if (playerCanPlay(ss, action.sound)) {
                 ss.soundPlayer.play(action.sound);
             }
             break;
         }
-        case "PlatinumSoundPlayInterrupt": {
-            if (!ss.disabled.includes("*") && !ss.disabled.includes(action.sound) && ss.soundPlayer) {
+        case PlatinumDesktopSoundActionTypes.PlatinumSoundPlayInterrupt: {
+            if (playerCanPlayInterrupt(ss, action.sound)) {
                 ss.soundPlayer.stop();
                 ss.soundPlayer.play(action.sound);
             }
             break;
         }
-        case "PlatinumSoundLoad": {
+        case PlatinumDesktopSoundActionTypes.PlatinumSoundLoad: {
             ss.soundPlayer = loadSoundTheme(process.env.NEXT_PUBLIC_BASE_PATH + action.file);
             ss.disabled = action.disabled;
             break;
         }
-        case "PlatinumSoundDisable": {
-            ss.disabled = action.disabled;
+        case PlatinumDesktopSoundActionTypes.PlatinumSoundSet: {
+            ss.soundPlayer = action.soundPlayer;
             break;
         }
-        case "PlatinumSoundSet": {
-            ss.soundPlayer = action.soundPlayer;
+        case PlatinumDesktopSoundActionTypes.PlatinumSoundDisable: {
+            ss.disabled = action.disabled;
             break;
         }
     }

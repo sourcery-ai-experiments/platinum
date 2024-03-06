@@ -1,0 +1,182 @@
+[
+  {
+    "id": "PlatinumAlertIndigo",
+    "group": "Alert",
+    "label": "Indigo",
+    "description": ""
+  },
+  {
+    "id": "PlatinumAlertQuack",
+    "group": "Alert",
+    "label": "Quack",
+    "description": ""
+  },
+  {
+    "id": "PlatinumAlertSosumi",
+    "group": "Alert",
+    "label": "Sosumi",
+    "description": ""
+  },
+  {
+    "id": "PlatinumAlertWildEep",
+    "group": "Alert",
+    "label": "Wild Eep",
+    "description": ""
+  },
+  {
+    "id": "PlatinumBeep",
+    "group": "System",
+    "label": "Beep",
+    "description": ""
+  },
+  {
+    "id": "PlatinumBoot",
+    "group": "System",
+    "label": "Boot",
+    "description": ""
+  },
+  {
+    "id": "PlatinumButtonClickDown",
+    "group": "Buttons",
+    "label": "Button Click (Press)",
+    "description": ""
+  },
+  {
+    "id": "PlatinumButtonClickUp",
+    "group": "Buttons",
+    "label": "Button Click (Up)",
+    "description": ""
+  },
+  {
+    "id": "PlatinumClick",
+    "group": "General",
+    "label": "Click",
+    "description": ""
+  },
+  {
+    "id": "PlatinumInputRadioClickDown",
+    "group": "Inputs",
+    "label": "Radio Button (Press)",
+    "description": ""
+  },
+  {
+    "id": "PlatinumInputRadioClickUp",
+    "group": "Inputs",
+    "label": "Radio Button (Up)",
+    "description": ""
+  },
+  {
+    "id": "PlatinumMenuClose",
+    "group": "Menus",
+    "label": "Menu Close",
+    "description": ""
+  },
+  {
+    "id": "PlatinumMenuItemClick",
+    "group": "Menus",
+    "label": "Menu Item (Click)",
+    "description": ""
+  },
+  {
+    "id": "PlatinumMenuItemHover",
+    "group": "Menus",
+    "label": "Menu Item (Hover)",
+    "description": ""
+  },
+  {
+    "id": "PlatinumMenuOpen",
+    "group": "Menus",
+    "label": "Menu Open",
+    "description": ""
+  },
+  {
+    "id": "PlatinumWindowClose",
+    "group": "Menus",
+    "label": "Window Close",
+    "description": ""
+  },
+  {
+    "id": "PlatinumWindowCollapse",
+    "group": "Windows",
+    "label": "Window Collapse",
+    "description": ""
+  },
+  {
+    "id": "PlatinumWindowControlClickDown",
+    "group": "Windows",
+    "label": "Window Control (Press)",
+    "description": ""
+  },
+  {
+    "id": "PlatinumWindowControlClickUp",
+    "group": "Windows",
+    "label": "Window Control (Up)",
+    "description": ""
+  },
+  {
+    "id": "PlatinumWindowExpand",
+    "group": "Windows",
+    "label": "Window Expand",
+    "description": ""
+  },
+  {
+    "id": "PlatinumWindowFocus",
+    "group": "Windows",
+    "label": "Window Focus",
+    "description": ""
+  },
+  {
+    "id": "PlatinumWindowMoveIdle",
+    "group": "Windows",
+    "label": "Window Move (Idle)",
+    "description": ""
+  },
+  {
+    "id": "PlatinumWindowMoveMoving",
+    "group": "Windows",
+    "label": "Window Moving",
+    "description": ""
+  },
+  {
+    "id": "PlatinumWindowMoveStop",
+    "group": "Windows",
+    "label": "Window Move (Stop)",
+    "description": ""
+  },
+  {
+    "id": "PlatinumWindowOpen",
+    "group": "Windows",
+    "label": "Window Open",
+    "description": ""
+  },
+  {
+    "id": "PlatinumWindowResizeIdle",
+    "group": "Windows",
+    "label": "Window Resize (Idle)",
+    "description": ""
+  },
+  {
+    "id": "PlatinumWindowResizeResizing",
+    "group": "Windows",
+    "label": "Window Resizing",
+    "description": ""
+  },
+  {
+    "id": "PlatinumWindowResizeStop",
+    "group": "Windows",
+    "label": "Window Resize (Stop)",
+    "description": ""
+  },
+  {
+    "id": "PlatinumWindowZoomMaximize",
+    "group": "Windows",
+    "label": "Window Maximize",
+    "description": ""
+  },
+  {
+    "id": "PlatinumWindowZoomMinimize",
+    "group": "Windows",
+    "label": "Window Minimize",
+    "description": ""
+  }
+]

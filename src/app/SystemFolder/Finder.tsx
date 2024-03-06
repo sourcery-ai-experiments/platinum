@@ -1,5 +1,3 @@
-'use client';
-
 import PlatinumApp from "@/app/SystemFolder/SystemResources/App/PlatinumApp";
 import React from "react";
 

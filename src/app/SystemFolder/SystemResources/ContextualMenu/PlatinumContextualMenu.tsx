@@ -1,4 +1,3 @@
-'use client';
 import platinumContextMenuStyles
     from "@/app/SystemFolder/SystemResources/ContextualMenu/PlatinumContextualMenu.module.scss";
 import PlatinumMenu, {PlatinumMenuItem} from "@/app/SystemFolder/SystemResources/Menu/PlatinumMenu";

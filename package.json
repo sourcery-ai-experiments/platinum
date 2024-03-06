@@ -8,18 +8,20 @@
     "start": "next start",
     "lint": "next lint",
     "audio": "./bin/make_audio_sprites.sh"
-
   },
   "dependencies": {
     "@mdxeditor/editor": "^2.3.5",
     "@types/howler": "^2.2.11",
     "classnames": "^2.5.1",
+    "eslint": "^8.57.0",
     "howler": "^2.2.4",
     "next": "14.1.0",
+    "prettier": "^3.2.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-json-tree": "^0.18.0",
     "sass": "^1.70.0",
+    "stylelint": "^16.2.1",
     "sync-fetch": "^0.5.2",
     "url-safe-string": "^1.1.0"
   },
@@ -29,5 +31,9 @@
     "audiosprite": "^0.7.2",
     "file-loader": "^6.2.0",
     "typescript": "5.3.3"
-  }
+  },
+  "browserslist": [
+    "defaults and fully supports es6-module",
+    "maintained node versions"
+  ]
 }

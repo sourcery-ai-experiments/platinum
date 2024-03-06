@@ -1,0 +1,15 @@
+.platinumDesktopMenuWidgetSound {
+  float: right;
+  height: 100%;
+  margin: 0;
+
+  &:hover {
+    color: var(--color-black) !important;
+    background: transparent !important;
+  }
+
+  img {
+    height: 100%;
+    aspect-ratio: 1 / 1 !important;
+  }
+}

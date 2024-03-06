@@ -1,6 +1,4 @@
-'use client';
-
-import AppearanceManagerContext from "@/app/SystemFolder/ControlPanels/AppearanceManager/AppearanceManagerContext";
+import PlatinumApp from "@/app/SystemFolder/SystemResources/App/PlatinumApp";
 import PlatinumButton from "@/app/SystemFolder/SystemResources/Button/PlatinumButton";
 import PlatinumInputCheckbox from "@/app/SystemFolder/SystemResources/Checkbox/PlatinumInputCheckbox";
 import {useDesktopDispatch} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext";
@@ -8,7 +6,6 @@ import PlatinumDisclosure from "@/app/SystemFolder/SystemResources/Disclosure/Pl
 import PlatinumDropdown from "@/app/SystemFolder/SystemResources/DropDown/PlatinumDropDown";
 import PlatinumInput from "@/app/SystemFolder/SystemResources/Input/PlatinumInput";
 import PlatinumInputGroup from "@/app/SystemFolder/SystemResources/InputGroup/PlatinumInputGroup";
-import PlatinumApp from "@/app/SystemFolder/SystemResources/App/PlatinumApp";
 import PlatinumProgressBar from "@/app/SystemFolder/SystemResources/ProgressBar/PlatinumProgressBar";
 import PlatinumInputRadio from "@/app/SystemFolder/SystemResources/RadioInput/PlatinumInputRadio";
 import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow";
@@ -20,7 +17,7 @@ const Demo: React.FC = () => {
     const appIcon = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/folders/default.png`;
 
     const desktopEventDispatch = useDesktopDispatch();
-    const {appContext} = React.useContext(AppearanceManagerContext);
+    const [appContext] = React.useState({});
 
     const quitApp = () => {
         desktopEventDispatch({

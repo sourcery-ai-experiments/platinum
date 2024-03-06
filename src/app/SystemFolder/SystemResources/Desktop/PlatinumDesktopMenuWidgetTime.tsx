@@ -15,15 +15,17 @@ type PlatinumDesktopMenuWidgetTimeProps = {
     flashSeparators?: boolean;
 }
 
-const PlatinumDesktopMenuWidgetTime: React.FC<PlatinumDesktopMenuWidgetTimeProps> = ({
-                                                                                         hide = false,
-                                                                                         militaryTime = false,
-                                                                                         displaySeconds = false,
-                                                                                         displayPeriod = true,
-                                                                                         displayDay = true,
-                                                                                         displayLongDay = false,
-                                                                                         flashSeparators = true
-                                                                                     }) => {
+const PlatinumDesktopMenuWidgetTime: React.FC<PlatinumDesktopMenuWidgetTimeProps> = (
+    {
+        hide = false,
+        militaryTime = false,
+        displaySeconds = false,
+        displayPeriod = true,
+        displayDay = true,
+        displayLongDay = false,
+        flashSeparators = true
+    }
+) => {
     const [time, setTime] = React.useState({
         day: new Date().getDay(),
         minutes: new Date().getMinutes(),
@@ -73,7 +75,13 @@ const PlatinumDesktopMenuWidgetTime: React.FC<PlatinumDesktopMenuWidgetTimeProps
     return (
         <>
             {!hide &&
-                <li className={classNames(platinumMenuStyles.platinumMenuItem, platinumMenuStyles.platinumMenuItemNoImage, platinumDesktopMenuStyles.platinumDesktopMenuTime)}>
+                <li className={
+                    classNames(
+                        platinumMenuStyles.platinumMenuItem,
+                        platinumMenuStyles.platinumMenuItemNoImage,
+                        platinumDesktopMenuStyles.platinumDesktopMenuTime
+                    )
+                }>
                     {displayDay &&
                         <span>{displayLongDay ? daysOfWeek[time.day] : daysOfWeek[time.day].slice(0, 3)}&nbsp;</span>
                     }

@@ -18,6 +18,12 @@
   }
 }
 
+.platinumDropDownWrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
 .platinumDropDown {
   font-family: var(--ui-font);
 
@@ -61,7 +67,6 @@
     font-size: inherit;
     line-height: inherit;
     z-index: 1;
-    width: 100%;
     margin: 0;
     padding: calc(var(--window-padding-size) / 2) 0 var(--window-padding-size) calc(var(--window-padding-size) * 1);
     cursor: inherit;

@@ -1,4 +1,3 @@
-'use client';
 import {
     useDesktop,
     useDesktopDispatch
@@ -13,7 +12,7 @@ interface PlatinumDesktopIconProps {
     appName: string;
     icon: string;
     label?: string;
-    kind?: string;
+    kind?: "app_shortcut";
     onClickFunc?: any;
 }
 
@@ -22,7 +21,7 @@ const PlatinumDesktopIcon: React.FC<PlatinumDesktopIconProps> = ({
                                                                      appName,
                                                                      icon,
                                                                      label,
-                                                                     kind,
+                                                                     kind = "app_shortcut",
                                                                      onClickFunc,
                                                                  }) => {
 
@@ -147,7 +146,7 @@ const PlatinumDesktopIcon: React.FC<PlatinumDesktopIconProps> = ({
                     <img src={icon} alt={appName}/>
                 </div>
             </div>
-            <p>{appName}</p>
+            <p>{label ? label : appName}</p>
         </div>
     );
 };
