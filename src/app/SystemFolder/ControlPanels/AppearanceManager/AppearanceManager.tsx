@@ -128,7 +128,6 @@ export const AppearanceManager: React.FC = () => {
             icon={appIcon}
             defaultWindow={"AppearanceManager_1"}
             openOnBoot={true}
-            debug={true}
         >
             <PlatinumWindow
                 id={"AppearanceManager_1"}
