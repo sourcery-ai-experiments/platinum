@@ -7,7 +7,6 @@ import React from "react";
 type PlatinumInputRadioProps = {
     id: string;
     name: string;
-    checked?: boolean;
     isDefault?: boolean;
     disabled?: boolean;
     onClick?: any;
@@ -17,7 +16,6 @@ type PlatinumInputRadioProps = {
 const PlatinumInputRadio: React.FC<PlatinumInputRadioProps> = ({
                                                                    id,
                                                                    name,
-                                                                   checked,
                                                                    isDefault,
                                                                    disabled,
                                                                    onClick,
@@ -29,6 +27,7 @@ const PlatinumInputRadio: React.FC<PlatinumInputRadioProps> = ({
     return (
         <div className={platinumInputRadioStyles.platinumRadioInputGroup}>
             <input type={"radio"} onClick={onClick}
+                   tabIndex={0}
                    onMouseDown={() => {
                        player({type: "PlatinumSoundPlay", sound: "PlatinumInputRadioClickDown"})
                    }}

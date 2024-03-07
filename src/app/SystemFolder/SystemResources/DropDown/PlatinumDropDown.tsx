@@ -38,6 +38,7 @@ const PlatinumDropdown: React.FC<PlatinumDropdownProps> = (
                  )}>
                 <select
                     id={id}
+                    tabIndex={0}
                     value={selected}
                     onChange={onChangeFunc}>
                     {options.map(o => (

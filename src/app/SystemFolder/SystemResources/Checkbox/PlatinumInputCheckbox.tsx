@@ -29,6 +29,7 @@ const PlatinumInputCheckbox: React.FC<PlatinumInputCheckboxProps> = (
     return (
         <div className={platinumInputCheckboxStyles.platinumInputCheckboxGroup}>
             <input type={"checkbox"} onClick={onClick}
+                   tabIndex={0}
                    checked={checked}
                    id={id}
                    name={name}

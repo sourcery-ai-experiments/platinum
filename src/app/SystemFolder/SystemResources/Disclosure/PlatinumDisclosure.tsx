@@ -23,6 +23,16 @@ const PlatinumDisclosure: React.FC<PlatinumDisclosureProps> = (
         direction.charAt(0).toUpperCase()
         + direction.slice(1) + (open ? "Open" : "Closed");
 
+    function handleKeyPress(e) {
+        console.log(e.key);
+        switch (e.key) {
+            case "Enter":
+            case " ": {
+                setOpen(!open)
+            }
+        }
+    }
+
     return (
         <div
             className={classNames(platinumDisclosureStyles.platinumDisclosure)}
@@ -31,6 +41,8 @@ const PlatinumDisclosure: React.FC<PlatinumDisclosureProps> = (
                  onClick={() => {
                      setOpen(!open)
                  }}
+                 tabIndex={0}
+                 onKeyDown={(e) => handleKeyPress(e)}
             >
                 <svg id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6.44 11.12"
                      className={classNames(platinumDisclosureStyles.platinumDisclosureTriangle,

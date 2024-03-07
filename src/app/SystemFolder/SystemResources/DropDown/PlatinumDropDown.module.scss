@@ -76,7 +76,7 @@
 
     &:focus {
       border-radius: var(--window-padding-size);
-      outline: var(--window-border-size) solid var(--color-system-06);
+      outline: var(--color-outline) solid calc(var(--window-border-size) * 2) !important;
       box-shadow: 0 0 0 var(--window-border-size) var(--color-system-04),
       0 0 0 calc(var(--window-border-size) * 2) var(--color-system-02),
       0 0 0 calc(var(--window-border-size) * 3) var(--color-black),

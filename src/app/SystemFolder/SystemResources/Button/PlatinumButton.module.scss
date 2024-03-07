@@ -6,8 +6,11 @@
 
   margin: calc(var(--window-padding-size));
   padding: calc(var(--window-padding-size) / 2) var(--window-padding-size);
-
   user-select: none;
+
+  &:focus {
+    outline: var(--color-outline) solid calc(var(--window-border-size) * 2) !important;
+  }
 
   @include appearance.platinumWindowDepressable;
 

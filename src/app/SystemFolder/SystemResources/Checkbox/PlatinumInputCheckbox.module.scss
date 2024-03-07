@@ -25,8 +25,13 @@
   }
 
   &:active {
-    background: black;
     @include appearance.platinumDepressableBoxShadowActive;
+    background: black;
+  }
+
+  &:focus {
+    border-radius: 1px;
+    outline: var(--color-outline) solid calc(var(--window-border-size) * 2) !important;
   }
 
   &:disabled, &:disabled:active {

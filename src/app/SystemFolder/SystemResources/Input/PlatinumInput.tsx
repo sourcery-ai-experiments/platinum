@@ -31,6 +31,7 @@ const PlatinumInput: React.FC<PlatinumInputProps> = ({
                                   disabled={disabled}></PlatinumControlLabel>
         }
         <input id={id}
+               tabIndex={0}
                onChange={onChangeFunc}
                name={id}
                type={inputType}
