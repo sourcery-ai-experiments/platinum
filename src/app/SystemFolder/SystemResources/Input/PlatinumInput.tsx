@@ -5,7 +5,7 @@ import React from "react";
 
 interface PlatinumInputProps {
     id: string;
-    inputType?: string;
+    inputType?: "text";
     onChangeFunc?: any;
     labelTitle?: string;
     placeholder?: string;

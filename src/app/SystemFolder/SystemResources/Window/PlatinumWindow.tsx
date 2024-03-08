@@ -8,7 +8,6 @@ import {
 import {useSoundDispatch} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopSoundManagerContext";
 import {PlatinumMenuItem} from "@/app/SystemFolder/SystemResources/Menu/PlatinumMenu";
 import platinumWindowStyle from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow.module.scss";
-import "@/app/SystemFolder/Appearance/styles/fonts.scss";
 import {
     PlatinumWindowState,
     PlatinumWindowStateEventReducer

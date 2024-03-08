@@ -7,7 +7,7 @@ import PlatinumDropdown from "@/app/SystemFolder/SystemResources/DropDown/Platin
 import PlatinumInput from "@/app/SystemFolder/SystemResources/Input/PlatinumInput";
 import PlatinumInputGroup from "@/app/SystemFolder/SystemResources/InputGroup/PlatinumInputGroup";
 import PlatinumProgressBar from "@/app/SystemFolder/SystemResources/ProgressBar/PlatinumProgressBar";
-import PlatinumInputRadio from "@/app/SystemFolder/SystemResources/RadioInput/PlatinumInputRadio";
+import PlatinumRadioInput from "@/app/SystemFolder/SystemResources/RadioInput/PlatinumRadioInput";
 import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow";
 import React from "react";
 
@@ -77,11 +77,11 @@ const Demo: React.FC = () => {
                     <PlatinumProgressBar value={59}></PlatinumProgressBar>
                     <PlatinumInput id={"test"} labelTitle={"Text Input"}></PlatinumInput>
                     <PlatinumInputGroup label={"Test Radio Inputs"}>
-                        <PlatinumInputRadio id={"test1"} name={"test_radio"} isDefault={false}
+                        <PlatinumRadioInput id={"test1"} name={"test_radio"} isDefault={false}
                                             label={"Radio Button 1"}/>
-                        <PlatinumInputRadio id={"test2"} name={"test_radio"} isDefault={false}
+                        <PlatinumRadioInput id={"test2"} name={"test_radio"} isDefault={false}
                                             label={"Radio Button 2"}/>
-                        <PlatinumInputRadio id={"test3"} checked={true} name={"test_radio"} isDefault={false}
+                        <PlatinumRadioInput id={"test3"} checked={true} name={"test_radio"} isDefault={false}
                                             label={"Radio Button Disabled"} disabled={true}/>
                     </PlatinumInputGroup>
                     <PlatinumInputGroup label={"Test Checkboxes"}>
