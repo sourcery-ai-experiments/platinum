@@ -103,7 +103,7 @@
     height: 100%;
     content: "";
 
-    border-left: var(--window-border-size) solid var(--color-system-05) !important;
+    border-left: var(--window-border-size) solid var(--color-system-05);
     border-top-right-radius: var(--window-padding-size);
     border-bottom-right-radius: var(--window-padding-size);
     background-image: assets.$down-arrow;

@@ -13,6 +13,7 @@
   font-family: var(--ui-font);
   flex-grow: 1;
   width: auto;
+  padding: calc(var(--window-padding-size) / 2);
   border: var(--window-border-size) solid black;
   box-shadow: calc(var(--window-border-size) * -1) calc(var(--window-border-size) * -1) 0 0 var(--color-system-05),
   calc(var(--window-border-size) * 1) calc(var(--window-border-size) * 1) 0 0 var(--color-system-04);
