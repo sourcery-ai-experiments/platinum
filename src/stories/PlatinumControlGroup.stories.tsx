@@ -1,19 +1,18 @@
-import PlatinumInputGroup from "@/app/SystemFolder/SystemResources/InputGroup/PlatinumInputGroup";
+import PlatinumControlGroup from "@/app/SystemFolder/SystemResources/ControlGroup/PlatinumControlGroup";
 import type {Meta, StoryObj} from '@storybook/react';
-import './PlatinumInputGroup.css';
+import './PlatinumControlGroup.css';
 
 const meta = {
-    title: 'Example/PlatinumInputGroup',
-    component: PlatinumInputGroup,
+    title: 'Example/PlatinumControlGroup',
+    component: PlatinumControlGroup,
     parameters: {
         layout: 'padding',
-        label: "OK"
     },
     argTypes: {
         children: {table: {disable: true}},
     },
     tags: ['autodocs'],
-} satisfies Meta<typeof PlatinumInputGroup>;
+} satisfies Meta<typeof PlatinumControlGroup>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -22,6 +21,6 @@ export const Primary: Story = {
     args: {
         label: "Label",
         columns: false,
-        children: <div><p>Components go here</p> <p>Components go here</p></div>
+        children: [<p>Components go here</p>, <p>Components go here</p>]
     },
 };

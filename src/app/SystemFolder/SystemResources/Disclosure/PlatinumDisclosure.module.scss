@@ -1,12 +1,13 @@
 @use "../../Appearance/styles/appearance";
 
 .platinumDisclosure {
+  padding: calc(var(--window-border-size) * 2);
 }
 
 .platinumDisclosureHeader {
   display: flex;
   flex-direction: row;
-  padding: calc(var(--window-padding-size) * 2) 0;
+  padding: calc(var(--window-padding-size) * 2);
 
   &:focus {
     outline: var(--color-outline) solid calc(var(--window-border-size) * 2) !important;

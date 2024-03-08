@@ -1,22 +1,22 @@
 import PlatinumControlLabel from "@/app/SystemFolder/SystemResources/ControlLabel/PlatinumControlLabel";
-import platinumDropDownStyle from "@/app/SystemFolder/SystemResources/DropDown/PlatinumDropDown.module.scss";
+import platinumPopUpMenuStyle from "@/app/SystemFolder/SystemResources/PopUpMenu/PlatinumPopUpMenu.module.scss";
 import classNames from "classnames";
 import React from "react";
 
-type PlatinumDropdownOptions = {
+type platinumPopUpMenuOptions = {
     value: string;
     label: string;
 }
 
-type PlatinumDropdownProps = {
+type platinumPopUpMenuProps = {
     id: string;
     label?: string;
-    options: PlatinumDropdownOptions[];
+    options: platinumPopUpMenuOptions[];
     selected?: string;
     small?: boolean;
     onChangeFunc?: any;
 }
-const PlatinumDropdown: React.FC<PlatinumDropdownProps> = (
+const PlatinumPopUpMenu: React.FC<platinumPopUpMenuProps> = (
     {
         id,
         label,
@@ -27,14 +27,14 @@ const PlatinumDropdown: React.FC<PlatinumDropdownProps> = (
     }
 ) => {
     return (
-        <div className={platinumDropDownStyle.platinumDropDownWrapper}>
+        <div className={platinumPopUpMenuStyle.platinumPopUpMenuWrapper}>
             {label &&
                 <PlatinumControlLabel label={label}></PlatinumControlLabel>
             }
             <div style={{flexGrow: "2"}}
                  className={classNames(
-                     platinumDropDownStyle.platinumDropDown,
-                     small ? platinumDropDownStyle.platinumDropDownSmall : ""
+                     platinumPopUpMenuStyle.platinumPopUpMenu,
+                     small ? platinumPopUpMenuStyle.platinumPopUpMenuSmall : ""
                  )}>
                 <select
                     id={id}
@@ -49,4 +49,4 @@ const PlatinumDropdown: React.FC<PlatinumDropdownProps> = (
         </div>
     );
 };
-export default PlatinumDropdown;
+export default PlatinumPopUpMenu;

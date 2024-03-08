@@ -1,10 +1,10 @@
-import PlatinumDropDown from "@/app/SystemFolder/SystemResources/DropDown/PlatinumDropDown";
+import PlatinumPopUpMenu from "@/app/SystemFolder/SystemResources/PopUpMenu/PlatinumPopUpMenu";
 import type {Meta, StoryObj} from '@storybook/react';
 import './PlatinumButton.css';
 
 const meta = {
-    title: 'Example/PlatinumDropDown',
-    component: PlatinumDropDown,
+    title: 'Example/PlatinumPopUpMenu',
+    component: PlatinumPopUpMenu,
     parameters: {
         layout: 'centered',
         label: "OK",
@@ -15,7 +15,7 @@ const meta = {
         onChangeFunc: {table: {disable: true}},
     },
     tags: ['autodocs'],
-} satisfies Meta<typeof PlatinumDropDown>;
+} satisfies Meta<typeof PlatinumPopUpMenu>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

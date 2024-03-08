@@ -1,11 +1,11 @@
 import PlatinumApp from "@/app/SystemFolder/SystemResources/App/PlatinumApp";
 import PlatinumButton from "@/app/SystemFolder/SystemResources/Button/PlatinumButton";
-import PlatinumInputCheckbox from "@/app/SystemFolder/SystemResources/Checkbox/PlatinumInputCheckbox";
+import PlatinumCheckbox from "@/app/SystemFolder/SystemResources/Checkbox/PlatinumCheckbox";
+import PlatinumControlGroup from "@/app/SystemFolder/SystemResources/ControlGroup/PlatinumControlGroup";
 import {useDesktopDispatch} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext";
 import PlatinumDisclosure from "@/app/SystemFolder/SystemResources/Disclosure/PlatinumDisclosure";
-import PlatinumDropdown from "@/app/SystemFolder/SystemResources/DropDown/PlatinumDropDown";
 import PlatinumInput from "@/app/SystemFolder/SystemResources/Input/PlatinumInput";
-import PlatinumInputGroup from "@/app/SystemFolder/SystemResources/InputGroup/PlatinumInputGroup";
+import PlatinumPopUpMenu from "@/app/SystemFolder/SystemResources/PopUpMenu/PlatinumPopUpMenu";
 import PlatinumProgressBar from "@/app/SystemFolder/SystemResources/ProgressBar/PlatinumProgressBar";
 import PlatinumRadioInput from "@/app/SystemFolder/SystemResources/RadioInput/PlatinumRadioInput";
 import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow";
@@ -68,7 +68,7 @@ const Demo: React.FC = () => {
                     modalWindow={true}
                     appMenu={appMenu}
                 >
-                    <PlatinumDropdown
+                    <PlatinumPopUpMenu
                         id={"select_theme"}
                         small={false}
                         options={[{value: "hello", label: "Hello"}, {value: "hello2", label: "Hello again!"}]}
@@ -76,24 +76,24 @@ const Demo: React.FC = () => {
                     />
                     <PlatinumProgressBar value={59}></PlatinumProgressBar>
                     <PlatinumInput id={"test"} labelTitle={"Text Input"}></PlatinumInput>
-                    <PlatinumInputGroup label={"Test Radio Inputs"}>
+                    <PlatinumControlGroup label={"Test Radio Inputs"}>
                         <PlatinumRadioInput id={"test1"} name={"test_radio"} isDefault={false}
                                             label={"Radio Button 1"}/>
                         <PlatinumRadioInput id={"test2"} name={"test_radio"} isDefault={false}
                                             label={"Radio Button 2"}/>
                         <PlatinumRadioInput id={"test3"} checked={true} name={"test_radio"} isDefault={false}
                                             label={"Radio Button Disabled"} disabled={true}/>
-                    </PlatinumInputGroup>
-                    <PlatinumInputGroup label={"Test Checkboxes"}>
-                        <PlatinumInputCheckbox id={"test4"} name={"test_check"} isDefault={true}
-                                               label={"Default Checkbox"}
-                                               disabled={false}/>
-                        <PlatinumInputCheckbox id={"test5"} name={"test_check"} isDefault={false}
-                                               label={"Checkbox 2"}
-                                               disabled={false}/>
-                        <PlatinumInputCheckbox id={"test6"} name={"test_check"} isDefault={false} label={"Disabled"}
-                                               disabled={true}/>
-                    </PlatinumInputGroup>
+                    </PlatinumControlGroup>
+                    <PlatinumControlGroup label={"Test Checkboxes"}>
+                        <PlatinumCheckbox id={"test4"} name={"test_check"} isDefault={true}
+                                          label={"Default Checkbox"}
+                                          disabled={false}/>
+                        <PlatinumCheckbox id={"test5"} name={"test_check"} isDefault={false}
+                                          label={"Checkbox 2"}
+                                          disabled={false}/>
+                        <PlatinumCheckbox id={"test6"} name={"test_check"} isDefault={false} label={"Disabled"}
+                                          disabled={true}/>
+                    </PlatinumControlGroup>
                     <PlatinumDisclosure label={"Expandable Section"}>
                         <p style={{fontFamily: "var(--header-font)"}}>HELLO!</p>
                     </PlatinumDisclosure>

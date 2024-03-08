@@ -2,8 +2,8 @@ import platinumProgressStyles from "@/app/SystemFolder/SystemResources/ProgressB
 import React from "react";
 
 interface PlatinumProgressProps {
-    max?: number;
     value: number;
+    max?: number;
 }
 
 const PlatinumProgressBar: React.FC<PlatinumProgressProps> = ({max = 100, value = 0}) => {

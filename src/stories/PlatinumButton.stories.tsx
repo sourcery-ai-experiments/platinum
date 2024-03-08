@@ -7,7 +7,7 @@ const meta = {
     component: PlatinumButton,
     parameters: {
         layout: 'centered',
-        label: "OK"
+        label: "Button"
     },
     argTypes: {
         onClick: {table: {disable: true}},
@@ -29,13 +29,13 @@ export const Primary: Story = {
 export const Default: Story = {
     args: {
         isDefault: true,
-        children: <span>{meta.parameters.label}</span>
+        children: <span>Submit</span>
     },
 };
 
 export const Disabled: Story = {
     args: {
         disabled: true,
-        children: <span>{meta.parameters.label}</span>
+        children: <span>Disabled</span>
     },
 };

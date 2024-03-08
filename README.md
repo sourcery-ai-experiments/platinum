@@ -506,27 +506,27 @@ anything, and came up with the following:
 - Desktop
     - Desktop Menu Bar
         - Images
-    - Context/Dropdown Menu
-    - Window
-        - Regular Window
-        - Modal Window
-        - Title Bar
-        - Control Boxes
-            - Close
-            - Zoom
-            - Collapse
-            - Resize
-        - Scoll Bars
-        - UI Components
-            - Button
-            - Dropdown Menu
-                - Long variant, with values
-                - Short variant, with no values
-            - Checkbox
-            - Radio button
-            - Fieldset (control group)
-            - Progress
-            - Text Input
+    - Context Menu
+        - Window
+            - Regular Window
+            - Modal Window
+            - Title Bar
+            - Control Boxes
+                - Close
+                - Zoom
+                - Collapse
+                - Resize
+            - Scoll Bars
+            - UI Components
+                - Button
+                - Dropdown Menu
+                    - Long variant, with values
+                    - Short variant, with no values
+                - Checkbox
+                - Radio button
+                - Fieldset (control group)
+                - Progress
+                - Text Input
 
 I'm sure there will be other components I want to add over time, but I felt like this was a good starting place.
 
