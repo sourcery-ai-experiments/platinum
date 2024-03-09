@@ -5,6 +5,13 @@ import './PlatinumControlGroup.css';
 const meta = {
     title: 'Example/PlatinumControlGroup',
     component: PlatinumControlGroup,
+    decorators: [
+        (Story) => (
+            <div style={{padding: '1em'}}>
+                <Story/>
+            </div>
+        ),
+    ],
     parameters: {
         layout: 'padding',
     },

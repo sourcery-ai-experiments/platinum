@@ -16,13 +16,17 @@
   &:checked {
     &:after {
       font-family: var(--ui-font);
-      font-size: calc(var(--ui-font-size) * 1.5);
+      font-size: calc(var(--ui-font-size) * 1.25);
       display: block;
-      margin-top: calc(var(--window-control-size) * -.75);
-      margin-left: calc(var(--window-border-size) * -1);
+      margin-top: calc(var(--window-control-size) * -.5);
+      margin-left: calc(var(--window-border-size) * -.75);
       content: "\00D7";
       text-shadow: var(--color-system-05) 1px 1px 2px;
     }
+  }
+
+  &:disabled:checked {
+    color: var(--color-system-05);
   }
 
   &:active {

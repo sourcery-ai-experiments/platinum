@@ -5,6 +5,13 @@ import './PlatinumContextualMenu.css';
 const meta = {
     title: 'Example/PlatinumContextualMenu',
     component: PlatinumContextualMenu,
+    decorators: [
+        (Story) => (
+            <div style={{margin: '3em'}}>
+                <Story/>
+            </div>
+        ),
+    ],
     parameters: {
         layout: 'centered',
     },
