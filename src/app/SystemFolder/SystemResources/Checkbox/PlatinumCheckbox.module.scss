@@ -17,9 +17,9 @@
     &:after {
       font-family: var(--ui-font);
       font-size: calc(var(--ui-font-size) * 1.25);
-      display: block;
-      margin-top: calc(var(--window-control-size) * -.5);
-      margin-left: calc(var(--window-border-size) * -.75);
+      line-height: calc(var(--ui-font-size) * .65);
+      display: flex;
+      justify-content: center;
       content: "\00D7";
       text-shadow: var(--color-system-05) 1px 1px 2px;
     }
@@ -63,10 +63,10 @@
   &:checked, &:active {
     &:after {
       font-family: var(--ui-font);
-      font-size: var(--ui-font-size);
-      display: block;
-      margin-top: calc(var(--ui-font-size) * -.25);
-      margin-left: calc(var(--window-border-size) * -1);
+      font-size: calc(var(--ui-font-size) * 1);
+      line-height: calc(var(--ui-font-size) * .75);
+      display: flex;
+      justify-content: center;
       content: "\2713";
       text-shadow: var(--color-system-05) 1px 1px 2px;
     }
@@ -77,10 +77,10 @@
   &:checked {
     &:after {
       font-family: var(--ui-font);
-      font-size: calc(var(--ui-font-size) * 1.5);
-      display: block;
-      margin-top: calc(var(--window-control-size) * -.75);
-      margin-left: calc(var(--window-border-size) * -1);
+      font-size: calc(var(--ui-font-size) * 1);
+      line-height: calc(var(--ui-font-size) * .75);
+      display: flex;
+      justify-content: center;
       content: "-";
       text-shadow: var(--color-system-05) 1px 1px 2px;
     }
