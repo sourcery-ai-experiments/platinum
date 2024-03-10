@@ -12,6 +12,9 @@
   height: calc(var(--desktop-icon-size) * 2);
   user-select: none;
   text-align: center;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
 
   //noinspection ALL
   img {

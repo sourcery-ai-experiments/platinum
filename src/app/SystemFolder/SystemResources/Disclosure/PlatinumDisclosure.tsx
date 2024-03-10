@@ -24,7 +24,6 @@ const PlatinumDisclosure: React.FC<PlatinumDisclosureProps> = (
         + direction.slice(1) + (open ? "Open" : "Closed");
 
     function handleKeyPress(e) {
-        console.log(e.key);
         switch (e.key) {
             case "Enter":
             case " ": {

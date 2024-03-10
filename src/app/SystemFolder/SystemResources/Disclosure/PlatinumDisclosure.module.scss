@@ -3,15 +3,16 @@
 .platinumDisclosure {
   padding: calc(var(--window-border-size) * 2);
 
-  &:focus {
-    outline: var(--color-outline) solid calc(var(--window-border-size) * 2) !important;
-  }
 }
 
 .platinumDisclosureHeader {
   display: flex;
   flex-direction: row;
   padding: calc(var(--window-padding-size) * 2);
+
+  &:focus {
+    outline: var(--color-outline) solid calc(var(--window-border-size) * 2) !important;
+  }
 }
 
 .platinumDisclosureInner {

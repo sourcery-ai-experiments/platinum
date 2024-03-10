@@ -133,6 +133,7 @@ export const AppearanceManager: React.FC = () => {
                 id={"AppearanceManager_1"}
                 title={appName}
                 appId={appId}
+                icon={appIcon}
                 closable={true}
                 resizable={false}
                 zoomable={false}
@@ -160,10 +161,8 @@ export const AppearanceManager: React.FC = () => {
                     checked={!playerState.disabled.includes("*")}
                 />
                 <PlatinumDisclosure label={"Disable Sounds"}>
-                    <PlatinumControlLabel
-                        label={"These settings are not currently connected."}
-                    ></PlatinumControlLabel>
-                    <div style={{display: "flex", flexDirection: "row", flexWrap: "wrap"}}>
+                    <PlatinumControlLabel label={"These settings are not currently connected."}/>
+                    <div className={appearanceManagerStyles.appearanceManagerControlGroupHolder}>
                         {getSoundLabelGroups().map((group: string) => (
                             <PlatinumControlGroup label={group} columns={true} key={group}>
                                 {playerState.labels.map((item: PlatinumDesktopSoundInfo) => (
