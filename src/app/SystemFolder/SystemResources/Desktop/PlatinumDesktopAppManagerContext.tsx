@@ -63,8 +63,6 @@ export const platinumDesktopEventHandler = (ds: PlatinumDesktopState, action) =>
             }
 
             if ('menuBar' in action) {
-                console.log("SAW MENUBAR IN ACITON")
-                console.log(action.type);
                 ds.menuBar = action.menuBar;
             }
 
