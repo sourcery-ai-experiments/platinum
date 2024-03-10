@@ -1,4 +1,4 @@
-import platinumInputCheckboxStyles from "@/app/SystemFolder/SystemResources/Checkbox/PlatinumInputCheckbox.module.scss";
+import platinumInputCheckboxStyles from "@/app/SystemFolder/SystemResources/Checkbox/PlatinumCheckbox.module.scss";
 import PlatinumControlLabel from "@/app/SystemFolder/SystemResources/ControlLabel/PlatinumControlLabel";
 import classNames from "classnames";
 import React from "react";
@@ -13,7 +13,7 @@ type PlatinumInputCheckboxProps = {
     onClick?: any;
     label?: string;
 }
-const PlatinumInputCheckbox: React.FC<PlatinumInputCheckboxProps> = (
+const PlatinumCheckbox: React.FC<PlatinumInputCheckboxProps> = (
     {
         id,
         name,
@@ -29,6 +29,7 @@ const PlatinumInputCheckbox: React.FC<PlatinumInputCheckboxProps> = (
     return (
         <div className={platinumInputCheckboxStyles.platinumInputCheckboxGroup}>
             <input type={"checkbox"} onClick={onClick}
+                   tabIndex={0}
                    checked={checked}
                    id={id}
                    name={name}
@@ -42,5 +43,5 @@ const PlatinumInputCheckbox: React.FC<PlatinumInputCheckboxProps> = (
         </div>
     );
 };
-export default PlatinumInputCheckbox;
+export default PlatinumCheckbox;
 

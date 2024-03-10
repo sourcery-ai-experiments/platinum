@@ -7,6 +7,40 @@ interface theme that came with MacOS 8 and 9, Platinum.
 
 [`See a demo here!`](https://robbiebyrd.github.io/platinum/)
 
+## Running Locally
+
+The Platinum components are created in React. For demo purposes, we provide a very basic Next.js app for testing.
+
+You will need Node.js v20.11 or higher. You will also need the `yarn` package manager.
+
+1. Clone this repo to your local computer and change into the folder
+    ```bash
+    git clone https://github.com/robbiebyrd/platinum
+    cd platinum
+    ```
+
+2. Install the necessary dependencies.
+    ```bash
+    yarn
+    ```
+
+3. Modify the .env file to the below and make sure it is loaded.
+   '''
+   NEXT_PUBLIC_BASE_PATH=""
+   '''
+
+4. Start the Platinum Destkop server in development mode.
+    ```bash
+    yarn dev
+    ```
+
+4. Open your web browser to [http://localhost:3000](http://localhost:3000) .
+
+5. To view the Platinum UI Components, run the Storybook Development server.
+    ```bash
+    yarn storybook
+    ```
+
 ## Acknowledgements
 
 - New Dawn by [`Nathanael Gentry`](https://github.com/npjg)
@@ -506,27 +540,27 @@ anything, and came up with the following:
 - Desktop
     - Desktop Menu Bar
         - Images
-    - Context/Dropdown Menu
-    - Window
-        - Regular Window
-        - Modal Window
-        - Title Bar
-        - Control Boxes
-            - Close
-            - Zoom
-            - Collapse
-            - Resize
-        - Scoll Bars
-        - UI Components
-            - Button
-            - Dropdown Menu
-                - Long variant, with values
-                - Short variant, with no values
-            - Checkbox
-            - Radio button
-            - Fieldset (control group)
-            - Progress
-            - Text Input
+    - Context Menu
+        - Window
+            - Regular Window
+            - Modal Window
+            - Title Bar
+            - Control Boxes
+                - Close
+                - Zoom
+                - Collapse
+                - Resize
+            - Scoll Bars
+            - UI Components
+                - Button
+                - Dropdown Menu
+                    - Long variant, with values
+                    - Short variant, with no values
+                - Checkbox
+                - Radio button
+                - Fieldset (control group)
+                - Progress
+                - Text Input
 
 I'm sure there will be other components I want to add over time, but I felt like this was a good starting place.
 

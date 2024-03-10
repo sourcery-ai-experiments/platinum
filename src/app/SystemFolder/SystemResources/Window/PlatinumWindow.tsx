@@ -8,7 +8,6 @@ import {
 import {useSoundDispatch} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopSoundManagerContext";
 import {PlatinumMenuItem} from "@/app/SystemFolder/SystemResources/Menu/PlatinumMenu";
 import platinumWindowStyle from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow.module.scss";
-import "@/app/SystemFolder/Appearance/styles/fonts.scss";
 import {
     PlatinumWindowState,
     PlatinumWindowStateEventReducer
@@ -78,7 +77,12 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
     const desktopContext = useDesktop();
     const desktopEventDispatch = useDesktopDispatch();
 
-    const player = useSoundDispatch();
+    let player = useSoundDispatch();
+
+    if (player === null) {
+        player = ((a) => {
+        });
+    }
 
     const startResizeWindow = () => {
         windowEventDispatch({
@@ -152,7 +156,9 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
     };
 
     const isActive = () => {
-        return id === desktopContext.activeWindow;
+        if (desktopContext && 'activeWindow' in desktopContext)
+            return id === desktopContext.activeWindow;
+        return true;
     };
 
     const setActive = (e) => {

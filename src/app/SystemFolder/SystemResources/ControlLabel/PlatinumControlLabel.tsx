@@ -7,7 +7,7 @@ interface PlatinumControlLabelProps {
     labelFor?: string;
     label?: string;
     disabled?: boolean;
-    direction?: string;
+    direction?: "left" | "right";
 }
 
 const PlatinumControlLabel: React.FC<PlatinumControlLabelProps> = ({
@@ -24,7 +24,7 @@ const PlatinumControlLabel: React.FC<PlatinumControlLabelProps> = ({
             break;
         }
         case "right": {
-            directionClass = platinumControlLabelStyles.platinumControlLabelLeft;
+            directionClass = platinumControlLabelStyles.platinumControlLabelRight;
             break;
         }
     }

@@ -7,7 +7,8 @@
 .platinumInputGroupColumns {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  justify-content: space-evenly;
+  column-gap: calc(var(--window-padding-size) * 2);
 }
 
 .platinumInputGroupLegend {

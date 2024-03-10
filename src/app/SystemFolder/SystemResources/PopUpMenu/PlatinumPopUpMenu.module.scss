@@ -1,11 +1,14 @@
 @use "../../Appearance/styles/assets";
 @use "../../Appearance/styles/appearance";
 
-.platinumDropDownSmall {
-  width: 2em !important;
-  aspect-ratio: 1 / 1 !important;
+.platinumPopUpMenuSmall {
+  width: calc(var(--window-control-size) * 2.5) !important;
+  min-width: auto !important;
+  min-height: auto !important;
+  aspect-ratio: 1.5/1;
 
   select {
+    width: 90%;
     opacity: 0 !important;
 
   }
@@ -18,21 +21,22 @@
   }
 }
 
-.platinumDropDownWrapper {
+.platinumPopUpMenuWrapper {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   flex-direction: row;
 }
 
-.platinumDropDown {
+.platinumPopUpMenu {
   font-family: var(--ui-font);
-
   font-size: 1em;
 
   line-height: 1.1;
+
   position: relative;
   display: grid;
   align-items: center;
+  min-width: calc(var(--window-control-size) * 10);
 
   @include appearance.platinumWindowDepressable;
   margin: var(--window-control-size);
@@ -76,7 +80,7 @@
 
     &:focus {
       border-radius: var(--window-padding-size);
-      outline: var(--window-border-size) solid var(--color-system-06);
+      outline: var(--color-outline) solid calc(var(--window-border-size) * 2) !important;
       box-shadow: 0 0 0 var(--window-border-size) var(--color-system-04),
       0 0 0 calc(var(--window-border-size) * 2) var(--color-system-02),
       0 0 0 calc(var(--window-border-size) * 3) var(--color-black),
@@ -99,7 +103,7 @@
     height: 100%;
     content: "";
 
-    border-left: var(--window-border-size) solid var(--color-system-05) !important;
+    border-left: var(--window-border-size) solid var(--color-system-05);
     border-top-right-radius: var(--window-padding-size);
     border-bottom-right-radius: var(--window-padding-size);
     background-image: assets.$down-arrow;

@@ -22,6 +22,8 @@ const PlatinumButton: React.FC<PlatinumButtonProps> = ({
 
     return (
         <button type={buttonType}
+                tabIndex={0}
+                role={buttonType}
                 className={
                     classNames(
                         platinumButtonStyles.platinumButton,

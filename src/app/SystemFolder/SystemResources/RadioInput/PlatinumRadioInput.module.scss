@@ -46,6 +46,10 @@
     border-color: var(--color-system-05);
   }
 
+  &:focus {
+    outline: var(--color-outline) solid calc(var(--window-border-size) * 2) !important;
+  }
+
 }
 
 .platinumRadioInputLabel {
@@ -60,5 +64,13 @@
 }
 
 .platinumRadioInputDefault {
+  width: var(--window-control-size);
+  margin: 0;
+  background-color: var(--color-black);
   @include appearance.platinumDepressableDefault;
+
+  &:checked, &:active {
+    background-color: var(--color-theme-07) !important;
+  }
+
 }

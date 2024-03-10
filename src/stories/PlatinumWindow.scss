@@ -1,0 +1,6 @@
+@use "@/app/SystemFolder/Appearance/styles/scrollbars";
+
+* {
+  @include scrollbars.scrollbars;
+  @include scrollbars.scrollbars-themed;
+}

@@ -3,6 +3,7 @@
 
 .platinumInputHolder {
   display: flex;
+  align-items: baseline;
   flex-direction: row;
   width: calc(100% - var(--window-padding-size) * 2);
   padding: var(--window-padding-size);
@@ -13,14 +14,16 @@
   font-family: var(--ui-font);
   flex-grow: 1;
   width: auto;
+  padding: calc(var(--window-padding-size) / 2);
   border: var(--window-border-size) solid black;
   box-shadow: calc(var(--window-border-size) * -1) calc(var(--window-border-size) * -1) 0 0 var(--color-system-05),
   calc(var(--window-border-size) * 1) calc(var(--window-border-size) * 1) 0 0 var(--color-system-04);
 
   &:focus-visible {
     border-radius: 2pt;
-    outline: 0 0 0 calc(var(--window-border-size) * 2) var(--color-theme-04) !important;
-    box-shadow: 0 0 0 calc(var(--window-border-size) * 2) var(--color-theme-04), 0 0 var(--window-border-size) calc(var(--window-border-size) * 2) var(--color-theme-04);
+    outline: 0 0 0 calc(var(--window-border-size) * 2) var(--color-outline) !important;
+    box-shadow: 0 0 0 calc(var(--window-border-size) * 2) var(--color-theme-04),
+    0 0 var(--window-border-size) calc(var(--window-border-size) * 2) var(--color-theme-04);
 
   }
 }

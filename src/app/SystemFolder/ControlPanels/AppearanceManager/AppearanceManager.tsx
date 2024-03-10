@@ -4,7 +4,8 @@ import {getTheme} from "@/app/SystemFolder/Appearance/PlatinumAppearance";
 import appearanceManagerStyles from "@/app/SystemFolder/ControlPanels/AppearanceManager/AppearanceManager.module.scss";
 import PlatinumApp from "@/app/SystemFolder/SystemResources/App/PlatinumApp";
 import PlatinumButton from "@/app/SystemFolder/SystemResources/Button/PlatinumButton";
-import PlatinumInputCheckbox from "@/app/SystemFolder/SystemResources/Checkbox/PlatinumInputCheckbox";
+import PlatinumCheckbox from "@/app/SystemFolder/SystemResources/Checkbox/PlatinumCheckbox";
+import PlatinumControlGroup from "@/app/SystemFolder/SystemResources/ControlGroup/PlatinumControlGroup";
 import PlatinumControlLabel from "@/app/SystemFolder/SystemResources/ControlLabel/PlatinumControlLabel";
 import {
     useDesktop,
@@ -16,8 +17,7 @@ import {
     useSoundDispatch,
 } from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopSoundManagerContext";
 import PlatinumDisclosure from "@/app/SystemFolder/SystemResources/Disclosure/PlatinumDisclosure";
-import PlatinumDropdown from "@/app/SystemFolder/SystemResources/DropDown/PlatinumDropDown";
-import PlatinumInputGroup from "@/app/SystemFolder/SystemResources/InputGroup/PlatinumInputGroup";
+import PlatinumPopUpMenu from "@/app/SystemFolder/SystemResources/PopUpMenu/PlatinumPopUpMenu";
 import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow";
 import React from "react";
 
@@ -143,7 +143,7 @@ export const AppearanceManager: React.FC = () => {
                 modalWindow={true}
                 appMenu={appMenu}
             >
-                <PlatinumDropdown
+                <PlatinumPopUpMenu
                     id={"select_theme"}
                     label={"Selected Theme"}
                     options={themesList}
@@ -151,7 +151,7 @@ export const AppearanceManager: React.FC = () => {
                     selected={desktopContext.activeTheme || "default"}
                 />
                 <PlatinumButton onClick={cleanupIcons}>Cleanup Icons</PlatinumButton>
-                <PlatinumInputCheckbox
+                <PlatinumCheckbox
                     id={"disable_sounds"}
                     name={"disable_sounds"}
                     isDefault={true}
@@ -165,11 +165,11 @@ export const AppearanceManager: React.FC = () => {
                     ></PlatinumControlLabel>
                     <div style={{columns: "2"}}>
                         {getSoundLabelGroups().map((group: string) => (
-                            <PlatinumInputGroup label={group} columns={true}>
+                            <PlatinumControlGroup label={group} columns={true}>
                                 {playerState.labels.map((item: PlatinumDesktopSoundInfo) => (
                                     <>
                                         {item.group === group && (
-                                            <PlatinumInputCheckbox
+                                            <PlatinumCheckbox
                                                 id={"enable_sound_" + item.id}
                                                 name={"enable_sound_" + item.id}
                                                 label={item.label}
@@ -178,7 +178,7 @@ export const AppearanceManager: React.FC = () => {
                                         )}
                                     </>
                                 ))}
-                            </PlatinumInputGroup>
+                            </PlatinumControlGroup>
                         ))}
                     </div>
                 </PlatinumDisclosure>

@@ -11,6 +11,7 @@ import PlatinumDesktopMenu from "@/app/SystemFolder/SystemResources/Desktop/Plat
 import {PlatinumMenuItem} from "@/app/SystemFolder/SystemResources/Menu/PlatinumMenu";
 import classNames from "classnames";
 import React, {Suspense} from "react";
+import "@/app/SystemFolder/Appearance/styles/fonts.scss";
 
 interface PlatinumDesktopProps {
     children?: any;

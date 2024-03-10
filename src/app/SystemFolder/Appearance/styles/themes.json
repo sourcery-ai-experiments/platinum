@@ -3,7 +3,7 @@
     "id": "default",
     "name": "Default",
     "color": {
-      "outline": "#393939",
+      "outline": "#6666CC",
       "select": "#DDD",
       "highlight": "#AAA",
       "window": {
@@ -71,7 +71,7 @@
     "id": "azul",
     "name": "Azul",
     "color": {
-      "outline": "#393939",
+      "outline": "#7599D0",
       "select": "#DDD",
       "highlight": "#AAA",
       "window": {
@@ -139,7 +139,7 @@
     "id": "bondi",
     "name": "Bondi",
     "color": {
-      "outline": "#393939",
+      "outline": "#5AB9AD",
       "select": "#DDD",
       "highlight": "#AAA",
       "window": {
@@ -207,7 +207,7 @@
     "id": "copper",
     "name": "Copper",
     "color": {
-      "outline": "#393939",
+      "outline": "#FF9966",
       "select": "#DDD",
       "highlight": "#AAA",
       "window": {
@@ -275,7 +275,7 @@
     "id": "crimson",
     "name": "Crimson",
     "color": {
-      "outline": "#393939",
+      "outline": "#FF6666",
       "select": "#DDD",
       "highlight": "#AAA",
       "window": {
@@ -343,7 +343,7 @@
     "id": "emerald",
     "name": "Emerald",
     "color": {
-      "outline": "#393939",
+      "outline": "#33CC66",
       "select": "#DDD",
       "highlight": "#AAA",
       "window": {
@@ -411,7 +411,7 @@
     "id": "frenchBlue",
     "name": "French Blue",
     "color": {
-      "outline": "#393939",
+      "outline": "#8585BC",
       "select": "#DDD",
       "highlight": "#AAA",
       "window": {
@@ -479,7 +479,7 @@
     "id": "gold",
     "name": "Gold",
     "color": {
-      "outline": "#393939",
+      "outline": "#CCCC00",
       "select": "#DDD",
       "highlight": "#AAA",
       "window": {
@@ -547,7 +547,7 @@
     "id": "ivy",
     "name": "Ivy",
     "color": {
-      "outline": "#393939",
+      "outline": "#669966",
       "select": "#DDD",
       "highlight": "#AAA",
       "window": {
@@ -615,7 +615,7 @@
     "id": "lavender",
     "name": "Lavender",
     "color": {
-      "outline": "#393939",
+      "outline": "#9999FF",
       "select": "#DDD",
       "highlight": "#AAA",
       "window": {
@@ -683,7 +683,7 @@
     "id": "pistachio",
     "name": "Pistachio",
     "color": {
-      "outline": "#393939",
+      "outline": "#CDED6D",
       "select": "#DDD",
       "highlight": "#AAA",
       "window": {
@@ -751,7 +751,7 @@
     "id": "magenta",
     "name": "Magenta",
     "color": {
-      "outline": "#393939",
+      "outline": "#CC66CC",
       "select": "#DDD",
       "highlight": "#AAA",
       "window": {
@@ -819,7 +819,7 @@
     "id": "nutmeg",
     "name": "Nutmeg",
     "color": {
-      "outline": "#393939",
+      "outline": "#CC9966",
       "select": "#DDD",
       "highlight": "#AAA",
       "window": {
@@ -845,7 +845,7 @@
       ],
       "theme": [
         "#FED9B3",
-        " #ECB277",
+        "#ECB277",
         "#CC9966",
         "#996633",
         "#663300",
@@ -887,7 +887,7 @@
     "id": "poppy",
     "name": "Poppy",
     "color": {
-      "outline": "#393939",
+      "outline": "#FE8502",
       "select": "#DDD",
       "highlight": "#AAA",
       "window": {
@@ -955,7 +955,7 @@
     "id": "plum",
     "name": "Plum",
     "color": {
-      "outline": "#393939",
+      "outline": "#BE80BE",
       "select": "#DDD",
       "highlight": "#AAA",
       "window": {
@@ -1023,7 +1023,7 @@
     "id": "rose",
     "name": "Rose",
     "color": {
-      "outline": "#393939",
+      "outline": "#CC9999",
       "select": "#DDD",
       "highlight": "#AAA",
       "window": {
@@ -1091,7 +1091,7 @@
     "id": "sapphire",
     "name": "Sapphire",
     "color": {
-      "outline": "#393939",
+      "outline": "#6699FF",
       "select": "#DDD",
       "highlight": "#AAA",
       "window": {
@@ -1159,7 +1159,7 @@
     "id": "silver",
     "name": "Silver",
     "color": {
-      "outline": "#393939",
+      "outline": "#AAAAAA",
       "select": "#DDD",
       "highlight": "#AAA",
       "window": {
@@ -1227,7 +1227,7 @@
     "id": "teal",
     "name": "Teal",
     "color": {
-      "outline": "#393939",
+      "outline": "#669999",
       "select": "#DDD",
       "highlight": "#AAA",
       "window": {
@@ -1295,7 +1295,7 @@
     "id": "turquoise",
     "name": "Turquoise",
     "color": {
-      "outline": "#393939",
+      "outline": "#00CCFF",
       "select": "#DDD",
       "highlight": "#AAA",
       "window": {
@@ -1363,7 +1363,7 @@
     "id": "sunny",
     "name": "Sunny",
     "color": {
-      "outline": "#393939",
+      "outline": "#F5DB61",
       "select": "#DDD",
       "highlight": "#AAA",
       "window": {

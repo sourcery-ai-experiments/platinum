@@ -5,7 +5,7 @@ import React from "react";
 
 interface PlatinumInputProps {
     id: string;
-    inputType?: string;
+    inputType?: "text";
     onChangeFunc?: any;
     labelTitle?: string;
     placeholder?: string;
@@ -31,6 +31,7 @@ const PlatinumInput: React.FC<PlatinumInputProps> = ({
                                   disabled={disabled}></PlatinumControlLabel>
         }
         <input id={id}
+               tabIndex={0}
                onChange={onChangeFunc}
                name={id}
                type={inputType}

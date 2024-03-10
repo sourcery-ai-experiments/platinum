@@ -1,20 +1,20 @@
 import PlatinumControlLabel from "@/app/SystemFolder/SystemResources/ControlLabel/PlatinumControlLabel";
 import {useSoundDispatch} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopSoundManagerContext";
-import platinumInputRadioStyles from "@/app/SystemFolder/SystemResources/RadioInput/PlatinumInputRadio.module.scss";
+import platinumRadioInputStyles from "@/app/SystemFolder/SystemResources/RadioInput/PlatinumRadioInput.module.scss";
 import classNames from "classnames";
-import React from "react";
+import React, {MouseEventHandler} from "react";
 
-type PlatinumInputRadioProps = {
+type PlatinumRadioInputProps = {
     id: string;
     name: string;
     checked?: boolean;
     isDefault?: boolean;
     disabled?: boolean;
-    onClick?: any;
+    onClick?: MouseEventHandler;
     label?: string;
 }
 
-const PlatinumInputRadio: React.FC<PlatinumInputRadioProps> = ({
+const PlatinumRadioInput: React.FC<PlatinumRadioInputProps> = ({
                                                                    id,
                                                                    name,
                                                                    checked,
@@ -27,8 +27,9 @@ const PlatinumInputRadio: React.FC<PlatinumInputRadioProps> = ({
     const player = useSoundDispatch();
 
     return (
-        <div className={platinumInputRadioStyles.platinumRadioInputGroup}>
+        <div className={platinumRadioInputStyles.platinumRadioInputGroup}>
             <input type={"radio"} onClick={onClick}
+                   tabIndex={0}
                    onMouseDown={() => {
                        player({type: "PlatinumSoundPlay", sound: "PlatinumInputRadioClickDown"})
                    }}
@@ -39,13 +40,13 @@ const PlatinumInputRadio: React.FC<PlatinumInputRadioProps> = ({
                    name={name}
                    disabled={disabled}
                    className={classNames(
-                       platinumInputRadioStyles.platinumRadioInput,
-                       isDefault ? platinumInputRadioStyles.platinumRadioInputDefault : ""
+                       platinumRadioInputStyles.platinumRadioInput,
+                       isDefault ? platinumRadioInputStyles.platinumRadioInputDefault : ""
                    )}/>
             <PlatinumControlLabel labelFor={id} disabled={disabled} label={label}></PlatinumControlLabel>
 
         </div>
     );
 };
-export default PlatinumInputRadio;
+export default PlatinumRadioInput;
 
