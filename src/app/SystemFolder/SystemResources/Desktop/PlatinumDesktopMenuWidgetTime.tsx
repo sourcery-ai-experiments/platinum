@@ -29,7 +29,7 @@ const PlatinumDesktopMenuWidgetTime: React.FC<PlatinumDesktopMenuWidgetTimeProps
     const [time, setTime] = React.useState({
         day: new Date().getDay(),
         minutes: new Date().getMinutes(),
-        hours: new Date().getHours(),
+        hours: new Date().getHours() === 0 ? 12 : new Date().getHours(),
         seconds: new Date().getSeconds(),
         period: new Date().getHours() >= 12 ? ' PM' : ' AM'
     })
@@ -42,7 +42,7 @@ const PlatinumDesktopMenuWidgetTime: React.FC<PlatinumDesktopMenuWidgetTimeProps
             setTime({
                 day: date.getDay(),
                 minutes: date.getMinutes(),
-                hours: date.getHours(),
+                hours: date.getHours() === 0 ? 12 : date.getHours(),
                 seconds: date.getSeconds(),
                 period: date.getHours() >= 12 ? ' PM' : ' AM'
             })

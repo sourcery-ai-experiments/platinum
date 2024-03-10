@@ -1,17 +1,26 @@
 @use "../../Appearance/styles/appearance";
 @use "../../Appearance/styles/assets";
 
-.platinumInputGroup {
+.platinumControlGroup {
+  flex-grow: 1;
+  columns: 1;
 }
 
-.platinumInputGroupColumns {
+.platinumControlGroupColumns {
+  flex-grow: 1;
+  columns: 2;
+}
+
+.platinumControlGroupContentColumns {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  flex-wrap: wrap;
+  justify-content: stretch;
   column-gap: calc(var(--window-padding-size) * 2);
+  columns: 2;
 }
 
-.platinumInputGroupLegend {
+.platinumControlGroupLegend {
   font-family: var(--ui-font);
   font-size: calc(var(--ui-font-size) * .75);
   margin-top: calc(var(--ui-font-size) * -1);
