@@ -12,6 +12,21 @@ const Browser = () => {
     const desktopEventDispatch = useDesktopDispatch();
     const [appContext] = React.useState({});
 
+
+    const googleUrl = "https://theoldnet.com";
+
+    const refBook = React.useRef(null);
+    const refPage = React.useRef(null);
+    const refIframe = React.useRef(null);
+    const [iframSrc, setIframeUrl] = React.useState(googleUrl);
+
+    const goBook = () => {
+        setIframeUrl(
+            `${googleUrl}/b=${refBook.current.value}&p=${refPage.current.value}`
+        );
+    };
+
+
     const quitApp = () => {
         desktopEventDispatch({
             type: "PlatinumAppClose",
@@ -54,8 +69,22 @@ const Browser = () => {
                 initialSize={[100, 500]}
                 initialPosition={[100, 100]}
                 appMenu={appMenu}>
-                <iframe src={"https://theoldnet.com/"}
-                        style={{width: "100%", height: "100%", padding: "0", margin: "0"}}/>
+                <input type="number" ref={refBook}></input>
+                <input type="number" ref={refPage}></input>
+                <button type="button" onClick={goBook}>
+                    Submit
+                </button>
+                <iframe
+                    title="myBook"
+                    src={iframSrc}
+                    height="720"
+                    width="1280"
+                    frameBorder="0"
+                    scrolling="no"
+                    allowFullScreen={true}
+                    ref={refIframe}
+                    style={{width: "100%", height: "100%", padding: "0", margin: "0"}}
+                ></iframe>
             </PlatinumWindow>
         </PlatinumApp>
     );
