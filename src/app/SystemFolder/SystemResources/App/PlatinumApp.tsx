@@ -78,7 +78,7 @@ const PlatinumApp: React.FC<PlatinumAppProps> = ({
                 }
             });
         }
-    }, [desktopEventDispatch]);
+    });
 
     if (debug) {
         let debugWindow = (
@@ -97,7 +97,7 @@ const PlatinumApp: React.FC<PlatinumAppProps> = ({
                 <JSONTree data={desktopContext} theme={debuggerJSONTheme}/>
                 <br/>
                 <h2>soundPlayer</h2>
-                <JSONTree data={useSound()} theme={debuggerJSONTheme}/>
+                <JSONTree data={useSound} theme={debuggerJSONTheme}/>
             </PlatinumWindow>
         );
 

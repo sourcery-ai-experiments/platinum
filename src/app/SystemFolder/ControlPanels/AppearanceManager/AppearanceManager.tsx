@@ -165,7 +165,7 @@ export const AppearanceManager: React.FC = () => {
                     ></PlatinumControlLabel>
                     <div style={{columns: "2"}}>
                         {getSoundLabelGroups().map((group: string) => (
-                            <PlatinumControlGroup label={group} columns={true}>
+                            <PlatinumControlGroup label={group} columns={true} key={group}>
                                 {playerState.labels.map((item: PlatinumDesktopSoundInfo) => (
                                     <>
                                         {item.group === group && (

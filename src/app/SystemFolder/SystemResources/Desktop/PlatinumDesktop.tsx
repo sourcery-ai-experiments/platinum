@@ -139,7 +139,7 @@ const PlatinumDesktop: React.FC<PlatinumDesktopProps> = ({children}) => {
                 type: "PlatinumDesktopFocus",
                 menuBar: defaultMenuItems,
             });
-        }, []);
+        });
 
         return (
             <>
@@ -173,6 +173,7 @@ const PlatinumDesktop: React.FC<PlatinumDesktopProps> = ({children}) => {
                                 icon={i.icon}
                                 label={i.label}
                                 kind={i.kind}
+                                key={i.appId}
                             />
                         ))}
                         {children}
