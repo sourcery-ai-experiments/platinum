@@ -1,9 +1,9 @@
 import PlatinumButton from "@/app/SystemFolder/SystemResources/Button/PlatinumButton";
 import type {Meta, StoryObj} from '@storybook/react';
-import './PlatinumButton.css';
+import './PlatinumBaseTheme.css';
 
 const meta = {
-    title: 'Example/PlatinumButton',
+    title: 'Platinum/PlatinumButton',
     component: PlatinumButton,
     parameters: {
         layout: 'centered',

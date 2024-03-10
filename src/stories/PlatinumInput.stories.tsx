@@ -1,9 +1,9 @@
 import PlatinumInput from "@/app/SystemFolder/SystemResources/Input/PlatinumInput";
 import type {Meta, StoryObj} from '@storybook/react';
-import './PlatinumInput.css';
+import './PlatinumBaseTheme.css';
 
 const meta = {
-    title: 'Example/PlatinumInput',
+    title: 'Platinum/PlatinumInput',
     component: PlatinumInput,
     parameters: {
         layout: 'centered',

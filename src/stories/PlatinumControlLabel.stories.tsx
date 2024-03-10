@@ -1,13 +1,13 @@
 import PlatinumControlLabel from "@/app/SystemFolder/SystemResources/ControlLabel/PlatinumControlLabel";
 import type {Meta, StoryObj} from '@storybook/react';
-import './PlatinumDisclosure.css';
+import './PlatinumBaseTheme.css';
 
 const meta = {
-    title: 'Example/PlatinumControlLabel',
+    title: 'Platinum/PlatinumControlLabel',
     component: PlatinumControlLabel,
     parameters: {
         layout: 'centered',
-    },    argTypes: {
+    }, argTypes: {
         labelFor: {table: {disable: true}},
     },
 

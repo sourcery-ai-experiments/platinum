@@ -1,9 +1,9 @@
 import PlatinumDisclosure from "@/app/SystemFolder/SystemResources/Disclosure/PlatinumDisclosure";
 import type {Meta, StoryObj} from '@storybook/react';
-import './PlatinumDisclosure.css';
+import './PlatinumBaseTheme.css';
 
 const meta = {
-    title: 'Example/PlatinumDisclosure',
+    title: 'Platinum/PlatinumDisclosure',
     component: PlatinumDisclosure,
     parameters: {
         layout: 'centered',
@@ -19,7 +19,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
     args: {
-         label: "OPEN THIS DISCLOSURE AREA",
+        label: "OPEN THIS DISCLOSURE AREA",
         direction: "right",
         children: <span>EXPANDED</span>
     },

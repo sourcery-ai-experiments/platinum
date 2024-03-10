@@ -1,9 +1,10 @@
 import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow";
 import type {Meta, StoryObj} from '@storybook/react';
 import './PlatinumWindow.scss';
+import './PlatinumBaseTheme.css';
 
 const meta = {
-    title: 'Example/PlatinumWindow',
+    title: 'Platinum/PlatinumWindow',
     component: PlatinumWindow,
     parameters: {
         layout: 'centered',

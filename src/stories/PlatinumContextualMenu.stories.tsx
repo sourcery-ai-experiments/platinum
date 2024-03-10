@@ -1,9 +1,9 @@
 import PlatinumContextualMenu from "@/app/SystemFolder/SystemResources/ContextualMenu/PlatinumContextualMenu";
 import type {Meta, StoryObj} from '@storybook/react';
-import './PlatinumContextualMenu.css';
+import './PlatinumBaseTheme.css';
 
 const meta = {
-    title: 'Example/PlatinumContextualMenu',
+    title: 'Platinum/PlatinumContextualMenu',
     component: PlatinumContextualMenu,
     decorators: [
         (Story) => (

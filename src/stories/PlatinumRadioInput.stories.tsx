@@ -1,9 +1,9 @@
 import PlatinumRadioInput from "@/app/SystemFolder/SystemResources/RadioInput/PlatinumRadioInput";
 import type {Meta, StoryObj} from '@storybook/react';
-import './PlatinumButton.css';
+import './PlatinumBaseTheme.css';
 
 const meta = {
-    title: 'Example/PlatinumRadioInput',
+    title: 'Platinum/PlatinumRadioInput',
     component: PlatinumRadioInput,
     parameters: {
         layout: 'centered',

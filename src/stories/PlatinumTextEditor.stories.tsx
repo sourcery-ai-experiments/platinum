@@ -1,9 +1,9 @@
 import PlatinumTextEditor from "@/app/SystemFolder/SystemResources/TextEditor/PlatinumTextEditor";
 import type {Meta, StoryObj} from '@storybook/react';
-import './PlatinumTextEditor.css';
+import './PlatinumBaseTheme.css';
 
 const meta = {
-    title: 'Example/PlatinumTextEditor',
+    title: 'Platinum/PlatinumTextEditor',
     component: PlatinumTextEditor,
     parameters: {
         layout: 'centered',

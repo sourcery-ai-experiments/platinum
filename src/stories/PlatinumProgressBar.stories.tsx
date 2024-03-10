@@ -1,9 +1,9 @@
 import PlatinumProgressBar from "@/app/SystemFolder/SystemResources/ProgressBar/PlatinumProgressBar";
 import type {Meta, StoryObj} from '@storybook/react';
-import './PlatinumProgressBar.css';
+import './PlatinumBaseTheme.css';
 
 const meta = {
-    title: 'Example/PlatinumProgressBar',
+    title: 'Platinum/PlatinumProgressBar',
     component: PlatinumProgressBar,
     parameters: {
         layout: 'padding',

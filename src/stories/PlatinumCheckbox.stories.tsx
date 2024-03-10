@@ -1,9 +1,9 @@
 import PlatinumCheckbox from "@/app/SystemFolder/SystemResources/Checkbox/PlatinumCheckbox";
 import type {Meta, StoryObj} from '@storybook/react';
-import './PlatinumButton.css';
+import './PlatinumBaseTheme.css';
 
 const meta = {
-    title: 'Example/PlatinumCheckbox',
+    title: 'Platinum/PlatinumCheckbox',
     component: PlatinumCheckbox,
     parameters: {
         layout: 'centered',

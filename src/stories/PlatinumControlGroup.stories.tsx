@@ -1,9 +1,9 @@
 import PlatinumControlGroup from "@/app/SystemFolder/SystemResources/ControlGroup/PlatinumControlGroup";
 import type {Meta, StoryObj} from '@storybook/react';
-import './PlatinumControlGroup.css';
+import './PlatinumBaseTheme.css';
 
 const meta = {
-    title: 'Example/PlatinumControlGroup',
+    title: 'Platinum/PlatinumControlGroup',
     component: PlatinumControlGroup,
     decorators: [
         (Story) => (
@@ -28,6 +28,6 @@ export const Primary: Story = {
     args: {
         label: "Label",
         columns: false,
-        children: [<p>Components go here</p>, <p>Components go here</p>]
+        children: [<p key={1}>Components go here</p>, <p key={2}>Components go here</p>]
     },
 };
