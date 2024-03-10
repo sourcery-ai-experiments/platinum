@@ -2,7 +2,6 @@
 @use "../../Appearance/styles/assets";
 
 .platinumControlGroup {
-  flex-grow: 1;
   columns: 1;
 }
 
@@ -12,12 +11,6 @@
 }
 
 .platinumControlGroupContentColumns {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: stretch;
-  column-gap: calc(var(--window-padding-size) * 2);
-  columns: 2;
 }
 
 .platinumControlGroupLegend {
