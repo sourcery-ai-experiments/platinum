@@ -163,7 +163,7 @@ export const AppearanceManager: React.FC = () => {
                     <PlatinumControlLabel
                         label={"These settings are not currently connected."}
                     ></PlatinumControlLabel>
-                    <div style={{columns: "2"}}>
+                    <div style={{display: "flex", flexDirection: "row", flexWrap: "wrap"}}>
                         {getSoundLabelGroups().map((group: string) => (
                             <PlatinumControlGroup label={group} columns={true} key={group}>
                                 {playerState.labels.map((item: PlatinumDesktopSoundInfo) => (

@@ -80,7 +80,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
     let player = useSoundDispatch();
 
     if (player === null) {
-        player = ((a) => {
+        player = ((_) => {
         });
     }
 
@@ -107,7 +107,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
     const changeWindow = (e) => {
         e.preventDefault();
         if (windowState.resizing || windowState.dragging) {
-            setActive(e);
+            setActive();
         }
 
         if (windowState.resizing) {
@@ -158,10 +158,10 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
     const isActive = () => {
         if (desktopContext && 'activeWindow' in desktopContext)
             return id === desktopContext.activeWindow;
-        return true;
+        return true
     };
 
-    const setActive = (e) => {
+    const setActive = () => {
         if (!isActive()) {
             player({type: "PlatinumSoundPlay", sound: "PlatinumWindowFocus"})
 

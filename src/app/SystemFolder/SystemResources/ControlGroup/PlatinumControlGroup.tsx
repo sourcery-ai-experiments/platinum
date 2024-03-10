@@ -1,15 +1,18 @@
-import platinumInputGroupStyles from "@/app/SystemFolder/SystemResources/ControlGroup/PlatinumControlGroup.module.scss";
+import platinumControlGroupStyles
+    from "@/app/SystemFolder/SystemResources/ControlGroup/PlatinumControlGroup.module.scss";
 import React from "react";
 
 const PlatinumControlGroup = ({label = "", columns = false, children}) => {
     return (
         <fieldset
-            className={platinumInputGroupStyles.platinumInputGroup}
-            style={{flexGrow: "1"}}>
+            className={columns ?
+                platinumControlGroupStyles.platinumControlGroupColumns :
+                platinumControlGroupStyles.platinumControlGroup
+            }>
             {label !== "" &&
-                <legend className={platinumInputGroupStyles.platinumInputGroupLegend}>{label}</legend>
+                <legend className={platinumControlGroupStyles.platinumControlGroupLegend}>{label}</legend>
             }
-            <div className={columns ? platinumInputGroupStyles.platinumInputGroupColumns : ""}>
+            <div className={columns ? platinumControlGroupStyles.platinumControlGroupContentColumns : ""}>
                 {children}
             </div>
         </fieldset>

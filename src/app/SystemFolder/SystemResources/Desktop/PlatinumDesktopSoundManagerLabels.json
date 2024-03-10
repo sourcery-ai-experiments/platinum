@@ -1,5 +1,11 @@
 [
   {
+    "id": "PlatinumClick",
+    "group": "General",
+    "label": "Click",
+    "description": ""
+  },
+  {
     "id": "PlatinumAlertIndigo",
     "group": "Alert",
     "label": "Indigo",
@@ -45,12 +51,6 @@
     "id": "PlatinumButtonClickUp",
     "group": "Buttons",
     "label": "Button Click (Up)",
-    "description": ""
-  },
-  {
-    "id": "PlatinumClick",
-    "group": "General",
-    "label": "Click",
     "description": ""
   },
   {
