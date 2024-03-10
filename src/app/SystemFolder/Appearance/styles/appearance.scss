@@ -122,7 +122,6 @@
   0 0 0 calc(var(--window-border-size) * 3) var(--color-black),
   inset calc(var(--window-border-size) * -1) calc(var(--window-border-size) * -1) 0 0 var(--color-system-05),
   inset var(--window-border-size) var(--window-border-size) 0 0 var(--color-system-06);
-  outline: none;
 
   &:active {
     @include platinumDepressableBoxShadowActive;

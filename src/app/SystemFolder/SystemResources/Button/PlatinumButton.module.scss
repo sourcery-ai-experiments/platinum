@@ -17,7 +17,15 @@
 }
 
 .platinumButtonDefault {
+  font-family: var(--ui-font);
+  font-size: var(--ui-font-size);
+
+  margin: calc(var(--window-padding-size));
+  padding: calc(var(--window-padding-size) / 2) var(--window-padding-size);
+  user-select: none;
+
   @include appearance.platinumDepressableDefault;
+
   &:active:disabled {
     box-shadow: none;
   }

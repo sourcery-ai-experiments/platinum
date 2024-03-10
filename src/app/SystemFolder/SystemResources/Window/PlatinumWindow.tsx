@@ -77,7 +77,12 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
     const desktopContext = useDesktop();
     const desktopEventDispatch = useDesktopDispatch();
 
-    const player = useSoundDispatch();
+    let player = useSoundDispatch();
+
+    if (player === null) {
+        player = ((a) => {
+        });
+    }
 
     const startResizeWindow = () => {
         windowEventDispatch({
@@ -151,7 +156,9 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
     };
 
     const isActive = () => {
-        return id === desktopContext.activeWindow;
+        if (desktopContext && 'activeWindow' in desktopContext)
+            return id === desktopContext.activeWindow;
+        return true;
     };
 
     const setActive = (e) => {

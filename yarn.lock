@@ -2620,6 +2620,13 @@
     "@storybook/global" "^5.0.0"
     ts-dedent "^2.0.0"
 
+"@storybook/addon-themes@^7.6.17":
+  version "7.6.17"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-themes/-/addon-themes-7.6.17.tgz#c011a820014aed3a5118bce24da6c0519cbc7e20"
+  integrity sha512-i/dI3GKlJmQv0Di9HM3fKJvFIab55kvva0vXCGBkqSw3wYoZuq++npkWeDnjjZUvggV12H2RTdGqYwMCXB/GHg==
+  dependencies:
+    ts-dedent "^2.0.0"
+
 "@storybook/addon-toolbars@7.6.17":
   version "7.6.17"
   resolved "https://registry.npmjs.org/@storybook/addon-toolbars/-/addon-toolbars-7.6.17.tgz"
