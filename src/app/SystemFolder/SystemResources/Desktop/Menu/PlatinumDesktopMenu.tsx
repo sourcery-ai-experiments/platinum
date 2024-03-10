@@ -1,10 +1,9 @@
-import {
-    useDesktop,
-    useDesktopDispatch
-} from '@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext';
-import platinumDesktopMenuStyles from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopMenu.module.scss";
-import PlatinumDesktopMenuWidgetSound from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopMenuWidgetSound";
-import PlatinumDesktopMenuWidgetTime from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopMenuWidgetTime";
+import {useDesktop, useDesktopDispatch} from '@/app/SystemFolder/SystemResources/AppManager/PlatinumAppManagerContext';
+import platinumDesktopMenuStyles from "@/app/SystemFolder/SystemResources/Desktop/Menu/PlatinumDesktopMenu.module.scss";
+import PlatinumDesktopMenuWidgetSound
+    from "@/app/SystemFolder/SystemResources/Desktop/Menu/Widgets/Sound/PlatinumDesktopMenuWidgetSound";
+import PlatinumDesktopMenuWidgetTime
+    from "@/app/SystemFolder/SystemResources/Desktop/Menu/Widgets/Time/PlatinumDesktopMenuWidgetTime";
 import PlatinumMenu, {PlatinumMenuItem} from "@/app/SystemFolder/SystemResources/Menu/PlatinumMenu";
 import platinumMenuStyles from "@/app/SystemFolder/SystemResources/Menu/PlatinumMenu.module.scss";
 import React from "react";

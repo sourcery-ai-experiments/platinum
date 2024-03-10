@@ -33,9 +33,33 @@ export const Default: Story = {
     },
 };
 
+export const Small: Story = {
+    args: {
+        children: <span>Submit</span>,
+        buttonSize: "small"
+    },
+};
+
 export const Disabled: Story = {
     args: {
         disabled: true,
         children: <span>Disabled</span>
+    },
+};
+
+export const Square: Story = {
+    args: {
+        disabled: false,
+        children: <img src={"/img/icons/document.png"}/>,
+        buttonShape: "square"
+    },
+};
+
+export const SquareSmall: Story = {
+    args: {
+        disabled: false,
+        children: <img src={"/img/icons/document.png"}/>,
+        buttonShape: "square",
+        buttonSize: "small"
     },
 };

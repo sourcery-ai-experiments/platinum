@@ -1,15 +1,15 @@
 import PlatinumBoot from "@/app/SystemFolder/SystemResources/Boot/PlatinumBoot";
 import {platinumDesktopIconEventHandler} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopIconContext";
 import {
-    PlatinumDesktopSoundManagerProvider
-} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopSoundManagerContext";
-import {
     DefaultDesktopState,
     PlatinumDesktopState
 } from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopState";
 import {
     platinumWindowEventHandler
 } from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopWindowManagerContext"
+import {
+    PlatinumSoundManagerProvider
+} from "@/app/SystemFolder/SystemResources/SoundManager/PlatinumSoundManagerContext";
 import React, {createContext, Suspense, useContext, useReducer} from 'react';
 
 const PlatinumDesktopContext = createContext(null);
@@ -33,9 +33,9 @@ export const PlatinumDesktopProvider: React.FC<PlatinumDesktopProviderProps> = (
         <Suspense fallback={<PlatinumBoot/>}>
             <PlatinumDesktopContext.Provider value={desktop}>
                 <PlatinumDesktopDispatchContext.Provider value={dispatch}>
-                    <PlatinumDesktopSoundManagerProvider>
+                    <PlatinumSoundManagerProvider>
                         {children}
-                    </PlatinumDesktopSoundManagerProvider>
+                    </PlatinumSoundManagerProvider>
                 </PlatinumDesktopDispatchContext.Provider>
             </PlatinumDesktopContext.Provider>
         </Suspense>

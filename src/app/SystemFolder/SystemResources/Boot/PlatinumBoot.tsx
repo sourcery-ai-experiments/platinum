@@ -1,5 +1,5 @@
 import platinumBootStyles from "@/app/SystemFolder/SystemResources/Boot/PlatinumBoot.module.scss";
-import {useSoundDispatch} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopSoundManagerContext";
+import {useSoundDispatch} from "@/app/SystemFolder/SystemResources/SoundManager/PlatinumSoundManagerContext";
 import classNames from "classnames";
 import React from "react";
 

@@ -1,9 +1,6 @@
 import {getTheme} from "@/app/SystemFolder/Appearance/PlatinumAppearance";
-import {
-    useDesktop,
-    useDesktopDispatch
-} from '@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext';
-import {useSound} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopSoundManagerContext";
+import {useDesktop, useDesktopDispatch} from '@/app/SystemFolder/SystemResources/AppManager/PlatinumAppManagerContext';
+import {useSound} from "@/app/SystemFolder/SystemResources/SoundManager/PlatinumSoundManagerContext";
 import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow";
 import React from "react";
 import {JSONTree} from 'react-json-tree';

@@ -6,6 +6,18 @@
     "description": ""
   },
   {
+    "id": "PlatinumBeep",
+    "group": "System",
+    "label": "Beep",
+    "description": ""
+  },
+  {
+    "id": "PlatinumBoot",
+    "group": "System",
+    "label": "Boot",
+    "description": ""
+  },
+  {
     "id": "PlatinumAlertIndigo",
     "group": "Alert",
     "label": "Indigo",
@@ -27,18 +39,6 @@
     "id": "PlatinumAlertWildEep",
     "group": "Alert",
     "label": "Wild Eep",
-    "description": ""
-  },
-  {
-    "id": "PlatinumBeep",
-    "group": "System",
-    "label": "Beep",
-    "description": ""
-  },
-  {
-    "id": "PlatinumBoot",
-    "group": "System",
-    "label": "Boot",
     "description": ""
   },
   {

@@ -1,7 +1,7 @@
 import {getTheme} from "@/app/SystemFolder/Appearance/PlatinumAppearance";
 import {
     platinumDesktopStateEventReducer
-} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext";
+} from "@/app/SystemFolder/SystemResources/AppManager/PlatinumAppManagerContext";
 import {PlatinumDesktopState} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopState"
 import {PlatinumMenuItem} from "@/app/SystemFolder/SystemResources/Menu/PlatinumMenu";
 
