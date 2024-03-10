@@ -1,5 +1,5 @@
 import {getAllThemes, getThemeVars} from "@/app/SystemFolder/Appearance/PlatinumAppearance"
-import Finder from "@/app/SystemFolder/Finder";
+import Finder from "@/app/SystemFolder/Finder/Finder";
 import {useDesktop, useDesktopDispatch} from "@/app/SystemFolder/SystemResources/AppManager/PlatinumAppManagerContext";
 import PlatinumContextualMenu from "@/app/SystemFolder/SystemResources/ContextualMenu/PlatinumContextualMenu";
 import PlatinumDesktopMenu from "@/app/SystemFolder/SystemResources/Desktop/Menu/PlatinumDesktopMenu";
