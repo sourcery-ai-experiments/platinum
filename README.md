@@ -14,31 +14,32 @@ The Platinum components are created in React. For demo purposes, we provide a ve
 You will need Node.js v20.11 or higher. You will also need the `yarn` package manager.
 
 1. Clone this repo to your local computer and change into the folder
-
-```bash
-git clone https://github.com/robbiebyrd/platinum
-cd platinum
-```
+    ```bash
+    git clone https://github.com/robbiebyrd/platinum
+    cd platinum
+    ```
 
 2. Install the necessary dependencies.
+    ```bash
+    yarn
+    ```
 
-```bash
-yarn
-```
+3. Modify the .env file to the below and make sure it is loaded.
+   '''
+   NEXT_PUBLIC_BASE_PATH=""
+   '''
 
-3. Start the Platinum Destkop server in development mode.
-
-```bash
-yarn dev
-```
+4. Start the Platinum Destkop server in development mode.
+    ```bash
+    yarn dev
+    ```
 
 4. Open your web browser to [http://localhost:3000](http://localhost:3000) .
 
 5. To view the Platinum UI Components, run the Storybook Development server.
-
-```bash
-yarn storybook
-```
+    ```bash
+    yarn storybook
+    ```
 
 ## Acknowledgements
 
