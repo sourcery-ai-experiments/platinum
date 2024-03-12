@@ -9,7 +9,7 @@ import PlatinumControlGroup from "@/app/SystemFolder/SystemResources/ControlGrou
 import PlatinumControlLabel from "@/app/SystemFolder/SystemResources/ControlLabel/PlatinumControlLabel";
 import PlatinumDisclosure from "@/app/SystemFolder/SystemResources/Disclosure/PlatinumDisclosure";
 import {
-    PlatinumDesktopSoundInfo,
+    PlatinumSoundInfo,
     useSound,
     useSoundDispatch,
 } from "@/app/SystemFolder/SystemResources/SoundManager/PlatinumSoundManagerContext";
@@ -30,9 +30,6 @@ export const SoundManager: React.FC = () => {
     const [showAbout, setShowAbout] = React.useState(false);
 
     const [enableAllSounds, setEnableAllSounds] = React.useState(false);
-    const themesList = desktopContext.availableThemes.map((a: any) =>
-        (({id, name}) => ({value: id, label: name}))(a),
-    );
 
     const changeSounds = (e) => {
         setEnableAllSounds(!!e.target.checked);
@@ -129,7 +126,7 @@ export const SoundManager: React.FC = () => {
                     <div className={soundManagerStyles.soundManagerControlGroupHolder}>
                         {getSoundLabelGroups().map((group: string) => (
                             <PlatinumControlGroup label={group} columns={true} key={group}>
-                                {playerState.labels.map((item: PlatinumDesktopSoundInfo) => (
+                                {playerState.labels.map((item: PlatinumSoundInfo) => (
                                     <>
                                         {item.group === group && (
                                             <PlatinumCheckbox
@@ -161,7 +158,7 @@ export const SoundManager: React.FC = () => {
                     appMenu={appMenu}
                 >
                     <div className={soundManagerStyles.soundManagerAbout}>
-                        <img src={appIcon} alt="About"/>
+                        <img src={appIcon} alt={"About " + appName}/>
                         <h1>{appName}</h1>
                         <h5>Not Copyright 1998 Apple Computer, Inc.</h5>
                         <PlatinumButton onClick={() => {
