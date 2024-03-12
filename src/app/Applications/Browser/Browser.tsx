@@ -1,5 +1,7 @@
 import PlatinumApp from "@/app/SystemFolder/SystemResources/App/PlatinumApp";
 import {useDesktopDispatch} from "@/app/SystemFolder/SystemResources/AppManager/PlatinumAppManagerContext";
+import PlatinumButton from "@/app/SystemFolder/SystemResources/Button/PlatinumButton";
+import PlatinumInput from "@/app/SystemFolder/SystemResources/Input/PlatinumInput";
 import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow";
 import React from "react";
 
@@ -13,16 +15,12 @@ const Browser = () => {
     const [appContext] = React.useState({});
 
 
-    const googleUrl = "https://theoldnet.com";
-
-    const refBook = React.useRef(null);
-    const refPage = React.useRef(null);
-    const refIframe = React.useRef(null);
-    const [iframSrc, setIframeUrl] = React.useState(googleUrl);
+    const refAddressBar = React.useRef(null);
+    const [iframeSrc, setIframeUrl] = React.useState("https://theoldnet.com");
 
     const goBook = () => {
         setIframeUrl(
-            `${googleUrl}/b=${refBook.current.value}&p=${refPage.current.value}`
+            refAddressBar.current.value
         );
     };
 
@@ -69,20 +67,15 @@ const Browser = () => {
                 initialSize={[100, 500]}
                 initialPosition={[100, 100]}
                 appMenu={appMenu}>
-                <input type="number" ref={refBook}></input>
-                <input type="number" ref={refPage}></input>
-                <button type="button" onClick={goBook}>
-                    Submit
-                </button>
+                <PlatinumInput id={"browserAddress"} ref={refAddressBar}></PlatinumInput>
+                <PlatinumButton onClick={goBook}>Submit</PlatinumButton>
                 <iframe
                     title="myBook"
-                    src={iframSrc}
+                    src={iframeSrc}
                     height="720"
                     width="1280"
                     frameBorder="0"
-                    scrolling="no"
                     allowFullScreen={true}
-                    ref={refIframe}
                     style={{width: "100%", height: "100%", padding: "0", margin: "0"}}
                 ></iframe>
             </PlatinumWindow>
