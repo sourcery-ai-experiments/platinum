@@ -44,15 +44,23 @@ class FileSystem {
     }
 
     ls(path: string) {
-        let current = this.resolve(path)
+        let current = this.resolve(path);
+        return Object.entries(current);
+    }
 
-        // for (var key in current) {
-        //     if (current.hasOwnProperty(key)) {
-        //         console.log(key + " -> " + current[key]);
-        //     }
-        // }
-        console.log(Object.entries(current));
-        return Object.keys(current);
+    removeMetadata(content: any) {
+        return Object.entries(content).filter(([a, b]) => {
+            if (a.startsWith("_")) return a
+        });
+    }
+
+    filterByType(path: string, byType: string = "file") {
+        return this.ls(path).filter(([_, b]) => b['_type'] === byType);
+    }
+
+    statDir(path: string) {
+        let current = this.resolve(path);
+        return this.removeMetadata(current);
     }
 }
 
@@ -64,7 +72,12 @@ const Finder = () => {
     let defaultFSContent = {
         "Macintosh HD": {
             "_type": "drive",
-            "_icon": `${process.env.NEXT_PUBLIC_BASE_PATH}/img/document.png`,
+            "_icon": `${process.env.NEXT_PUBLIC_BASE_PATH}/img/icons/disk/default.png`,
+            "test3.txt": {
+                "_type": "file",
+                "_mimeType": "",
+                "_data": "File Contents"
+            },
             "test": {
                 "_type": "directory"
             },
@@ -83,10 +96,10 @@ const Finder = () => {
             }
         }
     }
-    let fs = new FileSystem("Macintosh HD", defaultFSContent);
-    // console.log(fs.readFile("Macintosh HD:test2:test.txt"));
-    console.log(fs.ls(""));
-
+    let fs = new FileSystem("", defaultFSContent);
+    // console.log(fs.statDir(""));
+    // console.log(fs.ls(""));
+    console.log(fs.filterByType("Macintosh HD", "directory"))
     const desktopEventDispatch = useDesktopDispatch();
 
     const desktopIcon = {
