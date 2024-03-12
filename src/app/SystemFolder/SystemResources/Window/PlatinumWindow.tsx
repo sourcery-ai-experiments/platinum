@@ -1,12 +1,9 @@
 "use client";
 
+import {useDesktop, useDesktopDispatch} from '@/app/SystemFolder/SystemResources/AppManager/PlatinumAppManagerContext';
 import PlatinumContextualMenu from "@/app/SystemFolder/SystemResources/ContextualMenu/PlatinumContextualMenu";
-import {
-    useDesktop,
-    useDesktopDispatch
-} from '@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext';
-import {useSoundDispatch} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopSoundManagerContext";
 import {PlatinumMenuItem} from "@/app/SystemFolder/SystemResources/Menu/PlatinumMenu";
+import {useSoundDispatch} from "@/app/SystemFolder/SystemResources/SoundManager/PlatinumSoundManagerContext";
 import platinumWindowStyle from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow.module.scss";
 import {
     PlatinumWindowState,
@@ -281,7 +278,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                     id={[appId, id].join("_")}
                     ref={windowRef}
                     style={{
-                        width: size[0],
+                        width: size[0] === 0 ? "auto" : size[0],
                         height: size[1] === 0 ? "auto" : size[1],
                         left: windowState.position[0],
                         top: windowState.position[1],

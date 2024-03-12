@@ -1,5 +1,7 @@
 import PlatinumApp from "@/app/SystemFolder/SystemResources/App/PlatinumApp";
-import {useDesktopDispatch} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext";
+import {useDesktopDispatch} from "@/app/SystemFolder/SystemResources/AppManager/PlatinumAppManagerContext";
+import PlatinumButton from "@/app/SystemFolder/SystemResources/Button/PlatinumButton";
+import PlatinumInput from "@/app/SystemFolder/SystemResources/Input/PlatinumInput";
 import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow";
 import React from "react";
 
@@ -11,6 +13,17 @@ const Browser = () => {
 
     const desktopEventDispatch = useDesktopDispatch();
     const [appContext] = React.useState({});
+
+
+    const refAddressBar = React.useRef(null);
+    const [iframeSrc, setIframeUrl] = React.useState("https://theoldnet.com");
+
+    const goBook = () => {
+        setIframeUrl(
+            refAddressBar.current.value
+        );
+    };
+
 
     const quitApp = () => {
         desktopEventDispatch({
@@ -54,8 +67,17 @@ const Browser = () => {
                 initialSize={[100, 500]}
                 initialPosition={[100, 100]}
                 appMenu={appMenu}>
-                <iframe src={"https://theoldnet.com/"}
-                        style={{width: "100%", height: "100%", padding: "0", margin: "0"}}/>
+                <PlatinumInput id={"browserAddress"} ref={refAddressBar}></PlatinumInput>
+                <PlatinumButton onClick={goBook}>Submit</PlatinumButton>
+                <iframe
+                    title="myBook"
+                    src={iframeSrc}
+                    height="720"
+                    width="1280"
+                    frameBorder="0"
+                    allowFullScreen={true}
+                    style={{width: "100%", height: "100%", padding: "0", margin: "0"}}
+                ></iframe>
             </PlatinumWindow>
         </PlatinumApp>
     );

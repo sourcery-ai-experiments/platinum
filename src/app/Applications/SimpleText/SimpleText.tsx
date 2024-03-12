@@ -1,5 +1,5 @@
 import PlatinumApp from "@/app/SystemFolder/SystemResources/App/PlatinumApp";
-import {useDesktopDispatch} from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopAppManagerContext";
+import {useDesktopDispatch} from "@/app/SystemFolder/SystemResources/AppManager/PlatinumAppManagerContext";
 import PlatinumRichTextEditor from "@/app/SystemFolder/SystemResources/RichTextEditor/PlatinumRichTextEditor";
 import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow";
 import React from "react";
