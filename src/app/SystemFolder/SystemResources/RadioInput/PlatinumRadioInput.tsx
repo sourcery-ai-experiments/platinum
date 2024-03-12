@@ -28,21 +28,23 @@ const PlatinumRadioInput: React.FC<PlatinumRadioInputProps> = ({
 
     return (
         <div className={platinumRadioInputStyles.platinumRadioInputGroup}>
-            <input type={"radio"} onClick={onClick}
-                   tabIndex={0}
-                   onMouseDown={() => {
-                       player({type: "PlatinumSoundPlay", sound: "PlatinumInputRadioClickDown"})
-                   }}
-                   onMouseUp={() => {
-                       player({type: "PlatinumSoundPlay", sound: "PlatinumInputRadioClickUp"})
-                   }}
-                   id={id}
-                   name={name}
-                   disabled={disabled}
-                   className={classNames(
-                       platinumRadioInputStyles.platinumRadioInput,
-                       isDefault ? platinumRadioInputStyles.platinumRadioInputDefault : ""
-                   )}/>
+            <div className={platinumRadioInputStyles.platinumRadioInputWrapper}>
+                <input type={"radio"} onClick={onClick}
+                       tabIndex={0}
+                       onMouseDown={() => {
+                           player({type: "PlatinumSoundPlay", sound: "PlatinumInputRadioClickDown"})
+                       }}
+                       onMouseUp={() => {
+                           player({type: "PlatinumSoundPlay", sound: "PlatinumInputRadioClickUp"})
+                       }}
+                       id={id}
+                       name={name}
+                       disabled={disabled}
+                       className={classNames(
+                           platinumRadioInputStyles.platinumRadioInput,
+                           isDefault ? platinumRadioInputStyles.platinumRadioInputDefault : ""
+                       )}/>
+            </div>
             <PlatinumControlLabel labelFor={id} disabled={disabled} label={label}></PlatinumControlLabel>
 
         </div>
