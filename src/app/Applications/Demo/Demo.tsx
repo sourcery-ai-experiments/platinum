@@ -14,7 +14,7 @@ import React from "react";
 const Demo: React.FC = () => {
     const appName = "Demo";
     const appId = "Demo.app";
-    const appIcon = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/folders/default.png`;
+    const appIcon = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/directory.png`;
 
     const desktopEventDispatch = useDesktopDispatch();
     const [appContext] = React.useState({});

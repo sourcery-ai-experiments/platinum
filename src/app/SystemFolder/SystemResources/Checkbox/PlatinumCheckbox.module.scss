@@ -1,10 +1,10 @@
 @use "../../Appearance/styles/appearance";
 
-.platinumInputCheckboxGroup {
+.PlatinumCheckboxGroup {
   padding: calc(var(--window-border-size) * 2);
 }
 
-.platinumInputCheckbox {
+.PlatinumCheckbox {
   width: calc(var(--window-control-size));
   height: var(--window-control-size);
   margin: var(--window-border-size);
@@ -48,18 +48,18 @@
 
 }
 
-.platinumInputCheckboxLabel {
+.PlatinumCheckboxLabel {
   font-family: var(--ui-font);
   font-size: var(--ui-font-size);
   height: var(--window-control-size);
   margin-left: calc(var(--window-control-size) / 2);
 }
 
-.platinumInputCheckboxLabelDisabled {
+.PlatinumCheckboxLabelDisabled {
   color: var(--color-system-05);
 }
 
-.platinumInputCheckboxDefault {
+.PlatinumCheckboxDefault {
   &:checked, &:active {
     &:after {
       font-family: var(--ui-font);
@@ -73,7 +73,7 @@
   }
 }
 
-.platinumInputCheckboxMixed {
+.PlatinumCheckboxMixed {
   &:checked {
     &:after {
       font-family: var(--ui-font);

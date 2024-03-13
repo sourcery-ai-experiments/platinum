@@ -1,6 +1,7 @@
 import PlatinumApp from "@/app/SystemFolder/SystemResources/App/PlatinumApp";
 import {useDesktopDispatch} from "@/app/SystemFolder/SystemResources/AppManager/PlatinumAppManagerContext";
 import PlatinumButton from "@/app/SystemFolder/SystemResources/Button/PlatinumButton";
+import PlatinumControlGroup from "@/app/SystemFolder/SystemResources/ControlGroup/PlatinumControlGroup";
 import PlatinumInput from "@/app/SystemFolder/SystemResources/Input/PlatinumInput";
 import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow";
 import React from "react";
@@ -66,15 +67,18 @@ const Browser = () => {
                 scrollable={false}
                 initialSize={[100, 500]}
                 initialPosition={[100, 100]}
-                appMenu={appMenu}>
-                <PlatinumInput id={"browserAddress"} ref={refAddressBar}></PlatinumInput>
-                <PlatinumButton onClick={goBook}>Submit</PlatinumButton>
+                appMenu={appMenu}
+                grow={true}
+            >
+                <PlatinumControlGroup columns={true}>
+                    <PlatinumInput id={"browserAddress"} ref={refAddressBar}></PlatinumInput>
+                    <PlatinumButton onClick={goBook}>Submit</PlatinumButton>
+                </PlatinumControlGroup>
                 <iframe
                     title="myBook"
                     src={iframeSrc}
                     height="720"
                     width="1280"
-                    frameBorder="0"
                     allowFullScreen={true}
                     style={{width: "100%", height: "100%", padding: "0", margin: "0"}}
                 ></iframe>

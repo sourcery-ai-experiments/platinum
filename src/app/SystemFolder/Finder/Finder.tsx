@@ -1,51 +1,77 @@
 import PlatinumApp from "@/app/SystemFolder/SystemResources/App/PlatinumApp";
-import PlatinumIcon from "@/app/SystemFolder/SystemResources/Icon/PlatinumIcon";
+import {useDesktopDispatch} from "@/app/SystemFolder/SystemResources/AppManager/PlatinumAppManagerContext";
+import {PlatinumFileSystem} from "@/app/SystemFolder/SystemResources/File/FileSystem";
+import PlatinumFileBrowser from "@/app/SystemFolder/SystemResources/File/PlatinumFileBrowser";
 import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow";
-import {BFSRequire, configure} from 'browserfs';
 import React from "react";
 
-
 const Finder = () => {
-    // you can also add a callback as the last parameter instead of using promises
-    configure({fs: 'LocalStorage'}, () => {
-    });
-
-    const fs = BFSRequire('fs');
-    fs.mkdir('/test');
-    fs.writeFile('/test/test.txt', 'Cool, I can do this in the browser!');
-    fs.writeFile('/test3/test.txt', 'Cool, I can do this in the browser!');
-    fs.writeFile('/test4/test.txt', 'Cool, I can do this in the browser!');
 
     const appName: string = "Finder";
     const appId: string = "Finder.app";
     const appIcon: string = `${process.env.NEXT_PUBLIC_BASE_PATH}/img/macos.svg`;
-
-    const getRootDirectory = () => {
-        let dirs = fs.readdirSync("/");
-        return dirs;
+    let defaultFSContent = {
+        "Macintosh HD": {
+            "_type": "drive",
+            "_icon": `${process.env.NEXT_PUBLIC_BASE_PATH}/img/icons/disk.png`,
+            "test3.txt": {
+                "_type": "file",
+                "_mimeType": "",
+                "_data": "File Contents",
+            },
+            "test": {
+                "_type": "directory"
+            },
+            "test2": {
+                "_type": "directory",
+                "test1.txt": {
+                    "_type": "file",
+                    "_mimeType": "",
+                    "_data": "File Contents"
+                },
+                "test.txt": {
+                    "_type": "file",
+                    "_mimeType": "",
+                    "_data": "File Contents"
+                }
+            }
+        }
     }
+
+    let fs = new PlatinumFileSystem("", defaultFSContent);
+    const desktopEventDispatch = useDesktopDispatch();
+
+    React.useEffect(() => {
+        const drives = fs.filterByType("", "drive");
+        drives.forEach((d) => {
+            desktopEventDispatch({
+                type: "PlatinumDesktopIconAdd",
+                app: {
+                    id: appId,
+                    name: d[0],
+                    icon: d[1]['_icon']
+                }
+            });
+        });
+
+    }, []);
+
     return (
         <PlatinumApp
             id={appId}
             name={appName}
             icon={appIcon}
-            noDesktopIcon={false}
-            defaultWindow={""}
-        >
+            noDesktopIcon={true}
+            defaultWindow={"df_about"}>
             <PlatinumWindow
                 id={"df_about"}
-                title={"/"}
-                icon={"/img/icons/folders/default.png"}
+                title={"Macintosh HD"}
+                icon={`${process.env.NEXT_PUBLIC_BASE_PATH}/img/icons/disk.png`}
                 appId={appId}
                 initialSize={[300, 300]}
                 initialPosition={[50, 50]}
-            >
-                {getRootDirectory().map((i, idx) => (
-                    <PlatinumIcon appId={appId} name={i}
-                                  initialPosition={[(idx * 32), (idx * 32)]}
-                                  key={"dir_" + i}
-                                  icon={"/img/icons/folders/default.png"}></PlatinumIcon>
-                ))}
+                header={<><span>HELLO</span><span>HELLO@</span></>}>
+                <PlatinumFileBrowser appId={appId} fs={fs} path={"Macintosh HD"}/>
             </PlatinumWindow>
         </PlatinumApp>
     );
