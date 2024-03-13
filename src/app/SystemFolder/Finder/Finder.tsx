@@ -1,68 +1,9 @@
 import PlatinumApp from "@/app/SystemFolder/SystemResources/App/PlatinumApp";
 import {useDesktopDispatch} from "@/app/SystemFolder/SystemResources/AppManager/PlatinumAppManagerContext";
+import {PlatinumFileSystem} from "@/app/SystemFolder/SystemResources/File/FileSystem";
+import PlatinumFileBrowser from "@/app/SystemFolder/SystemResources/File/PlatinumFileBrowser";
 import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow";
 import React from "react";
-
-class FileSystem {
-    basePath: string;
-    fs: object;
-    separator: string;
-
-    constructor(basePath: string, defaultFS: any, separator = ":") {
-        this.basePath = basePath
-        this.fs = typeof window !== 'undefined'
-            ? JSON.parse(localStorage.getItem(this.basePath)) || defaultFS
-            : defaultFS;
-        this.separator = separator;
-    }
-
-    size(str) {
-        return new Blob([str]).size;
-    }
-
-    pathArray(path: string) {
-        return [this.basePath, ...path.split(this.separator)].filter((v) => v !== "");
-    }
-
-    resolve(path: string) {
-        return this.pathArray(path).reduce((prev, curr) => prev?.[curr], this.fs)
-    }
-
-    readFile(path: string) {
-        let item = this.resolve(path);
-        if ('_data' in item && '_mimeType' in item) {
-            return this.renderFile(item['_mimeType'], item['_data']);
-        }
-    }
-
-    renderFile(mimeType: string, contents: any) {
-        switch (mimeType) {
-            default: {
-                return contents;
-            }
-        }
-    }
-
-    ls(path: string) {
-        let current = this.resolve(path);
-        return Object.entries(current);
-    }
-
-    removeMetadata(content: any) {
-        return Object.entries(content).filter(([a, b]) => {
-            if (a.startsWith("_")) return a
-        });
-    }
-
-    filterByType(path: string, byType: string = "file") {
-        return this.ls(path).filter(([_, b]) => b['_type'] === byType);
-    }
-
-    statDir(path: string) {
-        let current = this.resolve(path);
-        return this.removeMetadata(current);
-    }
-}
 
 const Finder = () => {
 
@@ -72,7 +13,7 @@ const Finder = () => {
     let defaultFSContent = {
         "Macintosh HD": {
             "_type": "drive",
-            "_icon": `${process.env.NEXT_PUBLIC_BASE_PATH}/img/icons/disk/default.png`,
+            "_icon": `${process.env.NEXT_PUBLIC_BASE_PATH}/img/icons/disk.png`,
             "test3.txt": {
                 "_type": "file",
                 "_mimeType": "",
@@ -96,27 +37,23 @@ const Finder = () => {
             }
         }
     }
-    let fs = new FileSystem("", defaultFSContent);
-    // console.log(fs.statDir(""));
-    // console.log(fs.ls(""));
-    console.log(fs.filterByType("Macintosh HD", "directory"))
+
+    let fs = new PlatinumFileSystem("", defaultFSContent);
     const desktopEventDispatch = useDesktopDispatch();
 
-    const desktopIcon = {
-        id: "MacintoshHD",
-        name: "MacintoshHD",
-        icon: appIcon
-    }
-
     React.useEffect(() => {
-        desktopEventDispatch({
-            type: "PlatinumDesktopIconAdd",
-            app: {
-                id: desktopIcon.id,
-                name: desktopIcon.name,
-                icon: desktopIcon.icon
-            }
+        const drives = fs.filterByType("", "drive");
+        drives.forEach((d) => {
+            desktopEventDispatch({
+                type: "PlatinumDesktopIconAdd",
+                app: {
+                    id: appId,
+                    name: d[0],
+                    icon: d[1]['_icon']
+                }
+            });
         });
+
     }, []);
 
     return (
@@ -129,18 +66,13 @@ const Finder = () => {
         >
             <PlatinumWindow
                 id={"df_about"}
-                title={"/"}
-                icon={"/img/icons/folders/default.png"}
+                title={"Macintosh HD"}
+                icon={`${process.env.NEXT_PUBLIC_BASE_PATH}/img/icons/disk.png`}
                 appId={appId}
                 initialSize={[300, 300]}
                 initialPosition={[50, 50]}
             >
-                {/*{getRootDirectory().map((i, idx) => (*/}
-                {/*    <PlatinumIcon appId={appId} name={i}*/}
-                {/*                  initialPosition={[(idx * 32), (idx * 32)]}*/}
-                {/*                  key={"dir_" + i}*/}
-                {/*                  icon={"/img/icons/folders/default.png"}></PlatinumIcon>*/}
-                {/*))}*/}
+                <PlatinumFileBrowser appId={appId} fs={fs} path={"Macintosh HD"}></PlatinumFileBrowser>
             </PlatinumWindow>
         </PlatinumApp>
     );

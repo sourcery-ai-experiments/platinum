@@ -1,9 +1,9 @@
-import platinumInputCheckboxStyles from "@/app/SystemFolder/SystemResources/Checkbox/PlatinumCheckbox.module.scss";
+import PlatinumCheckboxStyles from "@/app/SystemFolder/SystemResources/Checkbox/PlatinumCheckbox.module.scss";
 import PlatinumControlLabel from "@/app/SystemFolder/SystemResources/ControlLabel/PlatinumControlLabel";
 import classNames from "classnames";
 import React from "react";
 
-type PlatinumInputCheckboxProps = {
+type PlatinumCheckboxProps = {
     id: string;
     name: string;
     checked?: boolean;
@@ -13,7 +13,7 @@ type PlatinumInputCheckboxProps = {
     onClick?: any;
     label?: string;
 }
-const PlatinumCheckbox: React.FC<PlatinumInputCheckboxProps> = (
+const PlatinumCheckbox: React.FC<PlatinumCheckboxProps> = (
     {
         id,
         name,
@@ -27,7 +27,7 @@ const PlatinumCheckbox: React.FC<PlatinumInputCheckboxProps> = (
 ) => {
 
     return (
-        <div className={platinumInputCheckboxStyles.platinumInputCheckboxGroup}>
+        <div className={PlatinumCheckboxStyles.PlatinumCheckboxGroup}>
             <input type={"checkbox"} onClick={onClick}
                    tabIndex={0}
                    checked={checked}
@@ -35,9 +35,9 @@ const PlatinumCheckbox: React.FC<PlatinumInputCheckboxProps> = (
                    name={name}
                    disabled={disabled}
                    className={classNames(
-                       platinumInputCheckboxStyles.platinumInputCheckbox,
-                       isDefault ? platinumInputCheckboxStyles.platinumInputCheckboxDefault : "",
-                       mixed ? platinumInputCheckboxStyles.platinumInputCheckboxMixed : ""
+                       PlatinumCheckboxStyles.PlatinumCheckbox,
+                       isDefault ? PlatinumCheckboxStyles.PlatinumCheckboxDefault : "",
+                       mixed ? PlatinumCheckboxStyles.PlatinumCheckboxMixed : ""
                    )}/>
             <PlatinumControlLabel label={label} labelFor={id} disabled={disabled}></PlatinumControlLabel>
         </div>
