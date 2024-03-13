@@ -1,9 +1,9 @@
 "use client";
 
 import soundManagerStyles from "@/app/SystemFolder/ControlPanels/SoundManager/SoundManager.module.scss";
+import {PlatinumAboutWindow} from "@/app/SystemFolder/SystemResources/AboutWindow/PlatinumAboutWindow";
 import PlatinumApp from "@/app/SystemFolder/SystemResources/App/PlatinumApp";
 import {useDesktop, useDesktopDispatch,} from "@/app/SystemFolder/SystemResources/AppManager/PlatinumAppManagerContext";
-import PlatinumButton from "@/app/SystemFolder/SystemResources/Button/PlatinumButton";
 import PlatinumCheckbox from "@/app/SystemFolder/SystemResources/Checkbox/PlatinumCheckbox";
 import PlatinumControlGroup from "@/app/SystemFolder/SystemResources/ControlGroup/PlatinumControlGroup";
 import PlatinumControlLabel from "@/app/SystemFolder/SystemResources/ControlLabel/PlatinumControlLabel";
@@ -144,30 +144,14 @@ export const SoundManager: React.FC = () => {
                 </PlatinumDisclosure>
             </PlatinumWindow>
             {showAbout && (
-                <PlatinumWindow
-                    id={appId + "_about"}
-                    appId={appId}
-                    closable={false}
-                    resizable={false}
-                    zoomable={false}
-                    scrollable={false}
-                    collapsable={false}
-                    initialSize={[300, 300]}
-                    initialPosition={[50, 50]}
-                    modalWindow={true}
-                    appMenu={appMenu}
-                >
-                    <div className={soundManagerStyles.soundManagerAbout}>
-                        <img src={appIcon} alt={"About " + appName}/>
-                        <h1>{appName}</h1>
-                        <h5>Not Copyright 1998 Apple Computer, Inc.</h5>
-                        <PlatinumButton onClick={() => {
-                            setShowAbout(false)
-                        }}>
-                            OK
-                        </PlatinumButton>
-                    </div>
-                </PlatinumWindow>
+                <PlatinumAboutWindow appId={appId}
+                                     appName={appName}
+                                     appIcon={appIcon}
+                                     hideFunc={() => {
+                                         setShowAbout(false)
+                                     }}
+                />
+
             )}
         </PlatinumApp>
     );
