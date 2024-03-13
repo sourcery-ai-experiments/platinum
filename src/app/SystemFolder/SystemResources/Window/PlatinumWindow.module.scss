@@ -14,6 +14,24 @@
   min-height: calc(var(--window-control-size) + var(--window-padding-size) / 2) !important;
 }
 
+.platinumWindowHeader {
+  font-family: var(--ui-font);
+  font-size: var(--ui-font-size);
+  position: sticky;
+  z-index: 999;
+  top: 0;
+  display: flex;
+  @include appearance.platinumWindowBoxShadow;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  width: calc(100% - var(--window-control-size));
+  height: var(--window-control-size);
+  margin-bottom: var(--window-control-size);
+  padding: var(--window-padding-size);
+  background: var(--color-system-03);
+  column-gap: var(--window-control-size);
+}
 
 .platinumWindowInactive {
   z-index: unset;
@@ -277,7 +295,10 @@
 
 .platinumWindowContentsInner {
   display: block;
-  height: calc(100%);
+}
+
+.platinumWindowContentsInnerGrow {
+  height: 100%;
 }
 
 .platinumWindowModal {
@@ -286,5 +307,5 @@
 }
 
 .platinumWindowTitleBarModal {
-  padding: var(--window-padding-size) calc(var(--window-padding-size) / 2) !important;
+  padding: var(--window-padding-size) calc(var(--window-padding-size) / 1) !important;
 }

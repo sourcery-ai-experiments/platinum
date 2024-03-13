@@ -26,6 +26,8 @@ interface PlatinumWindowProps {
     modalWindow?: boolean;
     initialSize?: [number, number];
     initialPosition?: [number, number];
+    grow?: boolean;
+    header?: React.ReactNode;
     appMenu?: PlatinumMenuItem[];
     contextMenu?: PlatinumMenuItem[];
     children?: React.ReactNode;
@@ -45,6 +47,8 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                                                            modalWindow = false,
                                                            initialSize = [300, 0],
                                                            initialPosition = [0, 0],
+                                                           grow,
+                                                           header,
                                                            appMenu,
                                                            contextMenu,
                                                            children,
@@ -328,6 +332,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                                 ? platinumWindowStyle.platinumWindowTitleBarModal
                                 : ""
                         )}
+                        onDoubleClick={toggleCollapse}
                     >
                         {closable && (
                             <div className={platinumWindowStyle.platinumWindowControlBox}>
@@ -376,12 +381,18 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                             display: windowState.collapsed == true ? "none" : "block",
                         }}
                     >
+                        {header && (
+                            <div className={platinumWindowStyle.platinumWindowHeader}>
+                                {header}
+                            </div>
+                        )}
                         <div
                             className={classNames(
                                 platinumWindowStyle.platinumWindowContentsInner,
                                 modalWindow === true
                                     ? platinumWindowStyle.platinumWindowContentsModalInner
-                                    : ""
+                                    : "",
+                                grow ? platinumWindowStyle.platinumWindowContentsInnerGrow : ""
                             )}
                         >
                             {children}
