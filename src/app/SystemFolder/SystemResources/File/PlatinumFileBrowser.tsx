@@ -24,6 +24,7 @@ const PlatinumFileBrowser: React.FC<PlatinumFileBrowserProps> = ({fs, path, appI
     const [fileBrowserState, setFileBrowserState] = React.useState<object>({});
     let directoryListing = fs.filterByType(path, ["file", "directory"]);
     let icons = []
+
     directoryListing.forEach(([filename, properties]) => {
         icons.push(
             <PlatinumIcon

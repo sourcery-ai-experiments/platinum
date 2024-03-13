@@ -17,7 +17,7 @@ const Finder = () => {
             "test3.txt": {
                 "_type": "file",
                 "_mimeType": "",
-                "_data": "File Contents"
+                "_data": "File Contents",
             },
             "test": {
                 "_type": "directory"
@@ -62,8 +62,7 @@ const Finder = () => {
             name={appName}
             icon={appIcon}
             noDesktopIcon={true}
-            defaultWindow={""}
-        >
+            defaultWindow={"df_about"}>
             <PlatinumWindow
                 id={"df_about"}
                 title={"Macintosh HD"}
@@ -71,8 +70,8 @@ const Finder = () => {
                 appId={appId}
                 initialSize={[300, 300]}
                 initialPosition={[50, 50]}
-            >
-                <PlatinumFileBrowser appId={appId} fs={fs} path={"Macintosh HD"}></PlatinumFileBrowser>
+                header={<><span>HELLO</span><span>HELLO@</span></>}>
+                <PlatinumFileBrowser appId={appId} fs={fs} path={"Macintosh HD"}/>
             </PlatinumWindow>
         </PlatinumApp>
     );
