@@ -1,7 +1,7 @@
 "use client";
 
 import {getTheme} from "@/app/SystemFolder/Appearance/PlatinumAppearance";
-import appearanceManagerStyles from "@/app/SystemFolder/ControlPanels/AppearanceManager/AppearanceManager.module.scss";
+import {PlatinumAboutWindow} from "@/app/SystemFolder/SystemResources/AboutWindow/PlatinumAboutWindow";
 import PlatinumApp from "@/app/SystemFolder/SystemResources/App/PlatinumApp";
 import {useDesktop, useDesktopDispatch,} from "@/app/SystemFolder/SystemResources/AppManager/PlatinumAppManagerContext";
 import PlatinumButton from "@/app/SystemFolder/SystemResources/Button/PlatinumButton";
@@ -11,19 +11,17 @@ import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWi
 import React from "react";
 
 export const AppearanceManager: React.FC = () => {
-    const desktopContext = useDesktop();
-    const desktopEventDispatch = useDesktopDispatch();
-
-    const playerState = useSound();
-    const player = useSoundDispatch();
-
     const appName: string = "Appearance Manager";
     const appId: string = "AppearanceManager.app";
     const appIcon: string = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/appearance-manager/app.png`;
 
-    const [showAbout, setShowAbout] = React.useState(false);
+    const desktopContext = useDesktop(), desktopEventDispatch = useDesktopDispatch();
 
+    const playerState = useSound(), player = useSoundDispatch();
+
+    const [showAbout, setShowAbout] = React.useState(false);
     const [enableAllSounds, setEnableAllSounds] = React.useState(false);
+
     const themesList = desktopContext.availableThemes.map((a: any) =>
         (({id, name}) => ({value: id, label: name}))(a),
     );
@@ -35,15 +33,6 @@ export const AppearanceManager: React.FC = () => {
         });
         loadSoundTheme(e.target.value);
     };
-
-    const changeSounds = (e) => {
-        setEnableAllSounds(!!e.target.checked);
-        player({
-            type: "PlatinumSoundDisable",
-            disabled: enableAllSounds ? [] : ["*"],
-        });
-    };
-
 
     const loadSoundTheme = (themeName: string) => {
         const soundTheme = getTheme(themeName).sound;
@@ -98,18 +87,6 @@ export const AppearanceManager: React.FC = () => {
         });
     };
 
-    const getSoundLabelGroups = () => {
-        const soundLabelGroups = [
-            ...new Set(playerState.labels.map((item) => item.group)),
-        ];
-
-        var index = soundLabelGroups.indexOf("Alert");
-        if (index !== -1) {
-            soundLabelGroups.splice(index, 1);
-        }
-        return soundLabelGroups;
-    };
-
     return (
         <PlatinumApp
             id={appId}
@@ -143,30 +120,13 @@ export const AppearanceManager: React.FC = () => {
                 <PlatinumButton onClick={cleanupIcons}>Cleanup Icons</PlatinumButton>
             </PlatinumWindow>
             {showAbout && (
-                <PlatinumWindow
-                    id="AppearanceManager_about"
-                    appId={appId}
-                    closable={false}
-                    resizable={false}
-                    zoomable={false}
-                    scrollable={false}
-                    collapsable={false}
-                    initialSize={[300, 300]}
-                    initialPosition={[50, 50]}
-                    modalWindow={true}
-                    appMenu={appMenu}
-                >
-                    <div className={appearanceManagerStyles.appearanceManagerAbout}>
-                        <img src={appIcon} alt="About"/>
-                        <h1>{appName}</h1>
-                        <h5>Not Copyright 1998 Apple Computer, Inc.</h5>
-                        <PlatinumButton onClick={() => {
-                            setShowAbout(false)
-                        }}>
-                            OK
-                        </PlatinumButton>
-                    </div>
-                </PlatinumWindow>
+                <PlatinumAboutWindow appId={appId}
+                                     appName={appName}
+                                     appIcon={appIcon}
+                                     hideFunc={() => {
+                                         setShowAbout(false)
+                                     }}
+                />
             )}
         </PlatinumApp>
     );

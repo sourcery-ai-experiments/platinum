@@ -11,6 +11,8 @@
 }
 
 .platinumControlGroupContentColumns {
+  display: flex;
+  flex-direction: column;
 }
 
 .platinumControlGroupLegend {

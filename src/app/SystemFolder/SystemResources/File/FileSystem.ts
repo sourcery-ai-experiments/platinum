@@ -57,9 +57,18 @@ export class PlatinumFileSystem {
         return Object.entries(current);
     }
 
-    removeMetadata(content: any) {
+    filterMetadata(content: any, mode: "only" | "remove" = "remove") {
         return Object.entries(content).filter(([a, _]) => {
-            if (a.startsWith("_")) return a
+            switch (mode) {
+                case "only": {
+                    if (a.startsWith("_")) return a
+                    break;
+                }
+                default : {
+                    if (!a.startsWith("_")) return a;
+                    break;
+                }
+            }
         });
     }
 
@@ -72,6 +81,19 @@ export class PlatinumFileSystem {
 
     statDir(path: string) {
         let current = this.resolve(path);
-        return this.removeMetadata(current);
+        let metaData = this.filterMetadata(current, "only");
+
+        let name = path.split(":").slice(-1);
+
+        let returnValue = {
+            "_path": path,
+            "_name": name[0],
+            "_count": this.filterMetadata(this.resolve(path)).length
+        }
+
+        metaData.forEach((a) => {
+            returnValue[a[0]] = a[1]
+        })
+        return returnValue
     }
 }

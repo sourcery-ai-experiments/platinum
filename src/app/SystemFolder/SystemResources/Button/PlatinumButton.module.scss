@@ -44,6 +44,7 @@
 
 .platinumButtonSmall {
   font-size: calc(var(--ui-font-size) / 2);
+  border-radius: calc(var(--window-padding-size) / 2);
 }
 
 .platinumButtonShapeSquare.platinumButtonSmall {

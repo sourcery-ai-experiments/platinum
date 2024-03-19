@@ -6,24 +6,25 @@ type PlatinumFileBrowserProps = {
     fs: PlatinumFileSystem;
     path: string;
     appId: string;
+    dirOnClickFunc: any;
 }
 
-const iconImageByType = (byType: string) => {
-    switch (byType) {
-        case "directory": {
-            return `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/directory.png`
-        }
-        default: {
-            return `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/file.png`
-        }
-    }
-};
-
-const PlatinumFileBrowser: React.FC<PlatinumFileBrowserProps> = ({fs, path, appId}) => {
+const PlatinumFileBrowser: React.FC<PlatinumFileBrowserProps> = ({fs, path, appId, dirOnClickFunc}) => {
 
     const [fileBrowserState, setFileBrowserState] = React.useState<object>({});
     let directoryListing = fs.filterByType(path, ["file", "directory"]);
     let icons = []
+
+    const iconImageByType = (byType: string) => {
+        switch (byType) {
+            case "directory": {
+                return `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/directory.png`
+            }
+            default: {
+                return `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/file.png`
+            }
+        }
+    };
 
     directoryListing.forEach(([filename, properties]) => {
         icons.push(
@@ -32,7 +33,8 @@ const PlatinumFileBrowser: React.FC<PlatinumFileBrowserProps> = ({fs, path, appI
                 name={filename}
                 icon={properties["_icon"] || iconImageByType(properties["_type"])}
                 initialPosition={[0, 0]}
-                onClickFunc={(e) => console.log(e)}
+                onClickFunc={properties["_type"] === "directory" ? () => dirOnClickFunc(path + ":" + filename) : () => {
+                }}
             />
         )
     })

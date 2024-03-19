@@ -30,6 +30,7 @@ interface PlatinumWindowProps {
     header?: React.ReactNode;
     appMenu?: PlatinumMenuItem[];
     contextMenu?: PlatinumMenuItem[];
+    onCloseFunc?: any;
     children?: React.ReactNode;
 }
 
@@ -51,6 +52,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                                                            header,
                                                            appMenu,
                                                            contextMenu,
+                                                           onCloseFunc,
                                                            children,
                                                        }) => {
 
@@ -181,6 +183,10 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
         }
     };
 
+    React.useEffect(() => {
+        setActive()
+    }, []);
+
     const toggleCollapse = () => {
         if (collapsable) {
             setCollapse(!windowState.collapsed);
@@ -253,6 +259,9 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
         windowEventDispatch({
             type: "PlatinumWindowClose",
         });
+        if (typeof onCloseFunc === 'function') {
+            onCloseFunc(id);
+        }
     };
 
     const titleBar = () => {

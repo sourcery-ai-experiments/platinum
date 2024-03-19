@@ -15,7 +15,6 @@ const Browser = () => {
     const desktopEventDispatch = useDesktopDispatch();
     const [appContext] = React.useState({});
 
-
     const refAddressBar = React.useRef(null);
     const [iframeSrc, setIframeUrl] = React.useState("https://theoldnet.com");
 

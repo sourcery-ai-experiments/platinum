@@ -20,10 +20,12 @@ const Finder = () => {
                 "_data": "File Contents",
             },
             "test": {
-                "_type": "directory"
+                "_type": "directory",
+                "_icon": `${process.env.NEXT_PUBLIC_BASE_PATH}/img/icons/directory.png`,
             },
             "test2": {
                 "_type": "directory",
+                "_icon": `${process.env.NEXT_PUBLIC_BASE_PATH}/img/icons/directory.png`,
                 "test1.txt": {
                     "_type": "file",
                     "_mimeType": "",
@@ -37,24 +39,54 @@ const Finder = () => {
             }
         }
     }
+    const [openPaths, setOpenPaths] = React.useState(["Macintosh HD"]);
 
-    let fs = new PlatinumFileSystem("", defaultFSContent);
+    const addPath = (path: string) => {
+        var uniqueOpenPaths = new Set([...openPaths, path]);
+        setOpenPaths(Array.from(uniqueOpenPaths))
+    }
+
+    const removePath = (path: string) => {
+        let updatedPath = path.replace('Finder:', '');
+        var uniqueOpenPaths = openPaths.filter(e => e !== updatedPath);
+        setOpenPaths(uniqueOpenPaths);
+    }
+
+    const fs = new PlatinumFileSystem("", defaultFSContent);
     const desktopEventDispatch = useDesktopDispatch();
 
     React.useEffect(() => {
         const drives = fs.filterByType("", "drive");
-        drives.forEach((d) => {
+        drives.forEach(([a, b]) => {
             desktopEventDispatch({
                 type: "PlatinumDesktopIconAdd",
                 app: {
                     id: appId,
-                    name: d[0],
-                    icon: d[1]['_icon']
+                    name: a,
+                    icon: b['_icon']
                 }
             });
         });
-
     }, []);
+
+    let openWindows = [];
+    openPaths.forEach((op, idx) => {
+        let dir = fs.statDir(op);
+        openWindows.push(
+            <PlatinumWindow
+                id={appName + ":" + op}
+                title={dir['_name']}
+                icon={`${process.env.NEXT_PUBLIC_BASE_PATH}${dir['_icon']}`}
+                appId={appId}
+                initialSize={[300, 300]}
+                initialPosition={[50 + (idx * 50), 50 + (idx * 50)]}
+                header={<span>{dir["_count"]} items</span>}
+                onCloseFunc={removePath}
+            >
+                <PlatinumFileBrowser appId={appId} fs={fs} path={op} dirOnClickFunc={addPath}/>
+            </PlatinumWindow>
+        )
+    })
 
     return (
         <PlatinumApp
@@ -62,17 +94,8 @@ const Finder = () => {
             name={appName}
             icon={appIcon}
             noDesktopIcon={true}
-            defaultWindow={"df_about"}>
-            <PlatinumWindow
-                id={"df_about"}
-                title={"Macintosh HD"}
-                icon={`${process.env.NEXT_PUBLIC_BASE_PATH}/img/icons/disk.png`}
-                appId={appId}
-                initialSize={[300, 300]}
-                initialPosition={[50, 50]}
-                header={<><span>HELLO</span><span>HELLO@</span></>}>
-                <PlatinumFileBrowser appId={appId} fs={fs} path={"Macintosh HD"}/>
-            </PlatinumWindow>
+            defaultWindow={""}>
+            {openWindows}
         </PlatinumApp>
     );
 }

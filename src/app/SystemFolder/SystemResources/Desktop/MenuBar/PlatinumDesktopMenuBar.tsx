@@ -1,15 +1,16 @@
 import {useDesktop, useDesktopDispatch} from '@/app/SystemFolder/SystemResources/AppManager/PlatinumAppManagerContext';
-import platinumDesktopMenuStyles from "@/app/SystemFolder/SystemResources/Desktop/Menu/PlatinumDesktopMenu.module.scss";
+import platinumDesktopMenuStyles
+    from "@/app/SystemFolder/SystemResources/Desktop/MenuBar/PlatinumDesktopMenuBar.module.scss";
 import PlatinumDesktopMenuWidgetSound
-    from "@/app/SystemFolder/SystemResources/Desktop/Menu/Widgets/Sound/PlatinumDesktopMenuWidgetSound";
+    from "@/app/SystemFolder/SystemResources/Desktop/MenuBar/Widgets/Sound/PlatinumDesktopMenuWidgetSound";
 import PlatinumDesktopMenuWidgetTime
-    from "@/app/SystemFolder/SystemResources/Desktop/Menu/Widgets/Time/PlatinumDesktopMenuWidgetTime";
+    from "@/app/SystemFolder/SystemResources/Desktop/MenuBar/Widgets/Time/PlatinumDesktopMenuWidgetTime";
 import PlatinumMenu, {PlatinumMenuItem} from "@/app/SystemFolder/SystemResources/Menu/PlatinumMenu";
 import platinumMenuStyles from "@/app/SystemFolder/SystemResources/Menu/PlatinumMenu.module.scss";
 import React from "react";
 
 
-const PlatinumDesktopMenu: React.FC = () => {
+const PlatinumDesktopMenuBar: React.FC = () => {
     const desktopContext = useDesktop();
     const desktopEventDispatch = useDesktopDispatch();
 
@@ -65,5 +66,5 @@ const PlatinumDesktopMenu: React.FC = () => {
     );
 };
 
-export default PlatinumDesktopMenu;
+export default PlatinumDesktopMenuBar;
 
