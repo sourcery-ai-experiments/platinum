@@ -1,6 +1,7 @@
-import platinumDesktopMenuStyles from "@/app/SystemFolder/SystemResources/Desktop/Menu/PlatinumDesktopMenu.module.scss";
+import platinumDesktopMenuStyles
+    from "@/app/SystemFolder/SystemResources/Desktop/MenuBar/PlatinumDesktopMenuBar.module.scss";
 import platinumDesktopMenuWidgetTimeStyles
-    from "@/app/SystemFolder/SystemResources/Desktop/Menu/Widgets/Time/PlatinumDesktopMenuWidgetTime.module.scss"
+    from "@/app/SystemFolder/SystemResources/Desktop/MenuBar/Widgets/Time/PlatinumDesktopMenuWidgetTime.module.scss"
 import platinumMenuStyles from "@/app/SystemFolder/SystemResources/Menu/PlatinumMenu.module.scss";
 import classNames from "classnames";
 import React from 'react';

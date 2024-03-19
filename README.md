@@ -139,7 +139,7 @@ You will need Node.js v20.11 or higher. You will also need the `yarn` package ma
 
 * `<PlatinumDesktopProvider>`
     * `<PlatinumDesktop>`
-        * `<PlatinumDesktopMenu>`
+        * `<PlatinumDesktopMenuBar>`
         * `<PlatinumDesktopIcon?>`
         * `<YourPlatinumApp>`
             * `<PlatinumAppContext>`

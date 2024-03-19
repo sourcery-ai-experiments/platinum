@@ -2,7 +2,7 @@ import {getAllThemes, getThemeVars} from "@/app/SystemFolder/Appearance/Platinum
 import Finder from "@/app/SystemFolder/Finder/Finder";
 import {useDesktop, useDesktopDispatch} from "@/app/SystemFolder/SystemResources/AppManager/PlatinumAppManagerContext";
 import PlatinumContextualMenu from "@/app/SystemFolder/SystemResources/ContextualMenu/PlatinumContextualMenu";
-import PlatinumDesktopMenu from "@/app/SystemFolder/SystemResources/Desktop/Menu/PlatinumDesktopMenu";
+import PlatinumDesktopMenuBar from "@/app/SystemFolder/SystemResources/Desktop/MenuBar/PlatinumDesktopMenuBar";
 import platinumDesktop from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktop.module.scss";
 import PlatinumDesktopIcon from "@/app/SystemFolder/SystemResources/Desktop/PlatinumDesktopIcon";
 import {PlatinumMenuItem} from "@/app/SystemFolder/SystemResources/Menu/PlatinumMenu";
@@ -157,7 +157,7 @@ const PlatinumDesktop: React.FC<PlatinumDesktopProps> = ({children}) => {
                                      height: selectBoxSize[1]
                                  }}/>
                         }
-                        <PlatinumDesktopMenu/>
+                        <PlatinumDesktopMenuBar/>
                         {contextMenu && (
                             <PlatinumContextualMenu menuItems={defaultMenuItems}
                                                     position={contextMenuLocation}/>

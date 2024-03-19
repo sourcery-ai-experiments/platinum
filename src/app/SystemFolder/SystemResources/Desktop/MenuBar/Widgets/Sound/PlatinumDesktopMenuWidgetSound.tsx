@@ -1,5 +1,5 @@
 import platinumDesktopMenuWidgetSoundStyles
-    from "@/app/SystemFolder/SystemResources/Desktop/Menu/Widgets/Sound/PlatinumDesktopMenuWidgetSound.module.scss"
+    from "@/app/SystemFolder/SystemResources/Desktop/MenuBar/Widgets/Sound/PlatinumDesktopMenuWidgetSound.module.scss"
 import platinumMenuStyles from "@/app/SystemFolder/SystemResources/Menu/PlatinumMenu.module.scss";
 import {useSound, useSoundDispatch} from "@/app/SystemFolder/SystemResources/SoundManager/PlatinumSoundManagerContext";
 import classNames from "classnames";
