@@ -44,11 +44,9 @@ const Finder = () => {
     const addPath = (path: string) => {
         var uniqueOpenPaths = new Set([...openPaths, path]);
         setOpenPaths(Array.from(uniqueOpenPaths))
-        console.log(uniqueOpenPaths);
     }
 
     const removePath = (path: string) => {
-        console.log("REMOVING" + path);
         let updatedPath = path.replace('Finder:', '');
         var uniqueOpenPaths = openPaths.filter(e => e !== updatedPath);
         setOpenPaths(uniqueOpenPaths);
