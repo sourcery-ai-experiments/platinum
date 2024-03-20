@@ -41,12 +41,16 @@ const Finder = () => {
     }
     const [openPaths, setOpenPaths] = React.useState(["Macintosh HD"]);
 
-    const addPath = (path: string) => {
+    const openFolder = (path: string) => {
+        console.log("OPENING FOLDER " + path)
         var uniqueOpenPaths = new Set([...openPaths, path]);
         setOpenPaths(Array.from(uniqueOpenPaths))
     }
 
-    const removePath = (path: string) => {
+    const openFile = (path: string) => {
+        console.log('simulating opening of ' + path)
+    }
+    const closeFolder = (path: string) => {
         let updatedPath = path.replace('Finder:', '');
         var uniqueOpenPaths = openPaths.filter(e => e !== updatedPath);
         setOpenPaths(uniqueOpenPaths);
@@ -81,9 +85,10 @@ const Finder = () => {
                 initialSize={[300, 300]}
                 initialPosition={[50 + (idx * 50), 50 + (idx * 50)]}
                 header={<span>{dir["_count"]} items</span>}
-                onCloseFunc={removePath}
+                onCloseFunc={closeFolder}
             >
-                <PlatinumFileBrowser appId={appId} fs={fs} path={op} dirOnClickFunc={addPath}/>
+                <PlatinumFileBrowser appId={appId} fs={fs} path={op} dirOnClickFunc={openFolder}
+                                     fileOnClickFunc={openFile}/>
             </PlatinumWindow>
         )
     })

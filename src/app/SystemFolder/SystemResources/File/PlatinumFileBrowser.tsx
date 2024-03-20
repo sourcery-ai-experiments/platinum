@@ -6,10 +6,19 @@ type PlatinumFileBrowserProps = {
     fs: PlatinumFileSystem;
     path: string;
     appId: string;
-    dirOnClickFunc: any;
+    dirOnClickFunc?: any;
+    fileOnClickFunc?: any;
 }
 
-const PlatinumFileBrowser: React.FC<PlatinumFileBrowserProps> = ({fs, path, appId, dirOnClickFunc}) => {
+const PlatinumFileBrowser: React.FC<PlatinumFileBrowserProps> = ({
+                                                                     fs,
+                                                                     path,
+                                                                     appId,
+                                                                     dirOnClickFunc = () => {
+                                                                     },
+                                                                     fileOnClickFunc = () => {
+                                                                     },
+                                                                 }) => {
 
     const [fileBrowserState, setFileBrowserState] = React.useState<object>({});
     let directoryListing = fs.filterByType(path, ["file", "directory"]);
@@ -26,6 +35,21 @@ const PlatinumFileBrowser: React.FC<PlatinumFileBrowserProps> = ({fs, path, appI
         }
     };
 
+    const openFileOrFolder = (properties, path, filename) => {
+        switch (properties["_type"]) {
+            case "directory": {
+                return () => dirOnClickFunc(path + ":" + filename)
+            }
+            case "file": {
+                return () => fileOnClickFunc(path + ":" + filename)
+            }
+            default: {
+                return () => {
+                }
+            }
+        }
+    }
+
     directoryListing.forEach(([filename, properties]) => {
         icons.push(
             <PlatinumIcon
@@ -33,8 +57,7 @@ const PlatinumFileBrowser: React.FC<PlatinumFileBrowserProps> = ({fs, path, appI
                 name={filename}
                 icon={properties["_icon"] || iconImageByType(properties["_type"])}
                 initialPosition={[0, 0]}
-                onClickFunc={properties["_type"] === "directory" ? () => dirOnClickFunc(path + ":" + filename) : () => {
-                }}
+                onClickFunc={openFileOrFolder(properties, path, filename)}
             />
         )
     })

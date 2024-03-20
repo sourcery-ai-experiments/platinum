@@ -30,9 +30,21 @@ const PlatinumIcon: React.FC<PlatinumIconProps> = ({
 
     const id = appId + ".shortcut";
 
-    const setFocus = () => {
+    const toggleFocus = () => {
         setActive(!active);
     }
+
+    const clearFocus = () => {
+        setActive(false);
+    }
+
+    const doDoubleClick = () => {
+        if (typeof onClickFunc === "function") {
+            clearFocus()
+            onClickFunc()
+        }
+    }
+
 
     return (
         <div ref={iconRef} id={`${id}`}
@@ -43,8 +55,8 @@ const PlatinumIcon: React.FC<PlatinumIconProps> = ({
                  active ? platinumIconStyles.platinumIconActive : ""
              )}
              style={{top: position[0], left: position[1]}}
-             onClick={setFocus}
-             onDoubleClick={onClickFunc}
+             onClick={toggleFocus}
+             onDoubleClick={doDoubleClick}
         >
             <div className={platinumIconStyles.platinumIconMaskOuter}
                  style={{maskImage: `url(${icon})`}}>
