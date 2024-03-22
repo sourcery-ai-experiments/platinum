@@ -42,17 +42,14 @@ const Finder = () => {
     const [openPaths, setOpenPaths] = React.useState(["Macintosh HD"]);
 
     const openFolder = (path: string) => {
-        console.log("OPENING FOLDER " + path)
-        var uniqueOpenPaths = new Set([...openPaths, path]);
-        setOpenPaths(Array.from(uniqueOpenPaths))
+        setOpenPaths(Array.from(new Set([...openPaths, path])))
     }
 
     const openFile = (path: string) => {
         console.log('simulating opening of ' + path)
     }
     const closeFolder = (path: string) => {
-        let updatedPath = path.replace('Finder:', '');
-        var uniqueOpenPaths = openPaths.filter(e => e !== updatedPath);
+        const uniqueOpenPaths = openPaths.filter(e => e !== path.replace('Finder:', ''));
         setOpenPaths(uniqueOpenPaths);
     }
 

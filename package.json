@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@mdxeditor/editor": "^2.3.5",
+    "@tanstack/react-table": "^8.14.0",
     "@types/howler": "^2.2.11",
     "browserfs": "^1.4.3",
     "classnames": "^2.5.1",

@@ -5,9 +5,22 @@ let defaultFSContent = {
     }
 }
 
+export type FileSystemEntry = {
+    "_type": "drive" | "directory" | "file";
+    "_icon"?: string;
+    "_mimeType"?: string;
+    "_data"?: any;
+    "_createdOn"?: Date;
+    "_modifiedOn"?: Date;
+    "_label"?: string;
+    "_comments"?: string;
+    "_version": number;
+    [entry: string]: any;
+}
+
 export class PlatinumFileSystem {
     basePath: string;
-    fs: object;
+    fs: FileSystemEntry;
     separator: string;
 
     constructor(basePath: string = "", defaultFS: any = defaultFSContent, separator = ":") {
@@ -73,10 +86,7 @@ export class PlatinumFileSystem {
     }
 
     filterByType(path: string, byType: string | string[] = ["file", "directory"]) {
-        if (typeof byType === "string") {
-            return this.ls(path).filter(([_, b]) => b['_type'] === byType);
-        }
-        return this.ls(path).filter(([_, b]) => byType.includes(b['_type']));
+
     }
 
     statDir(path: string) {
@@ -96,4 +106,8 @@ export class PlatinumFileSystem {
         })
         return returnValue
     }
+}
+
+const main = () => {
+
 }
