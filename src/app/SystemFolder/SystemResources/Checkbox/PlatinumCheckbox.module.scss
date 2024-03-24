@@ -2,6 +2,7 @@
 
 .PlatinumCheckboxGroup {
   padding: calc(var(--window-border-size) * 2);
+  display: flex;
 }
 
 .PlatinumCheckbox {

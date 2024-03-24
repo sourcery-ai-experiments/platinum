@@ -171,6 +171,7 @@ const PlatinumDesktop: React.FC<PlatinumDesktopProps> = ({children}) => {
                                 label={i.label}
                                 kind={i.kind}
                                 key={i.appId}
+                                onClickFunc={i.onClickFunc}
                             />
                         ))}
                         {children}

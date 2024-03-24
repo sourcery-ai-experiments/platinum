@@ -10,35 +10,7 @@ const Finder = () => {
     const appName: string = "Finder";
     const appId: string = "Finder.app";
     const appIcon: string = `${process.env.NEXT_PUBLIC_BASE_PATH}/img/macos.svg`;
-    let defaultFSContent = {
-        "Macintosh HD": {
-            "_type": "drive",
-            "_icon": `${process.env.NEXT_PUBLIC_BASE_PATH}/img/icons/disk.png`,
-            "test3.txt": {
-                "_type": "file",
-                "_mimeType": "",
-                "_data": "File Contents",
-            },
-            "test": {
-                "_type": "directory",
-                "_icon": `${process.env.NEXT_PUBLIC_BASE_PATH}/img/icons/directory.png`,
-            },
-            "test2": {
-                "_type": "directory",
-                "_icon": `${process.env.NEXT_PUBLIC_BASE_PATH}/img/icons/directory.png`,
-                "test1.txt": {
-                    "_type": "file",
-                    "_mimeType": "",
-                    "_data": "File Contents"
-                },
-                "test.txt": {
-                    "_type": "file",
-                    "_mimeType": "",
-                    "_data": "File Contents"
-                }
-            }
-        }
-    }
+
     const [openPaths, setOpenPaths] = React.useState(["Macintosh HD"]);
 
     const openFolder = (path: string) => {
@@ -53,11 +25,22 @@ const Finder = () => {
         setOpenPaths(uniqueOpenPaths);
     }
 
-    const fs = new PlatinumFileSystem("", defaultFSContent);
+    const closeAll = () => {
+        setOpenPaths([]);
+    }
+
+    const emptyTrash = () => {
+        desktopEventDispatch({
+            type: "PlatinumFinderEmptyTrash",
+        });
+    }
+
+    const fs = new PlatinumFileSystem("");
     const desktopEventDispatch = useDesktopDispatch();
 
     React.useEffect(() => {
         const drives = fs.filterByType("", "drive");
+        console.log(drives)
         drives.forEach(([a, b]) => {
             desktopEventDispatch({
                 type: "PlatinumDesktopIconAdd",
@@ -68,6 +51,16 @@ const Finder = () => {
                 }
             });
         });
+        desktopEventDispatch({
+            type: "PlatinumDesktopIconAdd",
+            app: {
+                id: "finder_trash",
+                name: "Trash",
+                icon: "trash",
+            },
+            onClickFunc: closeAll
+        });
+
     }, []);
 
     let openWindows = [];

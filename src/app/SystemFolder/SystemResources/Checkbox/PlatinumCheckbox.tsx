@@ -27,6 +27,7 @@ const PlatinumCheckbox: React.FC<PlatinumCheckboxProps> = (
 ) => {
 
     return (
+        <PlatinumControlLabel label={label} labelFor={id} disabled={disabled}>
         <div className={PlatinumCheckboxStyles.PlatinumCheckboxGroup}>
             <input type={"checkbox"} onClick={onClick}
                    tabIndex={0}
@@ -39,8 +40,8 @@ const PlatinumCheckbox: React.FC<PlatinumCheckboxProps> = (
                        isDefault ? PlatinumCheckboxStyles.PlatinumCheckboxDefault : "",
                        mixed ? PlatinumCheckboxStyles.PlatinumCheckboxMixed : ""
                    )}/>
-            <PlatinumControlLabel label={label} labelFor={id} disabled={disabled}></PlatinumControlLabel>
-        </div>
+            </div>
+            </PlatinumControlLabel>
     );
 };
 export default PlatinumCheckbox;

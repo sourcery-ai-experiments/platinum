@@ -13,6 +13,7 @@ export type PlatinumDesktopIconState = {
     kind?: string;
     contextMenu?: PlatinumMenuItem[];
     location?: [number, number];
+    onClickFunc?: any;
 };
 
 const createGrid = (iconSize: number, iconPadding: number) => {
@@ -133,7 +134,8 @@ export const platinumDesktopIconEventHandler = (
                     appId: action.app.id,
                     location: action.location,
                     label: action.label,
-                    kind: action.kind
+                    kind: action.kind,
+                    onClickFunc: action.onClickFunc
                 });
             }
             break;

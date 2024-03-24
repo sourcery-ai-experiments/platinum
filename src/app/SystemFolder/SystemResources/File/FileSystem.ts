@@ -2,6 +2,29 @@ let defaultFSContent = {
     "Macintosh HD": {
         "_type": "drive",
         "_icon": `${process.env.NEXT_PUBLIC_BASE_PATH}/img/icons/disk.png`,
+        "test3.txt": {
+            "_type": "file",
+            "_mimeType": "",
+            "_data": "File Contents",
+        },
+        "test": {
+            "_type": "directory",
+            "_icon": `${process.env.NEXT_PUBLIC_BASE_PATH}/img/icons/system/folders/directory.png`,
+        },
+        "test2": {
+            "_type": "directory",
+            "_icon": `${process.env.NEXT_PUBLIC_BASE_PATH}/img/icons/system/folders/directory.png`,
+            "test1.txt": {
+                "_type": "file",
+                "_mimeType": "",
+                "_data": "File Contents"
+            },
+            "test.txt": {
+                "_type": "file",
+                "_mimeType": "",
+                "_data": "File Contents"
+            }
+        }
     }
 }
 
@@ -86,7 +109,9 @@ export class PlatinumFileSystem {
     }
 
     filterByType(path: string, byType: string | string[] = ["file", "directory"]) {
-
+        return Object.entries(this.resolve(path)).filter(([name, props]: [string, any]) => {
+            return typeof props === "object" && '_type' in props && byType.includes(props["_type"]);
+        })
     }
 
     statDir(path: string) {

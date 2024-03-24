@@ -5,42 +5,40 @@ import React from "react";
 
 type PlatinumFileBrowserProps = {
     fs: PlatinumFileSystem;
-    display: "icons" | "list";
     path: string;
     appId: string;
+    display?: "icons" | "list";
     dirOnClickFunc?: any;
     fileOnClickFunc?: any;
 }
 
-const PlatinumFileBrowser: React.FC<PlatinumFileBrowserProps> = ({
-                                                                     fs,
-                                                                     display = "list",
-                                                                     path,
-                                                                     appId,
-                                                                     dirOnClickFunc = () => {
-                                                                     },
-                                                                     fileOnClickFunc = () => {
-                                                                     },
-                                                                 }) => {
+const PlatinumFileBrowser: React.FC<PlatinumFileBrowserProps> = (
+    {
+        fs,
+        display = "icons",
+        path,
+        appId,
+        dirOnClickFunc = () => {
+        },
+        fileOnClickFunc = () => {
+        },
+    }
+) => {
 
-    const [fileBrowserState, setFileBrowserState] = React.useState<object>({});
     let directoryListing = fs.filterByType(path, ["file", "directory"]);
-
-    console.log("DIRECTORY LISTING");
-    console.log(fs.filterByType(fs.resolve(path), "file"));
 
     const iconImageByType = (byType: string) => {
         switch (byType) {
             case "directory": {
-                return `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/directory.png`
+                return `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/system/folders/directory.png`
             }
             default: {
-                return `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/file.png`
+                return `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/system/files/file.png`
             }
         }
     };
 
-    const openFileOrFolder = (properties, path, filename) => {
+    const openFileOrFolder = (properties, path: string, filename: string) => {
         switch (properties["_type"]) {
             case "directory": {
                 return () => dirOnClickFunc(path + ":" + filename)
@@ -58,57 +56,57 @@ const PlatinumFileBrowser: React.FC<PlatinumFileBrowserProps> = ({
     let items: React.ReactNode
 
     switch (display) {
-        case "list": {
-            let listItems = [];
-            const columnHelper = createColumnHelper<FileSystemEntry>()
-
-            const columns = [
-                columnHelper.accessor('name', {
-                    cell: info => info.getValue(),
-                    footer: info => info.column.id,
-                }),
-                columnHelper.accessor(row => row.lastName, {
-                    id: 'fullPath',
-                    cell: info => <i>{info.getValue()}</i>,
-                    header: () => <span>Last Name</span>,
-                    footer: info => info.column.id,
-                }),
-                columnHelper.accessor('age', {
-                    header: () => 'Age',
-                    cell: info => info.renderValue(),
-                    footer: info => info.column.id,
-                }),
-                columnHelper.accessor('visits', {
-                    header: () => <span>Visits</span>,
-                    footer: info => info.column.id,
-                }),
-                columnHelper.accessor('status', {
-                    header: 'Status',
-                    footer: info => info.column.id,
-                }),
-                columnHelper.accessor('progress', {
-                    header: 'Profile Progress',
-                    footer: info => info.column.id,
-                }),
-            ]
-            const dirrr = fs.ls()
-
-            const table = useReactTable({
-                directoryListing,
-                columns,
-                getCoreRowModel: getCoreRowModel(),
-            })
-
-            directoryListing.forEach(([filename, properties]) => {
-                listItems.push(
-                    <p onClick={openFileOrFolder(properties, path, filename)}>{filename}</p>
-                )
-            })
-
-            items = (<>{listItems}</>);
-            break;
-
-        }
+        // case "list": {
+        //     let listItems = [];
+        //     const columnHelper = createColumnHelper<FileSystemEntry>()
+        //
+        //     const columns = [
+        //         columnHelper.accessor('name', {
+        //             cell: info => info.getValue(),
+        //             footer: info => info.column.id,
+        //         }),
+        //         columnHelper.accessor(row => row.lastName, {
+        //             id: 'fullPath',
+        //             cell: info => <i>{info.getValue()}</i>,
+        //             header: () => <span>Last Name</span>,
+        //             footer: info => info.column.id,
+        //         }),
+        //         columnHelper.accessor('age', {
+        //             header: () => 'Age',
+        //             cell: info => info.renderValue(),
+        //             footer: info => info.column.id,
+        //         }),
+        //         columnHelper.accessor('visits', {
+        //             header: () => <span>Visits</span>,
+        //             footer: info => info.column.id,
+        //         }),
+        //         columnHelper.accessor('status', {
+        //             header: 'Status',
+        //             footer: info => info.column.id,
+        //         }),
+        //         columnHelper.accessor('progress', {
+        //             header: 'Profile Progress',
+        //             footer: info => info.column.id,
+        //         }),
+        //     ]
+        //     const dirrr = fs.ls()
+        //
+        //     const table = useReactTable({
+        //         directoryListing,
+        //         columns,
+        //         getCoreRowModel: getCoreRowModel(),
+        //     })
+        //
+        //     directoryListing.forEach(([filename, properties]) => {
+        //         listItems.push(
+        //             <p onClick={openFileOrFolder(properties, path, filename)}>{filename}</p>
+        //         )
+        //     })
+        //
+        //     items = (<>{listItems}</>);
+        //     break;
+        //
+        // }
         case "icons": {
             let icons = [];
             directoryListing.forEach(([filename, properties]) => {
@@ -117,7 +115,6 @@ const PlatinumFileBrowser: React.FC<PlatinumFileBrowserProps> = ({
                         appId={appId}
                         name={filename}
                         icon={properties["_icon"] || iconImageByType(properties["_type"])}
-                        initialPosition={[0, 0]}
                         onClickFunc={openFileOrFolder(properties, path, filename)}
                     />
                 )
@@ -129,7 +126,7 @@ const PlatinumFileBrowser: React.FC<PlatinumFileBrowserProps> = ({
 
 
     return (
-        <div>
+        <div style={{position: "absolute"}}>
             {items}
         </div>
     );

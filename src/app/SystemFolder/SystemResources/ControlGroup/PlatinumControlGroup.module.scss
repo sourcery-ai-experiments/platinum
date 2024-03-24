@@ -10,11 +10,6 @@
   columns: 2;
 }
 
-.platinumControlGroupContentColumns {
-  display: flex;
-  flex-direction: column;
-}
-
 .platinumControlGroupLegend {
   font-family: var(--ui-font);
   font-size: calc(var(--ui-font-size) * .75);

@@ -21,13 +21,12 @@
   z-index: 999;
   top: 0;
   display: flex;
-  @include appearance.platinumWindowBoxShadow;
+  @include appearance.platinumWindowInnerBorder;
   align-items: center;
   flex-direction: row;
   justify-content: center;
-  width: calc(100% - var(--window-control-size));
+  width: calc(100% - var(--window-padding-size) * 2.25);
   height: var(--window-control-size);
-  margin-bottom: var(--window-control-size);
   padding: var(--window-padding-size);
   background: var(--color-system-03);
   column-gap: var(--window-control-size);
@@ -273,6 +272,16 @@
     height: calc(100% - (var(--window-control-size) * 2));
     background-color: var(--color-window-document);
   }
+
+  .platinumWindowContentsWithHeader {
+    position: relative;
+    display: block;
+    @include appearance.platinumWindowInnerBorder;
+    overflow: scroll;
+    height: calc(100% - (var(--window-control-size) * 4));
+    background-color: var(--color-window-document);
+  }
+
 }
 
 .platinumWindowContentsModal {

@@ -38,7 +38,7 @@ interface PlatinumWindowProps {
 const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                                                            id,
                                                            title = "",
-                                                           icon = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/document.png`,
+                                                           icon = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/file.png`,
                                                            appId,
                                                            hidden = false,
                                                            closable = true,
@@ -378,6 +378,11 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                             </div>
                         )}
                     </div>
+                    {header && (
+                        <div className={platinumWindowStyle.platinumWindowHeader}>
+                            {header}
+                        </div>
+                    )}
                     <div
                         className={classNames(
                             isActive()
@@ -389,16 +394,12 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                             modalWindow === true
                                 ? platinumWindowStyle.platinumWindowContentsModal
                                 : platinumWindowStyle.platinumWindowContents,
+                            header ? platinumWindowStyle.platinumWindowContentsWithHeader : ""
                         )}
                         style={{
                             display: windowState.collapsed == true ? "none" : "block",
                         }}
                     >
-                        {header && (
-                            <div className={platinumWindowStyle.platinumWindowHeader}>
-                                {header}
-                            </div>
-                        )}
                         <div
                             className={classNames(
                                 platinumWindowStyle.platinumWindowContentsInner,

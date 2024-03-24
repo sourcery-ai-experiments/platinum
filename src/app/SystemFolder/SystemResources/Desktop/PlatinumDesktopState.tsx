@@ -4,7 +4,7 @@ import {Howl} from 'howler';
 
 
 export interface PlatinumDesktopState {
-    activeTheme: string;
+    activeTheme: string | PlatinumTheme;
     soundPlayer: Howl;
     availableThemes: PlatinumTheme[];
     selectedDesktopIcons: string[];

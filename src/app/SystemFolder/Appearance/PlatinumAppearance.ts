@@ -1,6 +1,4 @@
 import themesData from "@/app/SystemFolder/Appearance/styles/themes.json";
-import {Howl} from 'howler';
-import fetch from "sync-fetch";
 
 const makeThemeStyle = (theme = themesData[0]) => {
 
@@ -65,29 +63,34 @@ export const getAllThemes = () => {
     return themesData;
 }
 
-export const getTheme = (theme: string) => {
+export const getTheme = (theme: string, overrides?: {}) => {
+    let namedThemeData: object = themesData[0];
     for (let i = 0; i < themesData.length; i++) {
         if (themesData[i].id === theme) {
-            return themesData[i];
+            namedThemeData = themesData[i];
         }
     }
-    return themesData[0];
+
+    return overrides ? mergeDeep(namedThemeData, overrides) : namedThemeData;
 };
 
-export const getSoundTheme = (soundThemeURL: string) => {
-    return fetch(soundThemeURL).json();
-};
 
-export const createSoundPlayer = (soundData): Howl => {
-    if ('src' in soundData && 'sprite' in soundData) {
-        return new Howl({
-            src: soundData.src.map(i => process.env.NEXT_PUBLIC_BASE_PATH + i),
-            sprite: soundData.sprite,
-        });
+export const mergeDeep = (target: object, ...sources) => {
+    if (!sources.length) return target;
+    const source = sources.shift();
+
+    const isObject = (item) => {
+        return (item && typeof item === 'object' && !Array.isArray(item));
     }
-}
 
-export const loadSoundTheme = (soundThemeURL: string): Howl => {
-    const data = getSoundTheme(soundThemeURL);
-    return createSoundPlayer(data);
+    for (const key in source) {
+        if (isObject(source[key])) {
+            if (!target[key]) Object.assign(target, {[key]: {}});
+            mergeDeep(target[key], source[key]);
+        } else {
+            Object.assign(target, {[key]: source[key]});
+        }
+    }
+
+    return mergeDeep(target, ...sources);
 }
