@@ -1,13 +1,49 @@
 let defaultFSContent = {
     "Macintosh HD": {
         "_type": "drive",
-        "_icon": `${process.env.NEXT_PUBLIC_BASE_PATH}/img/icons/disk.png`,
+        "_icon": `${process.env.NEXT_PUBLIC_BASE_PATH}/img/icons/system/drives/disk.png`,
+        "test3.txt": {
+            "_type": "file",
+            "_mimeType": "",
+            "_data": "File Contents",
+        },
+        "test": {
+            "_type": "directory",
+            "_icon": `${process.env.NEXT_PUBLIC_BASE_PATH}/img/icons/system/folders/directory.png`,
+        },
+        "test2": {
+            "_type": "directory",
+            "_icon": `${process.env.NEXT_PUBLIC_BASE_PATH}/img/icons/system/folders/directory.png`,
+            "test1.txt": {
+                "_type": "file",
+                "_mimeType": "",
+                "_data": "File Contents"
+            },
+            "test.txt": {
+                "_type": "file",
+                "_mimeType": "",
+                "_data": "File Contents"
+            }
+        }
     }
+}
+
+export type FileSystemEntry = {
+    "_type": "drive" | "directory" | "file";
+    "_icon"?: string;
+    "_mimeType"?: string;
+    "_data"?: any;
+    "_createdOn"?: Date;
+    "_modifiedOn"?: Date;
+    "_label"?: string;
+    "_comments"?: string;
+    "_version": number;
+    [entry: string]: any;
 }
 
 export class PlatinumFileSystem {
     basePath: string;
-    fs: object;
+    fs: FileSystemEntry;
     separator: string;
 
     constructor(basePath: string = "", defaultFS: any = defaultFSContent, separator = ":") {
@@ -73,10 +109,9 @@ export class PlatinumFileSystem {
     }
 
     filterByType(path: string, byType: string | string[] = ["file", "directory"]) {
-        if (typeof byType === "string") {
-            return this.ls(path).filter(([_, b]) => b['_type'] === byType);
-        }
-        return this.ls(path).filter(([_, b]) => byType.includes(b['_type']));
+        return Object.entries(this.resolve(path)).filter(([name, props]: [string, any]) => {
+            return typeof props === "object" && '_type' in props && byType.includes(props["_type"]);
+        })
     }
 
     statDir(path: string) {
@@ -96,4 +131,8 @@ export class PlatinumFileSystem {
         })
         return returnValue
     }
+}
+
+const main = () => {
+
 }

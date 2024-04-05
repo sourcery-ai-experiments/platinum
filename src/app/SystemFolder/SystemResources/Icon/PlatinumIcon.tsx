@@ -6,7 +6,6 @@ interface PlatinumIconProps {
     appId: string;
     name: string;
     icon: string;
-    initialPosition: [number, number];
     label?: string;
     kind?: "app_shortcut";
     onClickFunc?: any;
@@ -22,7 +21,6 @@ const PlatinumIcon: React.FC<PlatinumIconProps> = ({
                                                    }) => {
 
     const [position, setPosition] = React.useState<[number, number]>([0, 0]);
-    const [clickPosition, setClickPosition] = React.useState<[number, number]>([0, 0]);
     const [dragging, setDragging] = React.useState<boolean>(false);
     const [active, setActive] = React.useState<boolean>(false);
 
@@ -30,26 +28,61 @@ const PlatinumIcon: React.FC<PlatinumIconProps> = ({
 
     const id = appId + ".shortcut";
 
-    const setFocus = () => {
+    const toggleFocus = () => {
         setActive(!active);
     }
+    const setFocus = (active: boolean) => {
+        setActive(active);
+    }
+
+    const clearFocus = () => {
+        setActive(false);
+    }
+
+    const doDoubleClick = () => {
+        if (onClickFunc) {
+            clearFocus()
+            onClickFunc()
+        }
+    }
+
+    const stopChangeIcon = () => {
+        setDragging(false);
+    };
+
+    const startDrag = () => {
+        setDragging(true);
+    };
+
+    const changeIcon = (e) => {
+        if (dragging) {
+            setFocus(true);
+            setPosition([
+                e.clientX - 96,
+                e.clientY - 128
+
+            ])
+        }
+    };
 
     return (
-        <div ref={iconRef} id={`${id}`}
+        <div ref={iconRef} id={`${id}-${Math.random().toString(36).substring(2,7)}`}
              draggable={false}
              className={classNames(
                  platinumIconStyles.platinumIcon,
                  dragging ? platinumIconStyles.platinumIconDragging : "",
                  active ? platinumIconStyles.platinumIconActive : ""
              )}
-             style={{top: position[0], left: position[1]}}
-             onClick={setFocus}
-             onDoubleClick={onClickFunc}
+             style={{position: "absolute", left: position[0] + 'px', top: position[1] + 'px'}}
+             onClick={toggleFocus}
+             onMouseDown={startDrag}
+             onMouseMove={changeIcon}
+             onMouseUp={stopChangeIcon}
+             onDoubleClick={doDoubleClick}
         >
             <div className={platinumIconStyles.platinumIconMaskOuter}
                  style={{maskImage: `url(${icon})`}}>
-                <div
-                    className={platinumIconStyles.platinumIconMask}
+                <div className={platinumIconStyles.platinumIconMask}
                     style={{mask: `url(${icon})`}}>
                     <img src={icon} alt={name}/>
                 </div>

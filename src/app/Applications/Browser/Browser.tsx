@@ -10,7 +10,7 @@ const Browser = () => {
 
     const appName = "Browser";
     const appId = "Browser.app";
-    const appIcon = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/internet-services.png`;
+    const appIcon = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/system/network/internet-services.png`;
 
     const desktopEventDispatch = useDesktopDispatch();
     const [appContext] = React.useState({});

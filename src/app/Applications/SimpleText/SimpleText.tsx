@@ -10,7 +10,7 @@ const SimpleText = () => {
 
     const appName = "SimpleText";
     const appId = "SimpleText.app";
-    const appIcon = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/textedit.png`;
+    const appIcon = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/applications/textedit/app.png`;
 
     const defaultText = `> *Here's to the crazy ones.*\n
 > *The misfits.*\n

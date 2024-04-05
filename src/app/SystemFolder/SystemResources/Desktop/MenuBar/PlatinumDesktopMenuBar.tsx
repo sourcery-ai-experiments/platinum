@@ -16,7 +16,7 @@ const PlatinumDesktopMenuBar: React.FC = () => {
 
     const systemMenuItem: PlatinumMenuItem = {
         id: "apple-menu",
-        image: `${process.env.NEXT_PUBLIC_BASE_PATH}/img/apple.png`,
+        image: `${process.env.NEXT_PUBLIC_BASE_PATH}/img/icons/system/apple.png`,
         menuChildren: desktopContext.systemMenu,
         className: platinumDesktopMenuStyles.platinumDesktopMenuAppleMenu
     };
@@ -30,7 +30,7 @@ const PlatinumDesktopMenuBar: React.FC = () => {
 
     let activeAppObject = desktopContext.openApps.filter((app) => app.id == desktopContext.activeApp);
     if (!activeAppObject.length) {
-        activeAppObject = [{icon: `${process.env.NEXT_PUBLIC_BASE_PATH}/img/macos.svg`, name: "Finder"}];
+        activeAppObject = [{icon: `${process.env.NEXT_PUBLIC_BASE_PATH}/img/icons/system/macos.svg`, name: "Finder"}];
     }
 
     const appSwitcherMenuMenuItem: PlatinumMenuItem = {

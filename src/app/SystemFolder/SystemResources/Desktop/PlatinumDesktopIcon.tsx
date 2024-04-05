@@ -37,9 +37,6 @@ const PlatinumDesktopIcon: React.FC<PlatinumDesktopIconProps> = ({
             type: "PlatinumDesktopIconFocus",
             iconId: id,
         })
-        if (typeof onClickFunc === 'function') {
-            onClickFunc();
-        }
     }
 
     const changeIcon = (e) => {
@@ -62,6 +59,9 @@ const PlatinumDesktopIcon: React.FC<PlatinumDesktopIconProps> = ({
     }
 
     const launchIcon = () => {
+        if (onClickFunc) {
+            onClickFunc();
+        }
         desktopEventDispatch({
             type: "PlatinumDesktopIconOpen",
             iconId: id,

@@ -3,7 +3,7 @@
 import soundManagerStyles from "@/app/SystemFolder/ControlPanels/SoundManager/SoundManager.module.scss";
 import {PlatinumAboutWindow} from "@/app/SystemFolder/SystemResources/AboutWindow/PlatinumAboutWindow";
 import PlatinumApp from "@/app/SystemFolder/SystemResources/App/PlatinumApp";
-import {useDesktop, useDesktopDispatch,} from "@/app/SystemFolder/SystemResources/AppManager/PlatinumAppManagerContext";
+import {useDesktopDispatch} from "@/app/SystemFolder/SystemResources/AppManager/PlatinumAppManagerContext";
 import PlatinumCheckbox from "@/app/SystemFolder/SystemResources/Checkbox/PlatinumCheckbox";
 import PlatinumControlGroup from "@/app/SystemFolder/SystemResources/ControlGroup/PlatinumControlGroup";
 import PlatinumControlLabel from "@/app/SystemFolder/SystemResources/ControlLabel/PlatinumControlLabel";
@@ -17,7 +17,6 @@ import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWi
 import React from "react";
 
 export const SoundManager: React.FC = () => {
-    const desktopContext = useDesktop();
     const desktopEventDispatch = useDesktopDispatch();
 
     const playerState = useSound();
@@ -25,7 +24,7 @@ export const SoundManager: React.FC = () => {
 
     const appName: string = "Sound Manager";
     const appId: string = "SoundManager.app";
-    const appIcon: string = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/sound-manager/app.png`;
+    const appIcon: string = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/control-panels/sound-manager/app.png`;
 
     const [showAbout, setShowAbout] = React.useState(false);
 

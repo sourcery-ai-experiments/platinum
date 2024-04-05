@@ -16,8 +16,8 @@ const PlatinumDesktopMenuWidgetSound: React.FC<PlatinumDesktopMenuWidgetSoundPro
     },
 ) => {
 
-    const soundOnImg = "img/icons/sound-manager/sound-on.png";
-    const soundOffImg = "img/icons/sound-manager/sound-off.png";
+    const soundOnImg = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/control-panels/sound-manager/sound-on.png`;
+    const soundOffImg = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/control-panels/sound-manager/sound-off.png`;
 
     const player = useSoundDispatch();
     const playerState = useSound();

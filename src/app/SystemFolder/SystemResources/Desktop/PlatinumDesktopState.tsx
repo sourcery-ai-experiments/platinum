@@ -4,7 +4,7 @@ import {Howl} from 'howler';
 
 
 export interface PlatinumDesktopState {
-    activeTheme: string;
+    activeTheme: string | PlatinumTheme;
     soundPlayer: Howl;
     availableThemes: PlatinumTheme[];
     selectedDesktopIcons: string[];
@@ -119,7 +119,7 @@ export const DefaultDesktopState: PlatinumDesktopState = {
         {
             id: "finder.app",
             title: "Finder",
-            icon: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/macos.svg`
+            icon: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/system/macos.svg`
 
         }
     ],
@@ -127,7 +127,7 @@ export const DefaultDesktopState: PlatinumDesktopState = {
         {
             id: "finder.app",
             name: "Finder",
-            icon: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/macos.svg`,
+            icon: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/system/macos.svg`,
             hidden: false
         }
     ],

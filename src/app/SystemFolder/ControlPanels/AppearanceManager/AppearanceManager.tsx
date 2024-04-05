@@ -5,6 +5,7 @@ import {PlatinumAboutWindow} from "@/app/SystemFolder/SystemResources/AboutWindo
 import PlatinumApp from "@/app/SystemFolder/SystemResources/App/PlatinumApp";
 import {useDesktop, useDesktopDispatch,} from "@/app/SystemFolder/SystemResources/AppManager/PlatinumAppManagerContext";
 import PlatinumButton from "@/app/SystemFolder/SystemResources/Button/PlatinumButton";
+import PlatinumControlLabel from "@/app/SystemFolder/SystemResources/ControlLabel/PlatinumControlLabel";
 import PlatinumPopUpMenu from "@/app/SystemFolder/SystemResources/PopUpMenu/PlatinumPopUpMenu";
 import {useSound, useSoundDispatch,} from "@/app/SystemFolder/SystemResources/SoundManager/PlatinumSoundManagerContext";
 import PlatinumWindow from "@/app/SystemFolder/SystemResources/Window/PlatinumWindow";
@@ -13,7 +14,8 @@ import React from "react";
 export const AppearanceManager: React.FC = () => {
     const appName: string = "Appearance Manager";
     const appId: string = "AppearanceManager.app";
-    const appIcon: string = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/appearance-manager/app.png`;
+    const appIcon: string = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/control-panels/appearance-manager/app.png`;
+    const packageIcon: string = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/control-panels/appearance-manager/platinum.png`;
 
     const desktopContext = useDesktop(), desktopEventDispatch = useDesktopDispatch();
 
@@ -110,6 +112,7 @@ export const AppearanceManager: React.FC = () => {
                 modalWindow={true}
                 appMenu={appMenu}
             >
+                <PlatinumControlLabel label={"The current Theme Package is Platinum"} icon={packageIcon}/>
                 <PlatinumPopUpMenu
                     id={"select_theme"}
                     label={"Selected Theme"}

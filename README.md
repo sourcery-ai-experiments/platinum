@@ -61,6 +61,7 @@ You will need Node.js v20.11 or higher. You will also need the `yarn` package ma
 |          |                     | *Subject to change* |
 
 - Desktop
+    - ℹ️ The ubiquitous Finder
     - Menubar
         - ✅ System Menu
         - ℹ️App Switcher
@@ -74,24 +75,26 @@ You will need Node.js v20.11 or higher. You will also need the `yarn` package ma
         - Arrange By…
 - Sounds
     - ✅ Sound Provider
-    - ⚠️ Sound Event Handler
-        - NOTE: This is under development and subject to change.
-        - ✅ Event dispatcher/player
-        - Automatic event intercept and play for known events (map audio sprites to events)
-- Appearance Manager (Theme)
-    - ✅ Manager
+    - ✅ Load sound theme from JSON
+    - ✅ Audio Sprites support
+    - ℹ️ Sound Manager Control Panel
+        - ⚠️ Sound Event Handler
+            - NOTE: This is under development and subject to change.
+            - ✅ Event dispatcher/player
+            - Automatic event intercept and play for known events (map audio sprites to events)
+- Appearance Manager Control Panel (Theme Manager)
+    - ℹ️ Appearance Manager Control Panel
+        - Currently, does not allow creating custom themes, but can switch between loaded themes
+    - ✅ System
         - ✅ Load theme from JSON
         - ✅ System events for modifying theme
-    - System
+    - UI
         - ✅ Typography settings
         - ✅ Measurement settings
         - ✅ Desktop settings
         - ✅ System colors
         - ✅ Configurable color variables
     - ✅ Color Theme-able components
-    - Sound
-        - ✅ Load sound theme from JSON
-        - ✅ Audio Sprites support
 - App Template
     - ⚠️ App Context/Event Handler
     - App Switcher
@@ -102,7 +105,7 @@ You will need Node.js v20.11 or higher. You will also need the `yarn` package ma
         - ✅ Collapse
         - ✅ Close
         - Placard
-        - Header
+        - ✅ Header
     - Dialog
         - Modal
             - Dialog
@@ -113,27 +116,31 @@ You will need Node.js v20.11 or higher. You will also need the `yarn` package ma
                 - Non-movable
         - ✅ Modeless
     - ✅ Standard
+- System
+    - ⚠️ File System
+        - ⚠️ Integrated into Finder.app
 - UI Components
     - ✅ Text Input
-    - Text Area
+    - ✅ Text Area
     - ✅ Button
     - Tabs
     - ✅ Radio Button
     - ✅ Drop-down menu
     - Multi-select menu
     - ✅ Checkbox
-    - Bevel Button
+    - ✅ Bevel Button
     - Slider
     - Spinner
     - Date/Time Picker
-    - Expandable
+    - ✅ Expandable (Disclosure)
     - ✅ Fieldset
     - ✅ Separator
     - ✅ Progress
     - Menu
         - ✅ Contextual Menu
         - Submenu
-    - Gallery Picker
+    - Gallery Picker (Slider)
+    - Color Picker
 
 ## Component Organization
 

@@ -26,6 +26,7 @@ interface PlatinumWindowProps {
     modalWindow?: boolean;
     initialSize?: [number, number];
     initialPosition?: [number, number];
+    minimumSize?: [number, number];
     grow?: boolean;
     header?: React.ReactNode;
     appMenu?: PlatinumMenuItem[];
@@ -37,7 +38,7 @@ interface PlatinumWindowProps {
 const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                                                            id,
                                                            title = "",
-                                                           icon = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/document.png`,
+                                                           icon = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/system/files/file.png`,
                                                            appId,
                                                            hidden = false,
                                                            closable = true,
@@ -46,8 +47,9 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                                                            resizable = true,
                                                            scrollable = true,
                                                            modalWindow = false,
-                                                           initialSize = [300, 0],
+                                                           initialSize = [350, 0],
                                                            initialPosition = [0, 0],
+                                                           minimumSize = [250, 0],
                                                            grow,
                                                            header,
                                                            appMenu,
@@ -295,6 +297,8 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                         height: size[1] === 0 ? "auto" : size[1],
                         left: windowState.position[0],
                         top: windowState.position[1],
+                        minWidth: minimumSize[0],
+                        minHeight: minimumSize[1],
                     }}
                     className={classNames(
                         platinumWindowStyle.platinumWindow,
@@ -374,6 +378,11 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                             </div>
                         )}
                     </div>
+                    {header && !windowState.collapsed && (
+                        <div className={platinumWindowStyle.platinumWindowHeader}>
+                            {header}
+                        </div>
+                    )}
                     <div
                         className={classNames(
                             isActive()
@@ -385,16 +394,12 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                             modalWindow === true
                                 ? platinumWindowStyle.platinumWindowContentsModal
                                 : platinumWindowStyle.platinumWindowContents,
+                            header ? platinumWindowStyle.platinumWindowContentsWithHeader : ""
                         )}
                         style={{
                             display: windowState.collapsed == true ? "none" : "block",
                         }}
                     >
-                        {header && (
-                            <div className={platinumWindowStyle.platinumWindowHeader}>
-                                {header}
-                            </div>
-                        )}
                         <div
                             className={classNames(
                                 platinumWindowStyle.platinumWindowContentsInner,

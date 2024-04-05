@@ -32,7 +32,7 @@ export const Primary: Story = {
                     id: "_connect",
                     title: "Connect",
                     keyboardShortcut: "&#8984;A",
-                    icon: "/img/icons/internet-services.png"
+                    icon: "/img/icons/system/network/internet-services.png"
                 },
                 {
                     id: "spacer",

@@ -1,8 +1,8 @@
-import {createSoundPlayer, loadSoundTheme} from "@/app/SystemFolder/Appearance/PlatinumAppearance";
-import {Howl} from 'howler';
 import React from 'react';
 import soundData from "../../../../../public/sounds/platinum/platinum.json"
 import soundLabels from "./PlatinumSoundManagerLabels.json";
+import {Howl} from 'howler';
+import fetch from "sync-fetch";
 
 export const PlatinumSoundManagerContext = React.createContext(null);
 export const PlatinumSoundDispatchContext = React.createContext(null);
@@ -14,10 +14,11 @@ export type PlatinumSoundInfo = {
     description: string;
 }
 
-interface PlatinumSoundState {
+type PlatinumSoundState = {
     soundPlayer: Howl | null;
     disabled: string[];
     labels: PlatinumSoundInfo[];
+    volume?: number;
 }
 
 enum PlatinumSoundActionTypes {
@@ -26,7 +27,8 @@ enum PlatinumSoundActionTypes {
     PlatinumSoundPlayInterrupt,
     PlatinumSoundLoad,
     PlatinumSoundSet,
-    PlatinumSoundDisable
+    PlatinumSoundDisable,
+    PlatinumVolumeSet
 }
 
 interface PlatinumSoundAction {
@@ -37,11 +39,40 @@ interface PlatinumSoundAction {
     soundPlayer?: any;
 }
 
+export const createSoundPlayer = ({soundData, options}: SoundPlayer): Howl => {
+    if ('src' in soundData && 'sprite' in soundData) {
+        return new Howl({
+            src: soundData.src.map(i => process.env.NEXT_PUBLIC_BASE_PATH + i),
+            sprite: soundData.sprite,
+            ...options
+        });
+    }
+}
+
 export const initialPlayer = {
-    soundPlayer: createSoundPlayer(soundData),
+    soundPlayer: createSoundPlayer({soundData: soundData}),
     disabled: [],
-    labels: soundLabels
+    labels: soundLabels,
+    volume: 100
 };
+
+export const getSoundTheme = (soundThemeURL: string) => {
+    return fetch(soundThemeURL).json();
+};
+
+interface SoundPlayer {
+    soundData: {
+        src: string[];
+        sprite: Record<string, any>;
+    };
+    options?: Record<string, any>;
+}
+
+
+export const loadSoundTheme = (soundThemeURL: string): Howl => {
+    const data = getSoundTheme(soundThemeURL);
+    return createSoundPlayer({soundData: data});
+}
 
 export function useSound() {
     return React.useContext(PlatinumSoundManagerContext);
@@ -95,6 +126,10 @@ export const PlatinumSoundStateEventReducer = (
             break;
         }
         case PlatinumSoundActionTypes.PlatinumSoundSet: {
+            ss.soundPlayer = action.soundPlayer;
+            break;
+        }
+        case PlatinumSoundActionTypes.PlatinumVolumeSet: {
             ss.soundPlayer = action.soundPlayer;
             break;
         }
