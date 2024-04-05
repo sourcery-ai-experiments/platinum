@@ -59,7 +59,6 @@ const PlatinumDesktopIcon: React.FC<PlatinumDesktopIconProps> = ({
     }
 
     const launchIcon = () => {
-        console.log(onClickFunc)
         if (onClickFunc) {
             onClickFunc();
         }

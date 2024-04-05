@@ -18,7 +18,7 @@ const Finder = () => {
     }
 
     const openFile = (path: string) => {
-        console.log('simulating opening of ' + path)
+        // TODO: Need to write this logic
     }
     const closeFolder = (path: string) => {
         const uniqueOpenPaths = openPaths.filter(e => e !== path.replace('Finder:', ''));
@@ -59,7 +59,7 @@ const Finder = () => {
                 name: "Trash",
                 icon: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/system/desktop/trash-full.png`,
             },
-            onClickFunc: closeAll
+            onClickFunc: emptyTrash
         });
 
     }, []);

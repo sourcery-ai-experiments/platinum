@@ -50,12 +50,11 @@ const PlatinumIcon: React.FC<PlatinumIconProps> = ({
         setDragging(false);
     };
 
-    const startDrag = (e) => {
+    const startDrag = () => {
         setDragging(true);
     };
 
     const changeIcon = (e) => {
-        console.log(iconRef.current.getBoundingClientRect().width)
         if (dragging) {
             setFocus(true);
             setPosition([

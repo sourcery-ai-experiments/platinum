@@ -121,6 +121,8 @@ export const platinumDesktopIconEventHandler = (
             break;
         }
         case "PlatinumDesktopIconAdd": {
+            // TODO: We need to separate onClickFunc from here; it's being stored in the localstorage cache which
+            // means it gets blown out after every session clear. An Event name and payload here would be better.
             let icon = ds.desktopIcons.filter((icon) => icon.appId === action.app.id);
             if (icon.length === 0) {
 
@@ -128,6 +130,7 @@ export const platinumDesktopIconEventHandler = (
                 if (!newLocation) {
                     action.location = getGridPositionByCount(ds.desktopIcons.length, ds.activeTheme);
                 }
+
                 ds.desktopIcons.push({
                     icon: action.app.icon,
                     appName: action.app.name,

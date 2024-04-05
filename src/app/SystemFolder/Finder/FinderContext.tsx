@@ -40,7 +40,7 @@ export function useFinderDispatch() {
 export const platinumFinderEventHandler = (ds: PlatinumFinderContextData, action) => {
     switch (action.type) {
         case "PlatinumFinderEmptyTrash": {
-            console.log("EMPTYING TRASH")
+            // TODO: We need to decide how to reset the state here.
             break;
         }
         case "PlatinumFinderOpenDirectory": {

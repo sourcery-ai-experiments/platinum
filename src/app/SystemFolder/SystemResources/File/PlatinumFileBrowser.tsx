@@ -56,6 +56,7 @@ const PlatinumFileBrowser: React.FC<PlatinumFileBrowserProps> = (
     let items: React.ReactNode
 
     switch (display) {
+        // TODO: Still need to work on this... I left it in a weird place.
         // case "list": {
         //     let listItems = [];
         //     const columnHelper = createColumnHelper<FileSystemEntry>()
@@ -108,6 +109,7 @@ const PlatinumFileBrowser: React.FC<PlatinumFileBrowserProps> = (
         //
         // }
         case "icons": {
+            // TODO: Icons are moving relative to the entire screen and not the bounding box. Need to fix that.
             let icons = [];
             directoryListing.forEach(([filename, properties]) => {
                 icons.push(
