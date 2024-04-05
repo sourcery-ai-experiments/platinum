@@ -117,29 +117,30 @@ You will need Node.js v20.11 or higher. You will also need the `yarn` package ma
         - ✅ Modeless
     - ✅ Standard
 - System
-    - File System
-        - Integrated into Finder.app
+    - ⚠️ File System
+        - ⚠️ Integrated into Finder.app
 - UI Components
     - ✅ Text Input
     - ✅ Text Area
-        - ✅ Button
-        - Tabs
-        - ✅ Radio Button
-        - ✅ Drop-down menu
-        - Multi-select menu
-        - ✅ Checkbox
+    - ✅ Button
+    - Tabs
+    - ✅ Radio Button
+    - ✅ Drop-down menu
+    - Multi-select menu
+    - ✅ Checkbox
     - ✅ Bevel Button
-        - Slider
-        - Spinner
-        - Date/Time Picker
+    - Slider
+    - Spinner
+    - Date/Time Picker
     - ✅ Expandable (Disclosure)
-        - ✅ Fieldset
-        - ✅ Separator
-        - ✅ Progress
-        - Menu
-            - ✅ Contextual Menu
-            - Submenu
-        - Gallery Picker
+    - ✅ Fieldset
+    - ✅ Separator
+    - ✅ Progress
+    - Menu
+        - ✅ Contextual Menu
+        - Submenu
+    - Gallery Picker (Slider)
+    - Color Picker
 
 ## Component Organization
 
