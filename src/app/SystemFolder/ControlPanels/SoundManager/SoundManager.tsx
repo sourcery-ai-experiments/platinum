@@ -25,7 +25,7 @@ export const SoundManager: React.FC = () => {
 
     const appName: string = "Sound Manager";
     const appId: string = "SoundManager.app";
-    const appIcon: string = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/sound-manager/app.png`;
+    const appIcon: string = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/control-panels/sound-manager/app.png`;
 
     const [showAbout, setShowAbout] = React.useState(false);
 

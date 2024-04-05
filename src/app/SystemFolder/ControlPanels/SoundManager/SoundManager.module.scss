@@ -14,4 +14,5 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: stretch;
+  margin: calc(var(--window-padding-size) ) 0;
 }

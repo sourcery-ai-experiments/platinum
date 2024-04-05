@@ -38,7 +38,7 @@ interface PlatinumWindowProps {
 const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                                                            id,
                                                            title = "",
-                                                           icon = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/file.png`,
+                                                           icon = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/system/files/file.png`,
                                                            appId,
                                                            hidden = false,
                                                            closable = true,
@@ -378,7 +378,7 @@ const PlatinumWindow: React.FC<PlatinumWindowProps> = ({
                             </div>
                         )}
                     </div>
-                    {header && (
+                    {header && !windowState.collapsed && (
                         <div className={platinumWindowStyle.platinumWindowHeader}>
                             {header}
                         </div>

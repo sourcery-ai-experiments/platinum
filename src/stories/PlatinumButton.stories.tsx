@@ -50,7 +50,7 @@ export const Disabled: Story = {
 export const Square: Story = {
     args: {
         disabled: false,
-        children: <img src={"/img/icons/file.png"}/>,
+        children: <img src={"/img/icons/system/files/file.png"}/>,
         buttonShape: "square"
     },
 };
@@ -58,7 +58,7 @@ export const Square: Story = {
 export const SquareSmall: Story = {
     args: {
         disabled: false,
-        children: <img src={"/img/icons/file.png"}/>,
+        children: <img src={"/img/icons/system/files/file.png"}/>,
         buttonShape: "square",
         buttonSize: "small"
     },

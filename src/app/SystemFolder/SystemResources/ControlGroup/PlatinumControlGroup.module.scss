@@ -2,6 +2,9 @@
 @use "../../Appearance/styles/assets";
 
 .platinumControlGroup {
+  margin: calc(var(--window-padding-size) / 3);
+}
+.platinumControlGroupNoColumns {
   columns: 1;
 }
 

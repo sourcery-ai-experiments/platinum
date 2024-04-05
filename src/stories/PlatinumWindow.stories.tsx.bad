@@ -46,7 +46,7 @@ export const Primary: Story = {
     args: {
         id: "PlatinumWindowDemo",
         title: "Document 1",
-        icon: "/img/icons/file.png",
+        icon: "/img/icons/system/files/file.png",
         children: childrenItems,
         initialPosition: [0, 0],
         initialSize: [300, 200],

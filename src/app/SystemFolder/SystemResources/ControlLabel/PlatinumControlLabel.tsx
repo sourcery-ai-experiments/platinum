@@ -42,10 +42,11 @@ const PlatinumControlLabel: React.FC<PlatinumControlLabelProps> = ({
 
     if (label !== "") {
         return (
-            <div style={{display: "flex", flexDirection: ["left", "bottom"].includes(direction) ? "row" : "row-reverse"}}>
+            <div style={{display: "flex", flexDirection: ["left", "bottom"].includes(direction) ? "row" : "row-reverse", alignItems: icon ? "center" : ""}}>
                 {icon && (
-                    <img src={icon} width={imageSize(iconSize)}/>
+                    <img src={icon} width={imageSize(iconSize)} alt={label}/>
                 )}
+
                 {["left", "bottom"].includes(direction) && children}
 
                 <label htmlFor={labelFor}
@@ -58,6 +59,7 @@ const PlatinumControlLabel: React.FC<PlatinumControlLabelProps> = ({
                 </label>
 
                 {["right", "top"].includes(direction) && children}
+
             </div>
         );
     }

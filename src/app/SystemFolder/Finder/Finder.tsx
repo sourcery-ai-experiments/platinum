@@ -9,7 +9,7 @@ const Finder = () => {
 
     const appName: string = "Finder";
     const appId: string = "Finder.app";
-    const appIcon: string = `${process.env.NEXT_PUBLIC_BASE_PATH}/img/macos.svg`;
+    const appIcon: string = `${process.env.NEXT_PUBLIC_BASE_PATH}/img/icons/system/macos.svg`;
 
     const [openPaths, setOpenPaths] = React.useState(["Macintosh HD"]);
 
@@ -40,7 +40,7 @@ const Finder = () => {
 
     React.useEffect(() => {
         const drives = fs.filterByType("", "drive");
-        console.log(drives)
+
         drives.forEach(([a, b]) => {
             desktopEventDispatch({
                 type: "PlatinumDesktopIconAdd",
@@ -51,12 +51,13 @@ const Finder = () => {
                 }
             });
         });
+
         desktopEventDispatch({
             type: "PlatinumDesktopIconAdd",
             app: {
                 id: "finder_trash",
                 name: "Trash",
-                icon: "trash",
+                icon: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/icons/system/desktop/trash-full.png`,
             },
             onClickFunc: closeAll
         });

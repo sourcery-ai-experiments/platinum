@@ -1,7 +1,7 @@
 let defaultFSContent = {
     "Macintosh HD": {
         "_type": "drive",
-        "_icon": `${process.env.NEXT_PUBLIC_BASE_PATH}/img/icons/disk.png`,
+        "_icon": `${process.env.NEXT_PUBLIC_BASE_PATH}/img/icons/system/drives/disk.png`,
         "test3.txt": {
             "_type": "file",
             "_mimeType": "",
