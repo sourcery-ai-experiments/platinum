@@ -8,6 +8,7 @@ interface PlatinumIconProps {
     icon: string;
     label?: string;
     kind?: "app_shortcut";
+    holder?: any;
     onClickFunc?: any;
 }
 
@@ -17,6 +18,7 @@ const PlatinumIcon: React.FC<PlatinumIconProps> = ({
                                                        icon,
                                                        label,
                                                        kind = "app_shortcut",
+                                                       holder,
                                                        onClickFunc,
                                                    }) => {
 
@@ -58,8 +60,8 @@ const PlatinumIcon: React.FC<PlatinumIconProps> = ({
         if (dragging) {
             setFocus(true);
             setPosition([
-                e.clientX - 96,
-                e.clientY - 128
+                e.clientX - holder.current.getBoundingClientRect().left - 32,
+                e.clientY - holder.current.getBoundingClientRect().top - 32
 
             ])
         }
@@ -82,8 +84,7 @@ const PlatinumIcon: React.FC<PlatinumIconProps> = ({
         >
             <div className={platinumIconStyles.platinumIconMaskOuter}
                  style={{maskImage: `url(${icon})`}}>
-                <div className={platinumIconStyles.platinumIconMask}
-                    style={{mask: `url(${icon})`}}>
+                <div className={platinumIconStyles.platinumIconMask} style={{mask: `url(${icon})`}}>
                     <img src={icon} alt={name}/>
                 </div>
             </div>

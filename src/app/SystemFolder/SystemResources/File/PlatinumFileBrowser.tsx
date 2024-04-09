@@ -26,6 +26,7 @@ const PlatinumFileBrowser: React.FC<PlatinumFileBrowserProps> = (
 ) => {
 
     let directoryListing = fs.filterByType(path, ["file", "directory"]);
+    const holderRef = React.useRef()
 
     const iconImageByType = (byType: string) => {
         switch (byType) {
@@ -118,6 +119,7 @@ const PlatinumFileBrowser: React.FC<PlatinumFileBrowserProps> = (
                         name={filename}
                         icon={properties["_icon"] || iconImageByType(properties["_type"])}
                         onClickFunc={openFileOrFolder(properties, path, filename)}
+                        holder={holderRef}
                     />
                 )
             })
@@ -128,7 +130,7 @@ const PlatinumFileBrowser: React.FC<PlatinumFileBrowserProps> = (
 
 
     return (
-        <div style={{position: "absolute"}}>
+        <div style={{position: "absolute"}} ref={holderRef}>
             {items}
         </div>
     );
