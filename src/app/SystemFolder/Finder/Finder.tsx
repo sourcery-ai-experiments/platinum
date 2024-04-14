@@ -41,7 +41,7 @@ const Finder = () => {
     React.useEffect(() => {
         const drives = fs.filterByType("", "drive");
 
-        drives.forEach(([a, b]) => {
+        Object.entries(drives).forEach(([a, b]) => {
             desktopEventDispatch({
                 type: "PlatinumDesktopIconAdd",
                 app: {

@@ -7,7 +7,7 @@ interface PlatinumIconProps {
     name: string;
     icon: string;
     label?: string;
-    kind?: "app_shortcut";
+    initialPosition?: [number, number];
     holder?: any;
     onClickFunc?: any;
 }
@@ -17,12 +17,12 @@ const PlatinumIcon: React.FC<PlatinumIconProps> = ({
                                                        name,
                                                        icon,
                                                        label,
-                                                       kind = "app_shortcut",
+                                                       initialPosition =[0,0],
                                                        holder,
                                                        onClickFunc,
                                                    }) => {
 
-    const [position, setPosition] = React.useState<[number, number]>([0, 0]);
+    const [position, setPosition] = React.useState<[number, number]>(initialPosition);
     const [dragging, setDragging] = React.useState<boolean>(false);
     const [active, setActive] = React.useState<boolean>(false);
 
@@ -60,8 +60,8 @@ const PlatinumIcon: React.FC<PlatinumIconProps> = ({
         if (dragging) {
             setFocus(true);
             setPosition([
-                e.clientX - holder.current.getBoundingClientRect().left - 32,
-                e.clientY - holder.current.getBoundingClientRect().top - 32
+                e.clientX - holder.current.getBoundingClientRect().left - (iconRef.current.getBoundingClientRect().width / 2),
+                e.clientY - holder.current.getBoundingClientRect().top - (iconRef.current.getBoundingClientRect().height / 2)
 
             ])
         }
