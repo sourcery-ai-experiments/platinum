@@ -7,7 +7,8 @@ interface PlatinumIconProps {
     name: string;
     icon: string;
     label?: string;
-    kind?: "app_shortcut";
+    initialPosition?: [number, number];
+    holder?: any;
     onClickFunc?: any;
 }
 
@@ -16,11 +17,12 @@ const PlatinumIcon: React.FC<PlatinumIconProps> = ({
                                                        name,
                                                        icon,
                                                        label,
-                                                       kind = "app_shortcut",
+                                                       initialPosition =[0,0],
+                                                       holder,
                                                        onClickFunc,
                                                    }) => {
 
-    const [position, setPosition] = React.useState<[number, number]>([0, 0]);
+    const [position, setPosition] = React.useState<[number, number]>(initialPosition);
     const [dragging, setDragging] = React.useState<boolean>(false);
     const [active, setActive] = React.useState<boolean>(false);
 
@@ -58,8 +60,8 @@ const PlatinumIcon: React.FC<PlatinumIconProps> = ({
         if (dragging) {
             setFocus(true);
             setPosition([
-                e.clientX - 96,
-                e.clientY - 128
+                e.clientX - holder.current.getBoundingClientRect().left - (iconRef.current.getBoundingClientRect().width / 2),
+                e.clientY - holder.current.getBoundingClientRect().top - (iconRef.current.getBoundingClientRect().height / 2)
 
             ])
         }
@@ -82,8 +84,7 @@ const PlatinumIcon: React.FC<PlatinumIconProps> = ({
         >
             <div className={platinumIconStyles.platinumIconMaskOuter}
                  style={{maskImage: `url(${icon})`}}>
-                <div className={platinumIconStyles.platinumIconMask}
-                    style={{mask: `url(${icon})`}}>
+                <div className={platinumIconStyles.platinumIconMask} style={{mask: `url(${icon})`}}>
                     <img src={icon} alt={name}/>
                 </div>
             </div>

@@ -1,7 +1,9 @@
-import {FileSystemEntry, PlatinumFileSystem} from "@/app/SystemFolder/SystemResources/File/FileSystem";
+import {getTheme} from "@/app/SystemFolder/Appearance/PlatinumAppearance";
+import {useDesktop, useDesktopDispatch} from "@/app/SystemFolder/SystemResources/AppManager/PlatinumAppManagerContext";
+import {PlatinumFileSystem} from "@/app/SystemFolder/SystemResources/File/FileSystem";
 import PlatinumIcon from "@/app/SystemFolder/SystemResources/Icon/PlatinumIcon";
-import {createColumnHelper, getCoreRowModel, useReactTable,} from '@tanstack/react-table'
 import React from "react";
+
 
 type PlatinumFileBrowserProps = {
     fs: PlatinumFileSystem;
@@ -24,8 +26,10 @@ const PlatinumFileBrowser: React.FC<PlatinumFileBrowserProps> = (
         },
     }
 ) => {
+    const desktopContext = useDesktop(), desktopEventDispatch = useDesktopDispatch();
 
-    let directoryListing = fs.filterByType(path, ["file", "directory"]);
+    const [items, setItems] = React.useState([])
+    const holderRef = React.useRef(null)
 
     const iconImageByType = (byType: string) => {
         switch (byType) {
@@ -53,82 +57,98 @@ const PlatinumFileBrowser: React.FC<PlatinumFileBrowserProps> = (
         }
     }
 
-    let items: React.ReactNode
+    const createGrid = (iconSize: number, iconPadding: number, containerMeasure: [number, number]) => {
+        return [
+            Math.floor(containerMeasure[0] / (iconSize + iconPadding)),
+            Math.floor(containerMeasure[1] / (iconSize * 2 + iconPadding)),
+        ];
+    };
 
-    switch (display) {
-        // TODO: Still need to work on this... I left it in a weird place.
-        // case "list": {
-        //     let listItems = [];
-        //     const columnHelper = createColumnHelper<FileSystemEntry>()
-        //
-        //     const columns = [
-        //         columnHelper.accessor('name', {
-        //             cell: info => info.getValue(),
-        //             footer: info => info.column.id,
-        //         }),
-        //         columnHelper.accessor(row => row.lastName, {
-        //             id: 'fullPath',
-        //             cell: info => <i>{info.getValue()}</i>,
-        //             header: () => <span>Last Name</span>,
-        //             footer: info => info.column.id,
-        //         }),
-        //         columnHelper.accessor('age', {
-        //             header: () => 'Age',
-        //             cell: info => info.renderValue(),
-        //             footer: info => info.column.id,
-        //         }),
-        //         columnHelper.accessor('visits', {
-        //             header: () => <span>Visits</span>,
-        //             footer: info => info.column.id,
-        //         }),
-        //         columnHelper.accessor('status', {
-        //             header: 'Status',
-        //             footer: info => info.column.id,
-        //         }),
-        //         columnHelper.accessor('progress', {
-        //             header: 'Profile Progress',
-        //             footer: info => info.column.id,
-        //         }),
-        //     ]
-        //     const dirrr = fs.ls()
-        //
-        //     const table = useReactTable({
-        //         directoryListing,
-        //         columns,
-        //         getCoreRowModel: getCoreRowModel(),
-        //     })
-        //
-        //     directoryListing.forEach(([filename, properties]) => {
-        //         listItems.push(
-        //             <p onClick={openFileOrFolder(properties, path, filename)}>{filename}</p>
-        //         )
-        //     })
-        //
-        //     items = (<>{listItems}</>);
-        //     break;
-        //
-        // }
-        case "icons": {
-            // TODO: Icons are moving relative to the entire screen and not the bounding box. Need to fix that.
-            let icons = [];
-            directoryListing.forEach(([filename, properties]) => {
-                icons.push(
-                    <PlatinumIcon
-                        appId={appId}
-                        name={filename}
-                        icon={properties["_icon"] || iconImageByType(properties["_type"])}
-                        onClickFunc={openFileOrFolder(properties, path, filename)}
-                    />
-                )
-            })
-            items = <>{icons}</>
-            break;
-        }
+    const getIconSize = (theme: string) => {
+        const themeData = getTheme(theme);
+        const iconSize = parseInt(themeData.desktop.iconSize, 10);
+        return [iconSize, iconSize / 4];
+    }
+
+    const cleanupIcon = (theme: string, iconIndex: number, iconTotal: number, containerMeasure: [number, number]): [number, number] => {
+        const [iconSize, iconPadding] = getIconSize(theme);
+
+        let grid = createGrid(iconSize, iconTotal, containerMeasure);
+        const startX = grid[0] % (iconIndex + 1);
+        const startY = grid[1] % (iconIndex / startX + 1);
+        console.log(startX, startY)
+
+        return [
+            Math.floor(((iconSize * 2) * startX)) + iconPadding,
+            Math.floor(((iconSize * 1) * startY)) + iconPadding,
+        ];
     }
 
 
+    React.useEffect(() => {
+        const containerMeasure: [number, number] = [holderRef.current.getBoundingClientRect().width, holderRef.current.getBoundingClientRect().height];
+        const directoryListing = fs.filterByType(path, ["file", "directory"]);
+
+        switch (display) {
+            // TODO: Still need to work on this... I left it in a weird place.
+            // case "list": {
+            //
+            //     const columnHelper = createColumnHelper()
+            //
+            //     const columns = [
+            //         columnHelper.accessor('firstName', {
+            //             cell: info => info.getValue(),
+            //             footer: info => info.column.id,
+            //         }),
+            //         columnHelper.accessor(row => row.lastName, {
+            //             id: 'lastName',
+            //             cell: info => <i>{info.getValue()}</i>,
+            //             header: () => <span>Last Name</span>,
+            //             footer: info => info.column.id,
+            //         }),
+            //         columnHelper.accessor('age', {
+            //             header: () => 'Age',
+            //             cell: info => info.renderValue(),
+            //             footer: info => info.column.id,
+            //         }),
+            //         columnHelper.accessor('visits', {
+            //             header: () => <span>Visits</span>,
+            //             footer: info => info.column.id,
+            //         }),
+            //         columnHelper.accessor('status', {
+            //             header: 'Status',
+            //             footer: info => info.column.id,
+            //         }),
+            //         columnHelper.accessor('progress', {
+            //             header: 'Profile Progress',
+            //             footer: info => info.column.id,
+            //         }),
+            //     ]
+            //
+            // }
+            case "icons": {
+                let icons = [];
+                Object.entries(directoryListing).forEach(([filename, properties], index) => {
+                    icons.push(
+                        <PlatinumIcon
+                            appId={appId}
+                            name={filename}
+                            icon={properties["_icon"] || iconImageByType(properties["_type"])}
+                            onClickFunc={openFileOrFolder(properties, path, filename)}
+                            holder={holderRef}
+                            initialPosition={cleanupIcon(desktopContext.activeTheme, index, Object.entries(directoryListing).length, containerMeasure)}
+                        />
+                    )
+                })
+                setItems(icons)
+                break;
+            }
+        }
+    }, [path, holderRef, desktopContext])
+
+
     return (
-        <div style={{position: "absolute"}}>
+        <div style={{position: "absolute", width: "100%", height: "100%"}} ref={holderRef}>
             {items}
         </div>
     );
